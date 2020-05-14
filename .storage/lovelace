@@ -1,0 +1,47 @@
+{
+    "data": {
+        "config": {
+            "title": "Home",
+            "views": [
+                {
+                    "badges": [
+                        {
+                            "entity": "person.russell"
+                        }
+                    ],
+                    "cards": [
+                        {
+                            "entities": [
+                                "light.ailight_office",
+                                "light.bathroom_tradfri_bulb",
+                                "light.bedroom_tradfri_bulb",
+                                "light.landing_tradfri_bulb",
+                                "light.lounge_tradfri_bulb",
+                                "light.office_tradfri_bulb"
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
+                            "entity": "weather.home",
+                            "type": "weather-forecast"
+                        },
+                        {
+                            "entities": [
+                                "switch.button_1_state",
+                                "switch.enable_alarm_away",
+                                "switch.enable_alarm_home"
+                            ],
+                            "title": "Switch",
+                            "type": "entities"
+                        }
+                    ],
+                    "path": "default_view",
+                    "title": "Home"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}

@@ -1,0 +1,111 @@
+- alias: Turn on landing light when there is movement
+  trigger:
+    platform: state
+    entity_id: sensor.motion
+    to: '1'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.white_bulb_landing
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
+      - condition: time
+        before: '22:30:00'
+        after: '08:00:00'
+- alias: Turn off landing light 1 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: sensor.motion
+    to: '0'
+    for:
+      minutes: 1
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.white_bulb_landing
+- alias: Turn on light when I arrive
+  trigger:
+    platform: state
+    entity_id: device_tracker.androidee046eee5cc433ef
+    to: 'home'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.white_bulb_hall
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+- alias: Turn on light when Fiona arrives
+  trigger:
+    platform: state
+    entity_id: device_tracker.fiona_oneplusx
+    to: 'home'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.white_bulb_hall
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+- alias: "Media player paused/stopped"
+  trigger:
+    - platform: state
+      entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
+      from: 'playing'
+      to: 'idle'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+      service: scene.turn_on
+      entity_id: scene.livingroom_normal
+- alias: "Media player playing"
+  trigger:
+    - platform: state
+      entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
+      to: 'playing'
+      from: 'idle'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+      service: scene.turn_on
+      entity_id: scene.livingroom_dim
+- alias: "Notify UPS state changes"
+  trigger:
+    - platform: state
+      entity_id: sensor.ups_status
+  action:
+    service: notify.notify
+    data:
+      message: "The UPS state changed to {{ states('sensor.ups_status') }}"
+      title: "UPS State"
+# Turn on the lights while away
+- alias: Turn on livingroom light at 19:30
+  trigger:
+    platform: time
+    at: '19:30:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.white_spectrum_lounge
+- alias: Turn off livingroom light at 22:30
+  trigger:
+    platform: time
+    at: '22:30:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.white_spectrum_lounge
+- alias: IFTT Incoming requests
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  action:
+    service_template: '{{ trigger.event.data.service }}'
+    data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'

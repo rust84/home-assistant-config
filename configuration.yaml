@@ -1,0 +1,140 @@
+homeassistant:
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 10.43.0.0/16
+    - type: legacy_api_password
+      api_password: !secret http_password
+  customize:
+    sensor.humidity:
+      icon: mdi:water-percent
+    switch.dafang_living_room_rtsp:
+      icon: mdi:video
+    switch.dafang_living_room_left_right:
+      icon: mdi:arrow-expand-horizontal
+    switch.dafang_living_room_up_down:
+      icon: mdi:arrow-expand-vertical
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 0
+  unit_system: metric
+  time_zone: Europe/London
+  
+recorder:
+  purge_keep_days: 5
+  db_url: !secret db_url
+  exclude:
+    domains:
+      - device_tracker
+
+influxdb:
+  host: influxdb.monitoring.svc.cluster.local
+  port: 8086
+  database: home_assistant
+  username: admin
+  password: !secret influxdb_password
+
+system_health:
+
+logger:
+  default: info
+  logs:
+    requests.packages.urllib3.connectionpool: critical
+
+frontend:
+
+config:
+
+http:
+  base_url: hass.k.microserver.space
+
+history:
+
+logbook:
+
+sun:
+
+sensor:
+  - platform: darksky
+    api_key: !secret darksky_apikey
+    monitored_conditions:
+      - summary
+      - precip_probability
+      - temperature
+      - wind_speed
+      - humidity
+  - platform: mqtt
+    state_topic: 'mygateway1-out/0/0/1/0/0'
+    name: 'Temperature'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    state_topic: 'mygateway1-out/123/1/1/0/16'
+    name: 'Motion'
+  - platform: mqtt
+    state_topic: 'mygateway1-out/124/0/1/0/23'
+    name: 'Light'
+  - platform: mqtt
+    state_topic: 'mygateway1-out/125/0/1/0/1'
+    name: 'Humidity'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    state_topic: 'mygateway1-out/125/1/1/0/0'
+    name: 'DHT_Temp'
+    unit_of_measurement: '°C'
+  - platform: apcupsd
+    resources:
+      - bcharge
+      - loadpct
+      - status
+      - timeleft
+      - model
+
+group: !include groups.yaml
+automation: !include automations.yaml
+
+tradfri:
+  host: 10.30.0.13
+
+mqtt:
+  broker: rabbitmq-ha.default.svc.cluster.local
+  port: 1883
+  username: mqtt
+  password: !secret mqtt_password
+  discovery: true
+  discovery_prefix: homeassistant
+
+mqtt_statestream:
+  base_topic: homeassistant
+  publish_attributes: false
+  publish_timestamps: false
+  include:
+    domains:
+      - sensor
+
+apcupsd:
+  host: 192.168.1.72
+  port: 3551
+
+notify:
+  - platform: pushbullet
+    api_key: !secret pushbullet_apikey
+    
+light:
+  - platform: mqtt
+    schema: json
+    name: 'AiLight Office'
+    state_topic: 'AiLight-188593'
+    command_topic: 'AiLight-188593/set'
+    color_temp: true
+    brightness: true
+    rgb: true
+    white_value: true
+    effect: false
+    optimistic: false
+
+camera:
+  - platform: ffmpeg
+    name: Dafang3
+    input: -rtsp_transport tcp -i rtsp://192.168.1.20:8554/unicast
