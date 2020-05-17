@@ -23,10 +23,6 @@
                             "type": "entities"
                         },
                         {
-                            "entity": "weather.home",
-                            "type": "weather-forecast"
-                        },
-                        {
                             "entities": [
                                 "switch.button_1_state",
                                 "switch.enable_alarm_away",
@@ -34,6 +30,32 @@
                             ],
                             "title": "Switch",
                             "type": "entities"
+                        },
+                        {
+                            "current": true,
+                            "details": false,
+                            "entity": "weather.dark_sky",
+                            "forecast": true,
+                            "hourly_forecast": false,
+                            "number_of_forecasts": 5,
+                            "type": "custom:weather-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.dht_temp",
+                                    "name": "landing"
+                                },
+                                {
+                                    "entity": "sensor.temperature",
+                                    "name": "office"
+                                }
+                            ],
+                            "hours_to_show": 12,
+                            "icon": "mdi:server",
+                            "name": "TEMP",
+                            "points_per_hour": 1,
+                            "type": "custom:mini-graph-card"
                         }
                     ],
                     "path": "default_view",

@@ -5,7 +5,7 @@
     to: '1'
   action:
     service: homeassistant.turn_on
-    entity_id: light.white_bulb_landing
+    entity_id: light.landing_tradfri_bulb
   condition:
     condition: and
     conditions:
@@ -24,31 +24,7 @@
       minutes: 1
   action:
     service: homeassistant.turn_off
-    entity_id: light.white_bulb_landing
-- alias: Turn on light when I arrive
-  trigger:
-    platform: state
-    entity_id: device_tracker.androidee046eee5cc433ef
-    to: 'home'
-  action:
-    service: homeassistant.turn_on
-    entity_id: light.white_bulb_hall
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
-- alias: Turn on light when Fiona arrives
-  trigger:
-    platform: state
-    entity_id: device_tracker.fiona_oneplusx
-    to: 'home'
-  action:
-    service: homeassistant.turn_on
-    entity_id: light.white_bulb_hall
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: below_horizon
+    entity_id: light.landing_tradfri_bulb
 - alias: "Media player paused/stopped"
   trigger:
     - platform: state
@@ -91,14 +67,14 @@
     at: '19:30:00'
   action:
     service: homeassistant.turn_on
-    entity_id: light.white_spectrum_lounge
+    entity_id: light.lounge_tradfri_bulb
 - alias: Turn off livingroom light at 22:30
   trigger:
     platform: time
     at: '22:30:00'
   action:
     service: homeassistant.turn_off
-    entity_id: light.white_spectrum_lounge
+    entity_id: light.lounge_tradfri_bulb
 - alias: IFTT Incoming requests
   trigger:
     platform: event

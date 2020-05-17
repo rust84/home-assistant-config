@@ -48,13 +48,18 @@ frontend:
 config:
 
 http:
-  base_url: hass.k.microserver.space
+  base_url: hass.microserver.space
 
 history:
 
 logbook:
 
 sun:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_apikey
+    mode: daily
 
 sensor:
   - platform: darksky
@@ -133,5 +138,5 @@ light:
 
 camera:
   - platform: ffmpeg
-    name: Dafang3
-    input: -rtsp_transport tcp -i rtsp://192.168.1.20:8554/unicast
+    name: Sonoff
+    input: -rtsp_transport tcp -i rtsp:＃＃＃＃＃＃＃＃@10.30.0.111:554/av_stream/ch0
