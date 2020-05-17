@@ -56,6 +56,12 @@
                             "name": "TEMP",
                             "points_per_hour": 1,
                             "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "aspect_ratio": "50%",
+                            "entity": "camera.sonoff",
+                            "name": "Driveway Camera",
+                            "type": "picture-entity"
                         }
                     ],
                     "path": "default_view",

@@ -139,4 +139,4 @@ light:
 camera:
   - platform: ffmpeg
     name: Sonoff
-    input: -rtsp_transport tcp -i rtsp:＃＃＃＃＃＃＃＃@10.30.0.111:554/av_stream/ch0
+    input: !secret rtsp_url
