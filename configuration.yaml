@@ -94,9 +94,6 @@ sensor:
 group: !include groups.yaml
 automation: !include automations.yaml
 
-tradfri:
-  host: 10.30.0.13
-
 mqtt:
   broker: rabbitmq-ha.default.svc.cluster.local
   port: 1883
