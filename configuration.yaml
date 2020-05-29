@@ -140,3 +140,8 @@ camera:
   - platform: ffmpeg
     name: Sonoff
     input: !secret rtsp_url
+
+tplink:
+  discovery: false
+  switch:
+    - host: 192.168.1.68
