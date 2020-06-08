@@ -51,15 +51,15 @@
   action:
       service: scene.turn_on
       entity_id: scene.livingroom_dim
-- alias: "Notify UPS state changes"
-  trigger:
-    - platform: state
-      entity_id: sensor.ups_status
-  action:
-    service: notify.notify
-    data:
-      message: "The UPS state changed to {{ states('sensor.ups_status') }}"
-      title: "UPS State"
+# - alias: "Notify UPS state changes"
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.ups_status
+#   action:
+#     service: notify.notify
+#     data:
+#       message: "The UPS state changed to {{ states('sensor.ups_status') }}"
+#       title: "UPS State"
 # Turn on the lights while away
 - alias: Turn on livingroom light at 19:30
   trigger:

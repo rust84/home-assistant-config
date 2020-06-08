@@ -88,13 +88,13 @@ sensor:
     state_topic: 'mygateway1-out/125/1/1/0/0'
     name: 'DHT_Temp'
     unit_of_measurement: '°C'
-  - platform: apcupsd
-    resources:
-      - bcharge
-      - loadpct
-      - status
-      - timeleft
-      - model
+  # - platform: apcupsd
+  #   resources:
+  #     - bcharge
+  #     - loadpct
+  #     - status
+  #     - timeleft
+  #     - model
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -115,9 +115,9 @@ mqtt_statestream:
     domains:
       - sensor
 
-apcupsd:
-  host: 192.168.1.72
-  port: 3551
+# apcupsd:
+#   host: 192.168.1.72
+#   port: 3551
 
 notify:
   - platform: pushbullet
