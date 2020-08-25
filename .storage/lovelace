@@ -43,6 +43,10 @@
                                 {
                                     "entity": "sensor.temperature",
                                     "name": "office"
+                                },
+                                {
+                                    "entity": "sensor.humidity",
+                                    "name": "humidity"
                                 }
                             ],
                             "hours_to_show": 12,
@@ -50,6 +54,48 @@
                             "name": "TEMP",
                             "points_per_hour": 1,
                             "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.conservatory_door_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.lounge_window_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.office_window_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.motion_sensor_1_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.motion_sensor_2_motion"
+                                },
+                                {
+                                    "entity": "sensor.motion"
+                                }
+                            ],
+                            "title": "Sensors",
+                            "type": "entities"
+                        },
+                        {
+                            "current": true,
+                            "details": false,
+                            "entity": "weather.dark_sky",
+                            "forecast": true,
+                            "hourly_forecast": false,
+                            "number_of_forecasts": 5,
+                            "type": "custom:weather-card"
+                        },
+                        {
+                            "aspect_ratio": "50%",
+                            "entity": "camera.sonoff",
+                            "name": "Driveway Camera",
+                            "type": "picture-entity"
                         },
                         {
                             "color": "rgb(28, 128, 199)",
@@ -67,21 +113,6 @@
                                 ]
                             },
                             "type": "custom:button-card"
-                        },
-                        {
-                            "aspect_ratio": "50%",
-                            "entity": "camera.sonoff",
-                            "name": "Driveway Camera",
-                            "type": "picture-entity"
-                        },
-                        {
-                            "current": true,
-                            "details": false,
-                            "entity": "weather.dark_sky",
-                            "forecast": true,
-                            "hourly_forecast": false,
-                            "number_of_forecasts": 5,
-                            "type": "custom:weather-card"
                         }
                     ],
                     "path": "default_view",
