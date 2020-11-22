@@ -1,4 +1,6 @@
 {
+    "version": 1,
+    "key": "lovelace",
     "data": {
         "config": {
             "title": "Home",
@@ -38,7 +40,7 @@
                             "entities": [
                                 {
                                     "entity": "sensor.dht_temp",
-                                    "name": "landing"
+                                    "name": "front bedroom"
                                 },
                                 {
                                     "entity": "sensor.temperature",
@@ -120,7 +122,5 @@
                 }
             ]
         }
-    },
-    "key": "lovelace",
-    "version": 1
+    }
 }

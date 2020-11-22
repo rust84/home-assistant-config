@@ -4,8 +4,8 @@ homeassistant:
     - type: trusted_networks
       trusted_networks:
         - 10.43.0.0/16
-    - type: legacy_api_password
-      api_password: !secret http_password
+    # - type: legacy_api_password
+    #   api_password: !secret http_password
   customize:
     sensor.humidity:
       icon: mdi:water-percent
@@ -100,7 +100,7 @@ group: !include groups.yaml
 automation: !include automations.yaml
 
 mqtt:
-  broker: rabbitmq-ha.default.svc.cluster.local
+  broker: vernemq.default.svc.cluster.local
   port: 1883
   username: mqtt
   password: !secret mqtt_password
