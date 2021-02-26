@@ -25,42 +25,32 @@
   action:
     service: homeassistant.turn_off
     entity_id: light.landing_tradfri_bulb
-- alias: "Media player paused/stopped"
-  trigger:
-    - platform: state
-      entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
-      from: 'playing'
-      to: 'idle'
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
-  action:
-      service: scene.turn_on
-      entity_id: scene.livingroom_normal
-- alias: "Media player playing"
-  trigger:
-    - platform: state
-      entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
-      to: 'playing'
-      from: 'idle'
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
-  action:
-      service: scene.turn_on
-      entity_id: scene.livingroom_dim
-# - alias: "Notify UPS state changes"
+# - alias: "Media player paused/stopped"
 #   trigger:
 #     - platform: state
-#       entity_id: sensor.ups_status
+#       entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
+#       from: 'playing'
+#       to: 'idle'
+#   condition:
+#     - condition: state
+#       entity_id: sun.sun
+#       state: 'below_horizon'
 #   action:
-#     service: notify.notify
-#     data:
-#       message: "The UPS state changed to {{ states('sensor.ups_status') }}"
-#       title: "UPS State"
-# Turn on the lights while away
+#       service: scene.turn_on
+#       entity_id: scene.livingroom_normal
+# - alias: "Media player playing"
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
+#       to: 'playing'
+#       from: 'idle'
+#   condition:
+#     - condition: state
+#       entity_id: sun.sun
+#       state: 'below_horizon'
+#   action:
+#       service: scene.turn_on
+#       entity_id: scene.livingroom_dim
 - alias: Turn on livingroom light at 19:30
   trigger:
     platform: time
@@ -75,13 +65,19 @@
   action:
     service: homeassistant.turn_off
     entity_id: light.lounge_tradfri_bulb
-- alias: IFTT Incoming requests
+- alias: Turn off wled lights when office light turned off
   trigger:
-    platform: event
-    event_type: ifttt_webhook_received
-    event_data:
-      action: call_service
+    platform: state
+    entity_id: light.office_tradfri_bulb
+    to: 'off'
   action:
-    service_template: '{{ trigger.event.data.service }}'
-    data_template:
-      entity_id: '{{ trigger.event.data.entity_id }}'
+    service: homeassistant.turn_off
+    entity_id: light.wled
+- alias: Turn on wled lights when office light turned on
+  trigger:
+    platform: state
+    entity_id: light.office_tradfri_bulb
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.wled
