@@ -67,17 +67,23 @@
     entity_id: light.lounge_tradfri_bulb
 - alias: Turn off wled lights when office light turned off
   trigger:
-    platform: state
+  - platform: state
     entity_id: light.office_tradfri_bulb
     to: 'off'
   action:
-    service: homeassistant.turn_off
-    entity_id: light.wled
+    - service: homeassistant.turn_off
+      target:
+        entity_id:
+        - light.wled
+        - switch.smart_plug
 - alias: Turn on wled lights when office light turned on
   trigger:
-    platform: state
+  - platform: state
     entity_id: light.office_tradfri_bulb
     to: 'on'
   action:
-    service: homeassistant.turn_on
-    entity_id: light.wled
+    - service: homeassistant.turn_on
+      target:
+        entity_id:
+        - light.wled
+        - switch.smart_plug

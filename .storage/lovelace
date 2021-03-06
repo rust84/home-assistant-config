@@ -42,11 +42,11 @@
                             "entities": [
                                 {
                                     "entity": "sensor.dht_temp",
-                                    "name": "front bedroom"
+                                    "name": "office"
                                 },
                                 {
                                     "entity": "sensor.temperature",
-                                    "name": "office"
+                                    "name": "rack"
                                 },
                                 {
                                     "entity": "sensor.humidity",
@@ -107,8 +107,8 @@
                         {
                             "color": "rgb(28, 128, 199)",
                             "entity": "switch.smart_plug",
-                            "icon": "mdi:fan",
-                            "name": "Fan",
+                            "icon": "mdi:ghost",
+                            "name": "8-bit",
                             "styles": {
                                 "card": [
                                     {
