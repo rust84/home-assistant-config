@@ -15,6 +15,15 @@
                     ],
                     "cards": [
                         {
+                            "current": true,
+                            "details": false,
+                            "entity": "weather.dark_sky",
+                            "forecast": true,
+                            "hourly_forecast": false,
+                            "number_of_forecasts": 5,
+                            "type": "custom:weather-card"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "light.hallway"
@@ -42,7 +51,7 @@
                             "entities": [
                                 {
                                     "entity": "sensor.dht_temp",
-                                    "name": "office"
+                                    "name": "landing"
                                 },
                                 {
                                     "entity": "sensor.temperature",
@@ -74,6 +83,9 @@
                                     "entity": "binary_sensor.office_window_contact"
                                 },
                                 {
+                                    "entity": "sensor.wled_estimated_current"
+                                },
+                                {
                                     "entity": "binary_sensor.motion_sensor_1_motion"
                                 },
                                 {
@@ -83,26 +95,22 @@
                                     "entity": "sensor.motion"
                                 },
                                 {
-                                    "entity": "sensor.wled_estimated_current"
+                                    "entity": "binary_sensor.driveway_camera_person"
                                 }
                             ],
                             "title": "Sensors",
                             "type": "entities"
                         },
                         {
-                            "current": true,
-                            "details": false,
-                            "entity": "weather.dark_sky",
-                            "forecast": true,
-                            "hourly_forecast": false,
-                            "number_of_forecasts": 5,
-                            "type": "custom:weather-card"
-                        },
-                        {
                             "aspect_ratio": "50%",
                             "entity": "camera.sonoff",
                             "name": "Driveway Camera",
                             "type": "picture-entity"
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.driveway_camera_last_person",
+                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
                         },
                         {
                             "color": "rgb(28, 128, 199)",

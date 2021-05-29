@@ -88,13 +88,13 @@ sensor:
     state_topic: 'mygateway1-out/125/1/1/0/0'
     name: 'DHT_Temp'
     unit_of_measurement: '°C'
-  # - platform: apcupsd
-  #   resources:
-  #     - bcharge
-  #     - loadpct
-  #     - status
-  #     - timeleft
-  #     - model
+
+binary_sensor:
+  - platform: mqtt
+    name: Driveway Camera Person
+    state_topic: "frigate/driveway/person"
+    device_class: motion
+    availability_topic: "frigate/available"
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -140,6 +140,9 @@ camera:
   - platform: ffmpeg
     name: Sonoff
     input: !secret rtsp_url
+  - platform: mqtt
+    name: Driveway Camera Last Person
+    topic: frigate/driveway/person/snapshot
 
 tplink:
   discovery: false
