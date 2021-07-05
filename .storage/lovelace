@@ -102,17 +102,6 @@
                             "type": "entities"
                         },
                         {
-                            "aspect_ratio": "50%",
-                            "entity": "camera.sonoff",
-                            "name": "Driveway Camera",
-                            "type": "picture-entity"
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.driveway_camera_last_person",
-                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
-                        },
-                        {
                             "color": "rgb(28, 128, 199)",
                             "entity": "switch.smart_plug",
                             "icon": "mdi:ghost",
@@ -149,6 +138,70 @@
                             "type": "custom:light-entity-card",
                             "entity": "light.wled",
                             "header": "WLED"
+                        },
+                        {
+                            "aspect_ratio": "50%",
+                            "entity": "camera.sonoff",
+                            "name": "Driveway Camera",
+                            "type": "picture-entity"
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.driveway_camera_last_person",
+                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.habitica_russell_name",
+                                    "name": "Name"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_class",
+                                    "name": "Class"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_lvl",
+                                    "name": "Level"
+                                },
+                                {
+                                    "entity": "sensor.habitica_level_perc",
+                                    "icon": "mdi:arrow-up-bold-circle-outline",
+                                    "name": "Level progress"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_exp",
+                                    "name": "Exp"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_tonextlevel",
+                                    "name": "Exp to level"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_hp",
+                                    "name": "HP"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_maxhealth",
+                                    "name": "Max HP"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_mp",
+                                    "name": "MP"
+                                },
+                                {
+                                    "entity": "sensor.habitica_russell_maxmp",
+                                    "name": "Max MP"
+                                },
+                                {
+                                    "entity": "sensor.habitica_gold_round",
+                                    "name": "Gold",
+                                    "icon": "mdi:bitcoin"
+                                }
+                            ],
+                            "title": "Habitica",
+                            "show_header_toggle": true
                         }
                     ]
                 }
