@@ -48,7 +48,14 @@ frontend:
 config:
 
 http:
-  base_url: hass.microserver.space
+  server_host: 0.0.0.0
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - "0.0.0.0/0"
+    - 127.0.0.1
+    - ::1
 
 history:
 
@@ -94,8 +101,12 @@ sensor:
         value_template: "{{ states('sensor.habitica_russell_gp') | round(2) }}"
   - platform: template
     sensors:
+      habitica_hp_round:
+        value_template: "{{ states('sensor.habitica_russell_hp') | round(2) }}"
+  - platform: template
+    sensors:
       habitica_level_perc:
-        value_template: "{{ states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100 }}"
+        value_template: "{{ (states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100) | round(2) }}"
         unit_of_measurement: "%"
 
 binary_sensor:
@@ -109,7 +120,7 @@ group: !include groups.yaml
 automation: !include automations.yaml
 
 mqtt:
-  broker: vernemq.default.svc.cluster.local
+  broker: emqx-headless.default.svc
   port: 1883
   username: mqtt
   password: !secret mqtt_password
