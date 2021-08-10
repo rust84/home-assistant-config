@@ -42,6 +42,7 @@ logger:
   default: info
   logs:
     requests.packages.urllib3.connectionpool: critical
+    homeassistant.components.alexa: info
 
 frontend:
 
@@ -168,3 +169,21 @@ tplink:
   discovery: false
   switch:
     - host: 192.168.1.68
+
+alexa:
+  smart_home:
+    locale: en-GB
+    endpoint: https://api.eu.amazonalexa.com/v3/events
+    client_id: !secret alexa_client_id
+    client_secret: !secret alexa_client_secret
+    filter:
+      include_domains:
+        - light
+      include_entity_globs:
+        - sensor.*_temp
+    #   # exclude_entities:
+    #   #   - light.kitchen_light
+    entity_config:
+      light.office_tradfri_bulb:
+        name: "Office Cheese"
+        description: "The light in the office controlled by Lambda"

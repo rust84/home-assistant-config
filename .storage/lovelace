@@ -15,27 +15,6 @@
                     ],
                     "cards": [
                         {
-                            "shorten_cards": false,
-                            "consolidate_entities": false,
-                            "child_card": false,
-                            "hide_header": false,
-                            "header": "Wled",
-                            "color_wheel": true,
-                            "persist_features": false,
-                            "brightness": true,
-                            "color_temp": true,
-                            "white_value": true,
-                            "color_picker": true,
-                            "smooth_color_wheel": false,
-                            "show_slider_percent": false,
-                            "full_width_sliders": false,
-                            "brightness_icon": "weather-sunny",
-                            "white_icon": "file-word-box",
-                            "temperature_icon": "thermometer",
-                            "type": "custom:light-entity-card",
-                            "entity": "light.wled"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "sensor.dht_temp",
@@ -57,6 +36,27 @@
                             "type": "custom:mini-graph-card"
                         },
                         {
+                            "shorten_cards": false,
+                            "consolidate_entities": false,
+                            "child_card": false,
+                            "hide_header": false,
+                            "header": "Wled",
+                            "color_wheel": true,
+                            "persist_features": false,
+                            "brightness": true,
+                            "color_temp": true,
+                            "white_value": true,
+                            "color_picker": true,
+                            "smooth_color_wheel": false,
+                            "show_slider_percent": false,
+                            "full_width_sliders": false,
+                            "brightness_icon": "weather-sunny",
+                            "white_icon": "file-word-box",
+                            "temperature_icon": "thermometer",
+                            "type": "custom:light-entity-card",
+                            "entity": "light.wled"
+                        },
+                        {
                             "current": true,
                             "details": false,
                             "entity": "weather.dark_sky",
@@ -66,21 +66,15 @@
                             "type": "custom:weather-card"
                         },
                         {
-                            "color": "rgb(28, 128, 199)",
-                            "entity": "switch.smart_plug",
-                            "icon": "mdi:ghost",
-                            "name": "8-bit",
-                            "styles": {
-                                "card": [
-                                    {
-                                        "height": "85px"
-                                    },
-                                    {
-                                        "width": "200px"
-                                    }
-                                ]
-                            },
-                            "type": "custom:button-card"
+                            "type": "picture-entity",
+                            "entity": "camera.driveway_camera_last_person",
+                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
+                        },
+                        {
+                            "aspect_ratio": "50%",
+                            "entity": "camera.sonoff",
+                            "name": "Driveway Camera",
+                            "type": "picture-entity"
                         },
                         {
                             "entities": [
@@ -116,12 +110,6 @@
                             "type": "entities"
                         },
                         {
-                            "aspect_ratio": "50%",
-                            "entity": "camera.sonoff",
-                            "name": "Driveway Camera",
-                            "type": "picture-entity"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "light.hallway"
@@ -146,9 +134,21 @@
                             "type": "entities"
                         },
                         {
-                            "type": "picture-entity",
-                            "entity": "camera.driveway_camera_last_person",
-                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
+                            "color": "rgb(28, 128, 199)",
+                            "entity": "switch.smart_plug",
+                            "icon": "mdi:ghost",
+                            "name": "8-bit",
+                            "styles": {
+                                "card": [
+                                    {
+                                        "height": "85px"
+                                    },
+                                    {
+                                        "width": "200px"
+                                    }
+                                ]
+                            },
+                            "type": "custom:button-card"
                         },
                         {
                             "type": "entities",
