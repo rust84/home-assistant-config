@@ -87,3 +87,16 @@
         entity_id:
         - light.wled
         - switch.smart_plug
+- alias: Switch between peak and offpeak
+  trigger:
+    - platform: time
+      at: "08:30:00"
+    - platform: time
+      at: "00:30:00"
+  action:
+    - service: utility_meter.next_tariff
+      target:
+        entity_id: utility_meter.daily_energy
+    - service: utility_meter.next_tariff
+      target:
+        entity_id: utility_meter.monthly_energy

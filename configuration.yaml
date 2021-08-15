@@ -9,12 +9,6 @@ homeassistant:
   customize:
     sensor.humidity:
       icon: mdi:water-percent
-    switch.dafang_living_room_rtsp:
-      icon: mdi:video
-    switch.dafang_living_room_left_right:
-      icon: mdi:arrow-expand-horizontal
-    switch.dafang_living_room_up_down:
-      icon: mdi:arrow-expand-vertical
   name: Home
   latitude: !secret latitude
   longitude: !secret longitude
@@ -127,6 +121,12 @@ mqtt:
   password: !secret mqtt_password
   discovery: true
   discovery_prefix: homeassistant
+  birth_message:
+    topic: 'homeassistant/status'
+    payload: 'online'
+  will_message:
+    topic: 'homeassistant/status'
+    payload: 'offline'
 
 mqtt_statestream:
   base_topic: homeassistant
@@ -179,11 +179,35 @@ alexa:
     filter:
       include_domains:
         - light
-      include_entity_globs:
-        - sensor.*_temp
-    #   # exclude_entities:
-    #   #   - light.kitchen_light
+      include_entities:
+        - sensor.humidity
+        - sensor.dht_temp
+        - sensor.temperature
+      # include_entity_globs:
+      #   - sensor.*_temp
     entity_config:
       light.office_tradfri_bulb:
         name: "Office Cheese"
         description: "The light in the office controlled by Lambda"
+
+utility_meter:
+  daily_energy:
+    source: sensor.electicity_consumption_dcc_sm_profile_reads
+    name: Daily Energy
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+  monthly_energy:
+    source: sensor.electicity_consumption_dcc_sm_profile_reads
+    name: Monthly Energy
+    cycle: monthly
+    tariffs:
+      - peak
+      - offpeak
+
+prometheus:
+  namespace: hass
+  filter:
+    include_domains:
+      - sensor

@@ -110,6 +110,49 @@
                             "type": "entities"
                         },
                         {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.daily_energy_peak",
+                                    "name": "Daily energy peak"
+                                },
+                                {
+                                    "entity": "sensor.daily_energy_offpeak",
+                                    "name": "Daily energy offpeak"
+                                },
+                                {
+                                    "entity": "sensor.monthly_energy_peak",
+                                    "name": "Monthly energy peak"
+                                },
+                                {
+                                    "entity": "sensor.monthly_energy_offpeak",
+                                    "name": "Monthly energy offpeak"
+                                },
+                                {
+                                    "entity": "sensor.electicity_consumption_dcc_sm_profile_reads",
+                                    "name": "Current reading"
+                                }
+                            ],
+                            "title": "Electricity"
+                        },
+                        {
+                            "color": "rgb(28, 128, 199)",
+                            "entity": "switch.smart_plug",
+                            "icon": "mdi:ghost",
+                            "name": "8-bit",
+                            "styles": {
+                                "card": [
+                                    {
+                                        "height": "85px"
+                                    },
+                                    {
+                                        "width": "200px"
+                                    }
+                                ]
+                            },
+                            "type": "custom:button-card"
+                        },
+                        {
                             "entities": [
                                 {
                                     "entity": "light.hallway"
@@ -132,23 +175,6 @@
                             ],
                             "title": "Light",
                             "type": "entities"
-                        },
-                        {
-                            "color": "rgb(28, 128, 199)",
-                            "entity": "switch.smart_plug",
-                            "icon": "mdi:ghost",
-                            "name": "8-bit",
-                            "styles": {
-                                "card": [
-                                    {
-                                        "height": "85px"
-                                    },
-                                    {
-                                        "width": "200px"
-                                    }
-                                ]
-                            },
-                            "type": "custom:button-card"
                         },
                         {
                             "type": "entities",
