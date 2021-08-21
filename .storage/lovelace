@@ -17,16 +17,16 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.dht_temp",
-                                    "name": "upstairs"
+                                    "entity": "sensor.upstairs_temperature",
+                                    "name": "office"
+                                },
+                                {
+                                    "entity": "sensor.landing_temperature",
+                                    "name": "landing"
                                 },
                                 {
                                     "entity": "sensor.temperature_humidity_sensor_temperature",
                                     "name": "downstairs"
-                                },
-                                {
-                                    "entity": "sensor.temperature",
-                                    "name": "rack"
                                 }
                             ],
                             "hours_to_show": 12,
@@ -38,7 +38,7 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.humidity",
+                                    "entity": "sensor.upstairs_humidity",
                                     "name": "upstairs"
                                 },
                                 {
@@ -112,10 +112,10 @@
                                     "entity": "binary_sensor.lounge_motion_sensor_occupancy"
                                 },
                                 {
-                                    "entity": "sensor.motion"
+                                    "entity": "binary_sensor.landing_motion"
                                 },
                                 {
-                                    "entity": "binary_sensor.driveway_camera_person"
+                                    "entity": "binary_sensor.driveway_person_motion"
                                 }
                             ],
                             "title": "Sensors",
@@ -258,8 +258,9 @@
                         },
                         {
                             "type": "picture-entity",
-                            "entity": "camera.driveway_camera_last_person",
-                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
+                            "entity": "camera.driveway_person",
+                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png",
+                            "aspect_ratio": "100%"
                         }
                     ]
                 }
