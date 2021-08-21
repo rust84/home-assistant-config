@@ -103,6 +103,14 @@ sensor:
       habitica_level_perc:
         value_template: "{{ (states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100) | round(2) }}"
         unit_of_measurement: "%"
+  - platform: template
+    sensors:
+      energy_peak_cost:
+        value_template: "{{ (states('sensor.daily_energy_peak') | float * 0.2153) | round(2) }}"
+  - platform: template
+    sensors:
+      energy_offpeak_cost:
+        value_template: "{{ (states('sensor.daily_energy_offpeak') | float * 0.1382) | round(2) }}"
 
 binary_sensor:
   - platform: mqtt
@@ -128,17 +136,13 @@ mqtt:
     topic: 'homeassistant/status'
     payload: 'offline'
 
-mqtt_statestream:
-  base_topic: homeassistant
-  publish_attributes: false
-  publish_timestamps: false
-  include:
-    domains:
-      - sensor
-
-# apcupsd:
-#   host: 192.168.1.72
-#   port: 3551
+# mqtt_statestream:
+#   base_topic: homeassistant
+#   publish_attributes: false
+#   publish_timestamps: false
+#   include:
+#     domains:
+#       - sensor
 
 notify:
   - platform: pushbullet
@@ -192,14 +196,14 @@ alexa:
 
 utility_meter:
   daily_energy:
-    source: sensor.electicity_consumption_dcc_sm_profile_reads
+    source: sensor.electric_consumption_today
     name: Daily Energy
     cycle: daily
     tariffs:
       - peak
       - offpeak
   monthly_energy:
-    source: sensor.electicity_consumption_dcc_sm_profile_reads
+    source: sensor.electric_consumption_today
     name: Monthly Energy
     cycle: monthly
     tariffs:
@@ -208,6 +212,3 @@ utility_meter:
 
 prometheus:
   namespace: hass
-  filter:
-    include_domains:
-      - sensor

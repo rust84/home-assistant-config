@@ -5,16 +5,16 @@
     to: '1'
   action:
     service: homeassistant.turn_on
-    entity_id: light.landing_tradfri_bulb
+    entity_id: light.landing_light
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: sun.sun
         state: below_horizon
-      - condition: time
-        before: '22:30:00'
-        after: '08:00:00'
+      # - condition: time
+      #   before: '23:59:00'
+      #   after: '08:00:00'
 - alias: Turn off landing light 1 minutes after last movement
   trigger:
     platform: state
@@ -24,75 +24,63 @@
       minutes: 1
   action:
     service: homeassistant.turn_off
-    entity_id: light.landing_tradfri_bulb
-# - alias: "Media player paused/stopped"
-#   trigger:
-#     - platform: state
-#       entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
-#       from: 'playing'
-#       to: 'idle'
-#   condition:
-#     - condition: state
-#       entity_id: sun.sun
-#       state: 'below_horizon'
-#   action:
-#       service: scene.turn_on
-#       entity_id: scene.livingroom_normal
-# - alias: "Media player playing"
-#   trigger:
-#     - platform: state
-#       entity_id: media_player.plex_i7kgm0atq8ochf4pa5n7al4r
-#       to: 'playing'
-#       from: 'idle'
-#   condition:
-#     - condition: state
-#       entity_id: sun.sun
-#       state: 'below_horizon'
-#   action:
-#       service: scene.turn_on
-#       entity_id: scene.livingroom_dim
+    entity_id: light.landing_light
+- alias: Turn on office light when there is movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.office_motion_sensor_occupancy
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.office_light
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
 - alias: Turn on livingroom light at 19:30
   trigger:
     platform: time
     at: '19:30:00'
   action:
     service: homeassistant.turn_on
-    entity_id: light.lounge_tradfri_bulb
+    entity_id: light.lounge_light
 - alias: Turn off livingroom light at 22:30
   trigger:
     platform: time
     at: '22:30:00'
   action:
     service: homeassistant.turn_off
-    entity_id: light.lounge_tradfri_bulb
-- alias: Turn off wled lights when office light turned off
-  trigger:
-  - platform: state
-    entity_id: light.office_tradfri_bulb
-    to: 'off'
-  action:
-    - service: homeassistant.turn_off
-      target:
-        entity_id:
-        - light.wled
-        - switch.smart_plug
-- alias: Turn on wled lights when office light turned on
-  trigger:
-  - platform: state
-    entity_id: light.office_tradfri_bulb
-    to: 'on'
-  action:
-    - service: homeassistant.turn_on
-      target:
-        entity_id:
-        - light.wled
-        - switch.smart_plug
+    entity_id: light.lounge_light
+# - alias: Turn off wled lights when office light turned off
+#   trigger:
+#   - platform: state
+#     entity_id: light.office_light
+#     to: 'off'
+#   action:
+#     - service: homeassistant.turn_off
+#       target:
+#         entity_id:
+#         - light.wled
+#         - switch.smart_plug
+# - alias: Turn on wled lights when office light turned on
+#   trigger:
+#   - platform: state
+#     entity_id: light.office_light
+#     to: 'on'
+#   action:
+#     - service: homeassistant.turn_on
+#       target:
+#         entity_id:
+#         - light.wled
+#         - switch.smart_plug
 - alias: Switch between peak and offpeak
   trigger:
     - platform: time
-      at: "08:30:00"
+      at: "09:30:00"
     - platform: time
-      at: "00:30:00"
+      at: "01:30:00"
   action:
     - service: utility_meter.next_tariff
       target:

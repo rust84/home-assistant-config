@@ -18,15 +18,15 @@
                             "entities": [
                                 {
                                     "entity": "sensor.dht_temp",
-                                    "name": "landing"
+                                    "name": "upstairs"
+                                },
+                                {
+                                    "entity": "sensor.temperature_humidity_sensor_temperature",
+                                    "name": "downstairs"
                                 },
                                 {
                                     "entity": "sensor.temperature",
                                     "name": "rack"
-                                },
-                                {
-                                    "entity": "sensor.humidity",
-                                    "name": "humidity"
                                 }
                             ],
                             "hours_to_show": 12,
@@ -34,6 +34,32 @@
                             "name": "TEMP",
                             "points_per_hour": 1,
                             "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.humidity",
+                                    "name": "upstairs"
+                                },
+                                {
+                                    "entity": "sensor.temperature_humidity_sensor_humidity",
+                                    "name": "downstairs"
+                                }
+                            ],
+                            "hours_to_show": 12,
+                            "icon": "mdi:server",
+                            "name": "HUMIDITY",
+                            "points_per_hour": 1,
+                            "type": "custom:mini-graph-card"
+                        },
+                        {
+                            "current": true,
+                            "details": false,
+                            "entity": "weather.dark_sky",
+                            "forecast": true,
+                            "hourly_forecast": false,
+                            "number_of_forecasts": 5,
+                            "type": "custom:weather-card"
                         },
                         {
                             "shorten_cards": false,
@@ -57,20 +83,6 @@
                             "entity": "light.wled"
                         },
                         {
-                            "current": true,
-                            "details": false,
-                            "entity": "weather.dark_sky",
-                            "forecast": true,
-                            "hourly_forecast": false,
-                            "number_of_forecasts": 5,
-                            "type": "custom:weather-card"
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.driveway_camera_last_person",
-                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
-                        },
-                        {
                             "aspect_ratio": "50%",
                             "entity": "camera.sonoff",
                             "name": "Driveway Camera",
@@ -79,25 +91,25 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.conservatory_door_contact"
+                                    "entity": "binary_sensor.kitchen_contact_sensor_contact"
                                 },
                                 {
-                                    "entity": "binary_sensor.front_door_contact"
+                                    "entity": "binary_sensor.front_door_contact_sensor_contact"
                                 },
                                 {
-                                    "entity": "binary_sensor.lounge_window_contact"
+                                    "entity": "binary_sensor.lounge_contact_sensor_contact"
                                 },
                                 {
-                                    "entity": "binary_sensor.office_window_contact"
+                                    "entity": "binary_sensor.office_contact_sensor_contact"
                                 },
                                 {
                                     "entity": "sensor.wled_estimated_current"
                                 },
                                 {
-                                    "entity": "binary_sensor.motion_sensor_1_motion"
+                                    "entity": "binary_sensor.office_motion_sensor_occupancy"
                                 },
                                 {
-                                    "entity": "binary_sensor.motion_sensor_2_motion"
+                                    "entity": "binary_sensor.lounge_motion_sensor_occupancy"
                                 },
                                 {
                                     "entity": "sensor.motion"
@@ -129,11 +141,50 @@
                                     "name": "Monthly energy offpeak"
                                 },
                                 {
-                                    "entity": "sensor.electicity_consumption_dcc_sm_profile_reads",
-                                    "name": "Current reading"
+                                    "entity": "sensor.electric_consumption_today",
+                                    "name": "Last reading"
+                                },
+                                {
+                                    "entity": "sensor.energy_offpeak_cost",
+                                    "name": "Cost daily offpeak",
+                                    "icon": "mdi:currency-gbp"
+                                },
+                                {
+                                    "entity": "sensor.energy_peak_cost",
+                                    "name": "Cost daily peak",
+                                    "icon": "mdi:currency-gbp"
                                 }
                             ],
                             "title": "Electricity"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "light.hallway"
+                                },
+                                {
+                                    "entity": "light.bathroom_light",
+                                    "name": "Bathroom"
+                                },
+                                {
+                                    "entity": "light.bedroom_light",
+                                    "name": "Bedroom"
+                                },
+                                {
+                                    "entity": "light.landing_light",
+                                    "name": "Landing"
+                                },
+                                {
+                                    "entity": "light.lounge_light",
+                                    "name": "Lounge"
+                                },
+                                {
+                                    "entity": "light.office_light",
+                                    "name": "Office"
+                                }
+                            ],
+                            "title": "Light",
+                            "type": "entities"
                         },
                         {
                             "color": "rgb(28, 128, 199)",
@@ -151,30 +202,6 @@
                                 ]
                             },
                             "type": "custom:button-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.hallway"
-                                },
-                                {
-                                    "entity": "light.bathroom_tradfri_bulb"
-                                },
-                                {
-                                    "entity": "light.bedroom_tradfri_bulb"
-                                },
-                                {
-                                    "entity": "light.landing_tradfri_bulb"
-                                },
-                                {
-                                    "entity": "light.lounge_tradfri_bulb"
-                                },
-                                {
-                                    "entity": "light.office_tradfri_bulb"
-                                }
-                            ],
-                            "title": "Light",
-                            "type": "entities"
                         },
                         {
                             "type": "entities",
@@ -228,6 +255,11 @@
                             ],
                             "title": "Habitica",
                             "show_header_toggle": true
+                        },
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.driveway_camera_last_person",
+                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png"
                         }
                     ]
                 }
