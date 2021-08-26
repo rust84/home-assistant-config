@@ -29,7 +29,7 @@
                                     "name": "downstairs"
                                 }
                             ],
-                            "hours_to_show": 12,
+                            "hours_to_show": 24,
                             "icon": "mdi:server",
                             "name": "TEMP",
                             "points_per_hour": 1,
@@ -46,7 +46,7 @@
                                     "name": "downstairs"
                                 }
                             ],
-                            "hours_to_show": 12,
+                            "hours_to_show": 24,
                             "icon": "mdi:server",
                             "name": "HUMIDITY",
                             "points_per_hour": 1,

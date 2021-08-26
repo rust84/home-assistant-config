@@ -12,9 +12,9 @@
       - condition: state
         entity_id: sun.sun
         state: below_horizon
-      # - condition: time
-      #   before: '23:59:00'
-      #   after: '08:00:00'
+      - condition: time
+        before: '23:59:00'
+        after: '08:00:00'
 - alias: Turn off landing light 1 minutes after last movement
   trigger:
     platform: state
