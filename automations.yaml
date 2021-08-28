@@ -88,3 +88,18 @@
     - service: utility_meter.next_tariff
       target:
         entity_id: utility_meter.monthly_energy
+- alias: Habitica complete dishwasher task
+  trigger:
+    platform: state
+    entity_id: sensor.push_button_action
+    to: 'single'
+  action:
+    - service: habitica.api_call
+      data:
+        name: Russell
+        path:
+          - tasks
+          - ae90a17b-597f-44e6-80b0-69e194896bc7
+          - score
+          - up
+          - post

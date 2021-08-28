@@ -116,6 +116,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.driveway_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.push_button_action"
                                 }
                             ],
                             "title": "Sensors",
