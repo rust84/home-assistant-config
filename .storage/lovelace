@@ -116,9 +116,6 @@
                                 },
                                 {
                                     "entity": "binary_sensor.driveway_person_motion"
-                                },
-                                {
-                                    "entity": "sensor.push_button_action"
                                 }
                             ],
                             "title": "Sensors",
@@ -243,7 +240,7 @@
                                     "name": "Max HP"
                                 },
                                 {
-                                    "entity": "sensor.habitica_russell_mp",
+                                    "entity": "sensor.habitica_mp_round",
                                     "name": "MP"
                                 },
                                 {

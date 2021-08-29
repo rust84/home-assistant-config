@@ -83,6 +83,10 @@ sensor:
         value_template: "{{ states('sensor.habitica_russell_hp') | round(2) }}"
   - platform: template
     sensors:
+      habitica_mp_round:
+        value_template: "{{ states('sensor.habitica_russell_mp') | round(2) }}"
+  - platform: template
+    sensors:
       habitica_level_perc:
         value_template: "{{ (states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100) | round(2) }}"
         unit_of_measurement: "%"
