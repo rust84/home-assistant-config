@@ -156,8 +156,7 @@ alexa:
         - sensor.landing_temperature
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature
-        - sensor.temperature_humidity_sensor_humidity
-        - sensor.upstairs_humidity
+        - sensor.bme680_temperature
       # include_entity_globs:
       #   - sensor.*_temp
     entity_config:

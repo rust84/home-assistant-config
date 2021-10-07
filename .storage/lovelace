@@ -17,8 +17,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.upstairs_temperature",
+                                    "entity": "sensor.bme680_temperature",
                                     "name": "office"
+                                },
+                                {
+                                    "entity": "sensor.upstairs_temperature",
+                                    "name": "server room"
                                 },
                                 {
                                     "entity": "sensor.landing_temperature",
@@ -38,8 +42,12 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "sensor.bme680_humidity",
+                                    "name": "bme680"
+                                },
+                                {
                                     "entity": "sensor.upstairs_humidity",
-                                    "name": "upstairs"
+                                    "name": "server rooom"
                                 },
                                 {
                                     "entity": "sensor.temperature_humidity_sensor_humidity",
@@ -60,27 +68,6 @@
                             "hourly_forecast": false,
                             "number_of_forecasts": 5,
                             "type": "custom:weather-card"
-                        },
-                        {
-                            "shorten_cards": false,
-                            "consolidate_entities": false,
-                            "child_card": false,
-                            "hide_header": false,
-                            "header": "Wled",
-                            "color_wheel": true,
-                            "persist_features": false,
-                            "brightness": true,
-                            "color_temp": true,
-                            "white_value": true,
-                            "color_picker": true,
-                            "smooth_color_wheel": false,
-                            "show_slider_percent": false,
-                            "full_width_sliders": false,
-                            "brightness_icon": "weather-sunny",
-                            "white_icon": "file-word-box",
-                            "temperature_icon": "thermometer",
-                            "type": "custom:light-entity-card",
-                            "entity": "light.wled"
                         },
                         {
                             "aspect_ratio": "50%",
@@ -187,6 +174,50 @@
                             "type": "entities"
                         },
                         {
+                            "type": "gauge",
+                            "entity": "sensor.particulate_matter_2_5um_concentration",
+                            "min": 0,
+                            "max": 100,
+                            "severity": {
+                                "green": 0,
+                                "yellow": 30,
+                                "red": 100
+                            }
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.particulate_matter_2_5um_concentration"
+                                },
+                                {
+                                    "entity": "sensor.bme680_breath_voc_equivalent"
+                                },
+                                {
+                                    "entity": "sensor.bme680_co2_equivalent"
+                                },
+                                {
+                                    "entity": "sensor.bme680_gas_resistance"
+                                },
+                                {
+                                    "entity": "sensor.bme680_humidity"
+                                },
+                                {
+                                    "entity": "sensor.bme680_pressure"
+                                },
+                                {
+                                    "entity": "sensor.bme680_iaq"
+                                },
+                                {
+                                    "entity": "sensor.bme680_iaq_accuracy"
+                                },
+                                {
+                                    "entity": "sensor.bme680_temperature"
+                                }
+                            ],
+                            "title": "Environment"
+                        },
+                        {
                             "color": "rgb(28, 128, 199)",
                             "entity": "switch.smart_plug",
                             "icon": "mdi:ghost",
@@ -224,14 +255,6 @@
                                     "name": "Level progress"
                                 },
                                 {
-                                    "entity": "sensor.habitica_russell_exp",
-                                    "name": "Exp"
-                                },
-                                {
-                                    "entity": "sensor.habitica_russell_tonextlevel",
-                                    "name": "Exp to level"
-                                },
-                                {
                                     "entity": "sensor.habitica_hp_round",
                                     "name": "HP"
                                 },
@@ -261,6 +284,34 @@
                             "entity": "camera.driveway_person",
                             "image": "https://demo.home-assistant.io/stub_config/bedroom.png",
                             "aspect_ratio": "100%"
+                        }
+                    ]
+                },
+                {
+                    "title": "WLED",
+                    "path": "wled",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "shorten_cards": false,
+                            "consolidate_entities": false,
+                            "child_card": false,
+                            "hide_header": false,
+                            "header": "Wled",
+                            "color_wheel": true,
+                            "persist_features": false,
+                            "brightness": true,
+                            "color_temp": true,
+                            "white_value": true,
+                            "color_picker": true,
+                            "smooth_color_wheel": false,
+                            "show_slider_percent": false,
+                            "full_width_sliders": false,
+                            "brightness_icon": "weather-sunny",
+                            "white_icon": "file-word-box",
+                            "temperature_icon": "thermometer",
+                            "type": "custom:light-entity-card",
+                            "entity": "light.wled"
                         }
                     ]
                 }
