@@ -70,12 +70,6 @@
                             "type": "custom:weather-card"
                         },
                         {
-                            "aspect_ratio": "50%",
-                            "entity": "camera.sonoff",
-                            "name": "Driveway Camera",
-                            "type": "picture-entity"
-                        },
-                        {
                             "entities": [
                                 {
                                     "entity": "binary_sensor.kitchen_contact_sensor_contact"
@@ -233,6 +227,15 @@
                                 ]
                             },
                             "type": "custom:button-card"
+                        },
+                        {
+                            "type": "custom:frigate-card",
+                            "camera_entity": "camera.driveway",
+                            "controls": {},
+                            "webrtc": {
+                                "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
+                            },
+                            "live_provider": "webrtc"
                         },
                         {
                             "type": "entities",

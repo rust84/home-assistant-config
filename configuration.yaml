@@ -133,10 +133,10 @@ light:
     effect: false
     optimistic: false
 
-camera:
-  - platform: ffmpeg
-    name: Sonoff
-    input: !secret rtsp_url
+#camera:
+#  - platform: ffmpeg
+#    name: Sonoff
+#    input: !secret rtsp_url
 
 tplink:
   discovery: false
