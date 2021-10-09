@@ -93,11 +93,11 @@ sensor:
   - platform: template
     sensors:
       energy_peak_cost:
-        value_template: "{{ (states('sensor.daily_energy_peak') | float * 0.2153) | round(2) }}"
+        value_template: "{{ (states('sensor.daily_energy_peak') | float * 0.2199) | round(2) }}"
   - platform: template
     sensors:
       energy_offpeak_cost:
-        value_template: "{{ (states('sensor.daily_energy_offpeak') | float * 0.1382) | round(2) }}"
+        value_template: "{{ (states('sensor.daily_energy_offpeak') | float * 0.1554) | round(2) }}"
 
 group: !include groups.yaml
 automation: !include automations.yaml
