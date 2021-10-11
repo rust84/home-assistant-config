@@ -103,6 +103,35 @@
                             "type": "entities"
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "light.hallway"
+                                },
+                                {
+                                    "entity": "light.bathroom_light",
+                                    "name": "Bathroom"
+                                },
+                                {
+                                    "entity": "light.bedroom_light",
+                                    "name": "Bedroom"
+                                },
+                                {
+                                    "entity": "light.landing_light",
+                                    "name": "Landing"
+                                },
+                                {
+                                    "entity": "light.lounge_light",
+                                    "name": "Lounge"
+                                },
+                                {
+                                    "entity": "light.office_light",
+                                    "name": "Office"
+                                }
+                            ],
+                            "title": "Light",
+                            "type": "entities"
+                        },
+                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -139,35 +168,6 @@
                             "title": "Electricity"
                         },
                         {
-                            "entities": [
-                                {
-                                    "entity": "light.hallway"
-                                },
-                                {
-                                    "entity": "light.bathroom_light",
-                                    "name": "Bathroom"
-                                },
-                                {
-                                    "entity": "light.bedroom_light",
-                                    "name": "Bedroom"
-                                },
-                                {
-                                    "entity": "light.landing_light",
-                                    "name": "Landing"
-                                },
-                                {
-                                    "entity": "light.lounge_light",
-                                    "name": "Lounge"
-                                },
-                                {
-                                    "entity": "light.office_light",
-                                    "name": "Office"
-                                }
-                            ],
-                            "title": "Light",
-                            "type": "entities"
-                        },
-                        {
                             "type": "gauge",
                             "entity": "sensor.particulate_matter_2_5um_concentration",
                             "min": 0,
@@ -177,6 +177,15 @@
                                 "yellow": 30,
                                 "red": 100
                             }
+                        },
+                        {
+                            "type": "custom:frigate-card",
+                            "camera_entity": "camera.driveway",
+                            "controls": {},
+                            "webrtc": {
+                                "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
+                            },
+                            "live_provider": "webrtc"
                         },
                         {
                             "type": "entities",
@@ -229,15 +238,6 @@
                             "type": "custom:button-card"
                         },
                         {
-                            "type": "custom:frigate-card",
-                            "camera_entity": "camera.driveway",
-                            "controls": {},
-                            "webrtc": {
-                                "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
-                            },
-                            "live_provider": "webrtc"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
                                 {
@@ -281,12 +281,6 @@
                             ],
                             "title": "Habitica",
                             "show_header_toggle": true
-                        },
-                        {
-                            "type": "picture-entity",
-                            "entity": "camera.driveway_person",
-                            "image": "https://demo.home-assistant.io/stub_config/bedroom.png",
-                            "aspect_ratio": "100%"
                         }
                     ]
                 },
