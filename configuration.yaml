@@ -164,6 +164,8 @@ alexa:
         name: "Office Cheese"
         description: "The light in the office controlled by Lambda"
 
+energy:
+
 utility_meter:
   daily_energy:
     source: sensor.electric_consumption_today
