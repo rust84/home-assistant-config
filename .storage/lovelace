@@ -132,42 +132,6 @@
                             "type": "entities"
                         },
                         {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.daily_energy_peak",
-                                    "name": "Daily energy peak"
-                                },
-                                {
-                                    "entity": "sensor.daily_energy_offpeak",
-                                    "name": "Daily energy offpeak"
-                                },
-                                {
-                                    "entity": "sensor.monthly_energy_peak",
-                                    "name": "Monthly energy peak"
-                                },
-                                {
-                                    "entity": "sensor.monthly_energy_offpeak",
-                                    "name": "Monthly energy offpeak"
-                                },
-                                {
-                                    "entity": "sensor.electric_consumption_today",
-                                    "name": "Last reading"
-                                },
-                                {
-                                    "entity": "sensor.energy_offpeak_cost",
-                                    "name": "Cost daily offpeak",
-                                    "icon": "mdi:currency-gbp"
-                                },
-                                {
-                                    "entity": "sensor.energy_peak_cost",
-                                    "name": "Cost daily peak",
-                                    "icon": "mdi:currency-gbp"
-                                }
-                            ],
-                            "title": "Electricity"
-                        },
-                        {
                             "type": "gauge",
                             "entity": "sensor.particulate_matter_2_5um_concentration",
                             "min": 0,
@@ -177,6 +141,20 @@
                                 "yellow": 30,
                                 "red": 100
                             }
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.electric_consumption_today",
+                                    "name": "Daily Electricity"
+                                },
+                                {
+                                    "entity": "sensor.electric_cost_today",
+                                    "name": "Electricity Cost Today"
+                                }
+                            ],
+                            "title": "Electricity"
                         },
                         {
                             "type": "custom:frigate-card",
@@ -219,23 +197,6 @@
                                 }
                             ],
                             "title": "Environment"
-                        },
-                        {
-                            "color": "rgb(28, 128, 199)",
-                            "entity": "switch.smart_plug",
-                            "icon": "mdi:ghost",
-                            "name": "8-bit",
-                            "styles": {
-                                "card": [
-                                    {
-                                        "height": "85px"
-                                    },
-                                    {
-                                        "width": "200px"
-                                    }
-                                ]
-                            },
-                            "type": "custom:button-card"
                         },
                         {
                             "type": "entities",
@@ -285,6 +246,23 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.living_room_nvidia_shield"
+                        },
+                        {
+                            "color": "rgb(28, 128, 199)",
+                            "entity": "switch.smart_plug",
+                            "icon": "mdi:ghost",
+                            "name": "8-bit",
+                            "styles": {
+                                "card": [
+                                    {
+                                        "height": "85px"
+                                    },
+                                    {
+                                        "width": "200px"
+                                    }
+                                ]
+                            },
+                            "type": "custom:button-card"
                         }
                     ]
                 },

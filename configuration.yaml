@@ -13,9 +13,10 @@ homeassistant:
   name: Home
   latitude: !secret latitude
   longitude: !secret longitude
-  elevation: 0
+  elevation: 45
   unit_system: metric
   time_zone: Europe/London
+  currency: GBP
 
 http:
   cors_allowed_origins:
@@ -92,14 +93,6 @@ sensor:
       habitica_level_perc:
         value_template: "{{ (states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100) | round(2) }}"
         unit_of_measurement: "%"
-  - platform: template
-    sensors:
-      energy_peak_cost:
-        value_template: "{{ (states('sensor.daily_energy_peak') | float * 0.2199) | round(2) }}"
-  - platform: template
-    sensors:
-      energy_offpeak_cost:
-        value_template: "{{ (states('sensor.daily_energy_offpeak') | float * 0.1554) | round(2) }}"
 
 group: !include groups.yaml
 automation: !include automations.yaml
