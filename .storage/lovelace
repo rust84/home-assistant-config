@@ -124,8 +124,7 @@
                                     "name": "Lounge"
                                 },
                                 {
-                                    "entity": "light.office_light",
-                                    "name": "Office"
+                                    "entity": "group.office_lights"
                                 }
                             ],
                             "title": "Light",
@@ -291,6 +290,92 @@
                             "temperature_icon": "thermometer",
                             "type": "custom:light-entity-card",
                             "entity": "light.wled"
+                        }
+                    ]
+                },
+                {
+                    "title": "Alarm",
+                    "path": "alarm",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "alarm-panel",
+                            "states": [
+                                "arm_home",
+                                "arm_away"
+                            ],
+                            "entity": "alarm_control_panel.alarm_panel"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.auto_arm_alarm_when_gone"
+                                },
+                                {
+                                    "entity": "input_boolean.auto_arm_disarm_alarm_night"
+                                },
+                                {
+                                    "entity": "input_boolean.auto_disarm_alarm_when_home"
+                                },
+                                {
+                                    "entity": "input_boolean.notify_alarm_armed"
+                                },
+                                {
+                                    "entity": "input_boolean.notify_alarm_disarmed"
+                                },
+                                {
+                                    "entity": "input_boolean.notify_alarm_triggered"
+                                },
+                                {
+                                    "entity": "sensor.anyone_home"
+                                },
+                                {
+                                    "entity": "sensor.pixel_4a_room_presence",
+                                    "name": "Pixel 4a Room Presence"
+                                },
+                                {
+                                    "entity": "sensor.galaxy_a22_5g_room_presence",
+                                    "name": "Samsung Galaxy Room Presence"
+                                },
+                                {
+                                    "entity": "switch.office_bluetooth_inquiries"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Covid",
+                    "path": "covid",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.united_kingdom_coronavirus_deaths",
+                                    "name": "deaths"
+                                },
+                                {
+                                    "entity": "sensor.united_kingdom_coronavirus_confirmed",
+                                    "name": "confirmed"
+                                },
+                                {
+                                    "entity": "sensor.united_kingdom_coronavirus_current",
+                                    "name": "current"
+                                },
+                                {
+                                    "entity": "sensor.united_kingdom_coronavirus_recovered",
+                                    "name": "recovered"
+                                }
+                            ],
+                            "hours_to_show": 760,
+                            "points_per_hour": 1,
+                            "update_interval": 60,
+                            "line_width": 2,
+                            "icon": "mdi:server",
+                            "name": "COVID",
+                            "type": "custom:mini-graph-card"
                         }
                     ]
                 }

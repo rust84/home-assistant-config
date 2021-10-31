@@ -1,59 +1,6 @@
-# lighting:
-#   name: Lighting
-#   entities:
-#     - group.upstairs
-#     - group.downstairs
-
-# upstairs:
-#   name: Upstairs
-#   entities:
-#     - light.white_bulb_landing
-#     - light.white_spectrum_bedroom
-#     - light.white_spectrum_office
-# downstairs:
-#   name: Downstairs
-#   entities:
-#     - light.white_bulb_hall
-#     - light.white_spectrum_lounge
-
-# ups:
-#   name: Battery Backup
-#   view: yes
-#   entities:
-#     - group.ups_group
-
-# ups_group:
-#   name: Battery Backup
-#   entities:
-#     - sensor.ups_battery
-#     - sensor.ups_load
-#     - sensor.ups_model
-#     - sensor.ups_status
-#     - sensor.ups_time_left
-
-# sensors:
-#   name: Sensors
-#   entities:
-#     group.sensors_group
-
-# sensors_group:
-#   name: Sensors
-#   entities:
-#     - sensor.dht_temp
-#     - sensor.temperature
-#     - sensor.humidity
-
-# weather:
-#   name: Weather
-#   view: yes
-#   entities:
-#     group.weather_group
-
-# weather_group:
-#   name: Weather
-#   entities:
-#     - sensor.dark_sky_summary
-#     - sensor.dark_sky_precip_probability
-#     - sensor.dark_sky_humidity
-#     - sensor.dark_sky_wind_speed
-#     - sensor.dark_sky_temperature
+office_lights:
+  name: Office Lights
+  entities:
+    - light.office_light
+    - light.wled
+    - switch.smart_plug

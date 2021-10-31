@@ -18,6 +18,8 @@ homeassistant:
   time_zone: Europe/London
   currency: GBP
 
+default_config:
+
 http:
   cors_allowed_origins:
     - https://hass.microserver.space
@@ -67,39 +69,14 @@ weather:
     api_key: !secret darksky_apikey
     mode: daily
 
-sensor:
-  - platform: darksky
-    api_key: !secret darksky_apikey
-    monitored_conditions:
-      - summary
-      - precip_probability
-      - temperature
-      - wind_speed
-      - humidity
-  - platform: template
-    sensors:
-      habitica_gold_round:
-        value_template: "{{ states('sensor.habitica_russell_gp') | round(2) }}"
-  - platform: template
-    sensors:
-      habitica_hp_round:
-        value_template: "{{ states('sensor.habitica_russell_hp') | round(2) }}"
-  - platform: template
-    sensors:
-      habitica_mp_round:
-        value_template: "{{ states('sensor.habitica_russell_mp') | round(2) }}"
-  - platform: template
-    sensors:
-      habitica_level_perc:
-        value_template: "{{ (states('sensor.habitica_russell_exp') | float / states('sensor.habitica_russell_tonextlevel') | float * 100) | round(2) }}"
-        unit_of_measurement: "%"
-
 group: !include groups.yaml
 automation: !include automations.yaml
+sensor: !include sensors.yaml
 
 mqtt:
   broker: emqx-headless.default.svc
   port: 1883
+  client_id: home-assistant
   username: mqtt
   password: !secret mqtt_password
   discovery: true
@@ -200,3 +177,42 @@ media_player:
           - 'paused':
               'wake_lock_size': 1  # this indentation is important!
           - 'idle'
+
+alarm_control_panel:
+  - platform: manual
+    name: Alarm Panel
+    code: !secret alarm_code
+    arming_time: 20
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
+
+input_boolean:
+  # auto-run stuff
+  auto_arm_disarm_alarm_night:
+    name: Arm alarm at midnight and disarm at 5am
+  auto_arm_alarm_when_gone:
+    name: Automatically arm alarm when no one is home
+    initial: on
+  auto_disarm_alarm_when_home:
+    name: Automatically disarm alarm when someone comes home
+    initial: on
+  
+  # notifications
+  notify_alarm_armed:
+    name: Notification when alarm is armed
+    initial: on
+  notify_alarm_disarmed:
+    name: Notification when alarm is disarmed
+    initial: on
+  notify_alarm_triggered:
+    name: Notification when alarm is triggered
+    initial: on
+  
+  #people
+  russell_occupancy:
+    name: Russell is home (bluetooth)
