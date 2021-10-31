@@ -119,12 +119,6 @@ alexa:
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature
         - sensor.bme680_temperature
-      # include_entity_globs:
-      #   - sensor.*_temp
-    entity_config:
-      light.office_tradfri_bulb:
-        name: "Office Cheese"
-        description: "The light in the office controlled by Lambda"
 
 energy:
 
