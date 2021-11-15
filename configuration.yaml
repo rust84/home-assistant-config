@@ -215,7 +215,3 @@ input_boolean:
   heating_mode:
     name: Heating mode
     initial: on
-  
-  #people
-  russell_occupancy:
-    name: Russell is home (bluetooth)

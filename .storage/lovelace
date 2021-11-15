@@ -91,15 +91,16 @@
                                     "name": "Lounge"
                                 },
                                 {
-                                    "entity": "group.office_lights",
-                                    "name": "Office group"
-                                },
-                                {
-                                    "entity": "light.office_light"
+                                    "entity": "light.office_light",
+                                    "name": "Office"
                                 }
                             ],
                             "title": "Light",
                             "type": "entities"
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.heating_controller"
                         },
                         {
                             "type": "gauge",
@@ -110,6 +111,16 @@
                                 "green": 0,
                                 "yellow": 30,
                                 "red": 100
+                            }
+                        },
+                        {
+                            "type": "custom:frigate-card",
+                            "camera_entity": "camera.driveway",
+                            "live": {
+                                "provider": "webrtc",
+                                "webrtc": {
+                                    "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
+                                }
                             }
                         },
                         {
@@ -125,20 +136,6 @@
                                 }
                             ],
                             "title": "Electricity"
-                        },
-                        {
-                            "type": "custom:frigate-card",
-                            "camera_entity": "camera.driveway",
-                            "live": {
-                                "provider": "webrtc",
-                                "webrtc": {
-                                    "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
-                                }
-                            }
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.heating_controller"
                         },
                         {
                             "type": "entities",
@@ -172,51 +169,6 @@
                                 }
                             ],
                             "title": "Environment"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.habitica_russell_name",
-                                    "name": "Name"
-                                },
-                                {
-                                    "entity": "sensor.habitica_russell_class",
-                                    "name": "Class"
-                                },
-                                {
-                                    "entity": "sensor.habitica_russell_lvl",
-                                    "name": "Level"
-                                },
-                                {
-                                    "entity": "sensor.habitica_level_perc",
-                                    "icon": "mdi:arrow-up-bold-circle-outline",
-                                    "name": "Level progress"
-                                },
-                                {
-                                    "entity": "sensor.habitica_hp_round",
-                                    "name": "HP"
-                                },
-                                {
-                                    "entity": "sensor.habitica_russell_maxhealth",
-                                    "name": "Max HP"
-                                },
-                                {
-                                    "entity": "sensor.habitica_mp_round",
-                                    "name": "MP"
-                                },
-                                {
-                                    "entity": "sensor.habitica_russell_maxmp",
-                                    "name": "Max MP"
-                                },
-                                {
-                                    "entity": "sensor.habitica_gold_round",
-                                    "name": "Gold",
-                                    "icon": "mdi:bitcoin"
-                                }
-                            ],
-                            "title": "Habitica",
-                            "show_header_toggle": true
                         },
                         {
                             "type": "media-control",
@@ -365,40 +317,6 @@
                                     "entity": "number.wled_speed"
                                 }
                             ]
-                        }
-                    ]
-                },
-                {
-                    "title": "Covid",
-                    "path": "covid",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.united_kingdom_coronavirus_deaths",
-                                    "name": "deaths"
-                                },
-                                {
-                                    "entity": "sensor.united_kingdom_coronavirus_confirmed",
-                                    "name": "confirmed"
-                                },
-                                {
-                                    "entity": "sensor.united_kingdom_coronavirus_current",
-                                    "name": "current"
-                                },
-                                {
-                                    "entity": "sensor.united_kingdom_coronavirus_recovered",
-                                    "name": "recovered"
-                                }
-                            ],
-                            "hours_to_show": 760,
-                            "points_per_hour": 1,
-                            "update_interval": 60,
-                            "line_width": 2,
-                            "icon": "mdi:server",
-                            "name": "COVID",
-                            "type": "custom:mini-graph-card"
                         }
                     ]
                 },
