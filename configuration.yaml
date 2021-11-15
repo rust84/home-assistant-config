@@ -114,6 +114,7 @@ alexa:
     filter:
       include_domains:
         - light
+        - climate
       include_entities:
         - sensor.landing_temperature
         - sensor.upstairs_temperature
@@ -177,7 +178,7 @@ alarm_control_panel:
     name: Alarm Panel
     code: !secret alarm_code
     arming_time: 20
-    delay_time: 20
+    delay_time: 30
     trigger_time: 4
     disarmed:
       trigger_time: 0
@@ -205,6 +206,14 @@ input_boolean:
     initial: on
   notify_alarm_triggered:
     name: Notification when alarm is triggered
+    initial: on
+  
+  # Heating
+  enable_heating_schedules:
+    name: Enable heating schedules
+    initial: on
+  heating_mode:
+    name: Heating mode
     initial: on
   
   #people

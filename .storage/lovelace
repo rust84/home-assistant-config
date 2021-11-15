@@ -72,39 +72,6 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "binary_sensor.kitchen_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.lounge_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.office_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "sensor.wled_estimated_current"
-                                },
-                                {
-                                    "entity": "binary_sensor.office_motion_sensor_occupancy"
-                                },
-                                {
-                                    "entity": "binary_sensor.lounge_motion_sensor_occupancy"
-                                },
-                                {
-                                    "entity": "binary_sensor.landing_motion"
-                                },
-                                {
-                                    "entity": "binary_sensor.driveway_person_motion"
-                                }
-                            ],
-                            "title": "Sensors",
-                            "type": "entities"
-                        },
-                        {
-                            "entities": [
-                                {
                                     "entity": "light.hallway"
                                 },
                                 {
@@ -124,7 +91,11 @@
                                     "name": "Lounge"
                                 },
                                 {
-                                    "entity": "group.office_lights"
+                                    "entity": "group.office_lights",
+                                    "name": "Office group"
+                                },
+                                {
+                                    "entity": "light.office_light"
                                 }
                             ],
                             "title": "Light",
@@ -158,11 +129,16 @@
                         {
                             "type": "custom:frigate-card",
                             "camera_entity": "camera.driveway",
-                            "controls": {},
-                            "webrtc": {
-                                "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
-                            },
-                            "live_provider": "webrtc"
+                            "live": {
+                                "provider": "webrtc",
+                                "webrtc": {
+                                    "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
+                                }
+                            }
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.heating_controller"
                         },
                         {
                             "type": "entities",
@@ -266,34 +242,6 @@
                     ]
                 },
                 {
-                    "title": "WLED",
-                    "path": "wled",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "shorten_cards": false,
-                            "consolidate_entities": false,
-                            "child_card": false,
-                            "hide_header": false,
-                            "header": "Wled",
-                            "color_wheel": true,
-                            "persist_features": false,
-                            "brightness": true,
-                            "color_temp": true,
-                            "white_value": true,
-                            "color_picker": true,
-                            "smooth_color_wheel": false,
-                            "show_slider_percent": false,
-                            "full_width_sliders": false,
-                            "brightness_icon": "weather-sunny",
-                            "white_icon": "file-word-box",
-                            "temperature_icon": "thermometer",
-                            "type": "custom:light-entity-card",
-                            "entity": "light.wled"
-                        }
-                    ]
-                },
-                {
                     "title": "Alarm",
                     "path": "alarm",
                     "badges": [],
@@ -305,6 +253,36 @@
                                 "arm_away"
                             ],
                             "entity": "alarm_control_panel.alarm_panel"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.kitchen_contact_sensor_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.front_door_contact_sensor_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.lounge_contact_sensor_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.office_contact_sensor_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.office_motion_sensor_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.lounge_motion_sensor_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.landing_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.driveway_person_motion"
+                                }
+                            ],
+                            "title": "Sensors",
+                            "type": "entities"
                         },
                         {
                             "type": "entities",
@@ -331,15 +309,60 @@
                                     "entity": "sensor.anyone_home"
                                 },
                                 {
+                                    "entity": "sensor.office_cluster_leader"
+                                },
+                                {
+                                    "entity": "switch.office_bluetooth_inquiries"
+                                },
+                                {
+                                    "entity": "switch.lounge_bluetooth_inquiries"
+                                },
+                                {
                                     "entity": "sensor.pixel_4a_room_presence",
                                     "name": "Pixel 4a Room Presence"
                                 },
                                 {
                                     "entity": "sensor.galaxy_a22_5g_room_presence",
                                     "name": "Samsung Galaxy Room Presence"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "WLED",
+                    "path": "wled",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "shorten_cards": false,
+                            "consolidate_entities": false,
+                            "child_card": false,
+                            "hide_header": false,
+                            "header": "Wled",
+                            "color_wheel": true,
+                            "persist_features": false,
+                            "brightness": true,
+                            "color_temp": true,
+                            "white_value": true,
+                            "color_picker": true,
+                            "smooth_color_wheel": false,
+                            "show_slider_percent": false,
+                            "full_width_sliders": false,
+                            "brightness_icon": "weather-sunny",
+                            "white_icon": "file-word-box",
+                            "temperature_icon": "thermometer",
+                            "type": "custom:light-entity-card",
+                            "entity": "light.wled"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "number.wled_intensity"
                                 },
                                 {
-                                    "entity": "switch.office_bluetooth_inquiries"
+                                    "entity": "number.wled_speed"
                                 }
                             ]
                         }
@@ -376,6 +399,35 @@
                             "icon": "mdi:server",
                             "name": "COVID",
                             "type": "custom:mini-graph-card"
+                        }
+                    ]
+                },
+                {
+                    "title": "Heating",
+                    "path": "heating",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "custom:scheduler-card",
+                            "include": [
+                                "climate"
+                            ]
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.heating_controller",
+                            "name": "Thermostat"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "input_boolean.enable_heating_schedules"
+                                },
+                                {
+                                    "entity": "input_boolean.heating_mode"
+                                }
+                            ]
                         }
                     ]
                 }

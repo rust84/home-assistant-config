@@ -4,3 +4,9 @@ office_lights:
     - light.office_light
     - light.wled
     - switch.smart_plug
+
+heating_schedules:
+  name: Heating Schedules
+  entities:
+    - switch.schedule_weekday
+    - switch.schedule_weekend
