@@ -17,6 +17,10 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "sensor.thermostat_temperature",
+                                    "name": "livingroom"
+                                },
+                                {
                                     "entity": "sensor.bme680_temperature",
                                     "name": "office"
                                 },
@@ -30,7 +34,7 @@
                                 },
                                 {
                                     "entity": "sensor.temperature_humidity_sensor_temperature",
-                                    "name": "downstairs"
+                                    "name": "bedroom"
                                 }
                             ],
                             "hours_to_show": 24,
@@ -43,7 +47,7 @@
                             "entities": [
                                 {
                                     "entity": "sensor.bme680_humidity",
-                                    "name": "bme680"
+                                    "name": "office"
                                 },
                                 {
                                     "entity": "sensor.upstairs_humidity",
@@ -51,7 +55,7 @@
                                 },
                                 {
                                     "entity": "sensor.temperature_humidity_sensor_humidity",
-                                    "name": "downstairs"
+                                    "name": "bedroom"
                                 }
                             ],
                             "hours_to_show": 24,

@@ -52,6 +52,7 @@ logger:
   default: info
   logs:
     requests.packages.urllib3.connectionpool: critical
+    homeassistant.components.media_player: critical
     homeassistant.components.alexa: info
 
 frontend:
