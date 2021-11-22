@@ -225,6 +225,16 @@
                                     "entity": "binary_sensor.office_contact_sensor_contact"
                                 },
                                 {
+                                    "entity": "binary_sensor.smoke_detector_office_smoke",
+                                    "name": "Office - Smoke",
+                                    "icon": "mdi:smoke-detector"
+                                },
+                                {
+                                    "entity": "binary_sensor.smoke_detector_server_smoke",
+                                    "name": "Server Room - Smoke",
+                                    "icon": "mdi:smoke-detector"
+                                },
+                                {
                                     "entity": "binary_sensor.office_motion_sensor_occupancy"
                                 },
                                 {
