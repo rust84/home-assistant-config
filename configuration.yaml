@@ -52,7 +52,7 @@ logger:
   default: info
   logs:
     requests.packages.urllib3.connectionpool: critical
-    homeassistant.components.media_player: critical
+    homeassistant.components.androidtv: critical
     homeassistant.components.alexa: info
 
 frontend:
@@ -121,6 +121,8 @@ alexa:
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature
         - sensor.bme680_temperature
+        - switch.sonoff_plug1
+        - switch.sonoff_plug2
 
 energy:
 
@@ -213,6 +215,7 @@ input_boolean:
   enable_heating_schedules:
     name: Enable heating schedules
     initial: on
-  heating_mode:
-    name: Heating mode
-    initial: on
+
+sonoff:
+  username: !secret sonoff_email
+  password: !secret sonoff_password

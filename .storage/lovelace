@@ -123,7 +123,14 @@
                             "live": {
                                 "provider": "webrtc",
                                 "webrtc": {
-                                    "url": "rtsp://rtsp:12345678@10.30.0.111:554/av_stream/ch0"
+                                    "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
+                                }
+                            },
+                            "event_viewer": {
+                                "controls": {
+                                    "thumbnails": {
+                                        "mode": "below"
+                                    }
                                 }
                             }
                         },
@@ -140,6 +147,209 @@
                                 }
                             ],
                             "title": "Electricity"
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:button-card",
+                                    "color": "rgb(28, 128, 199)",
+                                    "entity": "switch.sonoff_plug1",
+                                    "icon": "mdi:rocket",
+                                    "name": "Warp",
+                                    "state": [
+                                        {
+                                            "value": "off",
+                                            "icon": "mdi:rocket",
+                                            "styles": {
+                                                "card": [
+                                                    {
+                                                        "filter": "opacity(50%)"
+                                                    }
+                                                ],
+                                                "icon": [
+                                                    {
+                                                        "filter": "grayscale(100%)"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "styles": {
+                                        "grid": [
+                                            {
+                                                "position": "relative"
+                                            }
+                                        ],
+                                        "custom_fields": {
+                                            "notification": [
+                                                {
+                                                    "background-color": "[[[\n  if (states['switch.sonoff_plug1'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                                                },
+                                                {
+                                                    "border-radius": "50%"
+                                                },
+                                                {
+                                                    "position": "absolute"
+                                                },
+                                                {
+                                                    "left": "60%"
+                                                },
+                                                {
+                                                    "top": "10%"
+                                                },
+                                                {
+                                                    "height": "20px"
+                                                },
+                                                {
+                                                    "width": "20px"
+                                                },
+                                                {
+                                                    "font-size": "8px"
+                                                },
+                                                {
+                                                    "line-height": "20px"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "custom_fields": {
+                                        "notification": "[[[ return states['switch.sonoff_plug1'].state ]]]\n"
+                                    }
+                                },
+                                {
+                                    "type": "custom:button-card",
+                                    "color": "rgb(28, 128, 199)",
+                                    "entity": "switch.sonoff_plug2",
+                                    "icon": "mdi:clock-outline",
+                                    "name": "Clock",
+                                    "state": [
+                                        {
+                                            "value": "off",
+                                            "icon": "mdi:clock-outline",
+                                            "styles": {
+                                                "card": [
+                                                    {
+                                                        "filter": "opacity(50%)"
+                                                    }
+                                                ],
+                                                "icon": [
+                                                    {
+                                                        "filter": "grayscale(100%)"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "styles": {
+                                        "grid": [
+                                            {
+                                                "position": "relative"
+                                            }
+                                        ],
+                                        "custom_fields": {
+                                            "notification": [
+                                                {
+                                                    "background-color": "[[[\n  if (states['switch.sonoff_plug2'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                                                },
+                                                {
+                                                    "border-radius": "50%"
+                                                },
+                                                {
+                                                    "position": "absolute"
+                                                },
+                                                {
+                                                    "left": "67%"
+                                                },
+                                                {
+                                                    "top": "10%"
+                                                },
+                                                {
+                                                    "height": "20px"
+                                                },
+                                                {
+                                                    "width": "20px"
+                                                },
+                                                {
+                                                    "font-size": "8px"
+                                                },
+                                                {
+                                                    "line-height": "20px"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "custom_fields": {
+                                        "notification": "[[[ return states['switch.sonoff_plug2'].state ]]]\n"
+                                    }
+                                },
+                                {
+                                    "type": "custom:button-card",
+                                    "color": "rgb(28, 128, 199)",
+                                    "entity": "switch.smart_plug",
+                                    "icon": "mdi:power-plug",
+                                    "name": "Plug",
+                                    "state": [
+                                        {
+                                            "value": "off",
+                                            "icon": "mdi:power-plug-off",
+                                            "styles": {
+                                                "card": [
+                                                    {
+                                                        "filter": "opacity(50%)"
+                                                    }
+                                                ],
+                                                "icon": [
+                                                    {
+                                                        "filter": "grayscale(100%)"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ],
+                                    "styles": {
+                                        "grid": [
+                                            {
+                                                "position": "relative"
+                                            }
+                                        ],
+                                        "custom_fields": {
+                                            "notification": [
+                                                {
+                                                    "background-color": "[[[\n  if (states['switch.smart_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                                                },
+                                                {
+                                                    "border-radius": "50%"
+                                                },
+                                                {
+                                                    "position": "absolute"
+                                                },
+                                                {
+                                                    "left": "60%"
+                                                },
+                                                {
+                                                    "top": "10%"
+                                                },
+                                                {
+                                                    "height": "20px"
+                                                },
+                                                {
+                                                    "width": "20px"
+                                                },
+                                                {
+                                                    "font-size": "8px"
+                                                },
+                                                {
+                                                    "line-height": "20px"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "custom_fields": {
+                                        "notification": "[[[ return states['switch.smart_plug'].state ]]]\n"
+                                    }
+                                }
+                            ]
                         },
                         {
                             "type": "entities",
@@ -177,23 +387,6 @@
                         {
                             "type": "media-control",
                             "entity": "media_player.living_room_nvidia_shield"
-                        },
-                        {
-                            "color": "rgb(28, 128, 199)",
-                            "entity": "switch.smart_plug",
-                            "icon": "mdi:ghost",
-                            "name": "8-bit",
-                            "styles": {
-                                "card": [
-                                    {
-                                        "height": "85px"
-                                    },
-                                    {
-                                        "width": "200px"
-                                    }
-                                ]
-                            },
-                            "type": "custom:button-card"
                         }
                     ]
                 },
@@ -245,6 +438,18 @@
                                 },
                                 {
                                     "entity": "binary_sensor.driveway_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.double_take_russell"
+                                },
+                                {
+                                    "entity": "sensor.double_take_unknown"
+                                },
+                                {
+                                    "entity": "sensor.double_take_office"
+                                },
+                                {
+                                    "entity": "sensor.double_take_lounge"
                                 }
                             ],
                             "title": "Sensors",
@@ -279,9 +484,6 @@
                                 },
                                 {
                                     "entity": "switch.office_bluetooth_inquiries"
-                                },
-                                {
-                                    "entity": "switch.lounge_bluetooth_inquiries"
                                 },
                                 {
                                     "entity": "sensor.pixel_4a_room_presence",
@@ -351,15 +553,97 @@
                             "name": "Thermostat"
                         },
                         {
+                            "type": "custom:button-card",
+                            "color": "rgb(28, 128, 199)",
+                            "entity": "input_boolean.enable_heating_schedules",
+                            "icon": "mdi:radiator",
+                            "name": "Heating Schedules",
+                            "state": [
+                                {
+                                    "value": "off",
+                                    "icon": "mdi:radiator-off",
+                                    "styles": {
+                                        "card": [
+                                            {
+                                                "filter": "opacity(50%)"
+                                            }
+                                        ],
+                                        "icon": [
+                                            {
+                                                "filter": "grayscale(100%)"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Octoprint",
+                    "path": "octoprint",
+                    "icon": "",
+                    "badges": [],
+                    "cards": [
+                        {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "input_boolean.enable_heating_schedules"
+                                    "entity": "sensor.octoprint_current_state"
                                 },
                                 {
-                                    "entity": "input_boolean.heating_mode"
+                                    "entity": "sensor.octoprint_estimated_finish_time"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_job_percentage"
+                                },
+                                {
+                                    "entity": "binary_sensor.octoprint_printing"
+                                },
+                                {
+                                    "entity": "binary_sensor.octoprint_printing_error"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_start_time"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_actual_bed_temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_actual_tool0_temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_bed_temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_tool0_temp"
                                 }
                             ]
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.octoprint_actual_tool0_temp",
+                                    "name": "tool temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_actual_bed_temp",
+                                    "name": "bed temp"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_tool0_temp",
+                                    "name": "tool target"
+                                },
+                                {
+                                    "entity": "sensor.octoprint_target_bed_temp",
+                                    "name": "bed target"
+                                }
+                            ],
+                            "hours_to_show": 1,
+                            "icon": "mdi:server",
+                            "name": "PRINTER",
+                            "points_per_hour": 60,
+                            "type": "custom:mini-graph-card"
                         }
                     ]
                 }
