@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace",
     "data": {
         "config": {
@@ -478,20 +479,6 @@
                                 },
                                 {
                                     "entity": "sensor.anyone_home"
-                                },
-                                {
-                                    "entity": "sensor.office_cluster_leader"
-                                },
-                                {
-                                    "entity": "switch.office_bluetooth_inquiries"
-                                },
-                                {
-                                    "entity": "sensor.pixel_4a_room_presence",
-                                    "name": "Pixel 4a Room Presence"
-                                },
-                                {
-                                    "entity": "sensor.galaxy_a22_5g_room_presence",
-                                    "name": "Samsung Galaxy Room Presence"
                                 }
                             ]
                         }

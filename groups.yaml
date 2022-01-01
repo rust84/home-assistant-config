@@ -2,8 +2,8 @@ office_lights:
   name: Office Lights
   entities:
     - light.office_light
-    - light.wled
-    - switch.smart_plug
+    - switch.sonoff_plug1
+    - switch.sonoff_plug2
 
 heating_schedules:
   name: Heating Schedules

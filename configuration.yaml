@@ -73,6 +73,7 @@ weather:
 group: !include groups.yaml
 automation: !include automations.yaml
 sensor: !include sensors.yaml
+scene: !include scenes.yaml
 
 mqtt:
   broker: emqx-headless.default.svc
@@ -116,13 +117,18 @@ alexa:
       include_domains:
         - light
         - climate
+        - scene
       include_entities:
+        - group.office_lights
         - sensor.landing_temperature
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature
         - sensor.bme680_temperature
         - switch.sonoff_plug1
         - switch.sonoff_plug2
+    entity_config:
+      group.office_lights:
+        display_categories: LIGHT
 
 energy:
 
@@ -148,7 +154,7 @@ prometheus:
 media_player:
   - platform: androidtv
     name: Living Room - Nvidia Shield
-    host: 10.30.0.234
+    host: 10.20.0.83
     apps:
         com.android.tv.settings: "Settings"
         com.plexapp.android: "Plex"

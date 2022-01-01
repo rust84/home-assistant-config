@@ -1,0 +1,9 @@
+- name: Hallway on white
+  icon: "mdi:lightbulb"
+  entities:
+    light.hallway:
+      state: "on"
+      brightness: 181
+      color_mode: "rgbw"
+      rgbw_color: [255, 191, 127, 255]
+      white_value: 255
