@@ -156,12 +156,12 @@
                                     "type": "custom:button-card",
                                     "color": "rgb(28, 128, 199)",
                                     "entity": "switch.sonoff_plug1",
-                                    "icon": "mdi:rocket",
-                                    "name": "Warp",
+                                    "icon": "mdi:monitor",
+                                    "name": "HyperLED",
                                     "state": [
                                         {
                                             "value": "off",
-                                            "icon": "mdi:rocket",
+                                            "icon": "mdi:monitor",
                                             "styles": {
                                                 "card": [
                                                     {

@@ -119,7 +119,7 @@ alexa:
         - climate
         - scene
       include_entities:
-        - group.office_lights
+        - group.office_group
         - sensor.landing_temperature
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature

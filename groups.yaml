@@ -1,5 +1,5 @@
-office_lights:
-  name: Office Lights
+office_group:
+  name: Office Group
   entities:
     - light.office_light
     - switch.sonoff_plug1
