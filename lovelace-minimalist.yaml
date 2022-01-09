@@ -1,0 +1,292 @@
+button_card_templates: !include_dir_merge_named minimalist-templates/
+views:
+  - title: Minimalist
+    type: custom:horizontal-layout
+    layout_type: custom:horizontal-layout
+    layout:
+      width: 400
+      max_cols: 1
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: chip_temperature
+            variables:
+              ulm_chip_temperature_inside: sensor.thermostat_temperature
+              ulm_chip_temperature_outside: sensor.dark_sky_temperature
+              ulm_chip_temperature_weather: weather.dark_sky
+          - type: 'custom:button-card'
+            template: chip_presence_detection
+            variables:
+              ulm_chip_presence_counter_residents: sensor.double_take_office
+              ulm_chip_presence_counter_guests: sensor.double_take_lounge
+          - type: 'custom:button-card'
+            template: chip_power_consumption
+            variables:
+              ulm_chip_electric_consumption: sensor.electric_consumption_today
+              ulm_chip_electric_price: sensor.electric_cost_today
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: custom_card_paddy_welcome_with_weather
+            variables:
+              ulm_custom_card_paddy_welcome_time: sensor.time
+              ulm_custom_card_paddy_welcome_weather_provider: weather.dark_sky
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_person
+            variables:
+              ulm_card_person_entity: person.russell
+              ulm_card_person_use_entity_picture: true
+              ulm_card_person_zone1: work
+          - type: 'custom:button-card'
+            template: custom_card_paddy_waste_collection
+            entity: sensor.waste_collection_household
+          - type: 'custom:button-card'
+            template: custom_card_paddy_waste_collection
+            entity: sensor.waste_collection_recycling
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: title
+            name: Lighting
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Bathroom
+            entity: light.bathroom_light
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Bedroom
+            entity: light.bedroom_light
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Hallway
+            entity: light.hallway
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Landing
+            entity: light.landing_light
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Livingroom
+            entity: light.lounge_light
+          - type: 'custom:button-card'
+            template: card_light_slider_collapse
+            variables:
+              ulm_card_light_slider_collapse_name: Office
+            entity: light.office_light
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: title
+            name: Climate
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: edge     
+        - type: thermostat
+          entity: climate.heating_controller
+        - type: custom:button-card
+          template: edge
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: edge     
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Temperature thermostat
+            ulm_card_graph_entity: sensor.thermostat_temperature       
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Temperature office
+            ulm_card_graph_entity: sensor.bme680_temperature
+        - type: custom:button-card
+          template: edge
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: edge     
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Temperature server room
+            ulm_card_graph_entity: sensor.upstairs_temperature       
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Temperature bedroom
+            ulm_card_graph_entity: sensor.temperature_humidity_sensor_temperature
+        - type: custom:button-card
+          template: edge
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: edge     
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Temperature landing
+            ulm_card_graph_entity: sensor.landing_temperature      
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Humidity office
+            ulm_card_graph_entity: sensor.bme680_humidity
+        - type: custom:button-card
+          template: edge
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: edge
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Humidity server room
+            ulm_card_graph_entity: sensor.upstairs_humidity   
+        - type: 'custom:button-card'
+          template: card_graph
+          variables:
+            ulm_card_graph_color: "var(--google-blue)"
+            ulm_card_graph_name: Humidity bedroom
+            ulm_card_graph_entity: sensor.temperature_humidity_sensor_humidity      
+        - type: custom:button-card
+          template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: title
+            name: Media
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_media_player
+            entity: media_player.living_room_nvidia_shield
+            name: Livingroom Nvidia Shield
+            artwork: full-cover
+          - type: custom:button-card
+            template: edge
+
+  - title: Minimalist page 2
+    type: custom:horizontal-layout
+    layout_type: custom:horizontal-layout
+    layout:
+      width: 400
+      max_cols: 1
+    cards:
+    - type: horizontal-stack
+      cards:
+        - type: custom:button-card
+          template: edge
+        - type: custom:button-card
+          template: title
+          name: Cameras
+        - type: custom:button-card
+          template: edge
+    - type: horizontal-stack
+      cards:
+      - type: custom:button-card
+        template: edge  
+      - type: custom:frigate-card
+        camera_entity: camera.driveway
+        live:
+          provider: webrtc
+          webrtc:
+            url: rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main
+        event_viewer:
+          controls:
+            thumbnails:
+              mode: below
+      - type: custom:button-card
+        template: edge
+    - type: horizontal-stack
+      cards:
+      - type: custom:button-card
+        template: edge  
+      - type: custom:frigate-card
+        camera_entity: camera.driveway
+        live:
+          provider: webrtc
+          webrtc:
+            url: rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main
+        event_viewer:
+          controls:
+            thumbnails:
+              mode: below
+      - type: custom:button-card
+        template: edge
+    - type: horizontal-stack
+      cards:
+      - type: custom:button-card
+        template: edge  
+      - type: custom:frigate-card
+        camera_entity: camera.driveway
+        live:
+          provider: webrtc
+          webrtc:
+            url: rtsp://rtsp:frigate1234@10.30.0.111:554/av_stream/ch0
+        event_viewer:
+          controls:
+            thumbnails:
+              mode: below
+      - type: custom:button-card
+        template: edge  
+

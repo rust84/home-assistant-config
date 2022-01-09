@@ -9,6 +9,10 @@
                 {
                     "path": "default_view",
                     "title": "Home",
+                    "layout": {
+                        "width": 300,
+                        "max_cols": 3
+                    },
                     "badges": [
                         {
                             "entity": "person.russell"
@@ -133,6 +137,9 @@
                                         "mode": "below"
                                     }
                                 }
+                            },
+                            "view_layout": {
+                                "column": 4
                             }
                         },
                         {
@@ -288,12 +295,12 @@
                                     "type": "custom:button-card",
                                     "color": "rgb(28, 128, 199)",
                                     "entity": "switch.smart_plug",
-                                    "icon": "mdi:power-plug",
-                                    "name": "Plug",
+                                    "icon": "mdi:speaker",
+                                    "name": "Subwoofer",
                                     "state": [
                                         {
                                             "value": "off",
-                                            "icon": "mdi:power-plug-off",
+                                            "icon": "mdi:speaker-off",
                                             "styles": {
                                                 "card": [
                                                     {
@@ -386,8 +393,9 @@
                             "title": "Environment"
                         },
                         {
-                            "type": "media-control",
-                            "entity": "media_player.living_room_nvidia_shield"
+                            "type": "custom:mini-media-player",
+                            "entity": "media_player.living_room_nvidia_shield",
+                            "artwork": "full-cover"
                         }
                     ]
                 },
@@ -479,45 +487,6 @@
                                 },
                                 {
                                     "entity": "sensor.anyone_home"
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "WLED",
-                    "path": "wled",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "shorten_cards": false,
-                            "consolidate_entities": false,
-                            "child_card": false,
-                            "hide_header": false,
-                            "header": "Wled",
-                            "color_wheel": true,
-                            "persist_features": false,
-                            "brightness": true,
-                            "color_temp": true,
-                            "white_value": true,
-                            "color_picker": true,
-                            "smooth_color_wheel": false,
-                            "show_slider_percent": false,
-                            "full_width_sliders": false,
-                            "brightness_icon": "weather-sunny",
-                            "white_icon": "file-word-box",
-                            "temperature_icon": "thermometer",
-                            "type": "custom:light-entity-card",
-                            "entity": "light.wled"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "number.wled_intensity"
-                                },
-                                {
-                                    "entity": "number.wled_speed"
                                 }
                             ]
                         }

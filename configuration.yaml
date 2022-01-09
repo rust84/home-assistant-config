@@ -18,6 +18,16 @@ homeassistant:
   time_zone: Europe/London
   currency: GBP
 
+lovelace:
+  mode: storage
+  dashboards:
+    lovelace-minimalist:
+      mode: yaml
+      title: Minimalist
+      icon: mdi:script
+      show_in_sidebar: true
+      filename: lovelace-minimalist.yaml
+
 default_config:
 
 http:
@@ -56,6 +66,7 @@ logger:
     homeassistant.components.alexa: info
 
 frontend:
+  themes: !include_dir_merge_named themes
 
 config:
 
@@ -225,3 +236,9 @@ input_boolean:
 sonoff:
   username: !secret sonoff_email
   password: !secret sonoff_password
+
+waste_collection_schedule:
+  sources:
+    - name: ics
+      args:
+        file: bins.ics

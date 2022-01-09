@@ -20,5 +20,37 @@
   sensors:
     thermostat_temperature:
       friendly_name: Thermostat Temperature
-      unit_of_measurement: 'degrees'
+      unit_of_measurement: '°C'
       value_template: "{{ state_attr('climate.heating_controller', 'current_temperature') }}"
+- platform: waste_collection_schedule
+  name: waste_collection_household
+  details_format: upcoming
+  add_days_to: true # this line is important
+  value_template:  >-
+    {% if value.daysTo == 0 %}
+    TODAY
+    {% elif value.daysTo == 1 %}
+    TOMORROW
+    {% else %}
+    in {{value.daysTo}} Days
+    {% endif %}
+  types:
+    - Household waste
+- platform: waste_collection_schedule
+  name: waste_collection_recycling
+  details_format: upcoming
+  add_days_to: true # this line is important
+  value_template:  >-
+    {% if value.daysTo == 0 %}
+    TODAY
+    {% elif value.daysTo == 1 %}
+    TOMORROW
+    {% else %}
+    in {{value.daysTo}} Days
+    {% endif %}
+  types:
+    - Mixed recycling
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
