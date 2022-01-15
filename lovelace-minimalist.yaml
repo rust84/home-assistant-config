@@ -72,9 +72,9 @@ views:
           - type: custom:button-card
             template: edge
           - type: 'custom:button-card'
-            template: card_light_slider_collapse
+            template: card_light
             variables:
-              ulm_card_light_slider_collapse_name: Bathroom
+              ulm_card_light_name: Bathroom
             entity: light.bathroom_light
           - type: 'custom:button-card'
             template: card_light_slider_collapse
@@ -113,6 +113,126 @@ views:
             variables:
               ulm_card_light_slider_collapse_name: Office
             entity: light.office_light
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: title
+            name: Plugs
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            color: rgb(28, 128, 199)
+            entity: switch.sonoff_s26_1_relay
+            icon: mdi:monitor
+            name: HyperLED
+            state:
+              - value: 'off'
+                icon: mdi:monitor
+                styles:
+                  card:
+                    - filter: opacity(50%)
+                  icon:
+                    - filter: grayscale(100%)
+            styles:
+              grid:
+                - position: relative
+              custom_fields:
+                notification:
+                  - background-color: |
+                      [[[
+                        if (states['switch.sonoff_s26_1_relay'].state == "on")
+                          return "green";
+                        return "red";
+                      ]]]
+                  - border-radius: 50%
+                  - position: absolute
+                  - left: 60%
+                  - top: 10%
+                  - height: 20px
+                  - width: 20px
+                  - font-size: 8px
+                  - line-height: 20px
+            custom_fields:
+              notification: |
+                [[[ return states['switch.sonoff_s26_1_relay'].state ]]]
+          - type: custom:button-card
+            color: rgb(28, 128, 199)
+            entity: switch.sonoff_s26_2_relay
+            icon: mdi:clock-outline
+            name: Clock
+            state:
+              - value: 'off'
+                icon: mdi:clock-outline
+                styles:
+                  card:
+                    - filter: opacity(50%)
+                  icon:
+                    - filter: grayscale(100%)
+            styles:
+              grid:
+                - position: relative
+              custom_fields:
+                notification:
+                  - background-color: |
+                      [[[
+                        if (states['switch.sonoff_s26_2_relay'].state == "on")
+                          return "green";
+                        return "red";
+                      ]]]
+                  - border-radius: 50%
+                  - position: absolute
+                  - left: 67%
+                  - top: 10%
+                  - height: 20px
+                  - width: 20px
+                  - font-size: 8px
+                  - line-height: 20px
+            custom_fields:
+              notification: |
+                [[[ return states['switch.sonoff_s26_2_relay'].state ]]]
+          - type: custom:button-card
+            color: rgb(28, 128, 199)
+            entity: switch.smart_plug
+            icon: mdi:speaker
+            name: Subwoofer
+            state:
+              - value: 'off'
+                icon: mdi:speaker-off
+                styles:
+                  card:
+                    - filter: opacity(50%)
+                  icon:
+                    - filter: grayscale(100%)
+            styles:
+              grid:
+                - position: relative
+              custom_fields:
+                notification:
+                  - background-color: |
+                      [[[
+                        if (states['switch.smart_plug'].state == "on")
+                          return "green";
+                        return "red";
+                      ]]]
+                  - border-radius: 50%
+                  - position: absolute
+                  - left: 60%
+                  - top: 10%
+                  - height: 20px
+                  - width: 20px
+                  - font-size: 8px
+                  - line-height: 20px
+            custom_fields:
+              notification: |
+                [[[ return states['switch.smart_plug'].state ]]]
           - type: custom:button-card
             template: edge
       - type: horizontal-stack
@@ -289,4 +409,13 @@ views:
               mode: below
       - type: custom:button-card
         template: edge  
+    - type: horizontal-stack
+      cards:
+      - type: custom:button-card
+        template: edge  
+      - type: alarm-panel
+        states:
+          - arm_home
+          - arm_away
+        entity: alarm_control_panel.alarm_panel
 

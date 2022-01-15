@@ -64,6 +64,7 @@ logger:
     requests.packages.urllib3.connectionpool: critical
     homeassistant.components.androidtv: critical
     homeassistant.components.alexa: info
+    homeassistant.components.octoprint: error
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -232,10 +233,6 @@ input_boolean:
   enable_heating_schedules:
     name: Enable heating schedules
     initial: on
-
-sonoff:
-  username: !secret sonoff_email
-  password: !secret sonoff_password
 
 waste_collection_schedule:
   sources:

@@ -2,8 +2,8 @@ office_group:
   name: Office Group
   entities:
     - light.office_light
-    - switch.sonoff_plug1
-    - switch.sonoff_plug2
+    - switch.sonoff_s26_1_relay
+    - switch.sonoff_s26_2_relay
 
 heating_schedules:
   name: Heating Schedules
