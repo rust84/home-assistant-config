@@ -1,4 +1,5 @@
-button_card_templates: !include_dir_merge_named minimalist-templates/
+# Button cards location
+button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
 views:
   - title: Minimalist
     type: custom:horizontal-layout
@@ -27,17 +28,9 @@ views:
             variables:
               ulm_chip_electric_consumption: sensor.electric_consumption_today
               ulm_chip_electric_price: sensor.electric_cost_today
-          - type: custom:button-card
-            template: edge
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            template: edge
           - type: 'custom:button-card'
-            template: custom_card_paddy_welcome_with_weather
-            variables:
-              ulm_custom_card_paddy_welcome_time: sensor.time
-              ulm_custom_card_paddy_welcome_weather_provider: weather.dark_sky
+            template: chip_alarm
+            entity: alarm_control_panel.alarm_panel
           - type: custom:button-card
             template: edge
       - type: horizontal-stack
@@ -48,7 +41,7 @@ views:
             template: card_person
             variables:
               ulm_card_person_entity: person.russell
-              ulm_card_person_use_entity_picture: true
+              ulm_card_person_use_entity_picture: false
               ulm_card_person_zone1: work
           - type: 'custom:button-card'
             template: custom_card_paddy_waste_collection
@@ -72,14 +65,21 @@ views:
           - type: custom:button-card
             template: edge
           - type: 'custom:button-card'
-            template: card_light
+            template: card_light_slider_collapse
             variables:
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
               ulm_card_light_name: Bathroom
             entity: light.bathroom_light
+            name: Bathroom
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_slider_collapse_name: Bedroom
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
+              ulm_card_light_name: Bedroom
             entity: light.bedroom_light
           - type: custom:button-card
             template: edge
@@ -90,12 +90,17 @@ views:
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_slider_collapse_name: Hallway
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
             entity: light.hallway
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_slider_collapse_name: Landing
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
+              ulm_card_light_name: Landing
             entity: light.landing_light
           - type: custom:button-card
             template: edge
@@ -106,12 +111,18 @@ views:
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_slider_collapse_name: Livingroom
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
+              ulm_card_light_name: Lounge
             entity: light.lounge_light
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_slider_collapse_name: Office
+              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_color: true
+              ulm_card_light_enable_horizontal: false
+              ulm_card_light_name: Office
             entity: light.office_light
           - type: custom:button-card
             template: edge
@@ -128,111 +139,18 @@ views:
         cards:
           - type: custom:button-card
             template: edge
-          - type: custom:button-card
-            color: rgb(28, 128, 199)
+          - type: 'custom:button-card'
+            template: card_power_outlet
             entity: switch.sonoff_s26_1_relay
-            icon: mdi:monitor
-            name: HyperLED
-            state:
-              - value: 'off'
-                icon: mdi:monitor
-                styles:
-                  card:
-                    - filter: opacity(50%)
-                  icon:
-                    - filter: grayscale(100%)
-            styles:
-              grid:
-                - position: relative
-              custom_fields:
-                notification:
-                  - background-color: |
-                      [[[
-                        if (states['switch.sonoff_s26_1_relay'].state == "on")
-                          return "green";
-                        return "red";
-                      ]]]
-                  - border-radius: 50%
-                  - position: absolute
-                  - left: 60%
-                  - top: 10%
-                  - height: 20px
-                  - width: 20px
-                  - font-size: 8px
-                  - line-height: 20px
-            custom_fields:
-              notification: |
-                [[[ return states['switch.sonoff_s26_1_relay'].state ]]]
-          - type: custom:button-card
-            color: rgb(28, 128, 199)
+            name: Ambient
+          - type: 'custom:button-card'
+            template: card_power_outlet
             entity: switch.sonoff_s26_2_relay
-            icon: mdi:clock-outline
             name: Clock
-            state:
-              - value: 'off'
-                icon: mdi:clock-outline
-                styles:
-                  card:
-                    - filter: opacity(50%)
-                  icon:
-                    - filter: grayscale(100%)
-            styles:
-              grid:
-                - position: relative
-              custom_fields:
-                notification:
-                  - background-color: |
-                      [[[
-                        if (states['switch.sonoff_s26_2_relay'].state == "on")
-                          return "green";
-                        return "red";
-                      ]]]
-                  - border-radius: 50%
-                  - position: absolute
-                  - left: 67%
-                  - top: 10%
-                  - height: 20px
-                  - width: 20px
-                  - font-size: 8px
-                  - line-height: 20px
-            custom_fields:
-              notification: |
-                [[[ return states['switch.sonoff_s26_2_relay'].state ]]]
-          - type: custom:button-card
-            color: rgb(28, 128, 199)
+          - type: 'custom:button-card'
+            template: card_power_outlet
             entity: switch.smart_plug
-            icon: mdi:speaker
             name: Subwoofer
-            state:
-              - value: 'off'
-                icon: mdi:speaker-off
-                styles:
-                  card:
-                    - filter: opacity(50%)
-                  icon:
-                    - filter: grayscale(100%)
-            styles:
-              grid:
-                - position: relative
-              custom_fields:
-                notification:
-                  - background-color: |
-                      [[[
-                        if (states['switch.smart_plug'].state == "on")
-                          return "green";
-                        return "red";
-                      ]]]
-                  - border-radius: 50%
-                  - position: absolute
-                  - left: 60%
-                  - top: 10%
-                  - height: 20px
-                  - width: 20px
-                  - font-size: 8px
-                  - line-height: 20px
-            custom_fields:
-              notification: |
-                [[[ return states['switch.smart_plug'].state ]]]
           - type: custom:button-card
             template: edge
       - type: horizontal-stack
@@ -246,9 +164,34 @@ views:
             template: edge
       - type: horizontal-stack
         cards:
+          - type: custom:button-card
+            template: edge
+          # - type: 'custom:button-card'
+          #   template: custom_card_paddy_welcome_with_weather
+          #   variables:
+          #     ulm_custom_card_paddy_welcome_time: sensor.time
+          #     ulm_custom_card_paddy_welcome_weather_provider: weather.dark_sky
+          - type: "custom:button-card"
+            template: card_weather
+            entity: weather.dark_sky
+            variables:
+              ulm_card_weather_name: " "
+              ulm_card_weather_primary_info:
+                - wind_speed
+                - precipitation_probability
+              ulm_card_weather_backdrop:
+                fade: true
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
         - type: custom:button-card
           template: edge     
-        - type: thermostat
+        - type: 'custom:button-card'
+          template:
+            - card_thermostat
+          variables:
+            ulm_card_thermostat_sensor: sensor.thermostat_temperature
           entity: climate.heating_controller
         - type: custom:button-card
           template: edge
@@ -297,7 +240,7 @@ views:
           variables:
             ulm_card_graph_color: "var(--google-blue)"
             ulm_card_graph_name: Temperature landing
-            ulm_card_graph_entity: sensor.landing_temperature      
+            ulm_card_graph_entity: sensor.landing_temperature_2   
         - type: 'custom:button-card'
           template: card_graph
           variables:
@@ -338,10 +281,10 @@ views:
           - type: custom:button-card
             template: edge
           - type: 'custom:button-card'
-            template: card_media_player
-            entity: media_player.living_room_nvidia_shield
-            name: Livingroom Nvidia Shield
-            artwork: full-cover
+            template: card_media_player_with_controls
+            variables:
+              ulm_card_media_player_with_controls_name: "Livingroom Shield"
+              ulm_card_media_player_with_controls_entity: media_player.living_room_nvidia_shield
           - type: custom:button-card
             template: edge
 
@@ -382,7 +325,7 @@ views:
       - type: custom:button-card
         template: edge  
       - type: custom:frigate-card
-        camera_entity: camera.driveway
+        camera_entity: camera.office
         live:
           provider: webrtc
           webrtc:

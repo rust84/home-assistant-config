@@ -136,8 +136,8 @@ alexa:
         - sensor.upstairs_temperature
         - sensor.temperature_humidity_sensor_temperature
         - sensor.bme680_temperature
-        - switch.sonoff_plug1
-        - switch.sonoff_plug2
+        - switch.sonoff_s26_1_relay
+        - switch.sonoff_s26_2_relay
     entity_config:
       group.office_lights:
         display_categories: LIGHT
@@ -232,6 +232,17 @@ input_boolean:
   # Heating
   enable_heating_schedules:
     name: Enable heating schedules
+    initial: on
+
+  # Cameras
+  camera_driveway_notify:
+    name: Notify driveway camera
+    initial: on
+  camera_lounge_notify:
+    name: Notify lounge camera
+    initial: on
+  camera_office_notify:
+    name: Notify office camera
     initial: on
 
 waste_collection_schedule:

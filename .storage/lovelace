@@ -396,6 +396,22 @@
                             "type": "custom:mini-media-player",
                             "entity": "media_player.living_room_nvidia_shield",
                             "artwork": "full-cover"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "binary_sensor.gpioinput",
+                                "binary_sensor.sys_connectivity_2",
+                                "sensor.sys_free_memory_2",
+                                "sensor.sys_ip_2",
+                                "sensor.sys_rssi_2",
+                                "sensor.sys_uptime_2",
+                                "sensor.gatewaypilight_2",
+                                "sensor.gatewayrf",
+                                "sensor.gatewayrf2",
+                                "sensor.gatewaysrfb"
+                            ],
+                            "title": "OpenMQTTGateway_SRFB_Direct"
                         }
                     ]
                 },
@@ -487,6 +503,15 @@
                                 },
                                 {
                                     "entity": "sensor.anyone_home"
+                                },
+                                {
+                                    "entity": "input_boolean.camera_driveway_notify"
+                                },
+                                {
+                                    "entity": "input_boolean.camera_lounge_notify"
+                                },
+                                {
+                                    "entity": "input_boolean.camera_office_notify"
                                 }
                             ]
                         }
