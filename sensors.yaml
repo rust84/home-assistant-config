@@ -54,3 +54,5 @@
   display_options:
     - 'time'
     - 'date'
+- platform: rflink
+  automatic_add: false

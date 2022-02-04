@@ -1,7 +1,7 @@
 # Button cards location
 button_card_templates: !include_dir_merge_named "custom_components/ui_lovelace_minimalist/__ui_minimalist__/ulm_templates/"
 views:
-  - title: Minimalist
+  - title: Home
     type: custom:horizontal-layout
     layout_type: custom:horizontal-layout
     layout:
@@ -43,6 +43,12 @@ views:
               ulm_card_person_entity: person.russell
               ulm_card_person_use_entity_picture: false
               ulm_card_person_zone1: work
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
           - type: 'custom:button-card'
             template: custom_card_paddy_waste_collection
             entity: sensor.waste_collection_household
@@ -159,6 +165,27 @@ views:
             template: edge
           - type: custom:button-card
             template: title
+            name: Media
+          - type: custom:button-card
+            template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: 'custom:button-card'
+            template: card_media_player_with_controls
+            variables:
+              ulm_card_media_player_with_controls_name: "Livingroom Shield"
+              ulm_card_media_player_with_controls_entity: media_player.living_room_nvidia_shield
+          - type: custom:button-card
+            template: edge
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: title
             name: Climate
           - type: custom:button-card
             template: edge
@@ -267,28 +294,7 @@ views:
             ulm_card_graph_entity: sensor.temperature_humidity_sensor_humidity      
         - type: custom:button-card
           template: edge
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            template: edge
-          - type: custom:button-card
-            template: title
-            name: Media
-          - type: custom:button-card
-            template: edge
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            template: edge
-          - type: 'custom:button-card'
-            template: card_media_player_with_controls
-            variables:
-              ulm_card_media_player_with_controls_name: "Livingroom Shield"
-              ulm_card_media_player_with_controls_entity: media_player.living_room_nvidia_shield
-          - type: custom:button-card
-            template: edge
-
-  - title: Minimalist page 2
+  - title: Cameras
     type: custom:horizontal-layout
     layout_type: custom:horizontal-layout
     layout:
@@ -352,13 +358,3 @@ views:
               mode: below
       - type: custom:button-card
         template: edge  
-    - type: horizontal-stack
-      cards:
-      - type: custom:button-card
-        template: edge  
-      - type: alarm-panel
-        states:
-          - arm_home
-          - arm_away
-        entity: alarm_control_panel.alarm_panel
-

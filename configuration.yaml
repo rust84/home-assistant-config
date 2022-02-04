@@ -59,12 +59,13 @@ influxdb:
 system_health:
 
 logger:
-  default: info
+  default: error
   logs:
     requests.packages.urllib3.connectionpool: critical
-    homeassistant.components.androidtv: critical
-    homeassistant.components.alexa: info
-    homeassistant.components.octoprint: error
+    # homeassistant.components.androidtv: error
+    # homeassistant.components.alexa: error
+    # rflink: debug
+    # homeassistant.components.rflink: debug
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -107,6 +108,8 @@ notify:
     api_key: !secret pushbullet_apikey
     
 light:
+  - platform: rflink
+    automatic_add: true
   - platform: mqtt
     schema: json
     name: 'Hallway'
@@ -250,3 +253,16 @@ waste_collection_schedule:
     - name: ics
       args:
         file: bins.ics
+
+rflink:
+  port: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+  wait_for_ack: false
+
+# switch:
+#   platform: rflink
+#   devices:
+#     ev1527_00bae8_08: {}
+#     eurodomest_0f4517_07: {}
+#     eurodomest_0f4517_06: {}
+#     eurodomest_0f4517_05: {}
+#     friedland_57399aa6_1: {} # Door bell!

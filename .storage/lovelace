@@ -393,11 +393,6 @@
                             "title": "Environment"
                         },
                         {
-                            "type": "custom:mini-media-player",
-                            "entity": "media_player.living_room_nvidia_shield",
-                            "artwork": "full-cover"
-                        },
-                        {
                             "type": "entities",
                             "entities": [
                                 "binary_sensor.gpioinput",
@@ -411,7 +406,7 @@
                                 "sensor.gatewayrf2",
                                 "sensor.gatewaysrfb"
                             ],
-                            "title": "OpenMQTTGateway_SRFB_Direct"
+                            "title": "OpenMQTTGateway"
                         }
                     ]
                 },
@@ -514,6 +509,15 @@
                                     "entity": "input_boolean.camera_office_notify"
                                 }
                             ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "light.friedland_57399aa6_1"
+                                }
+                            ],
+                            "title": "Remote"
                         }
                     ]
                 },
