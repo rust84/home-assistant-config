@@ -152,6 +152,12 @@
                                 {
                                     "entity": "sensor.electric_cost_today",
                                     "name": "Electricity Cost Today"
+                                },
+                                {
+                                    "entity": "sensor.ovo_last_electricity_cost"
+                                },
+                                {
+                                    "entity": "sensor.ovo_last_electricity_reading"
                                 }
                             ],
                             "title": "Electricity"
@@ -514,10 +520,12 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "light.friedland_57399aa6_1"
+                                    "entity": "light.friedland_57399aa6_1",
+                                    "name": "Ring",
+                                    "icon": "mdi:bell"
                                 }
                             ],
-                            "title": "Remote"
+                            "title": "Door"
                         }
                     ]
                 },
