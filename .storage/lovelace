@@ -124,13 +124,6 @@
                         },
                         {
                             "type": "custom:frigate-card",
-                            "camera_entity": "camera.driveway",
-                            "live": {
-                                "provider": "webrtc",
-                                "webrtc": {
-                                    "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
-                                }
-                            },
                             "event_viewer": {
                                 "controls": {
                                     "thumbnails": {
@@ -138,6 +131,15 @@
                                     }
                                 }
                             },
+                            "cameras": [
+                                {
+                                    "camera_entity": "camera.driveway",
+                                    "webrtc": {
+                                        "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
+                                    },
+                                    "live_provider": "webrtc"
+                                }
+                            ],
                             "view_layout": {
                                 "column": 4
                             }

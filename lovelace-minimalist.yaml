@@ -26,8 +26,8 @@ views:
           - type: 'custom:button-card'
             template: chip_power_consumption
             variables:
-              ulm_chip_electric_consumption: sensor.electric_consumption_today
-              ulm_chip_electric_price: sensor.electric_cost_today
+              ulm_chip_electric_consumption: sensor.ovo_last_electricity_reading
+              ulm_chip_electric_price: sensor.ovo_last_electricity_cost
           - type: 'custom:button-card'
             template: chip_alarm
             entity: alarm_control_panel.alarm_panel
@@ -315,11 +315,12 @@ views:
       - type: custom:button-card
         template: edge  
       - type: custom:frigate-card
-        camera_entity: camera.driveway
-        live:
-          provider: webrtc
-          webrtc:
-            url: rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main
+        cameras:
+          - camera_entity: camera.driveway
+            name: driveway
+            webrtc:
+              url: rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main
+              live_provider: webrtc
         event_viewer:
           controls:
             thumbnails:
@@ -331,11 +332,11 @@ views:
       - type: custom:button-card
         template: edge  
       - type: custom:frigate-card
-        camera_entity: camera.office
-        live:
-          provider: webrtc
-          webrtc:
-            url: rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main
+        cameras:
+          - camera_entity: camera.office
+            webrtc:
+              url: rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main
+              live_provider: webrtc
         event_viewer:
           controls:
             thumbnails:
@@ -347,11 +348,11 @@ views:
       - type: custom:button-card
         template: edge  
       - type: custom:frigate-card
-        camera_entity: camera.driveway
-        live:
-          provider: webrtc
-          webrtc:
-            url: rtsp://rtsp:frigate1234@10.30.0.111:554/av_stream/ch0
+        cameras:
+          - camera_entity: camera.lounge
+            webrtc:
+              url: rtsp://rtsp:frigate1234@10.30.0.111:554/av_stream/ch0
+              live_provider: webrtc
         event_viewer:
           controls:
             thumbnails:
