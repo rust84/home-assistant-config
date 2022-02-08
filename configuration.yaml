@@ -64,8 +64,8 @@ logger:
     requests.packages.urllib3.connectionpool: critical
     # homeassistant.components.androidtv: error
     # homeassistant.components.alexa: error
-    # rflink: debug
-    # homeassistant.components.rflink: debug
+    rflink: debug
+    homeassistant.components.rflink: debug
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -255,14 +255,27 @@ waste_collection_schedule:
         file: bins.ics
 
 rflink:
-  port: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
-  wait_for_ack: false
+  host: 10.20.0.86
+  port: 23
+  tcp_keepalive_idle_timer: 600
+  # port: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+  # wait_for_ack: false
 
-# switch:
-#   platform: rflink
-#   devices:
-#     ev1527_00bae8_08: {}
-#     eurodomest_0f4517_07: {}
-#     eurodomest_0f4517_06: {}
-#     eurodomest_0f4517_05: {}
-#     friedland_57399aa6_1: {} # Door bell!
+switch:
+  platform: rflink
+  devices:
+    ev1527_00bae8_08:
+      name: remote_button_b
+      fire_event: true
+    eurodomest_0f4517_07:
+      name: remote_button_c
+      fire_event: true
+    eurodomest_0f4517_06:
+      name: remote_button_a
+      fire_event: true
+    eurodomest_0f4517_05:
+      name: remote_button_d
+      fire_event: true
+    friedland_57399aa6_1:
+      fire_event: true
+

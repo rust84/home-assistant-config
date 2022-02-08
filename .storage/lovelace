@@ -148,14 +148,6 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.electric_consumption_today",
-                                    "name": "Daily Electricity"
-                                },
-                                {
-                                    "entity": "sensor.electric_cost_today",
-                                    "name": "Electricity Cost Today"
-                                },
-                                {
                                     "entity": "sensor.ovo_last_electricity_cost"
                                 },
                                 {
@@ -522,12 +514,24 @@
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "light.friedland_57399aa6_1",
-                                    "name": "Ring",
+                                    "entity": "switch.friedland_57399aa6_1",
+                                    "name": "Door bell",
                                     "icon": "mdi:bell"
+                                },
+                                {
+                                    "entity": "switch.remote_button_a"
+                                },
+                                {
+                                    "entity": "switch.remote_button_b"
+                                },
+                                {
+                                    "entity": "switch.remote_button_c"
+                                },
+                                {
+                                    "entity": "switch.remote_button_c"
                                 }
                             ],
-                            "title": "Door"
+                            "title": "RFLink"
                         }
                     ]
                 },
