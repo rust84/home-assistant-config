@@ -64,8 +64,8 @@ logger:
     requests.packages.urllib3.connectionpool: critical
     # homeassistant.components.androidtv: error
     # homeassistant.components.alexa: error
-    rflink: debug
-    homeassistant.components.rflink: debug
+    # rflink: debug
+    # homeassistant.components.rflink: debug
 
 frontend:
   themes: !include_dir_merge_named themes
@@ -109,7 +109,7 @@ notify:
     
 light:
   - platform: rflink
-    automatic_add: true
+    automatic_add: false
   - platform: mqtt
     schema: json
     name: 'Hallway'

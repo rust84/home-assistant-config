@@ -173,10 +173,10 @@ views:
           - type: custom:button-card
             template: edge
           - type: 'custom:button-card'
-            template: card_media_player_with_controls
+            template: card_media_player_controls
             variables:
-              ulm_card_media_player_with_controls_name: "Livingroom Shield"
-              ulm_card_media_player_with_controls_entity: media_player.living_room_nvidia_shield
+              ulm_card_media_player_controls_name: "Livingroom Shield"
+              ulm_card_media_player_controls_entity: media_player.living_room_nvidia_shield
           - type: custom:button-card
             template: edge
 

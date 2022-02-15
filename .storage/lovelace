@@ -34,7 +34,7 @@
                                     "name": "server room"
                                 },
                                 {
-                                    "entity": "sensor.landing_temperature",
+                                    "entity": "sensor.landing_temperature_2",
                                     "name": "landing"
                                 },
                                 {
