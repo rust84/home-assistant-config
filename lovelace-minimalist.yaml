@@ -73,7 +73,7 @@ views:
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_slider: false
               ulm_card_light_enable_color: true
               ulm_card_light_enable_horizontal: false
               ulm_card_light_name: Bathroom
@@ -82,7 +82,7 @@ views:
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_slider: false
               ulm_card_light_enable_color: true
               ulm_card_light_enable_horizontal: false
               ulm_card_light_name: Bedroom
@@ -172,14 +172,16 @@ views:
         cards:
           - type: custom:button-card
             template: edge
-          - type: 'custom:button-card'
-            template: card_media_player_controls
-            variables:
-              ulm_card_media_player_controls_name: "Livingroom Shield"
-              ulm_card_media_player_controls_entity: media_player.living_room_nvidia_shield
-          - type: custom:button-card
-            template: edge
-
+      - type: "custom:button-card"
+        template: card_media_player
+        variables:
+          ulm_card_media_player_enable_art: true
+          ulm_card_media_player_enable_controls: true
+          ulm_card_media_player_enable_popup: true
+        entity: media_player.living_room_nvidia_shield
+        name: Livingroom Nvidia Shield
+      - type: custom:button-card
+        template: edge
       - type: horizontal-stack
         cards:
           - type: custom:button-card
@@ -193,11 +195,6 @@ views:
         cards:
           - type: custom:button-card
             template: edge
-          # - type: 'custom:button-card'
-          #   template: custom_card_paddy_welcome_with_weather
-          #   variables:
-          #     ulm_custom_card_paddy_welcome_time: sensor.time
-          #     ulm_custom_card_paddy_welcome_weather_provider: weather.dark_sky
           - type: "custom:button-card"
             template: card_weather
             entity: weather.dark_sky
@@ -214,12 +211,14 @@ views:
         cards:
         - type: custom:button-card
           template: edge     
-        - type: 'custom:button-card'
-          template:
-            - card_thermostat
-          variables:
-            ulm_card_thermostat_sensor: sensor.thermostat_temperature
+        - type: "custom:button-card"
+          template: card_thermostat
           entity: climate.heating_controller
+          variables:
+            ulm_card_thermostat_enable_collapse: true
+            ulm_card_thermostat_enable_controls: true
+            ulm_card_thermostat_enable_display_temperature: true
+            ulm_card_thermostat_enable_popup: true
         - type: custom:button-card
           template: edge
       - type: horizontal-stack
