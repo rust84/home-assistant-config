@@ -100,8 +100,9 @@
                                     "name": "Lounge"
                                 },
                                 {
-                                    "entity": "light.office_light",
-                                    "name": "Office"
+                                    "entity": "switch.office_light_switch",
+                                    "name": "Office",
+                                    "icon": "mdi:lightbulb"
                                 }
                             ],
                             "title": "Light",
@@ -134,10 +135,10 @@
                             "cameras": [
                                 {
                                     "camera_entity": "camera.driveway",
-                                    "webrtc": {
+                                    "live_provider": "webrtc-card",
+                                    "webrtc_card": {
                                         "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
-                                    },
-                                    "live_provider": "webrtc"
+                                    }
                                 }
                             ],
                             "view_layout": {
@@ -395,16 +396,30 @@
                         {
                             "type": "entities",
                             "entities": [
-                                "binary_sensor.gpioinput",
-                                "binary_sensor.sys_connectivity_2",
-                                "sensor.sys_free_memory_2",
-                                "sensor.sys_ip_2",
-                                "sensor.sys_rssi_2",
-                                "sensor.sys_uptime_2",
-                                "sensor.gatewaypilight_2",
-                                "sensor.gatewayrf",
-                                "sensor.gatewayrf2",
-                                "sensor.gatewaysrfb"
+                                {
+                                    "entity": "binary_sensor.gpioinput"
+                                },
+                                {
+                                    "entity": "binary_sensor.sys_connectivity_2"
+                                },
+                                {
+                                    "entity": "sensor.sys_free_memory_2"
+                                },
+                                {
+                                    "entity": "sensor.sys_ip_2"
+                                },
+                                {
+                                    "entity": "sensor.sys_rssi_2"
+                                },
+                                {
+                                    "entity": "sensor.sys_uptime_2"
+                                },
+                                {
+                                    "entity": "sensor.gatewaypilight_2"
+                                },
+                                {
+                                    "entity": "sensor.gatewayrf"
+                                }
                             ],
                             "title": "OpenMQTTGateway"
                         }

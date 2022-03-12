@@ -125,11 +125,11 @@ views:
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
-              ulm_card_light_enable_slider: true
+              ulm_card_light_enable_slider: false
               ulm_card_light_enable_color: true
               ulm_card_light_enable_horizontal: false
               ulm_card_light_name: Office
-            entity: light.office_light
+            entity: switch.office_light_switch
           - type: custom:button-card
             template: edge
       - type: horizontal-stack
