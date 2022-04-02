@@ -103,6 +103,9 @@
                                     "entity": "switch.office_light_switch",
                                     "name": "Office",
                                     "icon": "mdi:lightbulb"
+                                },
+                                {
+                                    "entity": "light.office_light"
                                 }
                             ],
                             "title": "Light",
@@ -392,36 +395,6 @@
                                 }
                             ],
                             "title": "Environment"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.gpioinput"
-                                },
-                                {
-                                    "entity": "binary_sensor.sys_connectivity_2"
-                                },
-                                {
-                                    "entity": "sensor.sys_free_memory_2"
-                                },
-                                {
-                                    "entity": "sensor.sys_ip_2"
-                                },
-                                {
-                                    "entity": "sensor.sys_rssi_2"
-                                },
-                                {
-                                    "entity": "sensor.sys_uptime_2"
-                                },
-                                {
-                                    "entity": "sensor.gatewaypilight_2"
-                                },
-                                {
-                                    "entity": "sensor.gatewayrf"
-                                }
-                            ],
-                            "title": "OpenMQTTGateway"
                         }
                     ]
                 },

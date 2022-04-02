@@ -89,7 +89,7 @@ sensor: !include sensors.yaml
 scene: !include scenes.yaml
 
 mqtt:
-  broker: emqx-headless.default.svc
+  broker: emqx-headless.home.svc
   port: 1883
   client_id: home-assistant
   username: mqtt
