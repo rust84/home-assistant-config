@@ -50,7 +50,7 @@ recorder:
       - device_tracker
 
 influxdb:
-  host: influxdb.monitoring.svc.cluster.local
+  host: influxdb.home.svc.cluster.local
   port: 8086
   database: home_assistant
   username: admin
