@@ -112,10 +112,6 @@
                             "type": "entities"
                         },
                         {
-                            "type": "thermostat",
-                            "entity": "climate.heating_controller"
-                        },
-                        {
                             "type": "gauge",
                             "entity": "sensor.particulate_matter_2_5um_concentration",
                             "min": 0,
@@ -125,6 +121,10 @@
                                 "yellow": 30,
                                 "red": 100
                             }
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.heating_controller"
                         },
                         {
                             "type": "custom:frigate-card",
@@ -149,13 +149,18 @@
                             }
                         },
                         {
+                            "type": "thermostat",
+                            "entity": "climate.midea_ac_42880953513406",
+                            "name": "Aircon"
+                        },
+                        {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.ovo_last_electricity_cost"
+                                    "entity": "sensor.electric_consumption_today"
                                 },
                                 {
-                                    "entity": "sensor.ovo_last_electricity_reading"
+                                    "entity": "sensor.electric_cost_today"
                                 }
                             ],
                             "title": "Electricity"
@@ -448,16 +453,7 @@
                                     "entity": "binary_sensor.driveway_person_motion"
                                 },
                                 {
-                                    "entity": "sensor.double_take_russell"
-                                },
-                                {
-                                    "entity": "sensor.double_take_unknown"
-                                },
-                                {
-                                    "entity": "sensor.double_take_office"
-                                },
-                                {
-                                    "entity": "sensor.double_take_lounge"
+                                    "entity": "binary_sensor.office_person_motion"
                                 }
                             ],
                             "title": "Sensors",

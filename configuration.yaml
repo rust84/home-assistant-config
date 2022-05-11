@@ -280,3 +280,9 @@ switch:
     friedland_57399aa6_1:
       fire_event: true
 
+climate:
+  - platform: midea_ac
+    host: 192.168.1.20
+    id: 42880953513406
+    token: !secret midea_token
+    k1:  !secret midea_key

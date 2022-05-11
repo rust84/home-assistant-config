@@ -21,13 +21,13 @@ views:
           - type: 'custom:button-card'
             template: chip_presence_detection
             variables:
-              ulm_chip_presence_counter_residents: sensor.double_take_office
-              ulm_chip_presence_counter_guests: sensor.double_take_lounge
+              ulm_chip_presence_counter_residents: sensor.office_person
+              ulm_chip_presence_counter_guests: sensor.driveway_person
           - type: 'custom:button-card'
             template: chip_power_consumption
             variables:
-              ulm_chip_electric_consumption: sensor.ovo_last_electricity_reading
-              ulm_chip_electric_price: sensor.ovo_last_electricity_cost
+              ulm_chip_electric_consumption: sensor.electric_consumption_today
+              ulm_chip_electric_price: sensor.electric_cost_today
           - type: 'custom:button-card'
             template: chip_alarm
             entity: alarm_control_panel.alarm_panel
@@ -210,7 +210,15 @@ views:
       - type: horizontal-stack
         cards:
         - type: custom:button-card
-          template: edge     
+          template: edge
+        - type: "custom:button-card"
+          template: card_thermostat
+          entity: climate.midea_ac_42880953513406
+          variables:
+            ulm_card_thermostat_enable_collapse: true
+            ulm_card_thermostat_enable_controls: true
+            ulm_card_thermostat_enable_display_temperature: true
+            ulm_card_thermostat_enable_popup: true  
         - type: "custom:button-card"
           template: card_thermostat
           entity: climate.heating_controller
