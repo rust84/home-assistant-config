@@ -102,10 +102,6 @@ mqtt:
   will_message:
     topic: 'homeassistant/status'
     payload: 'offline'
-
-notify:
-  - platform: pushbullet
-    api_key: !secret pushbullet_apikey
     
 light:
   - platform: rflink
