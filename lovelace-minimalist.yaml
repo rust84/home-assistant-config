@@ -5,19 +5,20 @@ views:
     type: custom:horizontal-layout
     layout_type: custom:horizontal-layout
     layout:
-      width: 400
+      width: 300
       max_cols: 1
     cards:
       - type: horizontal-stack
         cards:
           - type: custom:button-card
             template: edge
-          - type: custom:button-card
-            template: chip_temperature
+          - type: 'custom:button-card'
+            template: chip_back
             variables:
-              ulm_chip_temperature_inside: sensor.thermostat_temperature
-              ulm_chip_temperature_outside: sensor.dark_sky_temperature
-              ulm_chip_temperature_weather: weather.dark_sky
+              ulm_chip_back_path: /ui-lovelace-minimalist/home
+          - type: 'custom:button-card'
+            template: chip_alarm
+            entity: alarm_control_panel.alarm_panel
           - type: 'custom:button-card'
             template: chip_presence_detection
             variables:
@@ -28,11 +29,21 @@ views:
             variables:
               ulm_chip_electric_consumption: sensor.electric_consumption_today
               ulm_chip_electric_price: sensor.electric_cost_today
-          - type: 'custom:button-card'
-            template: chip_alarm
-            entity: alarm_control_panel.alarm_panel
           - type: custom:button-card
             template: edge
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: edge
+          - type: custom:button-card
+            template: chip_temperature
+            variables:
+              ulm_chip_temperature_inside: sensor.thermostat_temperature
+              ulm_chip_temperature_outside: sensor.dark_sky_temperature
+              ulm_chip_temperature_weather: weather.dark_sky
+          - type: custom:button-card
+            template: edge
+
       - type: horizontal-stack
         cards:
           - type: custom:button-card
@@ -301,68 +312,68 @@ views:
             ulm_card_graph_entity: sensor.temperature_humidity_sensor_humidity      
         - type: custom:button-card
           template: edge
-  - title: Cameras
-    type: custom:horizontal-layout
-    layout_type: custom:horizontal-layout
-    layout:
-      width: 400
-      max_cols: 1
-    cards:
-    - type: horizontal-stack
-      cards:
-        - type: custom:button-card
-          template: edge
-        - type: custom:button-card
-          template: title
-          name: Cameras
-        - type: custom:button-card
-          template: edge
-    - type: horizontal-stack
-      cards:
-      - type: custom:button-card
-        template: edge  
-      - type: custom:frigate-card
-        cameras:
-          - camera_entity: camera.driveway
-            name: driveway
-            webrtc:
-              url: rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main
-              live_provider: webrtc
-        event_viewer:
-          controls:
-            thumbnails:
-              mode: below
-      - type: custom:button-card
-        template: edge
-    - type: horizontal-stack
-      cards:
-      - type: custom:button-card
-        template: edge  
-      - type: custom:frigate-card
-        cameras:
-          - camera_entity: camera.office
-            webrtc:
-              url: rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main
-              live_provider: webrtc
-        event_viewer:
-          controls:
-            thumbnails:
-              mode: below
-      - type: custom:button-card
-        template: edge
-    - type: horizontal-stack
-      cards:
-      - type: custom:button-card
-        template: edge  
-      - type: custom:frigate-card
-        cameras:
-          - camera_entity: camera.lounge
-            webrtc:
-              url: rtsp://rtsp:frigate1234@10.30.0.111:554/av_stream/ch0
-              live_provider: webrtc
-        event_viewer:
-          controls:
-            thumbnails:
-              mode: below
-      - type: custom:button-card
-        template: edge  
+  # - title: Cameras
+  #   type: custom:horizontal-layout
+  #   layout_type: custom:horizontal-layout
+  #   layout:
+  #     width: 400
+  #     max_cols: 1
+  #   cards:
+  #   - type: horizontal-stack
+  #     cards:
+  #       - type: custom:button-card
+  #         template: edge
+  #       - type: custom:button-card
+  #         template: title
+  #         name: Cameras
+  #       - type: custom:button-card
+  #         template: edge
+  #   - type: horizontal-stack
+  #     cards:
+  #     - type: custom:button-card
+  #       template: edge  
+  #     - type: custom:frigate-card
+  #       cameras:
+  #         - camera_entity: camera.driveway
+  #           name: driveway
+  #           webrtc:
+  #             url: rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main
+  #             live_provider: webrtc
+  #       event_viewer:
+  #         controls:
+  #           thumbnails:
+  #             mode: below
+  #     - type: custom:button-card
+  #       template: edge
+  #   - type: horizontal-stack
+  #     cards:
+  #     - type: custom:button-card
+  #       template: edge  
+  #     - type: custom:frigate-card
+  #       cameras:
+  #         - camera_entity: camera.office
+  #           webrtc:
+  #             url: rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main
+  #             live_provider: webrtc
+  #       event_viewer:
+  #         controls:
+  #           thumbnails:
+  #             mode: below
+  #     - type: custom:button-card
+  #       template: edge
+  #   - type: horizontal-stack
+  #     cards:
+  #     - type: custom:button-card
+  #       template: edge  
+  #     - type: custom:frigate-card
+  #       cameras:
+  #         - camera_entity: camera.lounge
+  #           webrtc:
+  #             url: rtsp://rtsp:frigate1234@10.30.0.111:554/av_stream/ch0
+  #             live_provider: webrtc
+  #       event_viewer:
+  #         controls:
+  #           thumbnails:
+  #             mode: below
+  #     - type: custom:button-card
+  #       template: edge  

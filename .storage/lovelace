@@ -400,6 +400,36 @@
                                 }
                             ],
                             "title": "Environment"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.vibration_action",
+                                    "name": "Action"
+                                },
+                                {
+                                    "entity": "sensor.vibration_angle_x",
+                                    "name": "Angle x"
+                                },
+                                {
+                                    "entity": "sensor.vibration_angle_y",
+                                    "name": "Angle y"
+                                },
+                                {
+                                    "entity": "sensor.vibration_angle_z",
+                                    "name": "Angle z"
+                                },
+                                {
+                                    "entity": "sensor.vibration_strength",
+                                    "name": "Strength"
+                                },
+                                {
+                                    "entity": "binary_sensor.vibration_vibration",
+                                    "name": "Vibration"
+                                }
+                            ],
+                            "title": "vibration"
                         }
                     ]
                 },
