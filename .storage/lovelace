@@ -461,6 +461,12 @@
                                     "entity": "binary_sensor.office_contact_sensor_contact"
                                 },
                                 {
+                                    "entity": "binary_sensor.bedroom_contact_sensor_contact"
+                                },
+                                {
+                                    "entity": "binary_sensor.server_room_contact_sensor_contact"
+                                },
+                                {
                                     "entity": "binary_sensor.smoke_detector_office_smoke",
                                     "name": "Office - Smoke",
                                     "icon": "mdi:smoke-detector"
@@ -511,9 +517,6 @@
                                     "entity": "input_boolean.notify_alarm_triggered"
                                 },
                                 {
-                                    "entity": "sensor.anyone_home"
-                                },
-                                {
                                     "entity": "input_boolean.camera_driveway_notify"
                                 },
                                 {
@@ -521,7 +524,30 @@
                                 },
                                 {
                                     "entity": "input_boolean.camera_office_notify"
+                                },
+                                {
+                                    "entity": "sensor.anyone_home"
                                 }
+                            ]
+                        },
+                        {
+                            "type": "logbook",
+                            "entities": [
+                                "binary_sensor.lounge_motion_sensor_occupancy",
+                                "binary_sensor.landing_motion",
+                                "binary_sensor.bedroom_contact_sensor_contact",
+                                "binary_sensor.front_door_contact_sensor_contact",
+                                "binary_sensor.lounge_contact_sensor_contact",
+                                "binary_sensor.office_contact_sensor_contact",
+                                "binary_sensor.kitchen_contact_sensor_contact",
+                                "binary_sensor.server_room_contact_sensor_contact",
+                                "binary_sensor.office_motion_sensor_occupancy",
+                                "camera.office_person",
+                                "sensor.lounge_person",
+                                "binary_sensor.office_person_motion",
+                                "sensor.office_person",
+                                "camera.lounge_person",
+                                "binary_sensor.driveway_person_motion"
                             ]
                         },
                         {

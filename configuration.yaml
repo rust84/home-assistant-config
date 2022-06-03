@@ -53,9 +53,10 @@ recorder:
       - device_tracker
     entities:
       - sensor.date
-      - sensor.time 
+      - sensor.time
+      - weather.dark_sky
     entity_globs:
-      - weather.*
+      - remote_*
 
 influxdb:
   host: influxdb.home.svc.cluster.local
