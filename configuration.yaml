@@ -1,12 +1,9 @@
 homeassistant:
   auth_providers:
     - type: homeassistant
-    - type: trusted_networks
-      trusted_networks:
-        - 10.43.0.0/16
-        - 10.20.0.52/32
-    # - type: legacy_api_password
-    #   api_password: !secret http_password
+  #   - type: trusted_networks
+  #     trusted_networks:
+  #       - 10.20.0.52/32
   customize:
     sensor.humidity:
       icon: mdi:water-percent
@@ -38,9 +35,13 @@ http:
   login_attempts_threshold: 5
   use_x_forwarded_for: true
   trusted_proxies:
-    - "0.0.0.0/0"
+    - 10.244.0.0/16
     - 127.0.0.1
     - ::1
+
+auth_header:
+  username_header: X-authentik-username
+  debug: false
 
 recorder:
   purge_keep_days: 5
@@ -62,6 +63,7 @@ logger:
   default: error
   logs:
     requests.packages.urllib3.connectionpool: critical
+    custom_components.auth_header: warning
     # homeassistant.components.androidtv: error
     # homeassistant.components.alexa: error
     # rflink: debug
