@@ -102,21 +102,21 @@ mqtt:
   will_message:
     topic: 'homeassistant/status'
     payload: 'offline'
-    
+  light:
+    - name: Hallway
+      schema: json
+      state_topic: 'AiLight-188593'
+      command_topic: 'AiLight-188593/set'
+      color_temp: true
+      brightness: true
+      rgb: true
+      white_value: true
+      effect: false
+      optimistic: false
+
 light:
   - platform: rflink
     automatic_add: false
-  - platform: mqtt
-    schema: json
-    name: 'Hallway'
-    state_topic: 'AiLight-188593'
-    command_topic: 'AiLight-188593/set'
-    color_temp: true
-    brightness: true
-    rgb: true
-    white_value: true
-    effect: false
-    optimistic: false
 
 alexa:
   smart_home:

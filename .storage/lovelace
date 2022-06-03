@@ -22,12 +22,12 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "sensor.thermostat_temperature",
-                                    "name": "livingroom"
-                                },
-                                {
                                     "entity": "sensor.bme680_temperature",
                                     "name": "office"
+                                },
+                                {
+                                    "entity": "sensor.thermostat_temperature",
+                                    "name": "livingroom"
                                 },
                                 {
                                     "entity": "sensor.upstairs_temperature",
