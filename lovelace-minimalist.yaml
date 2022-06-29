@@ -50,6 +50,7 @@ views:
             template: edge
           - type: 'custom:button-card'
             template: card_person
+            entity: person.russell
             variables:
               ulm_card_person_entity: person.russell
               ulm_card_person_use_entity_picture: false
