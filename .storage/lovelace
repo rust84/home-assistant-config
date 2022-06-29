@@ -101,11 +101,12 @@
                                 },
                                 {
                                     "entity": "switch.office_light_switch",
-                                    "name": "Office",
+                                    "name": "Office Light Switch",
                                     "icon": "mdi:lightbulb"
                                 },
                                 {
-                                    "entity": "light.office_light"
+                                    "entity": "light.office_light",
+                                    "name": "Office Light"
                                 }
                             ],
                             "title": "Light",
@@ -490,6 +491,9 @@
                                 },
                                 {
                                     "entity": "binary_sensor.office_person_motion"
+                                },
+                                {
+                                    "entity": "sensor.anyone_home"
                                 }
                             ],
                             "title": "Sensors",
@@ -524,11 +528,9 @@
                                 },
                                 {
                                     "entity": "input_boolean.camera_office_notify"
-                                },
-                                {
-                                    "entity": "sensor.anyone_home"
                                 }
-                            ]
+                            ],
+                            "title": "Settings"
                         },
                         {
                             "type": "logbook",
@@ -549,29 +551,6 @@
                                 "camera.lounge_person",
                                 "binary_sensor.driveway_person_motion"
                             ]
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "switch.friedland_57399aa6_1",
-                                    "name": "Door bell",
-                                    "icon": "mdi:bell"
-                                },
-                                {
-                                    "entity": "switch.remote_button_a"
-                                },
-                                {
-                                    "entity": "switch.remote_button_b"
-                                },
-                                {
-                                    "entity": "switch.remote_button_c"
-                                },
-                                {
-                                    "entity": "switch.remote_button_c"
-                                }
-                            ],
-                            "title": "RFLink"
                         }
                     ]
                 },
