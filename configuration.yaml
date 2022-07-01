@@ -227,6 +227,8 @@ input_boolean:
   auto_disarm_alarm_when_home:
     name: Automatically disarm alarm when someone comes home
     initial: on
+  minimalist_ui:
+    name: Minimalist UI
   
   # notifications
   notify_alarm_armed:
@@ -292,3 +294,21 @@ climate:
     id: 42880953513406
     token: !secret midea_token
     k1:  !secret midea_key
+
+input_select:
+  minimalist_ui_switch:
+    name: Select popup/view
+    options:
+      - light 1
+      - light 2
+      - light 3
+      - light 4
+      - light 5
+      - light 6
+      - mediaplayer 1
+      - mediaplayer 2
+      - climate 1
+      - climate 2
+      - power 1
+      - power 2
+      - livingroom

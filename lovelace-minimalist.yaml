@@ -82,6 +82,7 @@ views:
         cards:
           - type: custom:button-card
             template: edge
+          # Bathroom
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
@@ -91,6 +92,7 @@ views:
               ulm_card_light_name: Bathroom
             entity: light.bathroom_light
             name: Bathroom
+          # Bedroom
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
@@ -105,6 +107,7 @@ views:
         cards:
           - type: custom:button-card
             template: edge
+          # Hallway
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
@@ -112,6 +115,7 @@ views:
               ulm_card_light_enable_color: true
               ulm_card_light_enable_horizontal: false
             entity: light.hallway
+          # Landing
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
@@ -126,6 +130,7 @@ views:
         cards:
           - type: custom:button-card
             template: edge
+          # Lounge
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:
@@ -134,6 +139,7 @@ views:
               ulm_card_light_enable_horizontal: false
               ulm_card_light_name: Lounge
             entity: light.lounge_light
+          # Office
           - type: 'custom:button-card'
             template: card_light_slider_collapse
             variables:

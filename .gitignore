@@ -18,3 +18,8 @@ entity_registry.yaml
 !.storage
 !.storage/lovelace
 ip_bans.yaml
+!ui_lovelace_minimalist
+!ui_lovelace_minimalist/dashboard
+!ui_lovelace_minimalist/dashboard/adaptive-dash
+!ui_lovelace_minimalist/dashboard/adaptive-dash/popup
+!ui_lovelace_minimalist/dashboard/adaptive-dash/views

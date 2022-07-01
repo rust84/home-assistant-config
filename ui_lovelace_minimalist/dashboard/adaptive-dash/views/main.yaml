@@ -1,0 +1,273 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  # Tablet portrait
+  grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
+  grid-template-areas: |
+    "chip1 chip1 chip1 chip1 chip1 chip1"
+    "weather weather weather . . ."
+    "welcome welcome welcome welcome welcome welcome"
+    "person person . . . ."
+    "sensor1 sensor1 sensor2 sensor2 sensor3 sensor3"
+    "title1 title1 title1 title1 title1 title1"
+    "card1 card1 card2 card2 card3 card3"
+    "card4 card4 card5 card5 card6 card6"
+    "title2 title2 title2 title2 title2 title2"
+    "card7 card7 card7 . . ."
+    "title3 title3 title3 title3 title3 title3"
+    "climate1 climate1 climate1 climate2 climate2 climate2"
+
+  mediaquery:
+    # Mobile
+    "(max-width: 900px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "chip1 chip1"
+        "weather weather"
+        "welcome welcome"
+        "person sensor1"
+        "sensor2 sensor3"
+        "title1 title1"
+        "card1 card2"
+        "card3 card4"
+        "card5 card6"
+        "title2 title2"
+        "card7 card7"
+        "title3 title3"
+        "climate1 climate1"
+        "climate2 climate2"
+view_layout:
+  grid-area: "main"
+cards:
+  - view_layout:
+      grid-area: "text"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Minimalist UI"
+
+  - view_layout:
+      grid-area: "weather"
+    type: "custom:button-card"
+    template: card_weather
+    entity: weather.dark_sky
+    variables:
+      ulm_card_weather_name: "   "
+      ulm_card_weather_primary_info:
+        - extrema
+      ulm_card_weather_secondary_info:
+        - wind_speed
+        - precipitation_probability
+      ulm_card_weather_backdrop: false
+
+  - view_layout:
+      grid-area: "chip1"
+    type: "custom:button-card"
+    template: chip_alarm
+    entity: alarm_control_panel.alarm_panel
+
+  - view_layout:
+      grid-area: "person"
+    type: "custom:button-card"
+    template: card_person
+    entity: person.russell
+    variables:
+      ulm_card_person_entity: person.russell
+      ulm_card_person_use_entity_picture: false
+      ulm_card_person_zone1: work
+
+  - view_layout:
+      grid-area: "sensor1"
+    type: "custom:button-card"
+    template: card_generic_swap
+    entity: sensor.electric_cost_today
+    variables:
+      ulm_card_generic_swap_name: Elec
+
+  - view_layout:
+      grid-area: "sensor2"
+    type: "custom:button-card"
+    template: custom_card_paddy_waste_collection
+    entity: sensor.waste_collection_household
+
+  - view_layout:
+      grid-area: "sensor3"
+    type: "custom:button-card"
+    template: custom_card_paddy_waste_collection
+    entity: sensor.waste_collection_recycling
+
+  - view_layout:
+      grid-area: "welcome"
+    type: "custom:button-card"
+    template: "card_welcome_scenes"
+    #triggers_update: input_boolean.minimalist_ui
+    entity: input_boolean.minimalist_ui
+    variables:
+      ulm_card_welcome_scenes_collapse: input_boolean.minimalist_ui
+      ulm_weather: weather.dark_sky
+      entity_1:
+        entity_id: camera.office_person
+        icon: "mdi:face-man"
+        state: "active"
+        name: "Office"
+      entity_2:
+        entity_id: sensor.anyone_home
+        state: "home"
+        name: "Home"
+      entity_3:
+        entity_id: alarm_control_panel.alarm_panel
+        icon: "mdi:shield-home"
+        state: "armed_away"
+        name: "Alarm"
+      entity_4:
+        entity_id: switch.sonoff_s26_1_relay
+        icon: "mdi:power-plug"
+        name: "Ambi"
+      entity_5:
+        entity_id: switch.sonoff_s26_2_relay
+        icon: "mdi:power-plug"
+        name: "Clock"
+      entity_6:
+        entity_id: switch.smart_plug
+        icon: "mdi:speaker"
+        name: "Sub"
+
+  - view_layout:
+      grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Lighting"
+
+  # Bathroom light
+  - view_layout:
+      grid-area: "card1"
+    type: "custom:button-card"
+    template: "card_light"
+    entity: light.bathroom_light
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 1
+      ulm_input_select: input_select.minimalist_ui_switch
+
+  # Bedroom light
+  - view_layout:
+      grid-area: "card2"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 2
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.bedroom_light
+
+  # Hall light
+  - view_layout:
+      grid-area: "card3"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 3
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.hallway
+
+  # Landing light
+  - view_layout:
+      grid-area: "card4"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 4
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.landing_light
+
+  # Lounge light
+  - view_layout:
+      grid-area: "card5"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 5
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.lounge_light
+
+  # Office light
+  - view_layout:
+      grid-area: "card6"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 6
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.office_light
+
+  - view_layout:
+      grid-area: "title2"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Media"
+
+  # Mediaplayer 1
+  - view_layout:
+      grid-area: "card7"
+    type: "custom:button-card"
+    template: card_media_player
+    variables:
+      ulm_card_media_player_enable_art: true
+      ulm_card_media_player_enable_controls: true
+      ulm_card_media_player_enable_popup: true
+      ulm_input_select_option: mediaplayer 1
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: media_player.living_room_nvidia_shield
+    name: Livingroom Nvidia Shield
+
+  - view_layout:
+      grid-area: "title3"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Climate"
+
+  # Aircon
+  - view_layout:
+      grid-area: "climate1"
+    type: "custom:button-card"
+    template: card_thermostat
+    entity: climate.midea_ac_42880953513406
+    variables:
+      ulm_card_thermostat_enable_collapse: true
+      ulm_card_thermostat_enable_controls: true
+      ulm_card_thermostat_enable_display_temperature: true
+      ulm_card_thermostat_enable_hvac_modes: true
+      ulm_card_thermostat_enable_popup: true 
+      ulm_input_select_option: climate 1
+      ulm_input_select: input_select.minimalist_ui_switch
+
+  # Thermostat
+  - view_layout:
+      grid-area: "climate2"
+    type: "custom:button-card"
+    template: card_thermostat
+    entity: climate.heating_controller
+    variables:
+      ulm_card_thermostat_enable_collapse: true
+      ulm_card_thermostat_enable_controls: true
+      ulm_card_thermostat_enable_display_temperature: true
+      ulm_card_thermostat_enable_hvac_modes: true
+      ulm_card_thermostat_enable_popup: true
+      ulm_input_select_option: climate 2
+      ulm_input_select: input_select.minimalist_ui_switch
