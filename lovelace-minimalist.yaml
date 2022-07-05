@@ -196,7 +196,7 @@ views:
           ulm_card_media_player_enable_art: true
           ulm_card_media_player_enable_controls: true
           ulm_card_media_player_enable_popup: true
-        entity: media_player.living_room_nvidia_shield
+        entity: media_player.android_tv_10_20_0_83
         name: Livingroom Nvidia Shield
       - type: custom:button-card
         template: edge

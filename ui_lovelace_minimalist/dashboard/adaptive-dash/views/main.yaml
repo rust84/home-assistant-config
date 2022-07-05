@@ -106,9 +106,9 @@ cards:
       ulm_card_welcome_scenes_collapse: input_boolean.minimalist_ui
       ulm_weather: weather.dark_sky
       entity_1:
-        entity_id: camera.office_person
+        entity_id: sensor.office_person
         icon: "mdi:face-man"
-        state: "active"
+        state: "1"
         name: "Office"
       entity_2:
         entity_id: sensor.anyone_home
@@ -233,7 +233,7 @@ cards:
       ulm_card_media_player_enable_popup: true
       ulm_input_select_option: mediaplayer 1
       ulm_input_select: input_select.minimalist_ui_switch
-    entity: media_player.living_room_nvidia_shield
+    entity: media_player.android_tv_10_20_0_83
     name: Livingroom Nvidia Shield
 
   - view_layout:
