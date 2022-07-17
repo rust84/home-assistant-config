@@ -51,12 +51,15 @@ recorder:
   exclude:
     domains:
       - device_tracker
+      - weather
     entities:
       - sensor.date
       - sensor.time
-      - weather.dark_sky
+      - switch.friedland_57399aa6_1
     entity_globs:
-      - remote_*
+      - switch.remote_button_*
+
+logbook:
 
 influxdb:
   host: influxdb.home.svc.cluster.local
@@ -83,8 +86,6 @@ frontend:
 config:
 
 history:
-
-logbook:
 
 sun:
 
@@ -257,11 +258,18 @@ input_boolean:
     name: Notify office camera
     initial: on
 
+  # Aircon
+  auto_enable_aircon_swing_mode:
+    name: Enable swing mode when unit is on
+  auto_set_aircon_temperature:
+    name: Set temperature when presence detected
+
 waste_collection_schedule:
   sources:
-    - name: ics
+    - name: wiltshire_gov_uk
       args:
-        file: bins.ics
+        uprn: !secret uprn
+        postcode: !secret postcode
 
 rflink:
   host: 10.20.0.86

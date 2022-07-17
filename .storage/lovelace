@@ -1,671 +1,694 @@
 {
-    "version": 1,
-    "minor_version": 1,
-    "key": "lovelace",
-    "data": {
-        "config": {
-            "title": "Home",
-            "views": [
+  "version": 1,
+  "minor_version": 1,
+  "key": "lovelace",
+  "data": {
+    "config": {
+      "title": "Home",
+      "views": [
+        {
+          "path": "default_view",
+          "title": "Home",
+          "layout": {
+            "width": 300,
+            "max_cols": 3
+          },
+          "badges": [
+            {
+              "entity": "person.russell"
+            }
+          ],
+          "cards": [
+            {
+              "entities": [
                 {
-                    "path": "default_view",
-                    "title": "Home",
-                    "layout": {
-                        "width": 300,
-                        "max_cols": 3
-                    },
-                    "badges": [
-                        {
-                            "entity": "person.russell"
-                        }
-                    ],
-                    "cards": [
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.bme680_temperature",
-                                    "name": "office"
-                                },
-                                {
-                                    "entity": "sensor.thermostat_temperature",
-                                    "name": "livingroom"
-                                },
-                                {
-                                    "entity": "sensor.upstairs_temperature",
-                                    "name": "server room"
-                                },
-                                {
-                                    "entity": "sensor.landing_temperature_2",
-                                    "name": "landing"
-                                },
-                                {
-                                    "entity": "sensor.temperature_humidity_sensor_temperature",
-                                    "name": "bedroom"
-                                }
-                            ],
-                            "hours_to_show": 24,
-                            "icon": "mdi:server",
-                            "name": "TEMP",
-                            "points_per_hour": 1,
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.bme680_humidity",
-                                    "name": "office"
-                                },
-                                {
-                                    "entity": "sensor.upstairs_humidity",
-                                    "name": "server rooom"
-                                },
-                                {
-                                    "entity": "sensor.temperature_humidity_sensor_humidity",
-                                    "name": "bedroom"
-                                }
-                            ],
-                            "hours_to_show": 24,
-                            "icon": "mdi:server",
-                            "name": "HUMIDITY",
-                            "points_per_hour": 1,
-                            "type": "custom:mini-graph-card"
-                        },
-                        {
-                            "current": true,
-                            "details": false,
-                            "entity": "weather.dark_sky",
-                            "forecast": true,
-                            "hourly_forecast": false,
-                            "number_of_forecasts": 5,
-                            "type": "custom:weather-card"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "light.hallway"
-                                },
-                                {
-                                    "entity": "light.bathroom_light",
-                                    "name": "Bathroom"
-                                },
-                                {
-                                    "entity": "light.bedroom_light",
-                                    "name": "Bedroom"
-                                },
-                                {
-                                    "entity": "light.landing_light",
-                                    "name": "Landing"
-                                },
-                                {
-                                    "entity": "light.lounge_light",
-                                    "name": "Lounge"
-                                },
-                                {
-                                    "entity": "switch.office_light_switch",
-                                    "name": "Office Light Switch",
-                                    "icon": "mdi:lightbulb"
-                                },
-                                {
-                                    "entity": "light.office_light",
-                                    "name": "Office Light"
-                                }
-                            ],
-                            "title": "Light",
-                            "type": "entities"
-                        },
-                        {
-                            "type": "gauge",
-                            "entity": "sensor.particulate_matter_2_5um_concentration",
-                            "min": 0,
-                            "max": 100,
-                            "severity": {
-                                "green": 0,
-                                "yellow": 30,
-                                "red": 100
-                            }
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.heating_controller"
-                        },
-                        {
-                            "type": "custom:frigate-card",
-                            "event_viewer": {
-                                "controls": {
-                                    "thumbnails": {
-                                        "mode": "below"
-                                    }
-                                }
-                            },
-                            "cameras": [
-                                {
-                                    "camera_entity": "camera.driveway",
-                                    "live_provider": "webrtc-card",
-                                    "webrtc_card": {
-                                        "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
-                                    }
-                                }
-                            ],
-                            "view_layout": {
-                                "column": 4
-                            }
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.midea_ac_42880953513406",
-                            "name": "Aircon"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.electric_consumption_today"
-                                },
-                                {
-                                    "entity": "sensor.electric_cost_today"
-                                }
-                            ],
-                            "title": "Electricity"
-                        },
-                        {
-                            "type": "horizontal-stack",
-                            "cards": [
-                                {
-                                    "type": "custom:button-card",
-                                    "color": "rgb(28, 128, 199)",
-                                    "entity": "switch.sonoff_s26_1_relay",
-                                    "icon": "mdi:monitor",
-                                    "name": "HyperLED",
-                                    "state": [
-                                        {
-                                            "value": "off",
-                                            "icon": "mdi:monitor",
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "filter": "opacity(50%)"
-                                                    }
-                                                ],
-                                                "icon": [
-                                                    {
-                                                        "filter": "grayscale(100%)"
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "styles": {
-                                        "grid": [
-                                            {
-                                                "position": "relative"
-                                            }
-                                        ],
-                                        "custom_fields": {
-                                            "notification": [
-                                                {
-                                                    "background-color": "[[[\n  if (states['switch.sonoff_s26_1_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                                                },
-                                                {
-                                                    "border-radius": "50%"
-                                                },
-                                                {
-                                                    "position": "absolute"
-                                                },
-                                                {
-                                                    "left": "60%"
-                                                },
-                                                {
-                                                    "top": "10%"
-                                                },
-                                                {
-                                                    "height": "20px"
-                                                },
-                                                {
-                                                    "width": "20px"
-                                                },
-                                                {
-                                                    "font-size": "8px"
-                                                },
-                                                {
-                                                    "line-height": "20px"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "custom_fields": {
-                                        "notification": "[[[ return states['switch.sonoff_s26_1_relay'].state ]]]\n"
-                                    }
-                                },
-                                {
-                                    "type": "custom:button-card",
-                                    "color": "rgb(28, 128, 199)",
-                                    "entity": "switch.sonoff_s26_2_relay",
-                                    "icon": "mdi:clock-outline",
-                                    "name": "Clock",
-                                    "state": [
-                                        {
-                                            "value": "off",
-                                            "icon": "mdi:clock-outline",
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "filter": "opacity(50%)"
-                                                    }
-                                                ],
-                                                "icon": [
-                                                    {
-                                                        "filter": "grayscale(100%)"
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "styles": {
-                                        "grid": [
-                                            {
-                                                "position": "relative"
-                                            }
-                                        ],
-                                        "custom_fields": {
-                                            "notification": [
-                                                {
-                                                    "background-color": "[[[\n  if (states['switch.sonoff_s26_2_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                                                },
-                                                {
-                                                    "border-radius": "50%"
-                                                },
-                                                {
-                                                    "position": "absolute"
-                                                },
-                                                {
-                                                    "left": "67%"
-                                                },
-                                                {
-                                                    "top": "10%"
-                                                },
-                                                {
-                                                    "height": "20px"
-                                                },
-                                                {
-                                                    "width": "20px"
-                                                },
-                                                {
-                                                    "font-size": "8px"
-                                                },
-                                                {
-                                                    "line-height": "20px"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "custom_fields": {
-                                        "notification": "[[[ return states['switch.sonoff_s26_2_relay'].state ]]]\n"
-                                    }
-                                },
-                                {
-                                    "type": "custom:button-card",
-                                    "color": "rgb(28, 128, 199)",
-                                    "entity": "switch.smart_plug",
-                                    "icon": "mdi:speaker",
-                                    "name": "Subwoofer",
-                                    "state": [
-                                        {
-                                            "value": "off",
-                                            "icon": "mdi:speaker-off",
-                                            "styles": {
-                                                "card": [
-                                                    {
-                                                        "filter": "opacity(50%)"
-                                                    }
-                                                ],
-                                                "icon": [
-                                                    {
-                                                        "filter": "grayscale(100%)"
-                                                    }
-                                                ]
-                                            }
-                                        }
-                                    ],
-                                    "styles": {
-                                        "grid": [
-                                            {
-                                                "position": "relative"
-                                            }
-                                        ],
-                                        "custom_fields": {
-                                            "notification": [
-                                                {
-                                                    "background-color": "[[[\n  if (states['switch.smart_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                                                },
-                                                {
-                                                    "border-radius": "50%"
-                                                },
-                                                {
-                                                    "position": "absolute"
-                                                },
-                                                {
-                                                    "left": "60%"
-                                                },
-                                                {
-                                                    "top": "10%"
-                                                },
-                                                {
-                                                    "height": "20px"
-                                                },
-                                                {
-                                                    "width": "20px"
-                                                },
-                                                {
-                                                    "font-size": "8px"
-                                                },
-                                                {
-                                                    "line-height": "20px"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    "custom_fields": {
-                                        "notification": "[[[ return states['switch.smart_plug'].state ]]]\n"
-                                    }
-                                }
-                            ]
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.particulate_matter_2_5um_concentration"
-                                },
-                                {
-                                    "entity": "sensor.bme680_breath_voc_equivalent"
-                                },
-                                {
-                                    "entity": "sensor.bme680_co2_equivalent"
-                                },
-                                {
-                                    "entity": "sensor.bme680_gas_resistance"
-                                },
-                                {
-                                    "entity": "sensor.bme680_humidity"
-                                },
-                                {
-                                    "entity": "sensor.bme680_pressure"
-                                },
-                                {
-                                    "entity": "sensor.bme680_iaq"
-                                },
-                                {
-                                    "entity": "sensor.bme680_iaq_accuracy"
-                                },
-                                {
-                                    "entity": "sensor.bme680_temperature"
-                                }
-                            ],
-                            "title": "Environment"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.vibration_action",
-                                    "name": "Action"
-                                },
-                                {
-                                    "entity": "sensor.vibration_angle_x",
-                                    "name": "Angle x"
-                                },
-                                {
-                                    "entity": "sensor.vibration_angle_y",
-                                    "name": "Angle y"
-                                },
-                                {
-                                    "entity": "sensor.vibration_angle_z",
-                                    "name": "Angle z"
-                                },
-                                {
-                                    "entity": "sensor.vibration_strength",
-                                    "name": "Strength"
-                                },
-                                {
-                                    "entity": "binary_sensor.vibration_vibration",
-                                    "name": "Vibration"
-                                }
-                            ],
-                            "title": "vibration"
-                        }
-                    ]
+                  "entity": "sensor.bme680_temperature",
+                  "name": "office"
                 },
                 {
-                    "title": "Alarm",
-                    "path": "alarm",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "alarm-panel",
-                            "states": [
-                                "arm_home",
-                                "arm_away"
-                            ],
-                            "entity": "alarm_control_panel.alarm_panel"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.kitchen_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.front_door_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.lounge_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.office_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.bedroom_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.server_room_contact_sensor_contact"
-                                },
-                                {
-                                    "entity": "binary_sensor.smoke_detector_office_smoke",
-                                    "name": "Office - Smoke",
-                                    "icon": "mdi:smoke-detector"
-                                },
-                                {
-                                    "entity": "binary_sensor.smoke_detector_server_smoke",
-                                    "name": "Server Room - Smoke",
-                                    "icon": "mdi:smoke-detector"
-                                },
-                                {
-                                    "entity": "binary_sensor.office_motion_sensor_occupancy"
-                                },
-                                {
-                                    "entity": "binary_sensor.lounge_motion_sensor_occupancy"
-                                },
-                                {
-                                    "entity": "binary_sensor.landing_motion"
-                                },
-                                {
-                                    "entity": "binary_sensor.driveway_person_motion"
-                                },
-                                {
-                                    "entity": "binary_sensor.office_person_motion"
-                                },
-                                {
-                                    "entity": "sensor.anyone_home"
-                                }
-                            ],
-                            "title": "Sensors",
-                            "type": "entities"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "input_boolean.auto_arm_alarm_when_gone"
-                                },
-                                {
-                                    "entity": "input_boolean.auto_arm_disarm_alarm_night"
-                                },
-                                {
-                                    "entity": "input_boolean.auto_disarm_alarm_when_home"
-                                },
-                                {
-                                    "entity": "input_boolean.notify_alarm_armed"
-                                },
-                                {
-                                    "entity": "input_boolean.notify_alarm_disarmed"
-                                },
-                                {
-                                    "entity": "input_boolean.notify_alarm_triggered"
-                                },
-                                {
-                                    "entity": "input_boolean.camera_driveway_notify"
-                                },
-                                {
-                                    "entity": "input_boolean.camera_lounge_notify"
-                                },
-                                {
-                                    "entity": "input_boolean.camera_office_notify"
-                                }
-                            ],
-                            "title": "Settings"
-                        },
-                        {
-                            "type": "logbook",
-                            "entities": [
-                                "binary_sensor.lounge_motion_sensor_occupancy",
-                                "binary_sensor.landing_motion",
-                                "binary_sensor.bedroom_contact_sensor_contact",
-                                "binary_sensor.front_door_contact_sensor_contact",
-                                "binary_sensor.lounge_contact_sensor_contact",
-                                "binary_sensor.office_contact_sensor_contact",
-                                "binary_sensor.kitchen_contact_sensor_contact",
-                                "binary_sensor.server_room_contact_sensor_contact",
-                                "binary_sensor.office_motion_sensor_occupancy",
-                                "camera.office_person",
-                                "sensor.lounge_person",
-                                "binary_sensor.office_person_motion",
-                                "sensor.office_person",
-                                "camera.lounge_person",
-                                "binary_sensor.driveway_person_motion"
-                            ]
-                        }
-                    ]
+                  "entity": "sensor.thermostat_temperature",
+                  "name": "livingroom"
                 },
                 {
-                    "title": "Heating",
-                    "path": "heating",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "custom:scheduler-card",
-                            "include": [
-                                "climate"
-                            ]
-                        },
-                        {
-                            "type": "thermostat",
-                            "entity": "climate.heating_controller",
-                            "name": "Thermostat"
-                        },
-                        {
-                            "type": "custom:button-card",
-                            "color": "rgb(28, 128, 199)",
-                            "entity": "input_boolean.enable_heating_schedules",
-                            "icon": "mdi:radiator",
-                            "name": "Heating Schedules",
-                            "state": [
-                                {
-                                    "value": "off",
-                                    "icon": "mdi:radiator-off",
-                                    "styles": {
-                                        "card": [
-                                            {
-                                                "filter": "opacity(50%)"
-                                            }
-                                        ],
-                                        "icon": [
-                                            {
-                                                "filter": "grayscale(100%)"
-                                            }
-                                        ]
-                                    }
-                                }
-                            ]
-                        }
-                    ]
+                  "entity": "sensor.upstairs_temperature",
+                  "name": "server room"
                 },
                 {
-                    "title": "Octoprint",
-                    "path": "octoprint",
-                    "icon": "",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.octoprint_current_state"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_estimated_finish_time"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_job_percentage"
-                                },
-                                {
-                                    "entity": "binary_sensor.octoprint_printing"
-                                },
-                                {
-                                    "entity": "binary_sensor.octoprint_printing_error"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_start_time"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_actual_bed_temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_actual_tool0_temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_bed_temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_tool0_temp"
-                                }
-                            ]
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.octoprint_actual_tool0_temp",
-                                    "name": "tool temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_actual_bed_temp",
-                                    "name": "bed temp"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_tool0_temp",
-                                    "name": "tool target"
-                                },
-                                {
-                                    "entity": "sensor.octoprint_target_bed_temp",
-                                    "name": "bed target"
-                                }
-                            ],
-                            "hours_to_show": 1,
-                            "icon": "mdi:server",
-                            "name": "PRINTER",
-                            "points_per_hour": 60,
-                            "type": "custom:mini-graph-card"
-                        }
-                    ]
+                  "entity": "sensor.landing_temperature_2",
+                  "name": "landing"
+                },
+                {
+                  "entity": "sensor.temperature_humidity_sensor_temperature",
+                  "name": "bedroom"
                 }
-            ]
+              ],
+              "hours_to_show": 24,
+              "icon": "mdi:server",
+              "name": "TEMP",
+              "points_per_hour": 1,
+              "type": "custom:mini-graph-card"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "sensor.bme680_humidity",
+                  "name": "office"
+                },
+                {
+                  "entity": "sensor.upstairs_humidity",
+                  "name": "server rooom"
+                },
+                {
+                  "entity": "sensor.temperature_humidity_sensor_humidity",
+                  "name": "bedroom"
+                }
+              ],
+              "hours_to_show": 24,
+              "icon": "mdi:server",
+              "name": "HUMIDITY",
+              "points_per_hour": 1,
+              "type": "custom:mini-graph-card"
+            },
+            {
+              "current": true,
+              "details": false,
+              "entity": "weather.dark_sky",
+              "forecast": true,
+              "hourly_forecast": false,
+              "number_of_forecasts": 5,
+              "type": "custom:weather-card"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "light.hallway"
+                },
+                {
+                  "entity": "light.bathroom_light",
+                  "name": "Bathroom"
+                },
+                {
+                  "entity": "light.bedroom_light",
+                  "name": "Bedroom"
+                },
+                {
+                  "entity": "light.landing_light",
+                  "name": "Landing"
+                },
+                {
+                  "entity": "light.lounge_light",
+                  "name": "Lounge"
+                },
+                {
+                  "entity": "switch.office_light_switch",
+                  "name": "Office Light Switch",
+                  "icon": "mdi:lightbulb"
+                },
+                {
+                  "entity": "light.office_light",
+                  "name": "Office Light"
+                }
+              ],
+              "title": "Light",
+              "type": "entities"
+            },
+            {
+              "type": "gauge",
+              "entity": "sensor.particulate_matter_2_5um_concentration",
+              "min": 0,
+              "max": 100,
+              "severity": {
+                "green": 0,
+                "yellow": 30,
+                "red": 100
+              }
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.heating_controller"
+            },
+            {
+              "type": "custom:frigate-card",
+              "event_viewer": {
+                "controls": {
+                  "thumbnails": {
+                    "mode": "below"
+                  }
+                }
+              },
+              "cameras": [
+                {
+                  "camera_entity": "camera.driveway",
+                  "live_provider": "webrtc-card",
+                  "webrtc_card": {
+                    "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
+                  }
+                }
+              ],
+              "view_layout": {
+                "column": 4
+              }
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.midea_ac_42880953513406",
+              "name": "Aircon"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.electric_consumption_today"
+                },
+                {
+                  "entity": "sensor.electric_cost_today"
+                },
+                {
+                  "entity": "sensor.ovo_last_electricity_reading"
+                },
+                {
+                  "entity": "sensor.ovo_last_electricity_cost"
+                }
+              ],
+              "title": "Electricity"
+            },
+            {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "color": "rgb(28, 128, 199)",
+                  "entity": "switch.sonoff_s26_1_relay",
+                  "icon": "mdi:monitor",
+                  "name": "HyperLED",
+                  "state": [
+                    {
+                      "value": "off",
+                      "icon": "mdi:monitor",
+                      "styles": {
+                        "card": [
+                          {
+                            "filter": "opacity(50%)"
+                          }
+                        ],
+                        "icon": [
+                          {
+                            "filter": "grayscale(100%)"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "styles": {
+                    "grid": [
+                      {
+                        "position": "relative"
+                      }
+                    ],
+                    "custom_fields": {
+                      "notification": [
+                        {
+                          "background-color": "[[[\n  if (states['switch.sonoff_s26_1_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                        },
+                        {
+                          "border-radius": "50%"
+                        },
+                        {
+                          "position": "absolute"
+                        },
+                        {
+                          "left": "60%"
+                        },
+                        {
+                          "top": "10%"
+                        },
+                        {
+                          "height": "20px"
+                        },
+                        {
+                          "width": "20px"
+                        },
+                        {
+                          "font-size": "8px"
+                        },
+                        {
+                          "line-height": "20px"
+                        }
+                      ]
+                    }
+                  },
+                  "custom_fields": {
+                    "notification": "[[[ return states['switch.sonoff_s26_1_relay'].state ]]]\n"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "color": "rgb(28, 128, 199)",
+                  "entity": "switch.sonoff_s26_2_relay",
+                  "icon": "mdi:clock-outline",
+                  "name": "Clock",
+                  "state": [
+                    {
+                      "value": "off",
+                      "icon": "mdi:clock-outline",
+                      "styles": {
+                        "card": [
+                          {
+                            "filter": "opacity(50%)"
+                          }
+                        ],
+                        "icon": [
+                          {
+                            "filter": "grayscale(100%)"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "styles": {
+                    "grid": [
+                      {
+                        "position": "relative"
+                      }
+                    ],
+                    "custom_fields": {
+                      "notification": [
+                        {
+                          "background-color": "[[[\n  if (states['switch.sonoff_s26_2_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                        },
+                        {
+                          "border-radius": "50%"
+                        },
+                        {
+                          "position": "absolute"
+                        },
+                        {
+                          "left": "67%"
+                        },
+                        {
+                          "top": "10%"
+                        },
+                        {
+                          "height": "20px"
+                        },
+                        {
+                          "width": "20px"
+                        },
+                        {
+                          "font-size": "8px"
+                        },
+                        {
+                          "line-height": "20px"
+                        }
+                      ]
+                    }
+                  },
+                  "custom_fields": {
+                    "notification": "[[[ return states['switch.sonoff_s26_2_relay'].state ]]]\n"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "color": "rgb(28, 128, 199)",
+                  "entity": "switch.smart_plug",
+                  "icon": "mdi:speaker",
+                  "name": "Subwoofer",
+                  "state": [
+                    {
+                      "value": "off",
+                      "icon": "mdi:speaker-off",
+                      "styles": {
+                        "card": [
+                          {
+                            "filter": "opacity(50%)"
+                          }
+                        ],
+                        "icon": [
+                          {
+                            "filter": "grayscale(100%)"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "styles": {
+                    "grid": [
+                      {
+                        "position": "relative"
+                      }
+                    ],
+                    "custom_fields": {
+                      "notification": [
+                        {
+                          "background-color": "[[[\n  if (states['switch.smart_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                        },
+                        {
+                          "border-radius": "50%"
+                        },
+                        {
+                          "position": "absolute"
+                        },
+                        {
+                          "left": "60%"
+                        },
+                        {
+                          "top": "10%"
+                        },
+                        {
+                          "height": "20px"
+                        },
+                        {
+                          "width": "20px"
+                        },
+                        {
+                          "font-size": "8px"
+                        },
+                        {
+                          "line-height": "20px"
+                        }
+                      ]
+                    }
+                  },
+                  "custom_fields": {
+                    "notification": "[[[ return states['switch.smart_plug'].state ]]]\n"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.particulate_matter_2_5um_concentration"
+                },
+                {
+                  "entity": "sensor.bme680_breath_voc_equivalent"
+                },
+                {
+                  "entity": "sensor.bme680_co2_equivalent"
+                },
+                {
+                  "entity": "sensor.bme680_gas_resistance"
+                },
+                {
+                  "entity": "sensor.bme680_humidity"
+                },
+                {
+                  "entity": "sensor.bme680_pressure"
+                },
+                {
+                  "entity": "sensor.bme680_iaq"
+                },
+                {
+                  "entity": "sensor.bme680_iaq_accuracy"
+                },
+                {
+                  "entity": "sensor.bme680_temperature"
+                }
+              ],
+              "title": "Environment"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.vibration_action",
+                  "name": "Action"
+                },
+                {
+                  "entity": "sensor.vibration_angle_x",
+                  "name": "Angle x"
+                },
+                {
+                  "entity": "sensor.vibration_angle_y",
+                  "name": "Angle y"
+                },
+                {
+                  "entity": "sensor.vibration_angle_z",
+                  "name": "Angle z"
+                },
+                {
+                  "entity": "sensor.vibration_strength",
+                  "name": "Strength"
+                },
+                {
+                  "entity": "binary_sensor.vibration_vibration",
+                  "name": "Vibration"
+                }
+              ],
+              "title": "vibration"
+            }
+          ]
+        },
+        {
+          "title": "Alarm",
+          "path": "alarm",
+          "badges": [],
+          "cards": [
+            {
+              "type": "alarm-panel",
+              "states": [
+                "arm_home",
+                "arm_away"
+              ],
+              "entity": "alarm_control_panel.alarm_panel"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "binary_sensor.kitchen_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.front_door_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.lounge_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.office_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.bedroom_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.server_room_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.smoke_detector_office_smoke",
+                  "name": "Office - Smoke",
+                  "icon": "mdi:smoke-detector"
+                },
+                {
+                  "entity": "binary_sensor.smoke_detector_server_smoke",
+                  "name": "Server Room - Smoke",
+                  "icon": "mdi:smoke-detector"
+                },
+                {
+                  "entity": "binary_sensor.office_motion_sensor_occupancy"
+                },
+                {
+                  "entity": "binary_sensor.lounge_motion_sensor_occupancy"
+                },
+                {
+                  "entity": "binary_sensor.landing_motion"
+                },
+                {
+                  "entity": "binary_sensor.driveway_person_motion"
+                },
+                {
+                  "entity": "binary_sensor.office_person_motion"
+                },
+                {
+                  "entity": "sensor.anyone_home"
+                }
+              ],
+              "title": "Sensors",
+              "type": "entities"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.auto_arm_alarm_when_gone"
+                },
+                {
+                  "entity": "input_boolean.auto_arm_disarm_alarm_night"
+                },
+                {
+                  "entity": "input_boolean.auto_disarm_alarm_when_home"
+                },
+                {
+                  "entity": "input_boolean.notify_alarm_armed"
+                },
+                {
+                  "entity": "input_boolean.notify_alarm_disarmed"
+                },
+                {
+                  "entity": "input_boolean.notify_alarm_triggered"
+                },
+                {
+                  "entity": "input_boolean.camera_driveway_notify"
+                },
+                {
+                  "entity": "input_boolean.camera_lounge_notify"
+                },
+                {
+                  "entity": "input_boolean.camera_office_notify"
+                }
+              ],
+              "title": "Settings"
+            },
+            {
+              "type": "logbook",
+              "entities": [
+                "binary_sensor.lounge_motion_sensor_occupancy",
+                "binary_sensor.landing_motion",
+                "binary_sensor.bedroom_contact_sensor_contact",
+                "binary_sensor.front_door_contact_sensor_contact",
+                "binary_sensor.lounge_contact_sensor_contact",
+                "binary_sensor.office_contact_sensor_contact",
+                "binary_sensor.kitchen_contact_sensor_contact",
+                "binary_sensor.server_room_contact_sensor_contact",
+                "binary_sensor.office_motion_sensor_occupancy",
+                "camera.office_person",
+                "sensor.lounge_person",
+                "binary_sensor.office_person_motion",
+                "sensor.office_person",
+                "camera.lounge_person",
+                "binary_sensor.driveway_person_motion"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Heating",
+          "path": "heating",
+          "badges": [],
+          "cards": [
+            {
+              "type": "custom:scheduler-card",
+              "include": [
+                "climate"
+              ]
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.heating_controller",
+              "name": "Thermostat"
+            },
+            {
+              "type": "custom:button-card",
+              "color": "rgb(28, 128, 199)",
+              "entity": "input_boolean.enable_heating_schedules",
+              "icon": "mdi:radiator",
+              "name": "Heating Schedules",
+              "state": [
+                {
+                  "value": "off",
+                  "icon": "mdi:radiator-off",
+                  "styles": {
+                    "card": [
+                      {
+                        "filter": "opacity(50%)"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "filter": "grayscale(100%)"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.auto_enable_aircon_swing_mode"
+                },
+                {
+                  "entity": "input_boolean.auto_set_aircon_temperature"
+                }
+              ],
+              "title": "Aircon"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.midea_ac_42880953513406",
+              "name": "Aircon"
+            }
+          ]
+        },
+        {
+          "title": "Octoprint",
+          "path": "octoprint",
+          "icon": "",
+          "badges": [],
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.octoprint_current_state"
+                },
+                {
+                  "entity": "sensor.octoprint_estimated_finish_time"
+                },
+                {
+                  "entity": "sensor.octoprint_job_percentage"
+                },
+                {
+                  "entity": "binary_sensor.octoprint_printing"
+                },
+                {
+                  "entity": "binary_sensor.octoprint_printing_error"
+                },
+                {
+                  "entity": "sensor.octoprint_start_time"
+                },
+                {
+                  "entity": "sensor.octoprint_actual_bed_temp"
+                },
+                {
+                  "entity": "sensor.octoprint_actual_tool0_temp"
+                },
+                {
+                  "entity": "sensor.octoprint_target_bed_temp"
+                },
+                {
+                  "entity": "sensor.octoprint_target_tool0_temp"
+                }
+              ]
+            },
+            {
+              "entities": [
+                {
+                  "entity": "sensor.octoprint_actual_tool0_temp",
+                  "name": "tool temp"
+                },
+                {
+                  "entity": "sensor.octoprint_actual_bed_temp",
+                  "name": "bed temp"
+                },
+                {
+                  "entity": "sensor.octoprint_target_tool0_temp",
+                  "name": "tool target"
+                },
+                {
+                  "entity": "sensor.octoprint_target_bed_temp",
+                  "name": "bed target"
+                }
+              ],
+              "hours_to_show": 1,
+              "icon": "mdi:server",
+              "name": "PRINTER",
+              "points_per_hour": 60,
+              "type": "custom:mini-graph-card"
+            }
+          ]
         }
+      ]
     }
+  }
 }

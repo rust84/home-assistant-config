@@ -49,7 +49,7 @@
     in {{value.daysTo}} Days
     {% endif %}
   types:
-    - Mixed recycling
+    - Mixed dry recycling (blue lidded bin) and glass (black box or basket)
 - platform: time_date
   display_options:
     - 'time'
