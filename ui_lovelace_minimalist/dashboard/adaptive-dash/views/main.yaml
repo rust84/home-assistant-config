@@ -226,7 +226,7 @@ cards:
   - view_layout:
       grid-area: "card7"
     type: "custom:button-card"
-    template: card_media_player
+    template: card_media_player_with_control
     variables:
       ulm_card_media_player_enable_art: true
       ulm_card_media_player_enable_controls: true

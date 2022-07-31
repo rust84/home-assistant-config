@@ -73,11 +73,8 @@ system_health:
 logger:
   default: error
   logs:
-    #requests.packages.urllib3.connectionpool: critical
     custom_components.auth_header: warning
-    homeassistant.components.androidtv: info
-    # homeassistant.components.alexa: error
-    # rflink: debug
+    homeassistant.components.androidtv.media_player: info
     # homeassistant.components.rflink: debug
 
 frontend:
