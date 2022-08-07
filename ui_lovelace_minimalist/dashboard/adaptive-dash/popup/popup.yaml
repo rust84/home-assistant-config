@@ -17,53 +17,45 @@ states:
   light 1:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.bathroom_light
+    entity: light.bathroom_light
   light 2:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.bedroom_light
+    entity: light.bedroom_light
   light 3:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.hallway
+    entity: light.hallway
   light 4:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.landing_light
+    entity: light.landing_light
   light 5:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.lounge_light
+    entity: light.lounge_light
   light 6:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    variables:
-      ulm_popup_light_entity: light.office_light
+    entity: light.office_light
 
   ###  Mediaplayers
   mediaplayer 1:
     type: "custom:button-card"
     template: "popup_media_player_infos"
+    entity: media_player.android_tv_10_20_0_83
     variables:
-      ulm_popup_media_player_entity: media_player.android_tv_10_20_0_83
       ulm_card_media_player_enable_popup: true
  
   ### Thermostats
   climate 1:
     type: "custom:button-card"
     template: "popup_thermostat_temperature"
-    variables:
-      ulm_popup_thermostat_entity: climate.midea_ac_42880953513406
+    entity: climate.midea_ac_42880953513406
   climate 2:
     type: "custom:button-card"
     template: "popup_thermostat_temperature"
-    variables:
-      ulm_popup_thermostat_entity: climate.heating_controller
+    entity: climate.heating_controller
 
   ### Power
   # power 1:

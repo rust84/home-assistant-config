@@ -625,68 +625,7 @@
           "path": "octoprint",
           "icon": "",
           "badges": [],
-          "cards": [
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.octoprint_current_state"
-                },
-                {
-                  "entity": "sensor.octoprint_estimated_finish_time"
-                },
-                {
-                  "entity": "sensor.octoprint_job_percentage"
-                },
-                {
-                  "entity": "binary_sensor.octoprint_printing"
-                },
-                {
-                  "entity": "binary_sensor.octoprint_printing_error"
-                },
-                {
-                  "entity": "sensor.octoprint_start_time"
-                },
-                {
-                  "entity": "sensor.octoprint_actual_bed_temp"
-                },
-                {
-                  "entity": "sensor.octoprint_actual_tool0_temp"
-                },
-                {
-                  "entity": "sensor.octoprint_target_bed_temp"
-                },
-                {
-                  "entity": "sensor.octoprint_target_tool0_temp"
-                }
-              ]
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.octoprint_actual_tool0_temp",
-                  "name": "tool temp"
-                },
-                {
-                  "entity": "sensor.octoprint_actual_bed_temp",
-                  "name": "bed temp"
-                },
-                {
-                  "entity": "sensor.octoprint_target_tool0_temp",
-                  "name": "tool target"
-                },
-                {
-                  "entity": "sensor.octoprint_target_bed_temp",
-                  "name": "bed target"
-                }
-              ],
-              "hours_to_show": 1,
-              "icon": "mdi:server",
-              "name": "PRINTER",
-              "points_per_hour": 60,
-              "type": "custom:mini-graph-card"
-            }
-          ]
+          "cards": []
         }
       ]
     }
