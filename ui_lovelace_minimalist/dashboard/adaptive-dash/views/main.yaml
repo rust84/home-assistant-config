@@ -5,25 +5,25 @@ layout:
   # Tablet portrait
   grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
   grid-template-areas: |
-    "chip1 chip1 chip1 chip1 chip1 chip1"
+    "chip1 chip2 chip2 chip2 chip2 chip2"
     "weather weather weather . . ."
-    "welcome welcome welcome welcome welcome welcome"
-    "person person . . . ."
-    "sensor1 sensor1 sensor2 sensor2 sensor3 sensor3"
+    "welcome welcome welcome welcome . ."
+    "person . . . . ."
+    "sensor1 sensor2 sensor3 . . ."
     "title1 title1 title1 title1 title1 title1"
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
-    "title2 title2 title2 title2 title2 title2"
-    "card7 card7 card7 . . ."
+    "title2 title2 title4 title4 . ."
+    "media1 media1 camera1 camera1 . ."
     "title3 title3 title3 title3 title3 title3"
-    "climate1 climate1 climate1 climate2 climate2 climate2"
+    "climate1 climate1 climate2 climate2 . ."
 
   mediaquery:
     # Mobile
     "(max-width: 900px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
-        "chip1 chip1"
+        "chip1 chip2"
         "weather weather"
         "welcome welcome"
         "person sensor1"
@@ -33,10 +33,13 @@ layout:
         "card3 card4"
         "card5 card6"
         "title2 title2"
-        "card7 card7"
+        "media1 media1"
+        "title4 title4"
+        "camera1 camera1"
         "title3 title3"
         "climate1 climate1"
         "climate2 climate2"
+
 view_layout:
   grid-area: "main"
 cards:
@@ -56,7 +59,6 @@ cards:
       ulm_card_weather_primary_info:
         - extrema
       ulm_card_weather_secondary_info:
-        - wind_speed
         - precipitation_probability
       ulm_card_weather_backdrop: false
 
@@ -67,14 +69,30 @@ cards:
     entity: alarm_control_panel.alarm_panel
 
   - view_layout:
+      grid-area: "chip2"
+    type: "custom:button-card"
+    template: chip_temperature
+    entity: weather.dark_sky
+    variables:
+      ulm_chip_temperature_outside: sensor.dark_sky_temperature
+      ulm_chip_temperature_inside: sensor.bme680_temperature #TODO: add sensor
+      ulm_chip_temperature_weather: weather.dark_sky
+      ulm_card_tap_action: "popup"
+      ulm_custom_popup:
+          template: "popup_weather_forecast"
+          popup_variables:
+              ulm_popup_weather_entity: weather.dark_sky
+
+  - view_layout:
       grid-area: "person"
     type: "custom:button-card"
-    template: card_person
+    template: custom_card_imswel_person
     entity: person.russell
     variables:
-      ulm_card_person_entity: person.russell
-      ulm_card_person_use_entity_picture: false
-      ulm_card_person_zone1: work
+      ulm_card_imswel_person_entity: person.russell
+      ulm_card_imswel_person_wifi_tracker: device_tracker.pixel_4a
+      ulm_card_imswel_person_gps_tracker: device_tracker.pixel_4a_3
+      ulm_card_imswel_person_use_entity_picture: true
 
   - view_layout:
       grid-area: "sensor1"
@@ -100,10 +118,9 @@ cards:
       grid-area: "welcome"
     type: "custom:button-card"
     template: "card_welcome_scenes"
-    #triggers_update: input_boolean.minimalist_ui
-    entity: input_boolean.minimalist_ui
+    entity: input_boolean.welcome_collapse
     variables:
-      ulm_card_welcome_scenes_collapse: input_boolean.minimalist_ui
+      ulm_card_welcome_scenes_collapse: input_boolean.welcome_collapse
       ulm_weather: weather.dark_sky
       entity_1:
         entity_id: sensor.office_person
@@ -222,9 +239,15 @@ cards:
     template: "card_title"
     name: "Media"
 
+  - view_layout:
+      grid-area: "title4"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Camera"
+
   # Mediaplayer 1
   - view_layout:
-      grid-area: "card7"
+      grid-area: "media1"
     type: "custom:button-card"
     template: card_media_player_with_control
     variables:
@@ -271,3 +294,15 @@ cards:
       ulm_card_thermostat_enable_popup: true
       ulm_input_select_option: climate 2
       ulm_input_select: input_select.minimalist_ui_switch
+
+  # Cameras
+  - view_layout:
+      grid-area: "camera1"
+    type: "custom:button-card"
+    entity: camera.driveway
+    template: custom_card_camera
+    show_icon: true #True if you set ulm_custom_card_camera_title: true
+    variables:
+      ulm_custom_card_camera_title: true
+      ulm_custom_card_camera_name: "driveway"
+      #ulm_custom_card_camera_label: "drive"

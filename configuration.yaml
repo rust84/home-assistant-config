@@ -80,6 +80,8 @@ logger:
 frontend:
   themes: !include_dir_merge_named themes
 
+browser_mod:
+
 config:
 
 history:
@@ -194,8 +196,10 @@ input_boolean:
   auto_disarm_alarm_when_home:
     name: Automatically disarm alarm when someone comes home
     initial: on
-  minimalist_ui:
-    name: Minimalist UI
+
+  # Minimalist UI  
+  welcome_collapse:
+    name: Welcome collapse
   
   # notifications
   notify_alarm_armed:
