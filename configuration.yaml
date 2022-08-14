@@ -53,6 +53,7 @@ recorder:
       - weather
     entities:
       - sensor.date
+      - sensor.time
     entity_globs:
       - switch.remote_button_*
 
