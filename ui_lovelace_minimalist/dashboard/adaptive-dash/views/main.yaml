@@ -20,7 +20,7 @@ layout:
 
   mediaquery:
     # Mobile
-    "(max-width: 900px)":
+    "(max-width: 800px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "chip1 chip2"
@@ -256,6 +256,7 @@ cards:
       ulm_card_media_player_enable_popup: true
       ulm_input_select_option: mediaplayer 1
       ulm_input_select: input_select.minimalist_ui_switch
+      ulm_card_tap_action: "popup"
     entity: media_player.android_tv_10_20_0_83
     name: Livingroom Nvidia Shield
 

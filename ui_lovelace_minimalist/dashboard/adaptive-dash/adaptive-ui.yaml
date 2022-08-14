@@ -15,7 +15,7 @@ views:
       grid-template-areas: |
         "main popup"
       mediaquery:
-        "(max-width: 1100px), (orientation: portrait)":
+        "(max-width: 800px), (orientation: portrait)":
           grid-template-columns: "100%"
           grid-template-areas: "main"
     cards:
@@ -37,4 +37,55 @@ views:
           grid-template-areas: "livingroom"
     cards:
       - !include "views/livingroom.yaml"
+      - !include "popup/popup.yaml"
+
+  - type: "custom:grid-layout"
+    title: "Office"
+    icon: "mdi:chair-rolling"
+    path: "office"
+    layout:
+      grid-template-columns: "1fr 1fr"
+      grid-template-rows: "min-content"
+      grid-template-areas: |
+        "office popup"
+      mediaquery:
+        "(max-width: 1100px), (orientation: portrait)":
+          grid-template-columns: "100%"
+          grid-template-areas: "office"
+    cards:
+      - !include "views/office.yaml"
+      - !include "popup/popup.yaml"
+
+  - type: "custom:grid-layout"
+    title: "Bedroom"
+    icon: "mdi:bed"
+    path: "bedroom"
+    layout:
+      grid-template-columns: "1fr 1fr"
+      grid-template-rows: "min-content"
+      grid-template-areas: |
+        "bedroom popup"
+      mediaquery:
+        "(max-width: 1100px), (orientation: portrait)":
+          grid-template-columns: "100%"
+          grid-template-areas: "bedroom"
+    cards:
+      - !include "views/bedroom.yaml"
+      - !include "popup/popup.yaml"
+
+  - type: "custom:grid-layout"
+    title: "Charts"
+    icon: "mdi:chart-line"
+    path: "charts"
+    layout:
+      grid-template-columns: "1fr 1fr"
+      grid-template-rows: "min-content"
+      grid-template-areas: |
+        "charts popup"
+      mediaquery:
+        "(max-width: 1100px), (orientation: portrait)":
+          grid-template-columns: "100%"
+          grid-template-areas: "charts"
+    cards:
+      - !include "views/charts.yaml"
       - !include "popup/popup.yaml"

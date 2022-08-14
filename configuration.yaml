@@ -17,13 +17,13 @@ homeassistant:
 
 lovelace:
   mode: storage
-  dashboards:
-    lovelace-minimalist:
-      mode: yaml
-      title: Minimalist
-      icon: mdi:script
-      show_in_sidebar: true
-      filename: lovelace-minimalist.yaml
+  # dashboards:
+  #   lovelace-minimalist:
+  #     mode: yaml
+  #     title: Minimalist
+  #     icon: mdi:script
+  #     show_in_sidebar: true
+  #     filename: lovelace-minimalist.yaml
 
 default_config:
 
@@ -50,12 +50,9 @@ recorder:
   db_url: !secret db_url
   exclude:
     domains:
-      - device_tracker
       - weather
     entities:
       - sensor.date
-      - sensor.time
-      - switch.friedland_57399aa6_1
     entity_globs:
       - switch.remote_button_*
 

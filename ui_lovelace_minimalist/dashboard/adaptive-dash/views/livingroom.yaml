@@ -6,7 +6,7 @@ layout:
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
     "title1 title1 title1"
-    "card1 card1 card1"
+    "media1 media1 media1"
     "card2 card3 card4"
     "card5 card6 ."
     "card7 card8 card9"
@@ -19,7 +19,7 @@ layout:
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "title1 title1"
-        "card1 card1"
+        "media1 media1"
         "card2 card3"
         "card4 card5"
         "card6 card7"
@@ -36,22 +36,29 @@ cards:
       grid-area: "title1"
     type: "custom:button-card"
     template: "card_title"
-    name: "Some title"
+    name: "Livingroom"
     label: "grid-area: title1"
 
   - view_layout:
       grid-area: "title2"
     type: "custom:button-card"
     template: "card_title"
-    name: "Some title"
+    name: "Livingroom"
     label: "grid-area: title2"
 
+  # Mediaplayer 1
   - view_layout:
-      grid-area: "card1"
+      grid-area: "media1"
     type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> first card"
-    label: "grid-area: card1"
+    template: card_media_player_with_control
+    variables:
+      ulm_card_media_player_enable_art: true
+      ulm_card_media_player_enable_controls: true
+      ulm_card_media_player_enable_popup: true
+      ulm_input_select_option: mediaplayer 1
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: media_player.android_tv_10_20_0_83
+    name: Livingroom Nvidia Shield
 
   - view_layout:
       grid-area: "card2"
