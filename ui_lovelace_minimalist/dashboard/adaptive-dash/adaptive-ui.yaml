@@ -25,7 +25,7 @@ views:
   - type: "custom:grid-layout"
     title: "Livingroom"
     icon: "mdi:sofa"
-    path: "Livingroom"
+    path: "livingroom"
     layout:
       grid-template-columns: "1fr 1fr"
       grid-template-rows: "min-content"

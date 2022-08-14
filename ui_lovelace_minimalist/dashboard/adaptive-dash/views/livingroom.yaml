@@ -6,29 +6,21 @@ layout:
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
     "title1 title1 title1"
-    "media1 media1 media1"
-    "card2 card3 card4"
-    "card5 card6 ."
-    "card7 card8 card9"
-    "card10 card11 card12"
-    "card13 card14 card15"
-    "card16 card17 card18"
+    "light1 sensor1 ."
+    "media1 media1 ."
+    "climate1 climate1 ."
+
   mediaquery:
     # Mobile
     "(max-width: 800px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "title1 title1"
+        "light1 sensor1"
         "media1 media1"
-        "card2 card3"
-        "card4 card5"
-        "card6 card7"
-        "card8 card9"
-        "card10 card11"
-        "card12 card13"
-        "card14 card15"
-        "card16 card17"
-        "card18 card19"
+        "climate1 climate1"
+
+
 view_layout:
   grid-area: "livingroom"
 cards:
@@ -37,16 +29,14 @@ cards:
     type: "custom:button-card"
     template: "card_title"
     name: "Livingroom"
-    label: "grid-area: title1"
 
   - view_layout:
       grid-area: "title2"
     type: "custom:button-card"
     template: "card_title"
     name: "Livingroom"
-    label: "grid-area: title2"
 
-  # Mediaplayer 1
+  # Nvidia Shield
   - view_layout:
       grid-area: "media1"
     type: "custom:button-card"
@@ -60,37 +50,41 @@ cards:
     entity: media_player.android_tv_10_20_0_83
     name: Livingroom Nvidia Shield
 
+  # Thermostat
   - view_layout:
-      grid-area: "card2"
+      grid-area: "climate1"
     type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> second card"
-    label: "grid-area: card2"
+    template: card_thermostat
+    entity: climate.heating_controller
+    variables:
+      ulm_card_thermostat_enable_collapse: true
+      ulm_card_thermostat_enable_controls: true
+      ulm_card_thermostat_enable_display_temperature: true
+      ulm_card_thermostat_enable_hvac_modes: true
+      ulm_card_thermostat_enable_popup: true
+      ulm_input_select_option: climate 2
+      ulm_input_select: input_select.minimalist_ui_switch
 
+  # Livingroom light
   - view_layout:
-      grid-area: "card3"
+      grid-area: "light1"
     type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> third card"
-    label: "grid-area: card3"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 5
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.lounge_light
 
+  # Graph card
   - view_layout:
-      grid-area: "card4"
+      grid-area: "sensor1"
     type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> fourth card"
-    label: "grid-area: card4"
-
-  - view_layout:
-      grid-area: "card5"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> fifth card"
-    label: "grid-area: card5"
-
-  - view_layout:
-      grid-area: "card6"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Put here your <br> sixth card"
-    label: "grid-area: card6"
+    template: card_graph
+    entity: sensor.thermostat_temperature
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Thermostat
+      ulm_card_graph_entity: sensor.thermostat_temperature

@@ -5,18 +5,19 @@ layout:
   # Tablet portrait
   grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
   grid-template-areas: |
-    "chip1 chip2 chip2 chip2 chip2 chip2"
+    "chip1 chip2 . . . ."
     "weather weather weather . . ."
     "welcome welcome welcome welcome . ."
-    "person . . . . ."
-    "sensor1 sensor2 sensor3 . . ."
+    "person1 person1 . . . ."
+    "sensor1 sensor1 sensor2 sensor2 sensor3 sensor3"
     "title1 title1 title1 title1 title1 title1"
+    "room1 room1 room2 room2 room3 room3"
+    "room4 room4 room5 room5 room6 room6"
+    "title2 title2 title2 title2 title2 title2"
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
-    "title2 title2 title4 title4 . ."
-    "media1 media1 camera1 camera1 . ."
-    "title3 title3 title3 title3 title3 title3"
-    "climate1 climate1 climate2 climate2 . ."
+    "title4 title4 . . . ."
+    "camera1 camera1 . . . ."
 
   mediaquery:
     # Mobile
@@ -26,42 +27,23 @@ layout:
         "chip1 chip2"
         "weather weather"
         "welcome welcome"
-        "person sensor1"
+        "person1 sensor1"
         "sensor2 sensor3"
         "title1 title1"
+        "room1 room2"
+        "room3 room4"
+        "room5 room6"
+        "title2 title2"       
         "card1 card2"
         "card3 card4"
         "card5 card6"
-        "title2 title2"
-        "media1 media1"
         "title4 title4"
         "camera1 camera1"
-        "title3 title3"
-        "climate1 climate1"
-        "climate2 climate2"
 
 view_layout:
   grid-area: "main"
 cards:
-  - view_layout:
-      grid-area: "text"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Minimalist UI"
-
-  - view_layout:
-      grid-area: "weather"
-    type: "custom:button-card"
-    template: card_weather
-    entity: weather.dark_sky
-    variables:
-      ulm_card_weather_name: "   "
-      ulm_card_weather_primary_info:
-        - extrema
-      ulm_card_weather_secondary_info:
-        - precipitation_probability
-      ulm_card_weather_backdrop: false
-
+  # Chips
   - view_layout:
       grid-area: "chip1"
     type: "custom:button-card"
@@ -83,8 +65,25 @@ cards:
           popup_variables:
               ulm_popup_weather_entity: weather.dark_sky
 
+  # Weather card
   - view_layout:
-      grid-area: "person"
+      grid-area: "weather"
+    type: "custom:button-card"
+    template: card_weather
+    entity: weather.dark_sky
+    variables:
+      ulm_card_weather_name: "   "
+      ulm_card_weather_primary_info:
+        - extrema
+      ulm_card_weather_secondary_info:
+        - precipitation_probability
+      ulm_card_weather_backdrop: false
+
+
+
+  # Person card
+  - view_layout:
+      grid-area: "person1"
     type: "custom:button-card"
     template: custom_card_imswel_person
     entity: person.russell
@@ -94,6 +93,7 @@ cards:
       ulm_card_imswel_person_gps_tracker: device_tracker.pixel_4a_3
       ulm_card_imswel_person_use_entity_picture: true
 
+  # Elec
   - view_layout:
       grid-area: "sensor1"
     type: "custom:button-card"
@@ -102,6 +102,7 @@ cards:
     variables:
       ulm_card_generic_swap_name: Elec
 
+  # Waste collection
   - view_layout:
       grid-area: "sensor2"
     type: "custom:button-card"
@@ -114,6 +115,7 @@ cards:
     template: custom_card_paddy_waste_collection
     entity: sensor.waste_collection_recycling
 
+  # Welcome card
   - view_layout:
       grid-area: "welcome"
     type: "custom:button-card"
@@ -149,8 +151,116 @@ cards:
         icon: "mdi:speaker"
         name: "Sub"
 
+  # Rooms
   - view_layout:
       grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Rooms"
+
+  # Bathroom room card
+  - view_layout:
+      grid-area: "room1"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Bathroom
+    entity: light.bathroom_light
+    icon: mdi:shower-head
+    tap_action:
+      action: navigate
+      navigation_path: "bathroom"
+    variables:
+      ulm_custom_card_esh_room_light_entity: light.bathroom_light
+
+  # Bedroom room card
+  - view_layout:
+      grid-area: "room2"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Bedroom
+    entity: light.bedroom_light
+    icon: mdi:bed
+    tap_action:
+      action: navigate
+      navigation_path: "bedroom"
+    variables:
+      ulm_custom_card_esh_room_light_entity: light.bedroom_light
+    label: '[[[ return states["sensor.temperature_humidity_sensor_temperature"].state + "°C" ]]]'
+
+  # Landing room card
+  - view_layout:
+      grid-area: "room3"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Landing
+    entity: light.landing_light
+    icon: mdi:stairs
+    tap_action:
+      action: navigate
+      navigation_path: "stairs"
+    variables:
+      ulm_custom_card_esh_room_light_entity: light.landing_light
+    label: '[[[ return states["sensor.landing_temperature_2"].state + "°C" ]]]'
+
+  # Livingroom room card
+  - view_layout:
+      grid-area: "room4"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Livingroom
+    entity: light.lounge_light
+    icon: mdi:sofa
+    tap_action:
+      action: navigate
+      navigation_path: "livingroom"
+    variables:
+      ulm_custom_card_esh_room_light_entity: light.lounge_light
+      ulm_custom_card_esh_room_climate_entity: climate.heating_controller
+    label: '[[[ return states["sensor.thermostat_temperature"].state + "°C" ]]]'
+
+  # Office room card
+  - view_layout:
+      grid-area: "room5"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Office
+    entity: light.office_light
+    icon: mdi:chair-rolling
+    tap_action:
+      action: navigate
+      navigation_path: "office"
+    variables:
+      ulm_custom_card_esh_room_light_entity: switch.office_light_switch
+      ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406
+    label: '[[[ return states["sensor.bme680_temperature"].state + "°C" ]]]'
+
+  # Server room card
+  - view_layout:
+      grid-area: "room6"
+    type: "custom:button-card"
+    template:
+      - card_esh_room
+      - yellow_on
+    name: Server rack
+    icon: mdi:server
+    tap_action:
+      action: navigate
+      navigation_path: "server"
+    label: '[[[ return states["sensor.upstairs_temperature"].state + "°C" ]]]'
+
+  # Lighting
+  - view_layout:
+      grid-area: "title2"
     type: "custom:button-card"
     template: "card_title"
     name: "Lighting"
@@ -207,7 +317,7 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.landing_light
 
-  # Lounge light
+  # Livingroom light
   - view_layout:
       grid-area: "card5"
     type: "custom:button-card"
@@ -233,68 +343,12 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.office_light
 
+  # Camera
   - view_layout:
-      grid-area: "title2"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Media"
-
-  - view_layout:
-      grid-area: "title4"
+        grid-area: "title4"
     type: "custom:button-card"
     template: "card_title"
     name: "Camera"
-
-  # Mediaplayer 1
-  - view_layout:
-      grid-area: "media1"
-    type: "custom:button-card"
-    template: card_media_player_with_control
-    variables:
-      ulm_card_media_player_enable_art: true
-      ulm_card_media_player_enable_controls: true
-      ulm_card_media_player_enable_popup: true
-      ulm_input_select_option: mediaplayer 1
-      ulm_input_select: input_select.minimalist_ui_switch
-      ulm_card_tap_action: "popup"
-    entity: media_player.android_tv_10_20_0_83
-    name: Livingroom Nvidia Shield
-
-  - view_layout:
-      grid-area: "title3"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Climate"
-
-  # Aircon
-  - view_layout:
-      grid-area: "climate1"
-    type: "custom:button-card"
-    template: card_thermostat
-    entity: climate.midea_ac_42880953513406
-    variables:
-      ulm_card_thermostat_enable_collapse: true
-      ulm_card_thermostat_enable_controls: true
-      ulm_card_thermostat_enable_display_temperature: true
-      ulm_card_thermostat_enable_hvac_modes: true
-      ulm_card_thermostat_enable_popup: true 
-      ulm_input_select_option: climate 1
-      ulm_input_select: input_select.minimalist_ui_switch
-
-  # Thermostat
-  - view_layout:
-      grid-area: "climate2"
-    type: "custom:button-card"
-    template: card_thermostat
-    entity: climate.heating_controller
-    variables:
-      ulm_card_thermostat_enable_collapse: true
-      ulm_card_thermostat_enable_controls: true
-      ulm_card_thermostat_enable_display_temperature: true
-      ulm_card_thermostat_enable_hvac_modes: true
-      ulm_card_thermostat_enable_popup: true
-      ulm_input_select_option: climate 2
-      ulm_input_select: input_select.minimalist_ui_switch
 
   # Cameras
   - view_layout:

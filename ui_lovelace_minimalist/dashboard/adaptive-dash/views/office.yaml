@@ -6,43 +6,29 @@ layout:
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
     "title1 title1 title1"
-    "climate1 climate1 climate1"
-    "light1 sensor1 card4"
-    "card5 card6 ."
-    "card7 card8 card9"
-    "card10 card11 card12"
-    "card13 card14 card15"
-    "card16 card17 card18"
+    "light1 sensor1 ."
+    "climate1 climate1 ."
+    "title2 title2 title2"
+
   mediaquery:
     # Mobile
     "(max-width: 950px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "title1 title1"
-        "light1 light1"
+        "light1 sensor1"
         "climate1 climate1"
-        "sensor1 card5"
-        "card6 card7"
-        "card8 card9"
-        "card10 card11"
-        "card12 card13"
-        "card14 card15"
-        "card16 card17"
-        "card18 card19"
+        "title2 title2"
+
 view_layout:
   grid-area: "office"
 cards:
+  # Title
   - view_layout:
       grid-area: "title1"
     type: "custom:button-card"
     template: "card_title"
     name: "Office"
-
-  - view_layout:
-      grid-area: "title2"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Charts"
 
   # Office light
   - view_layout:
@@ -57,6 +43,18 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.office_light
 
+  # Graph card
+  - view_layout:
+      grid-area: "sensor1"
+    type: "custom:button-card"
+    template: card_graph
+    entity: sensor.bme680_temperature
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Temperature office
+      ulm_card_graph_entity: sensor.bme680_temperature
+
+  # Aircon
   - view_layout:
         grid-area: "climate1"
     type: "custom:button-card"
@@ -71,12 +69,9 @@ cards:
       ulm_input_select_option: climate 1
       ulm_input_select: input_select.minimalist_ui_switch
 
+  # Title
   - view_layout:
-      grid-area: "sensor1"
+      grid-area: "title2"
     type: "custom:button-card"
-    template: card_graph
-    entity: sensor.bme680_temperature
-    variables:
-      ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Temperature office
-      ulm_card_graph_entity: sensor.bme680_temperature
+    template: "card_title"
+    name: "Sensors"
