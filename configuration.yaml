@@ -209,11 +209,15 @@ input_boolean:
   notify_alarm_triggered:
     name: Notification when alarm is triggered
     initial: on
-  
+
   # Heating
   enable_heating_schedules:
     name: Enable heating schedules
-    initial: on
+    #initial: on
+
+  heating_schedule_away:
+    name: Disable schedules when away
+    #initial: on
 
   # Cameras
   camera_driveway_notify:

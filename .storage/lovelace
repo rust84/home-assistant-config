@@ -609,9 +609,15 @@
                 },
                 {
                   "entity": "input_boolean.auto_set_aircon_temperature"
+                },
+                {
+                  "entity": "input_boolean.enable_heating_schedules"
+                },
+                {
+                  "entity": "input_boolean.heating_schedule_away"
                 }
               ],
-              "title": "Aircon"
+              "title": "Settings"
             },
             {
               "type": "thermostat",
