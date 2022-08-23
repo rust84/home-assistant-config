@@ -6,19 +6,24 @@ layout:
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
     "title1 title1 title1"
-    "light1 sensor1 ."
+    "light1 . ."
     "climate1 climate1 ."
-    "title2 title2 title2"
+    "sensor2 sensor3 sensor4"
+    "graph1 graph2 ."
+    "power1 . ."
 
   mediaquery:
     # Mobile
     "(max-width: 950px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
-        "title1 title1"
+        "back title1"
         "light1 sensor1"
         "climate1 climate1"
-        "title2 title2"
+        "sensor2 sensor3"
+        "sensor4 ."
+        "power1 ."
+        "graph1 graph2"
 
 view_layout:
   grid-area: "office"
@@ -30,7 +35,7 @@ cards:
     template: "card_title"
     name: "Office"
 
-  # Office light
+  # Light
   - view_layout:
       grid-area: "light1"
     type: "custom:button-card"
@@ -45,7 +50,7 @@ cards:
 
   # Graph card
   - view_layout:
-      grid-area: "sensor1"
+      grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
     entity: sensor.bme680_temperature
@@ -53,6 +58,16 @@ cards:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature office
       ulm_card_graph_entity: sensor.bme680_temperature
+
+  - view_layout:
+      grid-area: "graph2"
+    type: "custom:button-card"
+    template: card_graph
+    entity: sensor.bme680_humidity
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Humidity office
+      ulm_card_graph_entity: sensor.bme680_humidity
 
   # Aircon
   - view_layout:
@@ -69,9 +84,61 @@ cards:
       ulm_input_select_option: climate 1
       ulm_input_select: input_select.minimalist_ui_switch
 
-  # Title
+  #Sensors
   - view_layout:
-      grid-area: "title2"
+      grid-area: "sensor2"
+    type: 'custom:button-card'
+    template: card_binary_sensor_alert
+    variables:
+      ulm_card_binary_sensor_alert: true
+      ulm_show_last_changed: true
+      ulm_card_binary_sensor_alert_name: Window
+    entity: binary_sensor.office_contact_sensor_contact
+
+  - view_layout:
+      grid-area: "sensor3"
+    type: 'custom:button-card'
+    template: card_binary_sensor_alert
+    variables:
+      ulm_card_binary_sensor_alert: true
+      ulm_show_last_changed: true
+      ulm_card_binary_sensor_alert_name: Presence
+    entity: binary_sensor.office_person_motion
+
+  - view_layout:
+      grid-area: "sensor4"
+    type: 'custom:button-card'
+    template: card_binary_sensor_alert
+    variables:
+      ulm_card_binary_sensor_alert: true
+      ulm_show_last_changed: true
+      ulm_card_binary_sensor_alert_name: Motion
+    entity: binary_sensor.office_motion_sensor_occupancy   
+
+  # Navigation chip
+  - view_layout:
+      grid-area: "back"
     type: "custom:button-card"
-    template: "card_title"
-    name: "Sensors"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
+  # Power consumption
+  - view_layout:
+      grid-area: "power1"
+    type: "custom:button-card"
+    template: custom_card_damix48_power_details
+    entity: sensor.ac_plug_energy_power
+    name: Aircon
+    variables:
+      ulm_card_power_details_name: Aircon
+      ulm_card_power_details_entity: sensor.ac_plug_energy_power
+      ulm_card_power_details_hours: 2
+      ulm_card_power_details_24hour: true
+      ulm_card_power_details_thresholds:
+        - value: 275
+          color: "#43A047"
+        - value: 700
+          color: "#FFA600"
+        - value: 900
+          color: "#DB4437"

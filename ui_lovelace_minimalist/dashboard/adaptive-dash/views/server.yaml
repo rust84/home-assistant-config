@@ -1,0 +1,79 @@
+---
+type: "custom:layout-card"
+layout_type: "custom:grid-layout"
+layout:
+  grid-template-rows: "min-content"
+  grid-template-columns: "1fr 1fr 1fr"
+  grid-template-areas: >
+    "title1 title1 title1"
+    "power1 sensor1 ."
+    "graph1 graph2 ."
+
+  mediaquery:
+    # Mobile
+    "(max-width: 800px)":
+      grid-template-columns: "1fr 1fr"
+      grid-template-areas: |
+        "title1 title1"
+        "power1 sensor1"
+        "graph1 graph2"
+
+view_layout:
+  grid-area: "server"
+cards:
+  - view_layout:
+      grid-area: "title1"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Server Room"
+
+  # Power consumption
+  - view_layout:
+      grid-area: "power1"
+    type: "custom:button-card"
+    template: custom_card_damix48_power_details
+    entity: sensor.rack_ups_energy_power
+    variables:
+      ulm_card_power_details_name: Rack
+      ulm_card_power_details_entity: sensor.rack_ups_energy_power
+      ulm_card_power_details_hours: 2
+      ulm_card_power_details_24hour: true
+      ulm_card_power_details_thresholds:
+        - value: 275
+          color: "#43A047"
+        - value: 300
+          color: "#FFA600"
+        - value: 350
+          color: "#DB4437"
+
+  #Sensors
+  - view_layout:
+      grid-area: "sensor1"
+    type: 'custom:button-card'
+    template: card_binary_sensor_alert
+    variables:
+      ulm_card_binary_sensor_alert: true
+      ulm_show_last_changed: true
+      ulm_card_binary_sensor_alert_name: Window
+    entity: binary_sensor.server_room_contact_sensor_contact
+
+  # Graph card
+  - view_layout:
+      grid-area: "graph1"
+    type: "custom:button-card"
+    template: card_graph
+    entity: sensor.bme680_temperature
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Server Room Temperature
+      ulm_card_graph_entity: sensor.upstairs_temperature
+
+  - view_layout:
+      grid-area: "graph2"
+    type: "custom:button-card"
+    template: card_graph
+    entity: sensor.bme680_humidity
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Server Room Humidity
+      ulm_card_graph_entity: sensor.upstairs_humidity

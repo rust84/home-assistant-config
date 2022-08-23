@@ -129,13 +129,6 @@
             },
             {
               "type": "custom:frigate-card",
-              "event_viewer": {
-                "controls": {
-                  "thumbnails": {
-                    "mode": "below"
-                  }
-                }
-              },
               "cameras": [
                 {
                   "camera_entity": "camera.driveway",
@@ -145,6 +138,13 @@
                   }
                 }
               ],
+              "media_viewer": {
+                "controls": {
+                  "thumbnails": {
+                    "mode": "below"
+                  }
+                }
+              },
               "view_layout": {
                 "column": 4
               }
@@ -171,6 +171,36 @@
                 }
               ],
               "title": "Electricity"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.rack_ups_energy_apparentpower",
+                  "name": "ENERGY ApparentPower"
+                },
+                {
+                  "entity": "sensor.rack_ups_energy_current",
+                  "name": "ENERGY Current"
+                },
+                {
+                  "entity": "sensor.rack_ups_energy_power",
+                  "name": "ENERGY Power"
+                },
+                {
+                  "entity": "sensor.rack_ups_energy_today",
+                  "name": "ENERGY Today"
+                },
+                {
+                  "entity": "sensor.rack_ups_energy_total",
+                  "name": "ENERGY Total"
+                },
+                {
+                  "entity": "sensor.rack_ups_energy_voltage",
+                  "name": "ENERGY Voltage"
+                }
+              ],
+              "title": "Rack UPS"
             },
             {
               "type": "horizontal-stack",
@@ -374,6 +404,39 @@
                   }
                 }
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.ac_plug_energy_apparentpower",
+                  "name": "ENERGY ApparentPower"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_current",
+                  "name": "ENERGY Current"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_power",
+                  "name": "ENERGY Power"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_today",
+                  "name": "ENERGY Today"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_total",
+                  "name": "ENERGY Total"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_voltage",
+                  "name": "ENERGY Voltage"
+                },
+                {
+                  "entity": "switch.ac_plug"
+                }
+              ],
+              "title": "AC Plug"
             },
             {
               "type": "entities",
@@ -623,6 +686,59 @@
               "type": "thermostat",
               "entity": "climate.midea_ac_42880953513406",
               "name": "Aircon"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.ac_plug_energy_apparentpower",
+                  "name": "ENERGY ApparentPower"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_current",
+                  "name": "ENERGY Current"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_factor",
+                  "name": "ENERGY Factor"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_power",
+                  "name": "ENERGY Power"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_reactivepower",
+                  "name": "ENERGY ReactivePower"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_today",
+                  "name": "ENERGY Today"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_total",
+                  "name": "ENERGY Total"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_totalstarttime",
+                  "name": "ENERGY TotalStartTime"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_voltage",
+                  "name": "ENERGY Voltage"
+                },
+                {
+                  "entity": "sensor.ac_plug_energy_yesterday",
+                  "name": "ENERGY Yesterday"
+                }
+              ],
+              "title": "AC Plug"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "switch.ac_plug"
+              ],
+              "title": "AC Plug"
             }
           ]
         },

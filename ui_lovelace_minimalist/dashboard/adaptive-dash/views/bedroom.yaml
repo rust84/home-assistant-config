@@ -6,29 +6,18 @@ layout:
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
     "title1 title1 title1"
-    "card1 card2 ."
-    "card3 card4 ."
-    "card5 card6 ."
-    "card7 card8 card9"
-    "card10 card11 card12"
-    "card13 card14 card15"
-    "card16 card17 card18"
+    "sensor1 . ."
+    "light1 . ."
+    "graph1 graph2 ."
+
   mediaquery:
     # Mobile
     "(max-width: 800px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "title1 title1"
-        "card1 card1"
-        "card2 card3"
-        "card4 card5"
-        "card6 card7"
-        "card8 card9"
-        "card10 card11"
-        "card12 card13"
-        "card14 card15"
-        "card16 card17"
-        "card18 card19"
+        "sensor1 light1"
+        "graph1 graph2"
 view_layout:
   grid-area: "bedroom"
 cards:
@@ -44,8 +33,22 @@ cards:
     template: "card_title"
     name: "Some title"
 
+  # Bedroom light
   - view_layout:
-      grid-area: "card1"
+      grid-area: "light1"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 2
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.bedroom_light
+
+  # Graphs
+  - view_layout:
+      grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
     entity: sensor.temperature_humidity_sensor_temperature
@@ -55,7 +58,7 @@ cards:
       ulm_card_graph_entity: sensor.temperature_humidity_sensor_temperature
 
   - view_layout:
-      grid-area: "card2"
+      grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
     entity: sensor.temperature_humidity_sensor_humidity
@@ -63,3 +66,14 @@ cards:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity bedroom
       ulm_card_graph_entity: sensor.temperature_humidity_sensor_humidity
+
+  #Sensors
+  - view_layout:
+      grid-area: "sensor1"
+    type: 'custom:button-card'
+    template: card_binary_sensor_alert
+    variables:
+      ulm_card_binary_sensor_alert: true
+      ulm_show_last_changed: true
+      ulm_card_binary_sensor_alert_name: Window
+    entity: binary_sensor.bedroom_contact_sensor_contact

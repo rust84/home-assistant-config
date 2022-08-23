@@ -74,18 +74,35 @@ views:
       - !include "popup/popup.yaml"
 
   - type: "custom:grid-layout"
-    title: "Charts"
-    icon: "mdi:chart-line"
-    path: "charts"
+    title: "Server"
+    icon: "mdi:server"
+    path: "server"
     layout:
       grid-template-columns: "1fr 1fr"
       grid-template-rows: "min-content"
       grid-template-areas: |
-        "charts popup"
+        "server popup"
       mediaquery:
         "(max-width: 1100px), (orientation: portrait)":
           grid-template-columns: "100%"
-          grid-template-areas: "charts"
+          grid-template-areas: "server"
     cards:
-      - !include "views/charts.yaml"
+      - !include "views/server.yaml"
+      - !include "popup/popup.yaml"
+
+  - type: "custom:grid-layout"
+    title: "Landing"
+    icon: "mdi:stairs"
+    path: "landing"
+    layout:
+      grid-template-columns: "1fr 1fr"
+      grid-template-rows: "min-content"
+      grid-template-areas: |
+        "landing popup"
+      mediaquery:
+        "(max-width: 1100px), (orientation: portrait)":
+          grid-template-columns: "100%"
+          grid-template-areas: "landing"
+    cards:
+      - !include "views/landing.yaml"
       - !include "popup/popup.yaml"

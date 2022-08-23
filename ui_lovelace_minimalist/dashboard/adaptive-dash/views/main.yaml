@@ -17,7 +17,6 @@ layout:
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
     "title4 title4 . . . ."
-    "camera1 camera1 . . . ."
 
   mediaquery:
     # Mobile
@@ -38,7 +37,6 @@ layout:
         "card3 card4"
         "card5 card6"
         "title4 title4"
-        "camera1 camera1"
 
 view_layout:
   grid-area: "main"
@@ -78,8 +76,6 @@ cards:
       ulm_card_weather_secondary_info:
         - precipitation_probability
       ulm_card_weather_backdrop: false
-
-
 
   # Person card
   - view_layout:
@@ -203,7 +199,7 @@ cards:
     icon: mdi:stairs
     tap_action:
       action: navigate
-      navigation_path: "stairs"
+      navigation_path: "landing"
     variables:
       ulm_custom_card_esh_room_light_entity: light.landing_light
     label: '[[[ return states["sensor.landing_temperature_2"].state + "°C" ]]]'
@@ -291,7 +287,7 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.bedroom_light
 
-  # Hall light
+  # Hallway light
   - view_layout:
       grid-area: "card3"
     type: "custom:button-card"
@@ -351,13 +347,13 @@ cards:
     name: "Camera"
 
   # Cameras
-  - view_layout:
-      grid-area: "camera1"
-    type: "custom:button-card"
-    entity: camera.driveway
-    template: custom_card_camera
-    show_icon: true #True if you set ulm_custom_card_camera_title: true
-    variables:
-      ulm_custom_card_camera_title: true
-      ulm_custom_card_camera_name: "driveway"
-      #ulm_custom_card_camera_label: "drive"
+  # - view_layout:
+  #     grid-area: "camera1"
+  #   type: "custom:button-card"
+  #   entity: camera.lounge
+  #   template: custom_card_camera
+  #   show_icon: true #True if you set ulm_custom_card_camera_title: true
+  #   variables:
+  #     ulm_custom_card_camera_title: true
+  #     ulm_custom_card_camera_name: "driveway"
+  #     #ulm_custom_card_camera_label: "drive"
