@@ -15,7 +15,7 @@ layout:
 
   mediaquery:
     # Mobile
-    "(max-width: 950px)":
+    "(max-width: 800px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "back back"
