@@ -5,6 +5,7 @@ layout:
   grid-template-rows: "min-content"
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
+    "back back back"
     "title1 title1 title1"
     "light1 . ."
     "climate1 climate1 ."
@@ -17,7 +18,8 @@ layout:
     "(max-width: 950px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
-        "back title1"
+        "back back"
+        "title1 title1"
         "light1 sensor1"
         "climate1 climate1"
         "sensor2 sensor3"
@@ -28,6 +30,14 @@ layout:
 view_layout:
   grid-area: "office"
 cards:
+  # Navigation chip
+  - view_layout:
+      grid-area: "back"
+    type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
   # Title
   - view_layout:
       grid-area: "title1"
@@ -114,14 +124,6 @@ cards:
       ulm_show_last_changed: true
       ulm_card_binary_sensor_alert_name: Motion
     entity: binary_sensor.office_motion_sensor_occupancy   
-
-  # Navigation chip
-  - view_layout:
-      grid-area: "back"
-    type: "custom:button-card"
-    template: chip_back
-    variables:
-      ulm_chip_back_path: home
 
   # Power consumption
   - view_layout:

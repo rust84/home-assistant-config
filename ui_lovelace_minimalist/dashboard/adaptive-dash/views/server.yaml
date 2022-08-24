@@ -5,6 +5,7 @@ layout:
   grid-template-rows: "min-content"
   grid-template-columns: "1fr 1fr 1fr"
   grid-template-areas: >
+    "back back back"
     "title1 title1 title1"
     "power1 sensor1 ."
     "graph1 graph2 ."
@@ -14,6 +15,7 @@ layout:
     "(max-width: 800px)":
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
+        "back back"
         "title1 title1"
         "power1 sensor1"
         "graph1 graph2"
@@ -21,6 +23,14 @@ layout:
 view_layout:
   grid-area: "server"
 cards:
+  # Navigation chip
+  - view_layout:
+      grid-area: "back"
+    type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
   - view_layout:
       grid-area: "title1"
     type: "custom:button-card"
