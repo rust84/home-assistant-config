@@ -11,7 +11,7 @@ layout:
     "media1 media1 ."
     "climate1 climate1 ."
     "sensor1 sensor2 sensor3"
-    "graph1 . ."
+    "graph1 graph2 ."
 
   mediaquery:
     # Mobile
@@ -25,7 +25,7 @@ layout:
         "climate1 climate1"
         "sensor1 sensor2"
         "sensor3 ."
-        "graph1 graph1"
+        "graph1 graph2"
 
 view_layout:
   grid-area: "livingroom"
@@ -118,12 +118,32 @@ cards:
     entity: binary_sensor.lounge_person_motion
 
   # Graph card
+  # - view_layout:
+  #     grid-area: "graph1"
+  #   type: "custom:button-card"
+  #   template: card_graph
+  #   entity: sensor.thermostat_temperature
+  #   variables:
+  #     ulm_card_graph_color: "var(--google-blue)"
+  #     ulm_card_graph_name: Thermostat
+  #     ulm_card_graph_entity: sensor.thermostat_temperature
+
   - view_layout:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.thermostat_temperature
+    entity: sensor.lounge_temperature_humidity_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Thermostat
-      ulm_card_graph_entity: sensor.thermostat_temperature
+      ulm_card_graph_name: Temp
+      ulm_card_graph_entity: sensor.lounge_temperature_humidity_temperature
+
+  - view_layout:
+      grid-area: "graph2"
+    type: "custom:button-card"
+    template: card_graph
+    entity: sensor.lounge_temperature_humidity_humidity
+    variables:
+      ulm_card_graph_color: "var(--google-blue)"
+      ulm_card_graph_name: Humidity
+      ulm_card_graph_entity: sensor.lounge_temperature_humidity_humidity

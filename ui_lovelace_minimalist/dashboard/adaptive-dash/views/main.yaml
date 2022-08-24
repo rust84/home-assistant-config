@@ -220,7 +220,7 @@ cards:
     variables:
       ulm_custom_card_esh_room_light_entity: light.lounge_light
       ulm_custom_card_esh_room_climate_entity: climate.heating_controller
-    label: '[[[ return states["sensor.thermostat_temperature"].state + "°C" ]]]'
+    label: '[[[ return states["sensor.lounge_temperature_humidity_temperature"].state + "°C" ]]]'
 
   # Office room card
   - view_layout:
