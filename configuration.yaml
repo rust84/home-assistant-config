@@ -59,12 +59,25 @@ recorder:
 
 logbook:
 
-influxdb:
-  host: influxdb.home.svc.cluster.local
-  port: 8086
-  database: home_assistant
-  username: admin
-  password: !secret influxdb_password
+prometheus:
+  namespace: hass
+  component_config_glob:
+    sensor.*_humidity:
+      override_metric: humidity_percent
+    sensor.*_temperature:
+      override_metric: temperature_c
+    sensor.temperature*:
+      override_metric: temperature_c
+    sensor.*_battery:
+      override_metric: battery_percent
+  filter:
+    include_domains:
+      - sensor
+    exclude_entities:
+      - sensor.date
+      - sensor.time
+    exclude_entity_globs:
+      - sensor.weather_*
 
 system_health:
 
@@ -167,9 +180,6 @@ utility_meter:
     tariffs:
       - peak
       - offpeak
-
-prometheus:
-  namespace: hass
 
 alarm_control_panel:
   - platform: manual
