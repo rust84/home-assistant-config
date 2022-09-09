@@ -104,12 +104,18 @@ cards:
     type: "custom:button-card"
     template: custom_card_paddy_waste_collection
     entity: sensor.waste_collection_household
+    variables:
+      ulm_card_generic_swap_icon: mdi:delete
+      ulm_card_generic_swap_name: Household
 
   - view_layout:
       grid-area: "sensor3"
     type: "custom:button-card"
     template: custom_card_paddy_waste_collection
     entity: sensor.waste_collection_recycling
+    variables:
+      ulm_card_generic_swap_icon: mdi:delete
+      ulm_card_generic_swap_name: Recycling
 
   # Welcome card
   - view_layout:
