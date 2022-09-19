@@ -71,17 +71,15 @@ cards:
     template: card_weather
     entity: weather.openweathermap
     variables:
-      ulm_card_weather_name: "   "
+      ulm_card_weather_name: " "
       ulm_card_weather_primary_info:
-        - extrema
-      ulm_card_weather_secondary_info:
+        - wind_speed
         - precipitation_probability
-      ulm_card_weather_backdrop: false
+      ulm_card_weather_backdrop:
+        fade: true
+      ulm_card_tap_action: adaptive
       ulm_custom_popup:
         template: "popup_weather_forecast"
-        entity: weather.openweathermap
-        popup_variables:
-          ulm_weather_popup_surpress_first_forecast: false
 
   # Person card
   - view_layout:
