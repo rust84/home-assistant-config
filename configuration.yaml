@@ -56,6 +56,7 @@ recorder:
       - sensor.time
     entity_globs:
       - switch.remote_button_*
+      - sensor.openweathermap_*
 
 logbook:
 
@@ -98,11 +99,6 @@ config:
 history:
 
 sun:
-
-weather:
-  - platform: darksky
-    api_key: !secret darksky_apikey
-    mode: daily
 
 group: !include groups.yaml
 automation: !include automations.yaml

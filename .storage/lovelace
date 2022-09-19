@@ -26,7 +26,7 @@
                   "name": "office"
                 },
                 {
-                  "entity": "sensor.thermostat_temperature",
+                  "entity": "sensor.lounge_temperature_humidity_temperature",
                   "name": "livingroom"
                 },
                 {
@@ -72,10 +72,10 @@
             {
               "current": true,
               "details": false,
-              "entity": "weather.dark_sky",
+              "entity": "weather.openweathermap",
               "forecast": true,
               "hourly_forecast": false,
-              "number_of_forecasts": 5,
+              "number_of_forecasts": "5",
               "type": "custom:weather-card"
             },
             {
