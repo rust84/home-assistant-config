@@ -212,7 +212,7 @@ cards:
       navigation_path: "landing"
     variables:
       ulm_custom_card_esh_room_light_entity: light.landing_light
-    label: '[[[ return states["sensor.landing_temperature_2"].state + "°C" ]]]'
+    # label: '[[[ return states["sensor.landing_temperature_2"].state + "°C" ]]]'
 
   # Livingroom room card
   - view_layout:

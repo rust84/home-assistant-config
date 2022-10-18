@@ -9,7 +9,7 @@ layout:
     "title1 title1 title1"
     "light1 light2 ."
     "sensor1 sensor2 ."
-    "graph1 . ."
+    ". . ."
 
   mediaquery:
     # Mobile
@@ -75,7 +75,7 @@ cards:
       ulm_card_binary_sensor_alert: true
       ulm_show_last_changed: true
       ulm_card_binary_sensor_alert_name: Motion
-    entity: binary_sensor.landing_motion
+    entity: binary_sensor.landing_motion_sensor_occupancy
 
   - view_layout:
       grid-area: "sensor2"
@@ -99,12 +99,12 @@ cards:
   #   entity: binary_sensor.front_door_ding
 
   # Graph card
-  - view_layout:
-      grid-area: "graph1"
-    type: "custom:button-card"
-    template: card_graph
-    entity: sensor.landing_temperature_2
-    variables:
-      ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Landing Temperature
-      ulm_card_graph_entity: sensor.landing_temperature_2
+  # - view_layout:
+  #     grid-area: "graph1"
+  #   type: "custom:button-card"
+  #   template: card_graph
+  #   entity: sensor.landing_temperature_2
+  #   variables:
+  #     ulm_card_graph_color: "var(--google-blue)"
+  #     ulm_card_graph_name: Landing Temperature
+  #     ulm_card_graph_entity: sensor.landing_temperature_2

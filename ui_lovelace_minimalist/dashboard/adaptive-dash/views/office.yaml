@@ -113,7 +113,7 @@ cards:
       ulm_card_binary_sensor_alert: true
       ulm_show_last_changed: true
       ulm_card_binary_sensor_alert_name: Presence
-    entity: binary_sensor.office_person_motion
+    entity: binary_sensor.office_motion
 
   - view_layout:
       grid-area: "sensor4"
