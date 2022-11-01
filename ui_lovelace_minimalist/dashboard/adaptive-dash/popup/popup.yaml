@@ -105,8 +105,8 @@ states:
   #     ulm_popup_power_outlet_graph_sensor:
 
   ## Rooms
-  livingroom: !include "../views/livingroom.yaml"
-  # bedroom: !include "../views/bedroom.yaml"
-  # bathroom: !include "../views/bathroom.yaml"
-  # garage: !include "../views/garage.yaml"
-  # lights: !include "../views/lights.yaml"
+# bedroom: !include "../views/bedroom.yaml"
+  landing: !include "../views/landing.yaml"
+# livingroom: !include "../views/livingroom.yaml"
+# office: !include "../views/office.yaml"
+# server: !include "../views/server.yaml"

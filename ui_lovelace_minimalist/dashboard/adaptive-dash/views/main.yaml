@@ -8,8 +8,8 @@ layout:
     "chip1 chip2 . . . ."
     "weather weather weather . . ."
     "welcome welcome welcome welcome . ."
-    "person1 person1 . . . ."
-    "sensor1 sensor1 sensor2 sensor2 sensor3 sensor3"
+    "person1 person1 person2 person2 . ."
+    "elec1 elec1 bin1 bin1 bin2 bin2"
     "title1 title1 title1 title1 title1 title1"
     "room1 room1 room2 room2 room3 room3"
     "room4 room4 room5 room5 room6 room6"
@@ -26,8 +26,9 @@ layout:
         "chip1 chip2"
         "weather weather"
         "welcome welcome"
-        "person1 sensor1"
-        "sensor2 sensor3"
+        "person1 person2"
+        "elec1 ."
+        "bin1 bin2"
         "title1 title1"
         "room1 room2"
         "room3 room4"
@@ -93,9 +94,20 @@ cards:
       ulm_card_imswel_person_gps_tracker: device_tracker.pixel_4a_3
       ulm_card_imswel_person_use_entity_picture: true
 
+  - view_layout:
+      grid-area: "person2"
+    type: "custom:button-card"
+    template: custom_card_imswel_person
+    entity: person.rosie
+    variables:
+      ulm_card_imswel_person_entity: person.rosie
+      ulm_card_imswel_person_wifi_tracker: device_tracker.rosie_iphone13
+      ulm_card_imswel_person_gps_tracker: device_tracker.rosie_iphone13
+      ulm_card_imswel_person_use_entity_picture: true
+
   # Elec
   - view_layout:
-      grid-area: "sensor1"
+      grid-area: "elec1"
     type: "custom:button-card"
     template: card_generic_swap
     entity: sensor.electric_cost_today
@@ -104,7 +116,7 @@ cards:
 
   # Waste collection
   - view_layout:
-      grid-area: "sensor2"
+      grid-area: "bin1"
     type: "custom:button-card"
     template: custom_card_paddy_waste_collection
     entity: sensor.waste_collection_household
@@ -113,7 +125,7 @@ cards:
       ulm_card_generic_swap_name: Household
 
   - view_layout:
-      grid-area: "sensor3"
+      grid-area: "bin2"
     type: "custom:button-card"
     template: custom_card_paddy_waste_collection
     entity: sensor.waste_collection_recycling
@@ -195,6 +207,8 @@ cards:
       navigation_path: "bedroom"
     variables:
       ulm_custom_card_esh_room_light_entity: light.bedroom_light
+      # ulm_input_select_option: bedroom
+      # ulm_input_select: input_select.minimalist_ui_switch
     label: '[[[ return states["sensor.temperature_humidity_sensor_temperature"].state + "°C" ]]]'
 
   # Landing room card
@@ -212,6 +226,8 @@ cards:
       navigation_path: "landing"
     variables:
       ulm_custom_card_esh_room_light_entity: light.landing_light
+      # ulm_input_select_option: landing
+      # ulm_input_select: input_select.minimalist_ui_switch
     # label: '[[[ return states["sensor.landing_temperature_2"].state + "°C" ]]]'
 
   # Livingroom room card
@@ -230,6 +246,8 @@ cards:
     variables:
       ulm_custom_card_esh_room_light_entity: light.lounge_light
       ulm_custom_card_esh_room_climate_entity: climate.heating_controller
+      # ulm_input_select_option: livingroom
+      # ulm_input_select: input_select.minimalist_ui_switch
     label: '[[[ return states["sensor.lounge_temperature_humidity_temperature"].state + "°C" ]]]'
 
   # Office room card
@@ -248,6 +266,8 @@ cards:
     variables:
       ulm_custom_card_esh_room_light_entity: switch.office_light_switch
       ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406
+      # ulm_input_select_option: office
+      # ulm_input_select: input_select.minimalist_ui_switch
     label: '[[[ return states["sensor.bme680_temperature"].state + "°C" ]]]'
 
   # Server room card
@@ -262,6 +282,9 @@ cards:
     tap_action:
       action: navigate
       navigation_path: "server"
+    #variables:
+      # ulm_input_select_option: server
+      # ulm_input_select: input_select.minimalist_ui_switch
     label: '[[[ return states["sensor.upstairs_temperature"].state + "°C" ]]]'
 
   # Lighting

@@ -297,4 +297,8 @@ input_select:
       - climate 2
       - power 1
       - power 2
+      - bedroom
+      - landing
       - livingroom
+      - office
+      - server
