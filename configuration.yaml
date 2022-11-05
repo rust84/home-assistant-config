@@ -106,19 +106,6 @@ sensor: !include sensors.yaml
 scene: !include scenes.yaml
 
 mqtt:
-  broker: emqx-headless.home.svc
-  port: 1883
-  client_id: home-assistant
-  username: mqtt
-  password: !secret mqtt_password
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'homeassistant/status'
-    payload: 'online'
-  will_message:
-    topic: 'homeassistant/status'
-    payload: 'offline'
   light:
     - name: Hallway
       schema: json

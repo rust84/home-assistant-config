@@ -101,8 +101,8 @@ cards:
     entity: person.rosie
     variables:
       ulm_card_imswel_person_entity: person.rosie
-      ulm_card_imswel_person_wifi_tracker: device_tracker.rosie_iphone13
-      ulm_card_imswel_person_gps_tracker: device_tracker.rosie_iphone13
+      ulm_card_imswel_person_wifi_tracker: device_tracker.unifi_62_17_17_ce_4e_7f_ysf22opp
+      ulm_card_imswel_person_gps_tracker: device_tracker.unifi_62_17_17_ce_4e_7f_ysf22opp
       ulm_card_imswel_person_use_entity_picture: true
 
   # Elec
