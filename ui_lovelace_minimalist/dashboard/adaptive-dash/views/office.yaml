@@ -7,9 +7,10 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
+    "sensor2 sensor3 sensor4"
+    "switch1 switch2 switch3"
     "light1 . ."
     "climate1 . ."
-    "sensor2 sensor3 sensor4"
     "graph1 graph2 ."
     "power1 . ."
 
@@ -20,11 +21,12 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
-        "light1 sensor1"
-        "climate1 climate1"
         "sensor2 sensor3"
-        "power1 ."
+        "switch1 switch2"
+        "switch3 light1"
+        "climate1 climate1"
         "graph1 graph2"
+        "power1 ."
 
 view_layout:
   grid-area: "office"
@@ -133,3 +135,28 @@ cards:
           color: "#FFA600"
         - value: 900
           color: "#DB4437"
+
+  - view_layout:
+      grid-area: "switch1"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_consumption_sensor: sensor.ac_plug_energy_today
+      ulm_card_power_outlet_name: Ghost Lamp
+    entity: switch.ac_plug 
+
+  - view_layout:
+      grid-area: "switch2"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_name: Warp Plug
+    entity: switch.sonoff_s26_2_relay
+
+  - view_layout:
+      grid-area: "switch3"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_name: Vive Plug
+    entity: switch.sonoff_s26_1_relay

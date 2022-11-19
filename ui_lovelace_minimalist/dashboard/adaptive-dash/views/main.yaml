@@ -191,7 +191,6 @@ cards:
       navigation_path: "bathroom"
     variables:
       ulm_custom_card_esh_room_light_entity: light.bathroom_light
-
   # Bedroom room card
   - view_layout:
       grid-area: "room2"
@@ -209,7 +208,7 @@ cards:
       ulm_custom_card_esh_room_light_entity: light.bedroom_light
       # ulm_input_select_option: bedroom
       # ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.temperature_humidity_sensor_temperature"].state + "°C" ]]]'
+    label: '[[[ return states["sensor.bedroom_temperature_humidity_temperature"].state + "°C" ]]]'
 
   # Landing room card
   - view_layout:

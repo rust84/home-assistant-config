@@ -7,10 +7,10 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
-    "light1 . ."
+    "sensor1 sensor2 sensor3"
+    "light1 switch1 ."
     "media1 media1 ."
     "climate1 climate1 ."
-    "sensor1 sensor2 sensor3"
     "graph1 graph2 ."
 
   mediaquery:
@@ -20,10 +20,10 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
-        "light1 ."
+        "sensor1 sensor2"
+        "light1 switch1"
         "media1 media1"
         "climate1 climate1"
-        "sensor1 sensor2"
         "sensor3 ."
         "graph1 graph2"
 
@@ -135,3 +135,11 @@ cards:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity
       ulm_card_graph_entity: sensor.lounge_temperature_humidity_humidity
+
+  - view_layout:
+      grid-area: "switch1"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_name: Subwoofer
+    entity: switch.smart_plug

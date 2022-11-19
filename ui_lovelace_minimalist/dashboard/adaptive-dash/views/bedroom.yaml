@@ -61,21 +61,21 @@ cards:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.temperature_humidity_sensor_temperature
+    entity: sensor.bedroom_temperature_humidity_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature bedroom
-      ulm_card_graph_entity: sensor.temperature_humidity_sensor_temperature
+      ulm_card_graph_entity: sensor.bedroom_temperature_humidity_temperature
 
   - view_layout:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.temperature_humidity_sensor_humidity
+    entity: sensor.bedroom_temperature_humidity_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity bedroom
-      ulm_card_graph_entity: sensor.temperature_humidity_sensor_humidity
+      ulm_card_graph_entity: sensor.bedroom_temperature_humidity_temperature
 
   #Sensors
   - view_layout:
