@@ -7,6 +7,7 @@
       "title": "Home",
       "views": [
         {
+          "theme": "Backend-selected",
           "path": "default_view",
           "title": "Home",
           "layout": {
@@ -16,6 +17,9 @@
           "badges": [
             {
               "entity": "person.russell"
+            },
+            {
+              "entity": "person.rosie"
             }
           ],
           "cards": [
@@ -34,11 +38,7 @@
                   "name": "server room"
                 },
                 {
-                  "entity": "sensor.landing_temperature_2",
-                  "name": "landing"
-                },
-                {
-                  "entity": "sensor.temperature_humidity_sensor_temperature",
+                  "entity": "sensor.bedroom_temperature_humidity_temperature",
                   "name": "bedroom"
                 }
               ],
@@ -59,8 +59,12 @@
                   "name": "server rooom"
                 },
                 {
-                  "entity": "sensor.temperature_humidity_sensor_humidity",
+                  "entity": "sensor.bedroom_temperature_humidity_humidity",
                   "name": "bedroom"
+                },
+                {
+                  "entity": "sensor.lounge_temperature_humidity_humidity",
+                  "name": "livingroom"
                 }
               ],
               "hours_to_show": 24,

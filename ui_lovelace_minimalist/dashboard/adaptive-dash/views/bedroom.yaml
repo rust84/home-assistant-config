@@ -37,12 +37,6 @@ cards:
     template: "card_title"
     name: "Bedroom"
 
-  - view_layout:
-      grid-area: "title2"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Some title"
-
   # Bedroom light
   - view_layout:
       grid-area: "light1"
@@ -71,7 +65,7 @@ cards:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.bedroom_temperature_humidity_temperature
+    entity: sensor.bedroom_temperature_humidity_humidity
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity bedroom
