@@ -8,7 +8,7 @@ layout:
     "back back back"
     "title1 title1 title1"
     "sensor1 sensor2 sensor3"
-    "light1 switch1 ."
+    "light1 switch1 switch2"
     "media1 media1 ."
     "climate1 climate1 ."
     "graph1 graph2 ."
@@ -21,10 +21,11 @@ layout:
         "back back"
         "title1 title1"
         "sensor1 sensor2"
-        "light1 switch1"
+        "sensor3 ."
+        "switch1 switch2"
         "media1 media1"
         "climate1 climate1"
-        "sensor3 ."
+        "light1 ."
         "graph1 graph2"
 
 view_layout:
@@ -143,3 +144,11 @@ cards:
     variables:
       ulm_card_power_outlet_name: Subwoofer
     entity: switch.smart_plug
+
+  - view_layout:
+      grid-area: "switch2"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_name: Tree
+    entity: switch.christmas_tree

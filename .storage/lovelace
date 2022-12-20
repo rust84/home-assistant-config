@@ -177,36 +177,6 @@
               "title": "Electricity"
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.rack_ups_energy_apparentpower",
-                  "name": "ENERGY ApparentPower"
-                },
-                {
-                  "entity": "sensor.rack_ups_energy_current",
-                  "name": "ENERGY Current"
-                },
-                {
-                  "entity": "sensor.rack_ups_energy_power",
-                  "name": "ENERGY Power"
-                },
-                {
-                  "entity": "sensor.rack_ups_energy_today",
-                  "name": "ENERGY Today"
-                },
-                {
-                  "entity": "sensor.rack_ups_energy_total",
-                  "name": "ENERGY Total"
-                },
-                {
-                  "entity": "sensor.rack_ups_energy_voltage",
-                  "name": "ENERGY Voltage"
-                }
-              ],
-              "title": "Rack UPS"
-            },
-            {
               "type": "horizontal-stack",
               "cards": [
                 {
