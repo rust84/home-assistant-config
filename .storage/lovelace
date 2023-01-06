@@ -344,7 +344,7 @@
                     "custom_fields": {
                       "notification": [
                         {
-                          "background-color": "[[[\n  if (states['switch.smart_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                          "background-color": "[[[\n  if (states['switch.living_room_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
                         },
                         {
                           "border-radius": "50%"
@@ -374,7 +374,7 @@
                     }
                   },
                   "custom_fields": {
-                    "notification": "[[[ return states['switch.smart_plug'].state ]]]\n"
+                    "notification": "[[[ return states['switch.living_room_plug'].state ]]]\n"
                   }
                 }
               ]
@@ -712,13 +712,6 @@
               "title": "AC Plug"
             }
           ]
-        },
-        {
-          "title": "Octoprint",
-          "path": "octoprint",
-          "icon": "",
-          "badges": [],
-          "cards": []
         }
       ]
     }
