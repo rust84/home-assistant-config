@@ -7,7 +7,7 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
-    "power1 sensor1 ."
+    "sensor1 . ."
     "graph1 graph2 ."
 
   mediaquery:
@@ -17,7 +17,7 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
-        "power1 sensor1"
+        "sensor1 ."
         "graph1 graph2"
 
 view_layout:
@@ -38,23 +38,23 @@ cards:
     name: "Server Room"
 
   # Power consumption
-  - view_layout:
-      grid-area: "power1"
-    type: "custom:button-card"
-    template: custom_card_damix48_power_details
-    entity: sensor.rack_ups_energy_power
-    variables:
-      ulm_card_power_details_name: Rack
-      ulm_card_power_details_entity: sensor.rack_ups_energy_power
-      ulm_card_power_details_hours: 2
-      ulm_card_power_details_24hour: true
-      ulm_card_power_details_thresholds:
-        - value: 275
-          color: "#43A047"
-        - value: 300
-          color: "#FFA600"
-        - value: 350
-          color: "#DB4437"
+  # - view_layout:
+  #     grid-area: "power1"
+  #   type: "custom:button-card"
+  #   template: custom_card_damix48_power_details
+  #   entity: sensor.rack_ups_energy_power
+  #   variables:
+  #     ulm_card_power_details_name: Rack
+  #     ulm_card_power_details_entity: sensor.rack_ups_energy_power
+  #     ulm_card_power_details_hours: 2
+  #     ulm_card_power_details_24hour: true
+  #     ulm_card_power_details_thresholds:
+  #       - value: 275
+  #         color: "#43A047"
+  #       - value: 300
+  #         color: "#FFA600"
+  #       - value: 350
+  #         color: "#DB4437"
 
   #Sensors
   - view_layout:

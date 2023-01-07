@@ -3,5 +3,5 @@ office_group:
   entities:
     #- switch.sonoff_s26_1_relay Vive
     - switch.sonoff_s26_2_relay
-    - switch.ac_plug
-    #- switch.office_light_switch # No
+    # - switch.ac_plug
+    #- switch.office_light_switch # LOOP!
