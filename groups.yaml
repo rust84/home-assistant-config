@@ -1,7 +1,13 @@
 office_group:
   name: Office Group
   entities:
+    #- switch.office_light_switch # DO NOT ENABLE!
     #- switch.sonoff_s26_1_relay Vive
     - switch.sonoff_s26_2_relay
-    # - switch.ac_plug
-    #- switch.office_light_switch # LOOP!
+    - switch.ac_plug
+
+lounge_group:
+  name: Lounge Group
+  entities:
+    - switch.ac_plug_2
+    - switch.living_room_plug

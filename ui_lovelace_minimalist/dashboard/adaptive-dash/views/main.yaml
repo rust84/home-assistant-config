@@ -17,6 +17,8 @@ layout:
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
     "title4 title4 . . . ."
+    "energy_g energy_g energy_g energy_g energy_g energy_g"
+    "energy_d energy_d energy_d . . ."
 
   mediaquery:
     # Mobile
@@ -38,6 +40,8 @@ layout:
         "card3 card4"
         "card5 card6"
         "title4 title4"
+        "energy_g energy_g"
+        "energy_d energy_d"
 
 view_layout:
   grid-area: "main"
@@ -375,7 +379,7 @@ cards:
         grid-area: "title4"
     type: "custom:button-card"
     template: "card_title"
-    name: "Camera"
+    name: "Energy"
 
   # Cameras
   # - view_layout:
@@ -388,3 +392,61 @@ cards:
   #     ulm_custom_card_camera_title: true
   #     ulm_custom_card_camera_name: "driveway"
   #     #ulm_custom_card_camera_label: "drive"
+
+  # Energy
+  - view_layout:
+      grid-area: "energy_d"
+    type: energy-date-selection  
+  - view_layout:
+      grid-area: "energy_g"
+    type: custom:sankey-chart
+    energy_date_selection: true
+    height: 200
+    min_box_distance: 5
+    min_box_height: 3
+    round: 1
+    sections:
+      - entities:
+          - entity_id: sensor.electric_consumption_today
+            substract_entities: []
+            type: entity
+            color: purple
+            children:
+              - total
+      - entities:
+          - entity_id: total
+            type: remaining_parent_state
+            name: Total Consumption
+            children:
+              - office
+              - unknown
+      - entities:
+          - children:
+              - sensor.ac_plug_energy_today
+            entity_id: office
+            name: Office
+            type: remaining_child_state
+          - children:
+              - sensor.ac_plug_2_energy_today
+            entity_id: lounge
+            name: Lounge
+            type: remaining_child_state
+          - children: []
+            color: grey
+            entity_id: unknown
+            name: Other
+            type: remaining_parent_state
+      - entities:
+          - children: []
+            color: green
+            entity_id: sensor.ac_plug_energy_today
+            type: entity
+          - children: []
+            color: green
+            entity_id: sensor.ac_plug_2_energy_today
+            type: entity
+    show_names: true
+    show_states: true
+    show_units: true
+    unit_prefix: k
+    wide: true

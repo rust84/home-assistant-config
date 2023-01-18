@@ -117,6 +117,94 @@
               "type": "entities"
             },
             {
+              "energy_date_selection": true,
+              "height": 200,
+              "min_box_distance": 5,
+              "min_box_height": 3,
+              "round": 1,
+              "sections": [
+                {
+                  "entities": [
+                    {
+                      "entity_id": "sensor.electric_consumption_today",
+                      "substract_entities": [],
+                      "type": "entity",
+                      "color": "purple",
+                      "children": [
+                        "total"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "entity_id": "total",
+                      "type": "remaining_parent_state",
+                      "name": "Total Consumption",
+                      "children": [
+                        "office",
+                        "lounge",
+                        "unknown"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [
+                        "sensor.ac_plug_energy_today"
+                      ],
+                      "entity_id": "office",
+                      "name": "Office",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [
+                        "sensor.ac_plug_2_energy_today"
+                      ],
+                      "entity_id": "lounge",
+                      "name": "Lounge",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [],
+                      "color": "grey",
+                      "entity_id": "unknown",
+                      "name": "Other",
+                      "type": "remaining_parent_state"
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_energy_today",
+                      "type": "entity"
+                    },
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_2_energy_today",
+                      "type": "entity"
+                    }
+                  ]
+                }
+              ],
+              "show_names": true,
+              "show_states": true,
+              "show_units": true,
+              "type": "custom:sankey-chart",
+              "unit_prefix": "k",
+              "wide": true
+            },
+            {
+              "type": "energy-date-selection"
+            },
+            {
               "type": "gauge",
               "entity": "sensor.particulate_matter_2_5um_concentration",
               "min": 0,
@@ -138,8 +226,18 @@
                   "camera_entity": "camera.driveway",
                   "live_provider": "webrtc-card",
                   "webrtc_card": {
-                    "url": "rtsp://frigate:frigate1234@10.30.0.243:554/h264Preview_01_main"
+                    "url": "rtsp://frigate:frigate1234@10.30.0.242:554/h264Preview_01_main"
                   }
+                },
+                {
+                  "camera_entity": "camera.office",
+                  "live_provider": "webrtc-card",
+                  "webrtc_card": {
+                    "url": "rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main"
+                  }
+                },
+                {
+                  "camera_entity": "camera.garden"
                 }
               ],
               "media_viewer": {
@@ -149,14 +247,33 @@
                   }
                 }
               },
+              "view": {
+                "default": "live"
+              },
+              "live": {
+                "auto_play": "all",
+                "auto_pause": "hidden"
+              },
               "view_layout": {
                 "column": 4
               }
             },
             {
-              "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406",
-              "name": "Aircon"
+              "entities": [
+                {
+                  "entity": "sensor.ac_plug_energy_power",
+                  "name": "Office rad"
+                },
+                {
+                  "entity": "sensor.ac_plug_2_energy_power",
+                  "name": "Lounge rad"
+                }
+              ],
+              "hours_to_show": 3,
+              "icon": "mdi:radiator",
+              "name": "Power",
+              "points_per_hour": 12,
+              "type": "custom:mini-graph-card"
             },
             {
               "type": "entities",
@@ -184,7 +301,7 @@
                   "color": "rgb(28, 128, 199)",
                   "entity": "switch.sonoff_s26_1_relay",
                   "icon": "mdi:monitor",
-                  "name": "HyperLED",
+                  "name": "Lighthouse",
                   "state": [
                     {
                       "value": "off",
@@ -416,6 +533,36 @@
               "type": "entities",
               "entities": [
                 {
+                  "entity": "sensor.vibration_action",
+                  "name": "Action"
+                },
+                {
+                  "entity": "sensor.vibration_angle_x",
+                  "name": "Angle x"
+                },
+                {
+                  "entity": "sensor.vibration_angle_y",
+                  "name": "Angle y"
+                },
+                {
+                  "entity": "sensor.vibration_angle_z",
+                  "name": "Angle z"
+                },
+                {
+                  "entity": "sensor.vibration_strength",
+                  "name": "Strength"
+                },
+                {
+                  "entity": "binary_sensor.vibration_vibration",
+                  "name": "Vibration"
+                }
+              ],
+              "title": "vibration"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
                   "entity": "sensor.particulate_matter_2_5um_concentration"
                 },
                 {
@@ -444,36 +591,6 @@
                 }
               ],
               "title": "Environment"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.vibration_action",
-                  "name": "Action"
-                },
-                {
-                  "entity": "sensor.vibration_angle_x",
-                  "name": "Angle x"
-                },
-                {
-                  "entity": "sensor.vibration_angle_y",
-                  "name": "Angle y"
-                },
-                {
-                  "entity": "sensor.vibration_angle_z",
-                  "name": "Angle z"
-                },
-                {
-                  "entity": "sensor.vibration_strength",
-                  "name": "Strength"
-                },
-                {
-                  "entity": "binary_sensor.vibration_vibration",
-                  "name": "Vibration"
-                }
-              ],
-              "title": "vibration"
             }
           ]
         },
@@ -600,6 +717,93 @@
           "badges": [],
           "cards": [
             {
+              "type": "energy-date-selection"
+            },
+            {
+              "energy_date_selection": true,
+              "height": 200,
+              "min_box_distance": 5,
+              "min_box_height": 3,
+              "round": 1,
+              "sections": [
+                {
+                  "entities": [
+                    {
+                      "entity_id": "sensor.electric_consumption_today",
+                      "substract_entities": [],
+                      "type": "entity",
+                      "color": "purple",
+                      "children": [
+                        "total"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "entity_id": "total",
+                      "type": "remaining_parent_state",
+                      "name": "Total Consumption",
+                      "children": [
+                        "office",
+                        "unknown"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [
+                        "sensor.ac_plug_energy_today"
+                      ],
+                      "entity_id": "office",
+                      "name": "Office",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [
+                        "sensor.ac_plug_2_energy_today"
+                      ],
+                      "entity_id": "lounge",
+                      "name": "Lounge",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [],
+                      "color": "grey",
+                      "entity_id": "unknown",
+                      "name": "Other",
+                      "type": "remaining_parent_state"
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_energy_today",
+                      "type": "entity"
+                    },
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_2_energy_today",
+                      "type": "entity"
+                    }
+                  ]
+                }
+              ],
+              "show_names": true,
+              "show_states": true,
+              "show_units": true,
+              "type": "custom:sankey-chart",
+              "unit_prefix": "k",
+              "wide": true
+            },
+            {
               "type": "custom:scheduler-card",
               "include": [
                 "climate"
@@ -609,31 +813,6 @@
               "type": "thermostat",
               "entity": "climate.heating_controller",
               "name": "Thermostat"
-            },
-            {
-              "type": "custom:button-card",
-              "color": "rgb(28, 128, 199)",
-              "entity": "input_boolean.enable_heating_schedules",
-              "icon": "mdi:radiator",
-              "name": "Heating Schedules",
-              "state": [
-                {
-                  "value": "off",
-                  "icon": "mdi:radiator-off",
-                  "styles": {
-                    "card": [
-                      {
-                        "filter": "opacity(50%)"
-                      }
-                    ],
-                    "icon": [
-                      {
-                        "filter": "grayscale(100%)"
-                      }
-                    ]
-                  }
-                }
-              ]
             },
             {
               "type": "entities",
@@ -649,6 +828,9 @@
                 },
                 {
                   "entity": "input_boolean.heating_schedule_away"
+                },
+                {
+                  "entity": "input_boolean.enable_heating_schedules"
                 }
               ],
               "title": "Settings"
@@ -701,13 +883,6 @@
                   "entity": "sensor.ac_plug_energy_yesterday",
                   "name": "ENERGY Yesterday"
                 }
-              ],
-              "title": "AC Plug"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                "switch.ac_plug"
               ],
               "title": "AC Plug"
             }
