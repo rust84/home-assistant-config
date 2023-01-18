@@ -8,9 +8,8 @@ layout:
     "back back back"
     "title1 title1 title1"
     "sensor2 sensor3 sensor4"
-    "switch2 switch3 ."
+    "switch2 switch3 switch4"
     "light1 . ."
-    "climate1 . ."
     "graph1 graph2 ."
 
   mediaquery:
@@ -22,8 +21,8 @@ layout:
         "title1 title1"
         "sensor2 sensor3"
         "switch2 switch3"
+        "switch4 ."
         "light1 ."
-        "climate1 climate1"
         "graph1 graph2"
 
 view_layout:
@@ -79,19 +78,19 @@ cards:
       ulm_card_graph_entity: sensor.bme680_humidity
 
   # Aircon
-  - view_layout:
-        grid-area: "climate1"
-    type: "custom:button-card"
-    template: card_thermostat
-    entity: climate.midea_ac_42880953513406
-    variables:
-      ulm_card_thermostat_enable_collapse: true
-      ulm_card_thermostat_enable_controls: true
-      ulm_card_thermostat_enable_display_temperature: true
-      ulm_card_thermostat_enable_popup: true 
-      ulm_card_thermostat_preset_mode: false
-      ulm_input_select_option: climate 1
-      ulm_input_select: input_select.minimalist_ui_switch
+  # - view_layout:
+  #       grid-area: "climate1"
+  #   type: "custom:button-card"
+  #   template: card_thermostat
+  #   entity: climate.midea_ac_42880953513406
+  #   variables:
+  #     ulm_card_thermostat_enable_collapse: true
+  #     ulm_card_thermostat_enable_controls: true
+  #     ulm_card_thermostat_enable_display_temperature: true
+  #     ulm_card_thermostat_enable_popup: true 
+  #     ulm_card_thermostat_preset_mode: false
+  #     ulm_input_select_option: climate 1
+  #     ulm_input_select: input_select.minimalist_ui_switch
 
   #Sensors
   - view_layout:
@@ -129,3 +128,11 @@ cards:
     variables:
       ulm_card_power_outlet_name: Vive Plug
     entity: switch.sonoff_s26_1_relay
+
+  - view_layout:
+      grid-area: "switch4"
+    type: "custom:button-card"
+    template: card_power_outlet
+    variables:
+      ulm_card_power_outlet_name: Radiator
+    entity: switch.ac_plug
