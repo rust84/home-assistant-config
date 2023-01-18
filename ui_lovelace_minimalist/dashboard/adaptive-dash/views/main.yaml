@@ -399,7 +399,6 @@ cards:
     type: energy-date-selection  
   - view_layout:
       grid-area: "energy_g"
-    type: custom:sankey-chart
     energy_date_selection: true
     height: 200
     min_box_distance: 5
@@ -419,6 +418,7 @@ cards:
             name: Total Consumption
             children:
               - office
+              - lounge
               - unknown
       - entities:
           - children:
@@ -448,5 +448,7 @@ cards:
     show_names: true
     show_states: true
     show_units: true
+    type: custom:sankey-chart
     unit_prefix: k
     wide: true
+
