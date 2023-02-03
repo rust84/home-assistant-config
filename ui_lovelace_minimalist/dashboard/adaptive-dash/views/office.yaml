@@ -10,7 +10,7 @@ layout:
     "sensor2 sensor3 sensor4"
     "switch2 switch3 switch4"
     "light1 . ."
-    "graph1 graph2 ."
+    "graph1 graph2 power1"
 
   mediaquery:
     # Mobile
@@ -24,6 +24,7 @@ layout:
         "switch4 ."
         "light1 ."
         "graph1 graph2"
+        "power1 ."
 
 view_layout:
   grid-area: "office"
@@ -136,3 +137,23 @@ cards:
     variables:
       ulm_card_power_outlet_name: Radiator
     entity: switch.ac_plug
+
+  # Power consumption
+  - view_layout:
+      grid-area: "power1"
+    type: "custom:button-card"
+    template: custom_card_damix48_power_details
+    entity: sensor.ac_plug_energy_power
+    name: Aircon
+    variables:
+      ulm_card_power_details_name: Radiator
+      ulm_card_power_details_entity: sensor.ac_plug_energy_power
+      ulm_card_power_details_hours: 2
+      ulm_card_power_details_24hour: true
+      ulm_card_power_details_thresholds:
+        - value: 275
+          color: "#43A047"
+        - value: 700
+          color: "#FFA600"
+        - value: 900
+          color: "#DB4437"

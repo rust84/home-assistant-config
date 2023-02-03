@@ -156,14 +156,14 @@ energy:
 
 utility_meter:
   daily_energy:
-    source: sensor.ovo_last_electricity_reading
+    source: sensor.electric_consumption_today
     name: Daily Energy
     cycle: daily
     tariffs:
       - peak
       - offpeak
   monthly_energy:
-    source: sensor.ovo_last_electricity_reading
+    source: sensor.electric_consumption_today
     name: Monthly Energy
     cycle: monthly
     tariffs:

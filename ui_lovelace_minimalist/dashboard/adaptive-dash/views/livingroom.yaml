@@ -160,11 +160,11 @@ cards:
       grid-area: "power1"
     type: "custom:button-card"
     template: custom_card_damix48_power_details
-    entity: sensor.ac_plug_energy_power
+    entity: sensor.ac_plug_2_energy_power
     name: Aircon
     variables:
-      ulm_card_power_details_name: Aircon
-      ulm_card_power_details_entity: sensor.ac_plug_energy_power
+      ulm_card_power_details_name: Radiator
+      ulm_card_power_details_entity: sensor.ac_plug_2_energy_power
       ulm_card_power_details_hours: 2
       ulm_card_power_details_24hour: true
       ulm_card_power_details_thresholds:

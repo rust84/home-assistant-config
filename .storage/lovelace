@@ -14,6 +14,7 @@
             "width": 300,
             "max_cols": 3
           },
+          "icon": "mdi:home",
           "badges": [
             {
               "entity": "person.russell"
@@ -115,94 +116,6 @@
               ],
               "title": "Light",
               "type": "entities"
-            },
-            {
-              "energy_date_selection": true,
-              "height": 200,
-              "min_box_distance": 5,
-              "min_box_height": 3,
-              "round": 1,
-              "sections": [
-                {
-                  "entities": [
-                    {
-                      "entity_id": "sensor.electric_consumption_today",
-                      "substract_entities": [],
-                      "type": "entity",
-                      "color": "purple",
-                      "children": [
-                        "total"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "entity_id": "total",
-                      "type": "remaining_parent_state",
-                      "name": "Total Consumption",
-                      "children": [
-                        "office",
-                        "lounge",
-                        "unknown"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "children": [
-                        "sensor.ac_plug_energy_today"
-                      ],
-                      "entity_id": "office",
-                      "name": "Office",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [
-                        "sensor.ac_plug_2_energy_today"
-                      ],
-                      "entity_id": "lounge",
-                      "name": "Lounge",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [],
-                      "color": "grey",
-                      "entity_id": "unknown",
-                      "name": "Other",
-                      "type": "remaining_parent_state"
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "children": [],
-                      "color": "green",
-                      "entity_id": "sensor.ac_plug_energy_today",
-                      "type": "entity"
-                    },
-                    {
-                      "children": [],
-                      "color": "green",
-                      "entity_id": "sensor.ac_plug_2_energy_today",
-                      "type": "entity"
-                    }
-                  ]
-                }
-              ],
-              "show_names": true,
-              "show_states": true,
-              "show_units": true,
-              "type": "custom:sankey-chart",
-              "unit_prefix": "k",
-              "wide": true
-            },
-            {
-              "type": "energy-date-selection"
             },
             {
               "type": "gauge",
@@ -595,8 +508,10 @@
           ]
         },
         {
+          "theme": "Backend-selected",
           "title": "Alarm",
           "path": "alarm",
+          "icon": "mdi:alarm-panel",
           "badges": [],
           "cards": [
             {
@@ -712,97 +627,12 @@
           ]
         },
         {
+          "theme": "Backend-selected",
           "title": "Heating",
           "path": "heating",
+          "icon": "mdi:radiator",
           "badges": [],
           "cards": [
-            {
-              "type": "energy-date-selection"
-            },
-            {
-              "energy_date_selection": true,
-              "height": 200,
-              "min_box_distance": 5,
-              "min_box_height": 3,
-              "round": 1,
-              "sections": [
-                {
-                  "entities": [
-                    {
-                      "entity_id": "sensor.electric_consumption_today",
-                      "substract_entities": [],
-                      "type": "entity",
-                      "color": "purple",
-                      "children": [
-                        "total"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "entity_id": "total",
-                      "type": "remaining_parent_state",
-                      "name": "Total Consumption",
-                      "children": [
-                        "office",
-                        "unknown"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "children": [
-                        "sensor.ac_plug_energy_today"
-                      ],
-                      "entity_id": "office",
-                      "name": "Office",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [
-                        "sensor.ac_plug_2_energy_today"
-                      ],
-                      "entity_id": "lounge",
-                      "name": "Lounge",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [],
-                      "color": "grey",
-                      "entity_id": "unknown",
-                      "name": "Other",
-                      "type": "remaining_parent_state"
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "children": [],
-                      "color": "green",
-                      "entity_id": "sensor.ac_plug_energy_today",
-                      "type": "entity"
-                    },
-                    {
-                      "children": [],
-                      "color": "green",
-                      "entity_id": "sensor.ac_plug_2_energy_today",
-                      "type": "entity"
-                    }
-                  ]
-                }
-              ],
-              "show_names": true,
-              "show_states": true,
-              "show_units": true,
-              "type": "custom:sankey-chart",
-              "unit_prefix": "k",
-              "wide": true
-            },
             {
               "type": "custom:scheduler-card",
               "include": [
@@ -885,6 +715,133 @@
                 }
               ],
               "title": "AC Plug"
+            }
+          ]
+        },
+        {
+          "theme": "Backend-selected",
+          "title": "Energy",
+          "path": "energy",
+          "icon": "mdi:lightning-bolt",
+          "type": "custom:masonry-layout",
+          "subview": false,
+          "layout": {
+            "width": 1000,
+            "max_cols": 1
+          },
+          "badges": [],
+          "cards": [
+            {
+              "type": "energy-date-selection"
+            },
+            {
+              "energy_date_selection": true,
+              "height": 200,
+              "min_box_distance": 5,
+              "min_box_height": 3,
+              "round": 1,
+              "sections": [
+                {
+                  "entities": [
+                    {
+                      "add_entities": [
+                        "sensor.daily_energy_peak"
+                      ],
+                      "children": [
+                        "total"
+                      ],
+                      "color": "purple",
+                      "entity_id": "sensor.daily_energy_peak",
+                      "name": "Peak",
+                      "substract_entities": [
+                        "sensor.daily_energy_offpeak"
+                      ],
+                      "type": "entity"
+                    },
+                    {
+                      "add_entities": [
+                        "sensor.daily_energy_offpeak"
+                      ],
+                      "children": [
+                        "total"
+                      ],
+                      "color": "var(--warning-color)",
+                      "entity_id": "sensor.daily_energy_offpeak",
+                      "name": "Offpeak",
+                      "substract_entities": [
+                        "sensor.daily_energy_peak"
+                      ],
+                      "type": "entity"
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "entity_id": "total",
+                      "type": "remaining_parent_state",
+                      "name": "Total Consumption",
+                      "children": [
+                        "office",
+                        "lounge",
+                        "unknown"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [
+                        "sensor.ac_plug_energy_today"
+                      ],
+                      "entity_id": "office",
+                      "name": "Office",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [
+                        "sensor.ac_plug_2_energy_today"
+                      ],
+                      "entity_id": "lounge",
+                      "name": "Lounge",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [],
+                      "color": "grey",
+                      "entity_id": "unknown",
+                      "name": "Other",
+                      "type": "remaining_parent_state"
+                    }
+                  ]
+                },
+                {
+                  "entities": [
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_energy_today",
+                      "type": "entity"
+                    },
+                    {
+                      "children": [],
+                      "color": "green",
+                      "entity_id": "sensor.ac_plug_2_energy_today",
+                      "type": "entity"
+                    }
+                  ]
+                }
+              ],
+              "show_names": true,
+              "show_states": true,
+              "show_units": true,
+              "type": "custom:sankey-chart",
+              "unit_prefix": "k",
+              "wide": true
+            },
+            {
+              "type": "energy-sources-table"
             }
           ]
         }

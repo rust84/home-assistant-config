@@ -1,11 +1,11 @@
 - alias: Switch between peak and offpeak
   trigger:
     - platform: time
-      at: "08:30:00"
+      at: "07:00:00"
       variables:
         tariff: "peak"
     - platform: time
-      at: "00:30:00"
+      at: "00:00:00"
       variables:
         tariff: "offpeak"
   action:

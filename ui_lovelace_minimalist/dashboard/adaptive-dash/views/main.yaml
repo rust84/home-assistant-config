@@ -17,8 +17,8 @@ layout:
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
     "title4 title4 . . . ."
-    "energy_g energy_g energy_g energy_g energy_g energy_g"
     "energy_d energy_d energy_d . . ."
+    "energy_g energy_g energy_g energy_g energy_g energy_g"
 
   mediaquery:
     # Mobile
@@ -40,8 +40,8 @@ layout:
         "card3 card4"
         "card5 card6"
         "title4 title4"
-        "energy_g energy_g"
         "energy_d energy_d"
+        "energy_g energy_g"
 
 view_layout:
   grid-area: "main"
@@ -406,12 +406,26 @@ cards:
     round: 1
     sections:
       - entities:
-          - entity_id: sensor.electric_consumption_today
-            substract_entities: []
-            type: entity
-            color: purple
+          - add_entities:
+              - sensor.daily_energy_peak
             children:
               - total
+            color: purple
+            entity_id: sensor.daily_energy_peak
+            name: Peak
+            substract_entities:
+              - sensor.daily_energy_offpeak
+            type: entity
+          - add_entities:
+              - sensor.daily_energy_offpeak
+            children:
+              - total
+            color: var(--warning-color)
+            entity_id: sensor.daily_energy_offpeak # change to offpeak
+            name: Offpeak
+            substract_entities:
+              - sensor.daily_energy_peak
+            type: entity
       - entities:
           - entity_id: total
             type: remaining_parent_state
