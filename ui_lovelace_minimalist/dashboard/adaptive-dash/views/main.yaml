@@ -6,10 +6,9 @@ layout:
   grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
   grid-template-areas: |
     "chip1 chip2 . . . ."
-    "weather weather weather . . ."
-    "welcome welcome welcome welcome . ."
     "person1 person1 person2 person2 . ."
     "elec1 elec1 bin1 bin1 bin2 bin2"
+    "weather weather weather . . ."
     "title1 title1 title1 title1 title1 title1"
     "room1 room1 room2 room2 room3 room3"
     "room4 room4 room5 room5 room6 room6"
@@ -26,11 +25,10 @@ layout:
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "chip1 chip2"
-        "weather weather"
-        "welcome welcome"
         "person1 person2"
         "elec1 ."
         "bin1 bin2"
+        "weather weather"
         "title1 title1"
         "room1 room2"
         "room3 room4"
@@ -57,34 +55,30 @@ cards:
       grid-area: "chip2"
     type: "custom:button-card"
     template: chip_temperature
-    entity: weather.openweathermap
+    entity: weather.tomorrow_io_home_daily
     variables:
       ulm_chip_temperature_outside: sensor.openweathermap_temperature
       ulm_chip_temperature_inside: sensor.bme680_temperature
-      ulm_chip_temperature_weather: weather.openweathermap
+      ulm_chip_temperature_weather: weather.tomorrow_io_home_daily
       ulm_card_tap_action: "popup"
       ulm_custom_popup:
         template: "popup_weather_forecast"
-        entity: weather.openweathermap
+        entity: weather.tomorrow_io_home_daily
         popup_variables:
-          ulm_weather_popup_surpress_first_forecast: false
+          ulm_weather_popup_surpress_first_forecast: true
 
   # Weather card
   - view_layout:
       grid-area: "weather"
     type: "custom:button-card"
-    template: card_weather
-    entity: weather.openweathermap
+    template: card_weather_ulm
+    entity: weather.tomorrow_io_home_daily
     variables:
-      ulm_card_weather_name: " "
-      ulm_card_weather_primary_info:
-        - wind_speed
-        - precipitation_probability
-      ulm_card_weather_backdrop:
-        fade: true
-      ulm_card_tap_action: adaptive
       ulm_custom_popup:
         template: "popup_weather_forecast"
+        entity: weather.tomorrow_io_home_daily
+        popup_variables:
+          ulm_weather_popup_surpress_first_forecast: true
 
   # Person card
   - view_layout:
@@ -137,41 +131,41 @@ cards:
       ulm_card_generic_swap_icon: mdi:delete
       ulm_card_generic_swap_name: Recycling
 
-  # Welcome card
-  - view_layout:
-      grid-area: "welcome"
-    type: "custom:button-card"
-    template: "card_welcome_scenes"
-    entity: input_boolean.welcome_collapse
-    variables:
-      ulm_card_welcome_scenes_collapse: input_boolean.welcome_collapse
-      ulm_weather: weather.openweathermap
-      entity_1:
-        entity_id: sensor.office_person
-        icon: "mdi:face-man"
-        state: "1"
-        name: "Office"
-      entity_2:
-        entity_id: sensor.anyone_home
-        state: "home"
-        name: "Home"
-      entity_3:
-        entity_id: alarm_control_panel.alarm_panel
-        icon: "mdi:shield-home"
-        state: "armed_away"
-        name: "Alarm"
-      entity_4:
-        entity_id: switch.sonoff_s26_1_relay
-        icon: "mdi:power-plug"
-        name: "Ambi"
-      entity_5:
-        entity_id: switch.sonoff_s26_2_relay
-        icon: "mdi:power-plug"
-        name: "Clock"
-      entity_6:
-        entity_id: switch.smart_plug
-        icon: "mdi:speaker"
-        name: "Sub"
+  # # Welcome card
+  # - view_layout:
+  #     grid-area: "welcome"
+  #   type: "custom:button-card"
+  #   template: "card_welcome_scenes"
+  #   entity: input_boolean.welcome_collapse
+  #   variables:
+  #     ulm_card_welcome_scenes_collapse: input_boolean.welcome_collapse
+  #     ulm_weather: weather.tomorrow_io_home_daily
+  #     entity_1:
+  #       entity_id: sensor.office_person
+  #       icon: "mdi:face-man"
+  #       state: "1"
+  #       name: "Office"
+  #     entity_2:
+  #       entity_id: sensor.anyone_home
+  #       state: "home"
+  #       name: "Home"
+  #     entity_3:
+  #       entity_id: alarm_control_panel.alarm_panel
+  #       icon: "mdi:shield-home"
+  #       state: "armed_away"
+  #       name: "Alarm"
+  #     entity_4:
+  #       entity_id: switch.sonoff_s26_1_relay
+  #       icon: "mdi:power-plug"
+  #       name: "Ambi"
+  #     entity_5:
+  #       entity_id: switch.sonoff_s26_2_relay
+  #       icon: "mdi:power-plug"
+  #       name: "Clock"
+  #     entity_6:
+  #       entity_id: switch.smart_plug
+  #       icon: "mdi:speaker"
+  #       name: "Sub"
 
   # Rooms
   - view_layout:
@@ -421,7 +415,7 @@ cards:
             children:
               - total
             color: var(--warning-color)
-            entity_id: sensor.daily_energy_offpeak # change to offpeak
+            entity_id: sensor.daily_energy_offpeak
             name: Offpeak
             substract_entities:
               - sensor.daily_energy_peak

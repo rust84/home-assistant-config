@@ -25,6 +25,9 @@ lovelace:
   #     icon: mdi:script
   #     show_in_sidebar: true
   #     filename: lovelace-minimalist.yaml
+  resources:
+    - url: /local/state-switch.js
+      type: module
 
 default_config:
 
@@ -285,11 +288,8 @@ input_select:
       - light 5
       - light 6
       - mediaplayer 1
-      - mediaplayer 2
-      - climate 1
+      #- climate 1
       - climate 2
-      - power 1
-      - power 2
       - bedroom
       - landing
       - livingroom

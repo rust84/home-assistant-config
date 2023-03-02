@@ -202,6 +202,12 @@
                 },
                 {
                   "entity": "sensor.ovo_last_electricity_cost"
+                },
+                {
+                  "entity": "sensor.daily_energy_offpeak"
+                },
+                {
+                  "entity": "sensor.daily_energy_peak"
                 }
               ],
               "title": "Electricity"
