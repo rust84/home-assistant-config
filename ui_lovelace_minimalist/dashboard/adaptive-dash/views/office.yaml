@@ -135,7 +135,7 @@ cards:
     type: "custom:button-card"
     template: card_power_outlet
     variables:
-      ulm_card_power_outlet_name: Radiator
+      ulm_card_power_outlet_name: 3D Printer
     entity: switch.ac_plug
 
   # Power consumption
@@ -144,9 +144,9 @@ cards:
     type: "custom:button-card"
     template: custom_card_damix48_power_details
     entity: sensor.ac_plug_energy_power
-    name: Aircon
+    name: 3D Printer
     variables:
-      ulm_card_power_details_name: Radiator
+      ulm_card_power_details_name: 3D Printer
       ulm_card_power_details_entity: sensor.ac_plug_energy_power
       ulm_card_power_details_hours: 2
       ulm_card_power_details_24hour: true

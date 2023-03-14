@@ -15,7 +15,7 @@
   sensors:
     rosie_home_status:
       friendly_name: 'Rosie Home Status'
-      value_template: "{{is_state('device_tracker.rosies_iphone','home')}}"
+      value_template: "{{is_state('device_tracker.rosies_iphone_2','home')}}"
 - platform: template
   sensors:
     anyone_home:

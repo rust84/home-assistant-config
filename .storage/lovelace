@@ -350,7 +350,7 @@
                 {
                   "type": "custom:button-card",
                   "color": "rgb(28, 128, 199)",
-                  "entity": "switch.smart_plug",
+                  "entity": "switch.living_room_plug",
                   "icon": "mdi:speaker",
                   "name": "Subwoofer",
                   "state": [
@@ -788,7 +788,7 @@
                       "type": "remaining_parent_state",
                       "name": "Total Consumption",
                       "children": [
-                        "office",
+                        "printer",
                         "lounge",
                         "unknown"
                       ]
@@ -801,8 +801,8 @@
                       "children": [
                         "sensor.ac_plug_energy_today"
                       ],
-                      "entity_id": "office",
-                      "name": "Office",
+                      "entity_id": "printer",
+                      "name": "Printer",
                       "type": "remaining_child_state"
                     },
                     {

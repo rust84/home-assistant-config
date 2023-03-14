@@ -246,7 +246,7 @@ waste_collection_schedule:
         postcode: !secret postcode
 
 rflink:
-  host: 10.20.0.86
+  host: 10.30.0.227
   port: 23
   tcp_keepalive_idle_timer: 600
   # port: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0

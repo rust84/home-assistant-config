@@ -99,8 +99,8 @@ cards:
     entity: person.rosie
     variables:
       ulm_card_imswel_person_entity: person.rosie
-      ulm_card_imswel_person_wifi_tracker: device_tracker.unifi_62_17_17_ce_4e_7f_ysf22opp
-      ulm_card_imswel_person_gps_tracker: device_tracker.unifi_62_17_17_ce_4e_7f_ysf22opp
+      ulm_card_imswel_person_wifi_tracker: device_tracker.rosies_iphone_2
+      ulm_card_imswel_person_gps_tracker: device_tracker.rosies_iphone_2
       ulm_card_imswel_person_use_entity_picture: true
 
   # Elec
@@ -425,14 +425,14 @@ cards:
             type: remaining_parent_state
             name: Total Consumption
             children:
-              - office
+              - printer
               - lounge
               - unknown
       - entities:
           - children:
               - sensor.ac_plug_energy_today
-            entity_id: office
-            name: Office
+            entity_id: printer
+            name: Printer
             type: remaining_child_state
           - children:
               - sensor.ac_plug_2_energy_today
