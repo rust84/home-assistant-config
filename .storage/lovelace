@@ -554,7 +554,7 @@
                   "icon": "mdi:smoke-detector"
                 },
                 {
-                  "entity": "binary_sensor.smoke_detector_server_smoke",
+                  "entity": "binary_sensor.smoke_detector_server2_smoke",
                   "name": "Server Room - Smoke",
                   "icon": "mdi:smoke-detector"
                 },
@@ -606,6 +606,12 @@
                 },
                 {
                   "entity": "input_boolean.camera_office_notify"
+                },
+                {
+                  "entity": "switch.office_detect"
+                },
+                {
+                  "entity": "switch.driveway_detect"
                 }
               ],
               "title": "Settings"
@@ -644,37 +650,6 @@
               "include": [
                 "climate"
               ]
-            },
-            {
-              "type": "thermostat",
-              "entity": "climate.heating_controller",
-              "name": "Thermostat"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "input_boolean.auto_enable_aircon_swing_mode"
-                },
-                {
-                  "entity": "input_boolean.auto_set_aircon_temperature"
-                },
-                {
-                  "entity": "input_boolean.enable_heating_schedules"
-                },
-                {
-                  "entity": "input_boolean.heating_schedule_away"
-                },
-                {
-                  "entity": "input_boolean.enable_heating_schedules"
-                }
-              ],
-              "title": "Settings"
-            },
-            {
-              "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406",
-              "name": "Aircon"
             },
             {
               "type": "entities",
@@ -721,6 +696,37 @@
                 }
               ],
               "title": "AC Plug"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.midea_ac_42880953513406",
+              "name": "Aircon"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "input_boolean.auto_enable_aircon_swing_mode"
+                },
+                {
+                  "entity": "input_boolean.auto_set_aircon_temperature"
+                },
+                {
+                  "entity": "input_boolean.enable_heating_schedules"
+                },
+                {
+                  "entity": "input_boolean.heating_schedule_away"
+                },
+                {
+                  "entity": "input_boolean.enable_heating_schedules"
+                }
+              ],
+              "title": "Settings"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.heating_controller",
+              "name": "Thermostat"
             }
           ]
         },

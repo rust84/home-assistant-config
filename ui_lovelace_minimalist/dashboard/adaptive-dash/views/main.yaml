@@ -260,7 +260,7 @@ cards:
       action: navigate
       navigation_path: "office"
     variables:
-      ulm_custom_card_esh_room_light_entity: switch.office_light_switch
+      ulm_custom_card_esh_room_light_entity: light.office_light
       # ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406
       ulm_input_select_option: office
       ulm_input_select: input_select.minimalist_ui_switch
