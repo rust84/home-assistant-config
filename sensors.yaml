@@ -1,11 +1,3 @@
-- platform: darksky
-  api_key: !secret darksky_apikey
-  monitored_conditions:
-    - summary
-    - precip_probability
-    - temperature
-    - wind_speed
-    - humidity
 - platform: template
   sensors:
     russell_home_status:
@@ -13,15 +5,10 @@
       value_template: "{{is_state('device_tracker.pixel_4a','home') or is_state('device_tracker.pixel_4a_3','home')}}"
 - platform: template
   sensors:
-    rosie_home_status:
-      friendly_name: 'Rosie Home Status'
-      value_template: "{{is_state('device_tracker.rosies_iphone_2','home')}}"
-- platform: template
-  sensors:
     anyone_home:
       friendly_name: 'Home Status'
-      #value_template: "{% if is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
-      value_template: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.rosie_home_status', 'True')-%}home{%else%}not_home{% endif %}"
+      value_template: "{% if is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
+      #value_template: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.rosie_home_status', 'True')-%}home{%else%}not_home{% endif %}"
 - platform: template
   sensors:
     thermostat_temperature:

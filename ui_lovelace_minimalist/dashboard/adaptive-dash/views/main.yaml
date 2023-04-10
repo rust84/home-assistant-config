@@ -6,7 +6,7 @@ layout:
   grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
   grid-template-areas: |
     "chip1 chip2 . . . ."
-    "person1 person1 person2 person2 . ."
+    "person1 person1 . . . ."
     "elec1 elec1 bin1 bin1 bin2 bin2"
     "weather weather weather . . ."
     "title1 title1 title1 title1 title1 title1"
@@ -25,7 +25,7 @@ layout:
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "chip1 chip2"
-        "person1 person2"
+        "person1 ."
         "elec1 ."
         "bin1 bin2"
         "weather weather"
@@ -92,17 +92,6 @@ cards:
       ulm_card_imswel_person_gps_tracker: device_tracker.pixel_4a_3
       ulm_card_imswel_person_use_entity_picture: true
 
-  - view_layout:
-      grid-area: "person2"
-    type: "custom:button-card"
-    template: custom_card_imswel_person
-    entity: person.rosie
-    variables:
-      ulm_card_imswel_person_entity: person.rosie
-      ulm_card_imswel_person_wifi_tracker: device_tracker.rosies_iphone_2
-      ulm_card_imswel_person_gps_tracker: device_tracker.rosies_iphone_2
-      ulm_card_imswel_person_use_entity_picture: true
-
   # Elec
   - view_layout:
       grid-area: "elec1"
@@ -130,42 +119,6 @@ cards:
     variables:
       ulm_card_generic_swap_icon: mdi:delete
       ulm_card_generic_swap_name: Recycling
-
-  # # Welcome card
-  # - view_layout:
-  #     grid-area: "welcome"
-  #   type: "custom:button-card"
-  #   template: "card_welcome_scenes"
-  #   entity: input_boolean.welcome_collapse
-  #   variables:
-  #     ulm_card_welcome_scenes_collapse: input_boolean.welcome_collapse
-  #     ulm_weather: weather.tomorrow_io_home_daily
-  #     entity_1:
-  #       entity_id: sensor.office_person
-  #       icon: "mdi:face-man"
-  #       state: "1"
-  #       name: "Office"
-  #     entity_2:
-  #       entity_id: sensor.anyone_home
-  #       state: "home"
-  #       name: "Home"
-  #     entity_3:
-  #       entity_id: alarm_control_panel.alarm_panel
-  #       icon: "mdi:shield-home"
-  #       state: "armed_away"
-  #       name: "Alarm"
-  #     entity_4:
-  #       entity_id: switch.sonoff_s26_1_relay
-  #       icon: "mdi:power-plug"
-  #       name: "Ambi"
-  #     entity_5:
-  #       entity_id: switch.sonoff_s26_2_relay
-  #       icon: "mdi:power-plug"
-  #       name: "Clock"
-  #     entity_6:
-  #       entity_id: switch.smart_plug
-  #       icon: "mdi:speaker"
-  #       name: "Sub"
 
   # Rooms
   - view_layout:
