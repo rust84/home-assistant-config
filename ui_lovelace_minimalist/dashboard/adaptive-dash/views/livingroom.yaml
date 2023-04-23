@@ -10,7 +10,6 @@ layout:
     "sensor1 sensor2 sensor3"
     "light1 . ."
     "switch1 switch2 switch3"
-    "media1 media1 ."
     "climate1 climate1 ."
     "graph1 graph2 power1"
 
@@ -24,7 +23,6 @@ layout:
         "sensor1 sensor2"
         "sensor3 ."
         "switch1 switch2"
-        "media1 media1"
         "climate1 climate1"
         "light1 ."
         "graph1 graph2"
@@ -48,18 +46,18 @@ cards:
     name: "Livingroom"
 
   # Nvidia Shield
-  - view_layout:
-      grid-area: "media1"
-    type: "custom:button-card"
-    template: card_media_player_with_control
-    variables:
-      ulm_card_media_player_enable_art: true
-      ulm_card_media_player_enable_controls: true
-      ulm_card_media_player_enable_popup: true
-      ulm_input_select_option: mediaplayer 1
-      ulm_input_select: input_select.minimalist_ui_switch
-    entity: media_player.android_tv_10_20_0_83
-    name: Livingroom Nvidia Shield
+  # - view_layout:
+  #     grid-area: "media1"
+  #   type: "custom:button-card"
+  #   template: card_media_player_with_control
+  #   variables:
+  #     ulm_card_media_player_enable_art: true
+  #     ulm_card_media_player_enable_controls: true
+  #     ulm_card_media_player_enable_popup: true
+  #     ulm_input_select_option: mediaplayer 1
+  #     ulm_input_select: input_select.minimalist_ui_switch
+  #   entity: media_player.android_tv_10_30_0_83
+  #   name: Livingroom Nvidia Shield
 
   # Thermostat
   - view_layout:
@@ -145,7 +143,7 @@ cards:
     template: card_power_outlet
     variables:
       ulm_card_power_outlet_name: Subwoofer
-    entity: switch.living_room_plug
+    entity: switch.localbytes_plug_pm_dc3584
 
   - view_layout:
       grid-area: "switch2"

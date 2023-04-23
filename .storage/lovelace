@@ -347,7 +347,7 @@
                 {
                   "type": "custom:button-card",
                   "color": "rgb(28, 128, 199)",
-                  "entity": "switch.living_room_plug",
+                  "entity": "switch.localbytes_plug_pm_dc3584",
                   "icon": "mdi:speaker",
                   "name": "Subwoofer",
                   "state": [
@@ -377,7 +377,7 @@
                     "custom_fields": {
                       "notification": [
                         {
-                          "background-color": "[[[\n  if (states['switch.living_room_plug'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                          "background-color": "[[[\n  if (states['switch.localbytes_plug_pm_dc3584'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
                         },
                         {
                           "border-radius": "50%"
@@ -407,7 +407,7 @@
                     }
                   },
                   "custom_fields": {
-                    "notification": "[[[ return states['switch.living_room_plug'].state ]]]\n"
+                    "notification": "[[[ return states['switch.localbytes_plug_pm_dc3584'].state ]]]\n"
                   }
                 }
               ]
@@ -443,7 +443,7 @@
                   "entity": "switch.ac_plug"
                 }
               ],
-              "title": "Lounge Radiator Plug"
+              "title": "3D Printer PM"
             },
             {
               "type": "entities",
@@ -793,6 +793,7 @@
                       "children": [
                         "printer",
                         "lounge",
+                        "kitchen",
                         "unknown"
                       ]
                     }
@@ -810,10 +811,19 @@
                     },
                     {
                       "children": [
-                        "sensor.ac_plug_2_energy_today"
+                        "sensor.ac_plug_2_energy_today",
+                        "sensor.localbytes_plug_pm_dc3584_daily_energy"
                       ],
                       "entity_id": "lounge",
                       "name": "Lounge",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [
+                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy"
+                      ],
+                      "entity_id": "kitchen",
+                      "name": "Kitchen",
                       "type": "remaining_child_state"
                     },
                     {
@@ -836,7 +846,22 @@
                     {
                       "children": [],
                       "color": "green",
+                      "name": "Fairylights",
                       "entity_id": "sensor.ac_plug_2_energy_today",
+                      "type": "entity"
+                    },
+                    {
+                      "children": [],
+                      "color": "green",
+                      "name": "Subwoofer",
+                      "entity_id": "sensor.localbytes_plug_pm_dc3584_daily_energy",
+                      "type": "entity"
+                    },
+                    {
+                      "children": [],
+                      "color": "green",
+                      "name": "Coffee",
+                      "entity_id": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
                       "type": "entity"
                     }
                   ]
