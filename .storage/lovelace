@@ -126,10 +126,6 @@
               }
             },
             {
-              "type": "thermostat",
-              "entity": "climate.heating_controller"
-            },
-            {
               "type": "custom:frigate-card",
               "cameras": [
                 {
@@ -171,12 +167,16 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.ac_plug_energy_power",
-                  "name": "Office rad"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
+                  "name": "Speaker"
                 },
                 {
-                  "entity": "sensor.ac_plug_2_energy_power",
-                  "name": "Lounge rad"
+                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
+                  "name": "Coffee"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
+                  "name": "Washing machine"
                 }
               ],
               "hours_to_show": 3,
@@ -195,12 +195,6 @@
                   "entity": "sensor.electric_cost_today"
                 },
                 {
-                  "entity": "sensor.ovo_last_electricity_reading"
-                },
-                {
-                  "entity": "sensor.ovo_last_electricity_cost"
-                },
-                {
                   "entity": "sensor.daily_energy_offpeak"
                 },
                 {
@@ -212,72 +206,6 @@
             {
               "type": "horizontal-stack",
               "cards": [
-                {
-                  "type": "custom:button-card",
-                  "color": "rgb(28, 128, 199)",
-                  "entity": "switch.sonoff_s26_1_relay",
-                  "icon": "mdi:monitor",
-                  "name": "Lighthouse",
-                  "state": [
-                    {
-                      "value": "off",
-                      "icon": "mdi:monitor",
-                      "styles": {
-                        "card": [
-                          {
-                            "filter": "opacity(50%)"
-                          }
-                        ],
-                        "icon": [
-                          {
-                            "filter": "grayscale(100%)"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "styles": {
-                    "grid": [
-                      {
-                        "position": "relative"
-                      }
-                    ],
-                    "custom_fields": {
-                      "notification": [
-                        {
-                          "background-color": "[[[\n  if (states['switch.sonoff_s26_1_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                        },
-                        {
-                          "border-radius": "50%"
-                        },
-                        {
-                          "position": "absolute"
-                        },
-                        {
-                          "left": "60%"
-                        },
-                        {
-                          "top": "10%"
-                        },
-                        {
-                          "height": "20px"
-                        },
-                        {
-                          "width": "20px"
-                        },
-                        {
-                          "font-size": "8px"
-                        },
-                        {
-                          "line-height": "20px"
-                        }
-                      ]
-                    }
-                  },
-                  "custom_fields": {
-                    "notification": "[[[ return states['switch.sonoff_s26_1_relay'].state ]]]\n"
-                  }
-                },
                 {
                   "type": "custom:button-card",
                   "color": "rgb(28, 128, 199)",
@@ -347,13 +275,13 @@
                 {
                   "type": "custom:button-card",
                   "color": "rgb(28, 128, 199)",
-                  "entity": "switch.localbytes_plug_pm_dc3584",
-                  "icon": "mdi:speaker",
-                  "name": "Subwoofer",
+                  "entity": "switch.sonoff_s26_1_relay",
+                  "icon": "mdi:lightbulb",
+                  "name": "Fairylights",
                   "state": [
                     {
                       "value": "off",
-                      "icon": "mdi:speaker-off",
+                      "icon": "mdi:monitor",
                       "styles": {
                         "card": [
                           {
@@ -377,7 +305,7 @@
                     "custom_fields": {
                       "notification": [
                         {
-                          "background-color": "[[[\n  if (states['switch.localbytes_plug_pm_dc3584'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
+                          "background-color": "[[[\n  if (states['switch.sonoff_s26_1_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
                         },
                         {
                           "border-radius": "50%"
@@ -407,7 +335,7 @@
                     }
                   },
                   "custom_fields": {
-                    "notification": "[[[ return states['switch.localbytes_plug_pm_dc3584'].state ]]]\n"
+                    "notification": "[[[ return states['switch.sonoff_s26_1_relay'].state ]]]\n"
                   }
                 }
               ]
@@ -416,31 +344,44 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.ac_plug_energy_apparentpower",
-                  "name": "ENERGY ApparentPower"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
+                  "name": "Sub power"
                 },
                 {
-                  "entity": "sensor.ac_plug_energy_current",
-                  "name": "ENERGY Current"
+                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
+                  "name": "Coffee power"
                 },
                 {
-                  "entity": "sensor.ac_plug_energy_power",
-                  "name": "ENERGY Power"
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
+                  "name": "Washing machine power"
                 },
                 {
-                  "entity": "sensor.ac_plug_energy_today",
-                  "name": "ENERGY Today"
+                  "entity": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
+                  "name": "Coffee maker daily total"
                 },
                 {
-                  "entity": "sensor.ac_plug_energy_total",
-                  "name": "ENERGY Total"
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
+                  "name": "Washing machine daily total"
                 },
                 {
-                  "entity": "sensor.ac_plug_energy_voltage",
-                  "name": "ENERGY Voltage"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy",
+                  "name": "Speaker daily total",
+                  "icon": "mdi:speaker"
                 },
                 {
-                  "entity": "switch.ac_plug"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy_cost",
+                  "name": "Coffee maker cost",
+                  "icon": "mdi:coffee-maker"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy_cost",
+                  "name": "Washing machine cost",
+                  "icon": "mdi:washing-machine"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy_cost",
+                  "name": "Speaker cost",
+                  "icon": "mdi:speaker"
                 }
               ],
               "title": "3D Printer PM"
@@ -791,7 +732,6 @@
                       "type": "remaining_parent_state",
                       "name": "Total Consumption",
                       "children": [
-                        "printer",
                         "lounge",
                         "kitchen",
                         "unknown"
@@ -803,15 +743,6 @@
                   "entities": [
                     {
                       "children": [
-                        "sensor.ac_plug_energy_today"
-                      ],
-                      "entity_id": "printer",
-                      "name": "Printer",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [
-                        "sensor.ac_plug_2_energy_today",
                         "sensor.localbytes_plug_pm_dc3584_daily_energy"
                       ],
                       "entity_id": "lounge",
@@ -820,7 +751,8 @@
                     },
                     {
                       "children": [
-                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy"
+                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
+                        "sensor.localbytes_plug_pm_2_10aace_daily_energy"
                       ],
                       "entity_id": "kitchen",
                       "name": "Kitchen",
@@ -840,14 +772,8 @@
                     {
                       "children": [],
                       "color": "green",
-                      "entity_id": "sensor.ac_plug_energy_today",
-                      "type": "entity"
-                    },
-                    {
-                      "children": [],
-                      "color": "green",
-                      "name": "Fairylights",
-                      "entity_id": "sensor.ac_plug_2_energy_today",
+                      "name": "Washing Machine",
+                      "entity_id": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
                       "type": "entity"
                     },
                     {

@@ -378,24 +378,24 @@ cards:
             type: remaining_parent_state
             name: Total Consumption
             children:
-              - printer
+              #- printer
               - lounge
               - kitchen
               - unknown
       - entities:
+          # - children:
+          #     - sensor.ac_plug_energy_today
+          #   entity_id: printer
+          #   name: Printer
+          #   type: remaining_child_state
           - children:
-              - sensor.ac_plug_energy_today
-            entity_id: printer
-            name: Printer
-            type: remaining_child_state
-          - children:
-              - sensor.ac_plug_2_energy_today
               - sensor.localbytes_plug_pm_dc3584_daily_energy
             entity_id: lounge
             name: Lounge
             type: remaining_child_state
           - children:
               - sensor.localbytes_plug_pm_1_dc6319_daily_energy
+              - sensor.localbytes_plug_pm_2_10aace_daily_energy
             entity_id: kitchen
             name: Kitchen
             type: remaining_child_state
@@ -405,14 +405,14 @@ cards:
             name: Other
             type: remaining_parent_state
       - entities:
+          # - children: []
+          #   color: green
+          #   entity_id: sensor.ac_plug_energy_today
+          #   type: entity
           - children: []
             color: green
-            entity_id: sensor.ac_plug_energy_today
-            type: entity
-          - children: []
-            color: green
-            name: Fairylights
-            entity_id: sensor.ac_plug_2_energy_today
+            name: Washing Machine
+            entity_id: sensor.localbytes_plug_pm_2_10aace_daily_energy
             type: entity
           - children: []
             color: green
