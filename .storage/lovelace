@@ -281,7 +281,7 @@
                   "state": [
                     {
                       "value": "off",
-                      "icon": "mdi:monitor",
+                      "icon": "mdi:lightbulb",
                       "styles": {
                         "card": [
                           {
@@ -802,6 +802,27 @@
             },
             {
               "type": "energy-sources-table"
+            },
+            {
+              "entities": [
+                {
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
+                  "name": "Speaker"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
+                  "name": "Coffee"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
+                  "name": "Washing machine"
+                }
+              ],
+              "hours_to_show": 12,
+              "icon": "mdi:radiator",
+              "name": "Power",
+              "points_per_hour": 60,
+              "type": "custom:mini-graph-card"
             }
           ]
         }
