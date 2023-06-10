@@ -210,8 +210,8 @@
                   "type": "custom:button-card",
                   "color": "rgb(28, 128, 199)",
                   "entity": "switch.sonoff_s26_2_relay",
-                  "icon": "mdi:clock-outline",
-                  "name": "Clock",
+                  "icon": "mdi:rocket",
+                  "name": "Warpcore",
                   "state": [
                     {
                       "value": "off",
@@ -344,24 +344,20 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
-                  "name": "Sub power"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
-                  "name": "Coffee power"
+                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
+                  "name": "AC daily total"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_2_10aace_power",
-                  "name": "Washing machine power"
+                  "name": "AC power"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
                   "name": "Coffee maker daily total"
                 },
                 {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
-                  "name": "Washing machine daily total"
+                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
+                  "name": "Coffee maker power"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy",
@@ -369,52 +365,11 @@
                   "icon": "mdi:speaker"
                 },
                 {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy_cost",
-                  "name": "Coffee maker cost",
-                  "icon": "mdi:coffee-maker"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy_cost",
-                  "name": "Washing machine cost",
-                  "icon": "mdi:washing-machine"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy_cost",
-                  "name": "Speaker cost",
-                  "icon": "mdi:speaker"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
+                  "name": "Sub power"
                 }
               ],
-              "title": "3D Printer PM"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.vibration_action",
-                  "name": "Action"
-                },
-                {
-                  "entity": "sensor.vibration_angle_x",
-                  "name": "Angle x"
-                },
-                {
-                  "entity": "sensor.vibration_angle_y",
-                  "name": "Angle y"
-                },
-                {
-                  "entity": "sensor.vibration_angle_z",
-                  "name": "Angle z"
-                },
-                {
-                  "entity": "sensor.vibration_strength",
-                  "name": "Strength"
-                },
-                {
-                  "entity": "binary_sensor.vibration_vibration",
-                  "name": "Vibration"
-                }
-              ],
-              "title": "vibration"
+              "title": "PM"
             },
             {
               "type": "entities",
@@ -590,52 +545,6 @@
               ]
             },
             {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.ac_plug_energy_apparentpower",
-                  "name": "ENERGY ApparentPower"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_current",
-                  "name": "ENERGY Current"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_factor",
-                  "name": "ENERGY Factor"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_power",
-                  "name": "ENERGY Power"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_reactivepower",
-                  "name": "ENERGY ReactivePower"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_today",
-                  "name": "ENERGY Today"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_total",
-                  "name": "ENERGY Total"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_totalstarttime",
-                  "name": "ENERGY TotalStartTime"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_voltage",
-                  "name": "ENERGY Voltage"
-                },
-                {
-                  "entity": "sensor.ac_plug_energy_yesterday",
-                  "name": "ENERGY Yesterday"
-                }
-              ],
-              "title": "AC Plug"
-            },
-            {
               "type": "thermostat",
               "entity": "climate.midea_ac_42880953513406",
               "name": "Aircon"
@@ -685,11 +594,13 @@
               "type": "energy-date-selection"
             },
             {
-              "energy_date_selection": true,
               "height": 200,
-              "min_box_distance": 5,
-              "min_box_height": 3,
+              "unit_prefix": "k",
               "round": 1,
+              "min_box_height": 3,
+              "min_box_distance": 5,
+              "show_states": true,
+              "show_units": true,
               "sections": [
                 {
                   "entities": [
@@ -733,7 +644,7 @@
                       "name": "Total Consumption",
                       "children": [
                         "lounge",
-                        "kitchen",
+                        "office",
                         "unknown"
                       ]
                     }
@@ -751,8 +662,15 @@
                     },
                     {
                       "children": [
-                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
                         "sensor.localbytes_plug_pm_2_10aace_daily_energy"
+                      ],
+                      "entity_id": "office",
+                      "name": "Office",
+                      "type": "remaining_child_state"
+                    },
+                    {
+                      "children": [
+                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy"
                       ],
                       "entity_id": "kitchen",
                       "name": "Kitchen",
@@ -772,7 +690,7 @@
                     {
                       "children": [],
                       "color": "green",
-                      "name": "Washing Machine",
+                      "name": "Aircon",
                       "entity_id": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
                       "type": "entity"
                     },
@@ -793,12 +711,12 @@
                   ]
                 }
               ],
+              "energy_date_selection": true,
               "show_names": true,
-              "show_states": true,
-              "show_units": true,
               "type": "custom:sankey-chart",
-              "unit_prefix": "k",
-              "wide": true
+              "wide": true,
+              "min_state": 0,
+              "show_icons": false
             },
             {
               "type": "energy-sources-table"
@@ -815,13 +733,14 @@
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_2_10aace_power",
-                  "name": "Washing machine"
+                  "name": "Aircon"
                 }
               ],
-              "hours_to_show": 12,
+              "hours_to_show": 3,
               "icon": "mdi:radiator",
               "name": "Power",
               "points_per_hour": 60,
+              "line_width": 1,
               "type": "custom:mini-graph-card"
             }
           ]

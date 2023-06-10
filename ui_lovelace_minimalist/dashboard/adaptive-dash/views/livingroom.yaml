@@ -8,9 +8,8 @@ layout:
     "back back back"
     "title1 title1 title1"
     "sensor1 sensor2 sensor3"
-    "light1 . ."
+    "light1 climate1 ."
     "switch1 switch3 ."
-    "climate1 climate1 ."
     "graph1 graph2 ."
 
   mediaquery:
@@ -23,8 +22,7 @@ layout:
         "sensor1 sensor2"
         "sensor3 ."
         "switch1 ."
-        "climate1 climate1"
-        "light1 ."
+        "light1 climate1"
         "graph1 graph2"
 
 view_layout:

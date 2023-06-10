@@ -380,7 +380,7 @@ cards:
             children:
               #- printer
               - lounge
-              - kitchen
+              - office
               - unknown
       - entities:
           # - children:
@@ -394,8 +394,12 @@ cards:
             name: Lounge
             type: remaining_child_state
           - children:
-              - sensor.localbytes_plug_pm_1_dc6319_daily_energy
               - sensor.localbytes_plug_pm_2_10aace_daily_energy
+            entity_id: office
+            name: Office
+            type: remaining_child_state
+          - children:
+              - sensor.localbytes_plug_pm_1_dc6319_daily_energy
             entity_id: kitchen
             name: Kitchen
             type: remaining_child_state
@@ -411,7 +415,7 @@ cards:
           #   type: entity
           - children: []
             color: green
-            name: Washing Machine
+            name: Aircon
             entity_id: sensor.localbytes_plug_pm_2_10aace_daily_energy
             type: entity
           - children: []

@@ -9,7 +9,7 @@ layout:
     "title1 title1 title1"
     "sensor2 sensor3 sensor4"
     "switch2 . ."
-    "light1 . ."
+    "light1 climate1 ."
     "graph1 graph2 ."
 
   mediaquery:
@@ -21,7 +21,7 @@ layout:
         "title1 title1"
         "sensor2 sensor3"
         "switch2 ."
-        "light1 ."
+        "light1 climate1"
         "graph1 graph2"
 
 view_layout:
@@ -77,19 +77,19 @@ cards:
       ulm_card_graph_entity: sensor.bme680_humidity
 
   # Aircon
-  # - view_layout:
-  #       grid-area: "climate1"
-  #   type: "custom:button-card"
-  #   template: card_thermostat
-  #   entity: climate.midea_ac_42880953513406
-  #   variables:
-  #     ulm_card_thermostat_enable_collapse: true
-  #     ulm_card_thermostat_enable_controls: true
-  #     ulm_card_thermostat_enable_display_temperature: true
-  #     ulm_card_thermostat_enable_popup: true 
-  #     ulm_card_thermostat_preset_mode: false
-  #     ulm_input_select_option: climate 1
-  #     ulm_input_select: input_select.minimalist_ui_switch
+  - view_layout:
+        grid-area: "climate1"
+    type: "custom:button-card"
+    template: card_thermostat
+    entity: climate.midea_ac_42880953513406
+    variables:
+      ulm_card_thermostat_enable_collapse: true
+      ulm_card_thermostat_enable_controls: true
+      ulm_card_thermostat_enable_display_temperature: true
+      ulm_card_thermostat_enable_popup: true 
+      ulm_card_thermostat_preset_mode: false
+      ulm_input_select_option: climate 1
+      ulm_input_select: input_select.minimalist_ui_switch
 
   #Sensors
   - view_layout:
@@ -120,22 +120,3 @@ cards:
       ulm_card_power_outlet_name: Warp Plug
     entity: switch.sonoff_s26_2_relay
 
-  # Power consumption
-  # - view_layout:
-  #     grid-area: "power1"
-  #   type: "custom:button-card"
-  #   template: custom_card_damix48_power_details
-  #   entity: sensor.ac_plug_energy_power
-  #   name: 3D Printer
-  #   variables:
-  #     ulm_card_power_details_name: 3D Printer
-  #     ulm_card_power_details_entity: sensor.ac_plug_energy_power
-  #     ulm_card_power_details_hours: 2
-  #     ulm_card_power_details_24hour: true
-  #     ulm_card_power_details_thresholds:
-  #       - value: 275
-  #         color: "#43A047"
-  #       - value: 700
-  #         color: "#FFA600"
-  #       - value: 900
-  #         color: "#DB4437"
