@@ -60,21 +60,21 @@ cards:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.bme680_temperature
+    entity: sensor.office_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature office
-      ulm_card_graph_entity: sensor.bme680_temperature
+      ulm_card_graph_entity: sensor.office_temperature
 
   - view_layout:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.bme680_humidity
+    entity: sensor.office_humidity
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity office
-      ulm_card_graph_entity: sensor.bme680_humidity
+      ulm_card_graph_entity: sensor.office_humidity
 
   # Aircon
   - view_layout:
@@ -110,7 +110,7 @@ cards:
       ulm_card_binary_sensor_alert: true
       ulm_show_last_changed: true
       ulm_card_binary_sensor_alert_name: Presence
-    entity: binary_sensor.office_motion
+    entity: binary_sensor.office_occupancy
 
   - view_layout:
       grid-area: "switch2"
@@ -119,4 +119,3 @@ cards:
     variables:
       ulm_card_power_outlet_name: Warp Plug
     entity: switch.sonoff_s26_2_relay
-

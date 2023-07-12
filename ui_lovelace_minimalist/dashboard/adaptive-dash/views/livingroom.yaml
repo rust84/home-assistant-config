@@ -11,6 +11,7 @@ layout:
     "light1 climate1 ."
     "switch1 switch3 ."
     "graph1 graph2 ."
+    "camera1 camera2 ."
 
   mediaquery:
     # Mobile
@@ -24,6 +25,7 @@ layout:
         "switch1 ."
         "light1 climate1"
         "graph1 graph2"
+        "camera1 camera2"
 
 view_layout:
   grid-area: "livingroom"
@@ -142,30 +144,24 @@ cards:
       ulm_card_power_outlet_name: Subwoofer
     entity: switch.localbytes_plug_pm_dc3584_2
 
-  # - view_layout:
-  #     grid-area: "switch2"
-  #   type: "custom:button-card"
-  #   template: card_power_outlet
-  #   variables:
-  #     ulm_card_power_outlet_name: Radiator
-  #   entity: switch.ac_plug_2
+  - view_layout:
+      grid-area: "camera1"
+    type: "custom:button-card"
+    entity: camera.lounge
+    template: "custom_card_camera"
+    show_icon: true #True if you set ulm_custom_card_camera_title: true
+    variables:
+      ulm_custom_card_camera_title: "lounge"
+      ulm_custom_card_camera_name: "camera"
+      ulm_custom_card_camera_label: "lounge"
 
-  # # Power consumption
-  # - view_layout:
-  #     grid-area: "power1"
-  #   type: "custom:button-card"
-  #   template: custom_card_damix48_power_details
-  #   entity: sensor.ac_plug_2_energy_power
-  #   name: Aircon
-  #   variables:
-  #     ulm_card_power_details_name: Radiator
-  #     ulm_card_power_details_entity: sensor.ac_plug_2_energy_power
-  #     ulm_card_power_details_hours: 2
-  #     ulm_card_power_details_24hour: true
-  #     ulm_card_power_details_thresholds:
-  #       - value: 275
-  #         color: "#43A047"
-  #       - value: 700
-  #         color: "#FFA600"
-  #       - value: 900
-  #         color: "#DB4437"
+  - view_layout:
+      grid-area: "camera2"
+    type: "custom:button-card"
+    entity: camera.driveway
+    template: "custom_card_camera"
+    show_icon: true #True if you set ulm_custom_card_camera_title: true
+    variables:
+      ulm_custom_card_camera_title: "driveway"
+      ulm_custom_card_camera_name: "camera"
+      ulm_custom_card_camera_label: "driveway"

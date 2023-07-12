@@ -50,7 +50,7 @@ auth_header:
 recorder:
   auto_purge: true
   auto_repack: true
-  purge_keep_days: 7
+  purge_keep_days: 30
   db_url: !secret db_url
   exclude:
     domains:
@@ -148,8 +148,6 @@ alexa:
         - sensor.lounge_temperature_humidity_humidity
         - switch.sonoff_s26_1_relay
         - switch.sonoff_s26_2_relay
-        - switch.ac_plug
-        - switch.ac_plug_2
         - switch.office_light_switch
     entity_config:
       group.office_lights:
@@ -186,57 +184,7 @@ alarm_control_panel:
       arming_time: 0
       delay_time: 0
 
-input_boolean:
-  # auto-run stuff
-  auto_arm_disarm_alarm_night:
-    name: Arm alarm at midnight and disarm at 5am
-  auto_arm_alarm_when_gone:
-    name: Automatically arm alarm when no one is home
-    initial: on
-  auto_disarm_alarm_when_home:
-    name: Automatically disarm alarm when someone comes home
-    initial: on
-
-  # Minimalist UI  
-  welcome_collapse:
-    name: Welcome collapse
-  
-  # notifications
-  notify_alarm_armed:
-    name: Notification when alarm is armed
-    initial: on
-  notify_alarm_disarmed:
-    name: Notification when alarm is disarmed
-    initial: on
-  notify_alarm_triggered:
-    name: Notification when alarm is triggered
-    initial: on
-
-  # Heating
-  enable_heating_schedules:
-    name: Enable heating schedules
-    #initial: on
-
-  heating_schedule_away:
-    name: Disable schedules when away
-    #initial: on
-
-  # Cameras
-  camera_driveway_notify:
-    name: Notify driveway camera
-    initial: on
-  camera_lounge_notify:
-    name: Notify lounge camera
-    initial: on
-  camera_office_notify:
-    name: Notify office camera
-    initial: on
-
-  # Aircon
-  auto_enable_aircon_swing_mode:
-    name: Enable swing mode when unit is on
-  auto_set_aircon_temperature:
-    name: Set temperature when presence detected
+input_boolean: !include booleans.yaml
 
 waste_collection_schedule:
   sources:
@@ -272,7 +220,7 @@ switch:
 
 climate:
   - platform: midea_ac # Air Conditioniong
-    host: 10.9.0.14
+    host: 10.30.0.61
     id: 42880953513406
     token: !secret midea_token
     k1:  !secret midea_key

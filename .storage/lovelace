@@ -24,6 +24,10 @@
             {
               "entities": [
                 {
+                  "entity": "sensor.office_temperature",
+                  "name": "office1"
+                },
+                {
                   "entity": "sensor.bme680_temperature",
                   "name": "office"
                 },
@@ -40,14 +44,19 @@
                   "name": "bedroom"
                 }
               ],
-              "hours_to_show": 24,
+              "hours_to_show": 3,
               "icon": "mdi:server",
               "name": "TEMP",
-              "points_per_hour": 1,
+              "points_per_hour": 12,
+              "hour24": true,
               "type": "custom:mini-graph-card"
             },
             {
               "entities": [
+                {
+                  "entity": "sensor.office_humidity",
+                  "name": "office1"
+                },
                 {
                   "entity": "sensor.bme680_humidity",
                   "name": "office"
@@ -65,10 +74,11 @@
                   "name": "livingroom"
                 }
               ],
-              "hours_to_show": 24,
+              "hours_to_show": 3,
               "icon": "mdi:server",
               "name": "HUMIDITY",
-              "points_per_hour": 1,
+              "points_per_hour": 12,
+              "hour24": true,
               "type": "custom:mini-graph-card"
             },
             {
@@ -116,7 +126,7 @@
             },
             {
               "type": "gauge",
-              "entity": "sensor.particulate_matter_2_5um_concentration",
+              "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration",
               "min": 0,
               "max": 100,
               "severity": {
@@ -136,14 +146,15 @@
                   }
                 },
                 {
-                  "camera_entity": "camera.office",
+                  "camera_entity": "camera.lounge",
                   "live_provider": "webrtc-card",
                   "webrtc_card": {
                     "url": "rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main"
                   }
                 },
                 {
-                  "camera_entity": "camera.garden"
+                  "camera_entity": "camera.garden",
+                  "live_provider": "webrtc-card"
                 }
               ],
               "media_viewer": {
@@ -167,22 +178,23 @@
             {
               "entities": [
                 {
+                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
+                  "name": "Aircon"
+                },
+                {
                   "entity": "sensor.localbytes_plug_pm_dc3584_power",
                   "name": "Speaker"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
                   "name": "Coffee"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
-                  "name": "Washing machine"
                 }
               ],
               "hours_to_show": 3,
               "icon": "mdi:radiator",
               "name": "Power",
               "points_per_hour": 12,
+              "hour24": true,
               "type": "custom:mini-graph-card"
             },
             {
@@ -344,12 +356,13 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
-                  "name": "AC daily total"
+                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
+                  "name": "Aircon unit power",
+                  "icon": "mdi:air-filter"
                 },
                 {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
-                  "name": "AC power"
+                  "entity": "sensor.aircon_plug_106bf5_power",
+                  "name": "Aircon unit daily total"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
@@ -375,7 +388,7 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.particulate_matter_2_5um_concentration"
+                  "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration"
                 },
                 {
                   "entity": "sensor.bme680_breath_voc_equivalent"
@@ -461,9 +474,6 @@
                   "entity": "binary_sensor.driveway_motion"
                 },
                 {
-                  "entity": "binary_sensor.office_motion"
-                },
-                {
                   "entity": "sensor.anyone_home"
                 }
               ],
@@ -501,10 +511,13 @@
                   "entity": "input_boolean.camera_office_notify"
                 },
                 {
-                  "entity": "switch.office_detect"
+                  "entity": "switch.lounge_detect"
                 },
                 {
-                  "entity": "switch.driveway_detect"
+                  "entity": "switch.lounge_recordings"
+                },
+                {
+                  "entity": "switch.lounge_snapshots"
                 }
               ],
               "title": "Settings"
@@ -528,6 +541,18 @@
                 "camera.lounge_person",
                 "binary_sensor.driveway_person_motion"
               ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "sensor.office_humidity",
+                "sensor.office_illuminance",
+                "binary_sensor.office_mmwave",
+                "binary_sensor.office_occupancy",
+                "binary_sensor.office_pir",
+                "sensor.office_temperature"
+              ],
+              "title": "Presence One"
             }
           ]
         },
@@ -539,15 +564,15 @@
           "badges": [],
           "cards": [
             {
+              "type": "thermostat",
+              "entity": "climate.midea_ac_42880953513406",
+              "name": "Aircon"
+            },
+            {
               "type": "custom:scheduler-card",
               "include": [
                 "climate"
               ]
-            },
-            {
-              "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406",
-              "name": "Aircon"
             },
             {
               "type": "entities",
@@ -556,7 +581,7 @@
                   "entity": "input_boolean.auto_enable_aircon_swing_mode"
                 },
                 {
-                  "entity": "input_boolean.auto_set_aircon_temperature"
+                  "entity": "input_boolean.auto_set_aircon_mode"
                 },
                 {
                   "entity": "input_boolean.enable_heating_schedules"
@@ -569,11 +594,6 @@
                 }
               ],
               "title": "Settings"
-            },
-            {
-              "type": "thermostat",
-              "entity": "climate.heating_controller",
-              "name": "Thermostat"
             }
           ]
         },
@@ -662,7 +682,7 @@
                     },
                     {
                       "children": [
-                        "sensor.localbytes_plug_pm_2_10aace_daily_energy"
+                        "sensor.aircon_plug_106bf5_daily_energy"
                       ],
                       "entity_id": "office",
                       "name": "Office",
@@ -691,7 +711,7 @@
                       "children": [],
                       "color": "green",
                       "name": "Aircon",
-                      "entity_id": "sensor.localbytes_plug_pm_2_10aace_daily_energy",
+                      "entity_id": "sensor.aircon_plug_106bf5_daily_energy",
                       "type": "entity"
                     },
                     {
@@ -720,28 +740,6 @@
             },
             {
               "type": "energy-sources-table"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
-                  "name": "Speaker"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
-                  "name": "Coffee"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_2_10aace_power",
-                  "name": "Aircon"
-                }
-              ],
-              "hours_to_show": 3,
-              "icon": "mdi:radiator",
-              "name": "Power",
-              "points_per_hour": 60,
-              "line_width": 1,
-              "type": "custom:mini-graph-card"
             }
           ]
         }

@@ -217,7 +217,7 @@ cards:
       # ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406
       ulm_input_select_option: office
       ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.bme680_temperature"].state + "°C" ]]]'
+    label: '[[[ return states["sensor.office_temperature"].state + "°C" ]]]'
 
   # Server room card
   - view_layout:
@@ -394,7 +394,7 @@ cards:
             name: Lounge
             type: remaining_child_state
           - children:
-              - sensor.localbytes_plug_pm_2_10aace_daily_energy
+              - sensor.aircon_plug_106bf5_daily_energy
             entity_id: office
             name: Office
             type: remaining_child_state
@@ -416,7 +416,7 @@ cards:
           - children: []
             color: green
             name: Aircon
-            entity_id: sensor.localbytes_plug_pm_2_10aace_daily_energy
+            entity_id: sensor.aircon_plug_106bf5_daily_energy
             type: entity
           - children: []
             color: green

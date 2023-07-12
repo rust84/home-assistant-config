@@ -1,0 +1,50 @@
+# auto-run stuff
+auto_arm_disarm_alarm_night:
+  name: Arm alarm at midnight and disarm at 5am
+auto_arm_alarm_when_gone:
+  name: Automatically arm alarm when no one is home
+  initial: on
+auto_disarm_alarm_when_home:
+  name: Automatically disarm alarm when someone comes home
+  initial: on
+
+# Minimalist UI  
+welcome_collapse:
+  name: Welcome collapse
+
+# notifications
+notify_alarm_armed:
+  name: Notification when alarm is armed
+  initial: on
+notify_alarm_disarmed:
+  name: Notification when alarm is disarmed
+  initial: on
+notify_alarm_triggered:
+  name: Notification when alarm is triggered
+  initial: on
+
+# Heating
+enable_heating_schedules:
+  name: Enable heating schedules
+  #initial: on
+
+heating_schedule_away:
+  name: Disable schedules when away
+  #initial: on
+
+# Cameras
+camera_driveway_notify:
+  name: Notify driveway camera
+  initial: on
+camera_lounge_notify:
+  name: Notify lounge camera
+  initial: on
+camera_office_notify:
+  name: Notify office camera
+  initial: on
+
+# Aircon
+auto_enable_aircon_swing_mode:
+  name: Enable swing mode when unit is on
+auto_set_aircon_mode:
+  name: Set aircon mode to cool when presence is detected
