@@ -2,7 +2,7 @@
   sensors:
     russell_home_status:
       friendly_name: 'Russell Home Status'
-      value_template: "{{is_state('device_tracker.pixel_4a','home') or is_state('device_tracker.pixel_4a_3','home')}}"
+      value_template: "{{is_state('device_tracker.russell_s_pixel_7a','home') or is_state('device_tracker.pixel_7a_2','home')}}"
 - platform: template
   sensors:
     anyone_home:

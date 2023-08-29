@@ -88,8 +88,8 @@ cards:
     entity: person.russell
     variables:
       ulm_card_imswel_person_entity: person.russell
-      ulm_card_imswel_person_wifi_tracker: device_tracker.pixel_4a
-      ulm_card_imswel_person_gps_tracker: device_tracker.pixel_4a_3
+      ulm_card_imswel_person_wifi_tracker: device_tracker.russell_s_pixel_7a
+      ulm_card_imswel_person_gps_tracker: device_tracker.pixel_7a_2
       ulm_card_imswel_person_use_entity_picture: true
 
   # Elec
@@ -214,7 +214,7 @@ cards:
       navigation_path: "office"
     variables:
       ulm_custom_card_esh_room_light_entity: light.office_light
-      # ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406
+      ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406_2
       ulm_input_select_option: office
       ulm_input_select: input_select.minimalist_ui_switch
     label: '[[[ return states["sensor.office_temperature"].state + "°C" ]]]'

@@ -218,12 +218,12 @@ switch:
     friedland_57399aa6_1:
       fire_event: true
 
-climate:
-  - platform: midea_ac # Air Conditioniong
-    host: 10.30.0.61
-    id: 42880953513406
-    token: !secret midea_token
-    k1:  !secret midea_key
+# climate:
+#   - platform: midea_ac # Air Conditioniong
+#     host: 10.30.0.61
+#     id: 42880953513406
+#     token: !secret midea_token
+#     k1:  !secret midea_key
 
 input_select:
   minimalist_ui_switch:

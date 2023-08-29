@@ -151,10 +151,6 @@
                   "webrtc_card": {
                     "url": "rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main"
                   }
-                },
-                {
-                  "camera_entity": "camera.garden",
-                  "live_provider": "webrtc-card"
                 }
               ],
               "media_viewer": {
@@ -565,7 +561,7 @@
           "cards": [
             {
               "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406",
+              "entity": "climate.midea_ac_42880953513406_2",
               "name": "Aircon"
             },
             {

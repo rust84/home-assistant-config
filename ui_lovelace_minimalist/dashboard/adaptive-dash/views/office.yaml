@@ -81,7 +81,7 @@ cards:
         grid-area: "climate1"
     type: "custom:button-card"
     template: card_thermostat
-    entity: climate.midea_ac_42880953513406
+    entity: climate.midea_ac_42880953513406_2
     variables:
       ulm_card_thermostat_enable_collapse: true
       ulm_card_thermostat_enable_controls: true
