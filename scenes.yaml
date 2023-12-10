@@ -1,19 +1,17 @@
 - name: Hallway on white
   icon: "mdi:lightbulb"
   entities:
-    light.hallway:
+    light.ailight_2:
       state: "on"
-      brightness: 181
+      brightness: 255
       color_mode: "rgbw"
-      rgbw_color: [255, 191, 127, 255]
-      white_value: 255
+      rgbw_color: [209, 95, 0, 255]
 
 - name: Hallway on green
   icon: "mdi:lightbulb"
   entities:
-    light.hallway:
+    light.ailight_2:
       state: "on"
-      brightness: 181
+      brightness: 255
       color_mode: "rgbw"
-      rgbw_color: [255, 191, 127, 255]
-      white_value: 0
+      rgbw_color: [0, 255, 0, 0]

@@ -62,9 +62,9 @@ cards:
     type: 'custom:button-card'
     template: card_binary_sensor_alert
     variables:
-      ulm_card_binary_sensor_alert: true
-      ulm_show_last_changed: true
-      ulm_card_binary_sensor_alert_name: Window
+      - ulm_card_binary_sensor_alert: true
+      - ulm_show_last_changed: true
+      - ulm_card_binary_sensor_alert_name: Window
     entity: binary_sensor.server_room_contact_sensor_contact
 
   # Graph card

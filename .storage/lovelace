@@ -93,7 +93,8 @@
             {
               "entities": [
                 {
-                  "entity": "light.hallway"
+                  "entity": "light.ailight_2",
+                  "name": "Hallway"
                 },
                 {
                   "entity": "light.bathroom_light",
@@ -172,14 +173,40 @@
               }
             },
             {
+              "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
-                  "name": "Aircon"
+                  "entity": "sensor.rack_battery_charge_2",
+                  "name": "Battery charge"
                 },
+                {
+                  "entity": "sensor.rack_input_voltage",
+                  "name": "Input voltage"
+                },
+                {
+                  "entity": "sensor.rack_load",
+                  "name": "Load"
+                },
+                {
+                  "entity": "sensor.rack_output_voltage",
+                  "name": "Output voltage"
+                },
+                {
+                  "entity": "sensor.rack_status_2",
+                  "name": "Status"
+                }
+              ],
+              "title": "Rack"
+            },
+            {
+              "entities": [
                 {
                   "entity": "sensor.localbytes_plug_pm_dc3584_power",
                   "name": "Speaker"
+                },
+                {
+                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
+                  "name": "Aircon"
                 },
                 {
                   "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
@@ -412,6 +439,29 @@
                 }
               ],
               "title": "Environment"
+            },
+            {
+              "type": "picture-glance",
+              "image": "https://frigate.microserver.space/api/lounge/latest.jpg",
+              "theme": "minimalist-mobile",
+              "aspect_ratio": "72%",
+              "entities": [
+                {
+                  "entity": "binary_sensor.lounge_contact_sensor_contact"
+                },
+                {
+                  "entity": "light.lounge_light"
+                },
+                {
+                  "entity": "binary_sensor.lounge_person_occupancy"
+                },
+                {
+                  "entity": "climate.heating_controller"
+                }
+              ],
+              "card_mod": {
+                "style": "ha-card {\n  --ha-card-border-radius: 15px;\n}\n"
+              }
             }
           ]
         },
@@ -561,8 +611,8 @@
           "cards": [
             {
               "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406_2",
-              "name": "Aircon"
+              "entity": "climate.heating_controller",
+              "name": "Thermostat"
             },
             {
               "type": "custom:scheduler-card",

@@ -40,21 +40,21 @@ states:
     entity: light.office_light
 
   ###  Mediaplayers
-  mediaplayer 1:
-    type: "custom:button-card"
-    template: "popup_media_player_infos"
-    entity: media_player.android_tv_10_20_0_83
-    variables:
-      ulm_card_media_player_enable_popup: true
+  # mediaplayer 1:
+  #   type: "custom:button-card"
+  #   template: "popup_media_player_infos"
+  #   entity: media_player.android_tv_10_20_0_83
+  #   variables:
+  #     ulm_card_media_player_enable_popup: true
  
   ### Thermostats
-  climate 1:
-    type: "custom:button-card"
-    template: "popup_thermostat_temperature"
-    ulm_card_thermostat_preset_mode: false
-    entity: climate.midea_ac_42880953513406
-    variables:
-      ulm_card_thermostat_preset_mode: false
+  # climate 1:
+  #   type: "custom:button-card"
+  #   template: "popup_thermostat_temperature"
+  #   ulm_card_thermostat_preset_mode: false
+  #   entity: climate.midea_ac_42880953513406_2
+  #   variables:
+  #     ulm_card_thermostat_preset_mode: false
   climate 2:
     type: "custom:button-card"
     template: "popup_thermostat_temperature"

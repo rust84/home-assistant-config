@@ -7,11 +7,11 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
+    "glance glance ."
     "sensor1 sensor2 sensor3"
     "light1 climate1 ."
     "switch1 switch3 ."
     "graph1 graph2 ."
-    "camera1 camera2 ."
 
   mediaquery:
     # Mobile
@@ -20,12 +20,12 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
+        "glance glance"
         "sensor1 sensor2"
-        "sensor3 ."
+        "sensor3 climate1"
         "switch1 ."
-        "light1 climate1"
+        "light1 ."
         "graph1 graph2"
-        "camera1 camera2"
 
 view_layout:
   grid-area: "livingroom"
@@ -91,9 +91,9 @@ cards:
     type: 'custom:button-card'
     template: card_binary_sensor_alert
     variables:
-      ulm_card_binary_sensor_alert: true
-      ulm_show_last_changed: true
-      ulm_card_binary_sensor_alert_name: Window
+      - ulm_card_binary_sensor_alert: true
+      - ulm_show_last_changed: true
+      - ulm_card_binary_sensor_alert_name: Window
     entity: binary_sensor.lounge_contact_sensor_contact
 
   - view_layout:
@@ -101,9 +101,9 @@ cards:
     type: 'custom:button-card'
     template: card_binary_sensor_alert
     variables:
-      ulm_card_binary_sensor_alert: true
-      ulm_show_last_changed: true
-      ulm_card_binary_sensor_alert_name: Motion
+      - ulm_card_binary_sensor_alert: true
+      - ulm_show_last_changed: true
+      - ulm_card_binary_sensor_alert_name: Motion
     entity: binary_sensor.lounge_motion_sensor_occupancy
 
   - view_layout:
@@ -111,9 +111,9 @@ cards:
     type: 'custom:button-card'
     template: card_binary_sensor_alert
     variables:
-      ulm_card_binary_sensor_alert: true
-      ulm_show_last_changed: true
-      ulm_card_binary_sensor_alert_name: Presence
+      - ulm_card_binary_sensor_alert: true
+      - ulm_show_last_changed: true
+      - ulm_card_binary_sensor_alert_name: Presence
     entity: binary_sensor.lounge_motion_sensor_occupancy
 
   - view_layout:
@@ -145,23 +145,43 @@ cards:
     entity: switch.localbytes_plug_pm_dc3584_2
 
   - view_layout:
-      grid-area: "camera1"
-    type: "custom:button-card"
-    entity: camera.lounge
-    template: "custom_card_camera"
-    show_icon: true #True if you set ulm_custom_card_camera_title: true
-    variables:
-      ulm_custom_card_camera_title: "lounge"
-      ulm_custom_card_camera_name: "camera"
-      ulm_custom_card_camera_label: "lounge"
+      grid-area: "glance"
+    type: vertical-stack
+    cards:
+    - type: picture-glance
+      image: https://frigate.microserver.space/api/lounge/latest.jpg
+      theme: minimalist-mobile
+      aspect_ratio: 72%
+      entities:
+        - entity: binary_sensor.lounge_contact_sensor_contact
+        - entity: light.lounge_light
+        - entity: binary_sensor.lounge_person_occupancy
+        - entity: climate.heating_controller
+        - entity: switch.localbytes_plug_pm_dc3584_2
+      card_mod:
+        style: |
+          ha-card {
+            --ha-card-border-radius: 15px;
+          }
 
-  - view_layout:
-      grid-area: "camera2"
-    type: "custom:button-card"
-    entity: camera.driveway
-    template: "custom_card_camera"
-    show_icon: true #True if you set ulm_custom_card_camera_title: true
-    variables:
-      ulm_custom_card_camera_title: "driveway"
-      ulm_custom_card_camera_name: "camera"
-      ulm_custom_card_camera_label: "driveway"
+  # - view_layout:
+  #     grid-area: "camera1"
+  #   type: "custom:button-card"
+  #   entity: camera.lounge
+  #   template: "custom_card_camera"
+  #   show_icon: true #True if you set ulm_custom_card_camera_title: true
+  #   variables:
+  #     ulm_custom_card_camera_title: "lounge"
+  #     ulm_custom_card_camera_name: "camera"
+  #     ulm_custom_card_camera_label: "lounge"
+
+  # - view_layout:
+  #     grid-area: "camera2"
+  #   type: "custom:button-card"
+  #   entity: camera.driveway
+  #   template: "custom_card_camera"
+  #   show_icon: true #True if you set ulm_custom_card_camera_title: true
+  #   variables:
+  #     ulm_custom_card_camera_title: "driveway"
+  #     ulm_custom_card_camera_name: "camera"
+  #     ulm_custom_card_camera_label: "driveway"

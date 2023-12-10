@@ -6,7 +6,7 @@ layout:
   grid-template-columns: "1fr 1fr 1fr 1fr 1fr 1fr"
   grid-template-areas: |
     "chip1 chip2 . . . ."
-    "person1 person1 . . . ."
+    "person1 person1 plex plex . ."
     "elec1 elec1 bin1 bin1 bin2 bin2"
     "weather weather weather . . ."
     "title1 title1 title1 title1 title1 title1"
@@ -25,7 +25,7 @@ layout:
       grid-template-columns: "1fr 1fr"
       grid-template-areas: |
         "chip1 chip2"
-        "person1 ."
+        "person1 plex"
         "elec1 ."
         "bin1 bin2"
         "weather weather"
@@ -91,6 +91,15 @@ cards:
       ulm_card_imswel_person_wifi_tracker: device_tracker.russell_s_pixel_7a
       ulm_card_imswel_person_gps_tracker: device_tracker.pixel_7a_2
       ulm_card_imswel_person_use_entity_picture: true
+
+  # Plex card
+  - view_layout:
+      grid-area: "plex"
+    type: "custom:button-card"
+    template: card_generic_swap
+    entity: sensor.tautulli
+    variables:
+      ulm_card_generic_swap_name: Plex
 
   # Elec
   - view_layout:
@@ -275,12 +284,13 @@ cards:
     type: "custom:button-card"
     template: "card_light"
     variables:
+      ulm_card_light_name: Hallway
       ulm_card_light_enable_color: true
       ulm_card_light_enable_slider: true
       ulm_card_light_enable_popup: true
       ulm_input_select_option: light 3
       ulm_input_select: input_select.minimalist_ui_switch
-    entity: light.hallway
+    entity: light.ailight_2
 
   # Landing light
   - view_layout:
