@@ -1,21 +1,70 @@
-- alias: Switch between peak and offpeak
+- id: 0626a860-c901-4b9c-8463-d7a5f03f5429
+  alias: Switch between peak and offpeak
   trigger:
-    - platform: time
-      at: "07:00:00"
-      variables:
-        tariff: "peak"
-    - platform: time
-      at: "00:00:00"
-      variables:
-        tariff: "offpeak"
+  - platform: time
+    at: 08:00:00
+    variables:
+      tariff: peak
+  - platform: time
+    at: 01:00:00
+    variables:
+      tariff: offpeak
   action:
-    - service: select.select_option
-      target:
-        entity_id: select.daily_energy
-      data:
-        option: "{{ tariff }}"
-    - service: select.select_option
-      target:
-        entity_id: select.monthly_energy
-      data:
-        option: "{{ tariff }}"
+  - service: select.select_option
+    target:
+      entity_id: select.daily_energy
+    data:
+      option: '{{ tariff }}'
+  - service: select.select_option
+    target:
+      entity_id: select.monthly_energy
+    data:
+      option: '{{ tariff }}'
+- id: ad3f20d8-f504-47c1-8f11-25992a079f1d
+  alias: Sonos Night Mode On (23:00)
+  description: Enables Sonos Night Mode between 23:00 and 08:00
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.living_room_2
+    from: idle
+    to: playing
+  condition:
+  - condition: time
+    after: '23:00:00'
+    before: 08:00:00
+  action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.living_room_night_sound
+    data: {}
+  mode: single
+- id: 44884a77-c01e-42fd-a70b-59882eb345a0
+  alias: Sonos Night Mode Off (08:00)
+  description: Disables Sonos Night Mode between 08:00 and 23:00
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.living_room_2
+    from: idle
+    to: playing
+  condition:
+  - condition: time
+    after: 08:00:00
+    before: '23:00:00'
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.living_room_night_sound
+    data: {}
+  mode: single
+- id: '1719317465277'
+  alias: Frigate Notifications (0.12.0.4a)
+  description: ''
+  use_blueprint:
+    path: SgtBatten/Stable.yaml
+    input:
+      camera: camera.doorbell
+      notify_device: c6f96b9048cf518e4e711b76a8686378
+      base_url: https://hass.microserver.space
+      video: '{{base_url}}/api/frigate{{client_id}}/notifications/{{id}}/{{camera}}/clip.mp4'

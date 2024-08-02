@@ -7,7 +7,7 @@ layout:
   grid-template-areas: |
     "chip1 chip2 . . . ."
     "person1 person1 plex plex . ."
-    "elec1 elec1 bin1 bin1 bin2 bin2"
+    "bin1 bin1 bin2 bin2 bin3 bin3"
     "weather weather weather . . ."
     "title1 title1 title1 title1 title1 title1"
     "room1 room1 room2 room2 room3 room3"
@@ -15,9 +15,9 @@ layout:
     "title2 title2 title2 title2 title2 title2"
     "card1 card1 card2 card2 card3 card3"
     "card4 card4 card5 card5 card6 card6"
-    "title4 title4 . . . ."
-    "energy_d energy_d energy_d . . ."
-    "energy_g energy_g energy_g energy_g energy_g energy_g"
+  # "title4 title4 . . . ."
+  # "energy_d energy_d energy_d . . ."
+  # "energy_g energy_g energy_g energy_g energy_g energy_g"
 
   mediaquery:
     # Mobile
@@ -26,8 +26,8 @@ layout:
       grid-template-areas: |
         "chip1 chip2"
         "person1 plex"
-        "elec1 ."
-        "bin1 bin2"
+        "bin1 ."
+        "bin2 bin3"
         "weather weather"
         "title1 title1"
         "room1 room2"
@@ -37,9 +37,9 @@ layout:
         "card1 card2"
         "card3 card4"
         "card5 card6"
-        "title4 title4"
-        "energy_d energy_d"
-        "energy_g energy_g"
+  # "title4 title4"
+  # "energy_d energy_d"
+  # "energy_g energy_g"
 
 view_layout:
   grid-area: "main"
@@ -88,7 +88,7 @@ cards:
     entity: person.russell
     variables:
       ulm_card_imswel_person_entity: person.russell
-      ulm_card_imswel_person_wifi_tracker: device_tracker.russell_s_pixel_7a
+      ulm_card_imswel_person_wifi_tracker: device_tracker.pixel_7a_2
       ulm_card_imswel_person_gps_tracker: device_tracker.pixel_7a_2
       ulm_card_imswel_person_use_entity_picture: true
 
@@ -100,15 +100,6 @@ cards:
     entity: sensor.tautulli
     variables:
       ulm_card_generic_swap_name: Plex
-
-  # Elec
-  - view_layout:
-      grid-area: "elec1"
-    type: "custom:button-card"
-    template: card_generic_swap
-    entity: sensor.electric_cost_today
-    variables:
-      ulm_card_generic_swap_name: Elec
 
   # Waste collection
   - view_layout:
@@ -128,6 +119,15 @@ cards:
     variables:
       ulm_card_generic_swap_icon: mdi:delete
       ulm_card_generic_swap_name: Recycling
+
+  - view_layout:
+      grid-area: "bin3"
+    type: "custom:button-card"
+    template: custom_card_paddy_waste_collection
+    entity: sensor.waste_collection_garden
+    variables:
+      ulm_card_generic_swap_icon: mdi:delete
+      ulm_card_generic_swap_name: "Garden Waste"
 
   # Rooms
   - view_layout:
@@ -151,6 +151,7 @@ cards:
       navigation_path: "bathroom"
     variables:
       ulm_custom_card_esh_room_light_entity: light.bathroom_light
+
   # Bedroom room card
   - view_layout:
       grid-area: "room2"
@@ -158,17 +159,16 @@ cards:
     template:
       - card_esh_room
       - yellow_on
-    name: Bedroom
-    entity: light.bedroom_light
+    name: Hallway
+    entity: light.hallway_light
     icon: mdi:bed
     tap_action:
       action: navigate
       navigation_path: "bedroom"
     variables:
-      ulm_custom_card_esh_room_light_entity: light.bedroom_light
-      ulm_input_select_option: bedroom
-      ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.bedroom_temperature_humidity_temperature"].state + "°C" ]]]'
+      ulm_custom_card_esh_room_light_entity: light.hallway_light
+      # ulm_input_select_option: bedroom
+      # ulm_input_select: input_select.minimalist_ui_switch
 
   # Landing room card
   - view_layout:
@@ -185,8 +185,8 @@ cards:
       navigation_path: "landing"
     variables:
       ulm_custom_card_esh_room_light_entity: light.landing_light
-      ulm_input_select_option: landing
-      ulm_input_select: input_select.minimalist_ui_switch
+      # ulm_input_select_option: landing
+      # ulm_input_select: input_select.minimalist_ui_switch
 
   # Livingroom room card
   - view_layout:
@@ -203,10 +203,10 @@ cards:
       navigation_path: "livingroom"
     variables:
       ulm_custom_card_esh_room_light_entity: light.lounge_light
-      ulm_custom_card_esh_room_climate_entity: climate.heating_controller
-      ulm_input_select_option: livingroom
-      ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.lounge_temperature_humidity_temperature"].state + "°C" ]]]'
+      ulm_custom_card_esh_room_climate_entity: climate.thermostat_1
+      # ulm_input_select_option: livingroom
+      # ulm_input_select: input_select.minimalist_ui_switch
+    label: '[[[ return states["sensor.ep1_02_dac9c4_temperature"].state + "°C" ]]]'
 
   # Office room card
   - view_layout:
@@ -224,9 +224,9 @@ cards:
     variables:
       ulm_custom_card_esh_room_light_entity: light.office_light
       ulm_custom_card_esh_room_climate_entity: climate.midea_ac_42880953513406_2
-      ulm_input_select_option: office
-      ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.office_temperature"].state + "°C" ]]]'
+      # ulm_input_select_option: office
+      # ulm_input_select: input_select.minimalist_ui_switch
+    label: '[[[ return states["sensor.ep1_01_7f753c_temperature"].state + "°C" ]]]'
 
   # Server room card
   - view_layout:
@@ -240,10 +240,10 @@ cards:
     tap_action:
       action: navigate
       navigation_path: "server"
-    variables:
-      ulm_input_select_option: server
-      ulm_input_select: input_select.minimalist_ui_switch
-    label: '[[[ return states["sensor.upstairs_temperature"].state + "°C" ]]]'
+    # variables:
+    #   ulm_input_select_option: server
+    #   ulm_input_select: input_select.minimalist_ui_switch
+    label: '[[[ return states["sensor.rack_ups_temperature"].state + "°C" ]]]'
 
   # Lighting
   - view_layout:
@@ -276,7 +276,7 @@ cards:
       ulm_card_light_enable_popup: true
       ulm_input_select_option: light 2
       ulm_input_select: input_select.minimalist_ui_switch
-    entity: light.bedroom_light
+    entity: light.hallway_light
 
   # Hallway light
   - view_layout:
@@ -331,117 +331,104 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.office_light
 
-  # Camera
-  - view_layout:
-        grid-area: "title4"
-    type: "custom:button-card"
-    template: "card_title"
-    name: "Energy"
-
-  # Cameras
+  # # Energy
   # - view_layout:
-  #     grid-area: "camera1"
+  #       grid-area: "title4"
   #   type: "custom:button-card"
-  #   entity: camera.lounge
-  #   template: custom_card_camera
-  #   show_icon: true #True if you set ulm_custom_card_camera_title: true
-  #   variables:
-  #     ulm_custom_card_camera_title: true
-  #     ulm_custom_card_camera_name: "driveway"
-  #     #ulm_custom_card_camera_label: "drive"
+  #   template: "card_title"
+  #   name: "Energy"
 
-  # Energy
-  - view_layout:
-      grid-area: "energy_d"
-    type: energy-date-selection  
-  - view_layout:
-      grid-area: "energy_g"
-    energy_date_selection: true
-    height: 200
-    min_box_distance: 5
-    min_box_height: 3
-    round: 1
-    sections:
-      - entities:
-          - add_entities:
-              - sensor.daily_energy_peak
-            children:
-              - total
-            color: purple
-            entity_id: sensor.daily_energy_peak
-            name: Peak
-            substract_entities:
-              - sensor.daily_energy_offpeak
-            type: entity
-          - add_entities:
-              - sensor.daily_energy_offpeak
-            children:
-              - total
-            color: var(--warning-color)
-            entity_id: sensor.daily_energy_offpeak
-            name: Offpeak
-            substract_entities:
-              - sensor.daily_energy_peak
-            type: entity
-      - entities:
-          - entity_id: total
-            type: remaining_parent_state
-            name: Total Consumption
-            children:
-              #- printer
-              - lounge
-              - office
-              - unknown
-      - entities:
-          # - children:
-          #     - sensor.ac_plug_energy_today
-          #   entity_id: printer
-          #   name: Printer
-          #   type: remaining_child_state
-          - children:
-              - sensor.localbytes_plug_pm_dc3584_daily_energy
-            entity_id: lounge
-            name: Lounge
-            type: remaining_child_state
-          - children:
-              - sensor.aircon_plug_106bf5_daily_energy
-            entity_id: office
-            name: Office
-            type: remaining_child_state
-          - children:
-              - sensor.localbytes_plug_pm_1_dc6319_daily_energy
-            entity_id: kitchen
-            name: Kitchen
-            type: remaining_child_state
-          - children: []
-            color: grey
-            entity_id: unknown
-            name: Other
-            type: remaining_parent_state
-      - entities:
-          # - children: []
-          #   color: green
-          #   entity_id: sensor.ac_plug_energy_today
-          #   type: entity
-          - children: []
-            color: green
-            name: Aircon
-            entity_id: sensor.aircon_plug_106bf5_daily_energy
-            type: entity
-          - children: []
-            color: green
-            name: Subwoofer
-            entity_id: sensor.localbytes_plug_pm_dc3584_daily_energy
-            type: entity
-          - children: []
-            color: green
-            name: Coffee
-            entity_id: sensor.localbytes_plug_pm_1_dc6319_daily_energy
-            type: entity
-    show_names: true
-    show_states: true
-    show_units: true
-    type: custom:sankey-chart
-    unit_prefix: k
-    wide: true
+  # - view_layout:
+  #     grid-area: "energy_d"
+  #   type: energy-date-selection  
+  # - view_layout:
+  #     grid-area: "energy_g"
+  #   energy_date_selection: true
+  #   height: 200
+  #   min_box_distance: 5
+  #   min_box_height: 3
+  #   round: 1
+  #   sections:
+  #     - entities:
+  #         - add_entities:
+  #             - sensor.daily_energy_peak
+  #           children:
+  #             - total
+  #           color: purple
+  #           entity_id: sensor.daily_energy_peak
+  #           name: Peak
+  #           substract_entities:
+  #             - sensor.daily_energy_offpeak
+  #           type: entity
+  #         - add_entities:
+  #             - sensor.daily_energy_offpeak
+  #           children:
+  #             - total
+  #           color: var(--warning-color)
+  #           entity_id: sensor.daily_energy_offpeak
+  #           name: Offpeak
+  #           substract_entities:
+  #             - sensor.daily_energy_peak
+  #           type: entity
+  #     - entities:
+  #         - entity_id: total
+  #           type: remaining_parent_state
+  #           name: Total Consumption
+  #           children:
+  #             #- printer
+  #             - lounge
+  #             - office
+  #             - unknown
+  #     - entities:
+  #         # - children:
+  #         #     - sensor.ac_plug_energy_today
+  #         #   entity_id: printer
+  #         #   name: Printer
+  #         #   type: remaining_child_state
+  #         - children:
+  #             - sensor.localbytes_plug_pm_dc3584_daily_energy
+  #           entity_id: lounge
+  #           name: Lounge
+  #           type: remaining_child_state
+  #         - children:
+  #             - sensor.aircon_plug_106bf5_daily_energy
+  #           entity_id: office
+  #           name: Office
+  #           type: remaining_child_state
+  #         - children:
+  #             - sensor.localbytes_plug_pm_1_dc6319_daily_energy
+  #           entity_id: kitchen
+  #           name: Kitchen
+  #           type: remaining_child_state
+  #         - children: []
+  #           color: grey
+  #           entity_id: unknown
+  #           name: Other
+  #           type: remaining_parent_state
+  #     - entities:
+  #         # - children: []
+  #         #   color: green
+  #         #   entity_id: sensor.ac_plug_energy_today
+  #         #   type: entity
+  #         - children: []
+  #           color: green
+  #           name: Aircon
+  #           entity_id: sensor.aircon_plug_106bf5_daily_energy
+  #           type: entity
+  #         - children: []
+  #           color: green
+  #           name: Subwoofer
+  #           entity_id: sensor.localbytes_plug_pm_dc3584_daily_energy
+  #           type: entity
+  #         - children: []
+  #           color: green
+  #           name: Coffee
+  #           entity_id: sensor.localbytes_plug_pm_1_dc6319_daily_energy
+  #           type: entity
+  #   show_names: true
+  #   show_states: true
+  #   show_units: true
+  #   type: custom:sankey-chart
+  #   unit_prefix: k
+  #   wide: true
 

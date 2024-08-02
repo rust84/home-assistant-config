@@ -8,8 +8,8 @@ layout:
     "back back back"
     "title1 title1 title1"
     "sensor2 sensor3 sensor4"
-    "switch2 . ."
-    "light1 climate1 ."
+    "light1 light2 ."
+    "title2 title2 title2"
     "graph1 graph2 ."
 
   mediaquery:
@@ -21,7 +21,8 @@ layout:
         "title1 title1"
         "sensor2 sensor3"
         "switch2 ."
-        "light1 climate1"
+        "light1 light2"
+        "title2 title2"
         "graph1 graph2"
 
 view_layout:
@@ -42,7 +43,13 @@ cards:
     template: "card_title"
     name: "Office"
 
-  # Light
+  - view_layout:
+      grid-area: "title2"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Climate"
+
+  # Center Light
   - view_layout:
       grid-area: "light1"
     type: "custom:button-card"
@@ -55,41 +62,54 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.office_light
 
+  # FLoor Lamps
+  - view_layout:
+      grid-area: "light2"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 8
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.office_floor_lamps
+
   # Graph card
   - view_layout:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.office_temperature
+    entity: sensor.ep1_01_7f753c_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temperature office
-      ulm_card_graph_entity: sensor.office_temperature
+      ulm_card_graph_entity: sensor.ep1_01_7f753c_temperature
 
   - view_layout:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.office_humidity
+    entity: sensor.ep1_01_7f753c_humidity
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity office
-      ulm_card_graph_entity: sensor.office_humidity
+      ulm_card_graph_entity: sensor.ep1_01_7f753c_humidity
 
-  # Aircon
-  - view_layout:
-        grid-area: "climate1"
-    type: "custom:button-card"
-    template: card_thermostat
-    entity: climate.midea_ac_42880953513406_2
-    variables:
-      ulm_card_thermostat_enable_collapse: true
-      ulm_card_thermostat_enable_controls: true
-      ulm_card_thermostat_enable_display_temperature: true
-      ulm_card_thermostat_enable_popup: true 
-      ulm_card_thermostat_preset_mode: false
-      ulm_input_select_option: climate 1
-      ulm_input_select: input_select.minimalist_ui_switch
+  # # Aircon
+  # - view_layout:
+  #       grid-area: "climate1"
+  #   type: "custom:button-card"
+  #   template: card_thermostat
+  #   entity: climate.midea_ac_42880953513406_2
+  #   variables:
+  #     ulm_card_thermostat_enable_collapse: true
+  #     ulm_card_thermostat_enable_controls: true
+  #     ulm_card_thermostat_enable_display_temperature: true
+  #     ulm_card_thermostat_enable_popup: true 
+  #     ulm_card_thermostat_preset_mode: false
+  #     ulm_input_select_option: climate 1
+  #     ulm_input_select: input_select.minimalist_ui_switch
 
   #Sensors
   - view_layout:
@@ -110,12 +130,12 @@ cards:
       - ulm_card_binary_sensor_alert: true
       - ulm_show_last_changed: true
       - ulm_card_binary_sensor_alert_name: Presence
-    entity: binary_sensor.office_occupancy
+    entity: binary_sensor.ep1_01_7f753c_occupancy
 
-  - view_layout:
-      grid-area: "switch2"
-    type: "custom:button-card"
-    template: card_power_outlet
-    variables:
-      ulm_card_power_outlet_name: Warp Plug
-    entity: switch.sonoff_s26_2_relay
+  # - view_layout:
+  #     grid-area: "switch2"
+  #   type: "custom:button-card"
+  #   template: card_power_outlet
+  #   variables:
+  #     ulm_card_power_outlet_name: Warp Plug
+  #   entity: switch.sonoff_s26_2_relay

@@ -1,0 +1,18 @@
+- sensor:
+  - name: "Russell Home Status"
+    state: "{{is_state('device_tracker.russell_s_pixel_7a','home') or is_state('device_tracker.pixel_7a_2','home')}}"
+  - name: "Anyone Home"
+    state: "{% if is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
+  - name: "Rack Output Power"
+    device_class: power
+    unit_of_measurement: W
+    state_class: measurement
+    state: > 
+      {% if states('sensor.rack_status_data') in ['OL', 'OL CHRG'] -%}
+        {{ (states('sensor.rack_output_current')|float) * (states('sensor.rack_output_voltage')|float) }}
+      {% else -%}
+        0
+      {%- endif %}
+  - name: Thermostat
+    unit_of_measurement: '°C'
+    state: "{{ state_attr('climate.thermostat_1', 'current_temperature') }}"

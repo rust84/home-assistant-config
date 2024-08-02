@@ -7,7 +7,7 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
-    "sensor1 . ."
+    "light1 light1 ."
     "graph1 graph2 ."
 
   mediaquery:
@@ -17,7 +17,7 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
-        "sensor1 ."
+        "light1 light1"
         "graph1 graph2"
 
 view_layout:
@@ -56,34 +56,48 @@ cards:
   #       - value: 350
   #         color: "#DB4437"
 
-  #Sensors
+  # AiLight
   - view_layout:
-      grid-area: "sensor1"
-    type: 'custom:button-card'
-    template: card_binary_sensor_alert
+      grid-area: "light1"
+    type: "custom:button-card"
+    template: "card_light"
     variables:
-      - ulm_card_binary_sensor_alert: true
-      - ulm_show_last_changed: true
-      - ulm_card_binary_sensor_alert_name: Window
-    entity: binary_sensor.server_room_contact_sensor_contact
+      ulm_card_light_name: Serverroom
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 3
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.ailight_2
+
+  #Sensors
+  # - view_layout:
+  #     grid-area: "sensor1"
+  #   type: 'custom:button-card'
+  #   template: card_binary_sensor_alert
+  #   variables:
+  #     - ulm_card_binary_sensor_alert: true
+  #     - ulm_show_last_changed: true
+  #     - ulm_card_binary_sensor_alert_name: Window
+  #   entity: binary_sensor.server_room_contact_sensor_contact
 
   # Graph card
   - view_layout:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.bme680_temperature
+    entity: sensor.rack_output_power
     variables:
       ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Server Room Temperature
-      ulm_card_graph_entity: sensor.upstairs_temperature
+      ulm_card_graph_name: Output power
+      ulm_card_graph_entity: sensor.rack_output_power
 
   - view_layout:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.bme680_humidity
+    entity: sensor.rack_battery_charge_2
     variables:
       ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Server Room Humidity
-      ulm_card_graph_entity: sensor.upstairs_humidity
+      ulm_card_graph_name: Battery Charge
+      ulm_card_graph_entity: sensor.rack_battery_charge_2

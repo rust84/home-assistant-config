@@ -8,7 +8,6 @@ layout:
     "back back back"
     "title1 title1 title1"
     "light1 light2 ."
-    "sensor1 sensor2 ."
     ". . ."
 
   mediaquery:
@@ -18,10 +17,7 @@ layout:
       grid-template-areas: |
         "back back"
         "title1 title1"
-        "title1 title1"
         "light1 light2"
-        "sensor1 sensor2"
-        "graph1 ."
 
 view_layout:
   grid-area: "landing"
@@ -38,7 +34,7 @@ cards:
       grid-area: "title1"
     type: "custom:button-card"
     template: "card_title"
-    name: "Entrance and Landing"
+    name: "Landing"
 
   # Light
   - view_layout:
@@ -53,40 +49,26 @@ cards:
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.landing_light
 
-  # Hallway light
-  - view_layout:
-      grid-area: "light2"
-    type: "custom:button-card"
-    template: "card_light"
-    variables:
-      ulm_card_light_name: Hallway
-      ulm_card_light_enable_color: true
-      ulm_card_light_enable_slider: true
-      ulm_card_light_enable_popup: true
-      ulm_input_select_option: light 3
-      ulm_input_select: input_select.minimalist_ui_switch
-    entity: light.ailight_2
-
   #Sensors
-  - view_layout:
-      grid-area: "sensor1"
-    type: 'custom:button-card'
-    template: card_binary_sensor_alert
-    variables:
-      - ulm_card_binary_sensor_alert: true
-      - ulm_show_last_changed: true
-      - ulm_card_binary_sensor_alert_name: Motion
-    entity: binary_sensor.landing_motion_sensor_occupancy
+  # - view_layout:
+  #     grid-area: "sensor1"
+  #   type: 'custom:button-card'
+  #   template: card_binary_sensor_alert
+  #   variables:
+  #     - ulm_card_binary_sensor_alert: true
+  #     - ulm_show_last_changed: true
+  #     - ulm_card_binary_sensor_alert_name: Motion
+  #   entity: binary_sensor.landing_motion_sensor_occupancy
 
-  - view_layout:
-      grid-area: "sensor2"
-    type: 'custom:button-card'
-    template: card_binary_sensor_alert
-    variables:
-      - ulm_card_binary_sensor_alert: true
-      - ulm_show_last_changed: true
-      - ulm_card_binary_sensor_alert_name: Contact
-    entity: binary_sensor.front_door_contact_sensor_contact
+  # - view_layout:
+  #     grid-area: "sensor2"
+  #   type: 'custom:button-card'
+  #   template: card_binary_sensor_alert
+  #   variables:
+  #     - ulm_card_binary_sensor_alert: true
+  #     - ulm_show_last_changed: true
+  #     - ulm_card_binary_sensor_alert_name: Contact
+  #   entity: binary_sensor.front_door_contact_sensor_contact
 
   # Ring Doorbell
   # - view_layout:

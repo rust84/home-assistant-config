@@ -7,10 +7,12 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
-    "glance glance ."
-    "sensor1 sensor2 sensor3"
-    "light1 climate1 ."
-    "switch1 switch3 ."
+    ". . ."
+    "sensor1 sensor2 ."
+    "light1 light2 ."
+    "title2 title2 title2"
+    "media1 media2 ."
+    "title3 title3 title3"
     "graph1 graph2 ."
 
   mediaquery:
@@ -22,9 +24,11 @@ layout:
         "title1 title1"
         "glance glance"
         "sensor1 sensor2"
-        "sensor3 climate1"
-        "switch1 ."
-        "light1 ."
+        "light1 light2"
+        "title2 title2"
+        "media1 media1"
+        "media2 media2"
+        "title3 title3"
         "graph1 graph2"
 
 view_layout:
@@ -44,33 +48,45 @@ cards:
     template: "card_title"
     name: "Livingroom"
 
-  # Nvidia Shield
-  # - view_layout:
-  #     grid-area: "media1"
-  #   type: "custom:button-card"
-  #   template: card_media_player_with_control
-  #   variables:
-  #     ulm_card_media_player_enable_art: true
-  #     ulm_card_media_player_enable_controls: true
-  #     ulm_card_media_player_enable_popup: true
-  #     ulm_input_select_option: mediaplayer 1
-  #     ulm_input_select: input_select.minimalist_ui_switch
-  #   entity: media_player.android_tv_10_30_0_83
-  #   name: Livingroom Nvidia Shield
-
-  # Thermostat
   - view_layout:
-      grid-area: "climate1"
+      grid-area: "title2"
     type: "custom:button-card"
-    template: card_thermostat
-    entity: climate.heating_controller
+    template: "card_title"
+    name: "Media"
+
+  - view_layout:
+      grid-area: "title3"
+    type: "custom:button-card"
+    template: "card_title"
+    name: "Climate"
+
+  # TV
+  - view_layout:
+      grid-area: "media1"
+    type: "custom:button-card"
+    template: card_media_player_with_control
     variables:
-      ulm_card_thermostat_enable_collapse: true
-      ulm_card_thermostat_enable_controls: true
-      ulm_card_thermostat_enable_display_temperature: true
-      ulm_card_thermostat_enable_popup: true
-      ulm_input_select_option: climate 2
+      ulm_card_media_player_enable_art: true
+      ulm_card_media_player_enable_controls: true
+      ulm_card_media_player_enable_popup: true
+      ulm_input_select_option: mediaplayer 1
       ulm_input_select: input_select.minimalist_ui_switch
+    entity: media_player.lg_webos_tv_oled65g36la
+    name: "LG TV"
+
+    # Sonos
+  - view_layout:
+      grid-area: "media2"
+    type: "custom:button-card"
+    template: card_media_player_with_control
+    variables:
+      ulm_card_media_player_enable_art: true
+      ulm_card_media_player_enable_controls: true
+      ulm_card_media_player_enable_popup: true
+      ulm_input_select_option: mediaplayer 2
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: media_player.living_room_2
+    name: "Sonos"
 
   # Livingroom light
   - view_layout:
@@ -84,6 +100,19 @@ cards:
       ulm_input_select_option: light 5
       ulm_input_select: input_select.minimalist_ui_switch
     entity: light.lounge_light
+
+  # Background lights
+  - view_layout:
+      grid-area: "light2"
+    type: "custom:button-card"
+    template: "card_light"
+    variables:
+      ulm_card_light_enable_color: true
+      ulm_card_light_enable_slider: true
+      ulm_card_light_enable_popup: true
+      ulm_input_select_option: light 7
+      ulm_input_select: input_select.minimalist_ui_switch
+    entity: light.lounge_wall_lights
 
   #Sensors
   - view_layout:
@@ -103,66 +132,48 @@ cards:
     variables:
       - ulm_card_binary_sensor_alert: true
       - ulm_show_last_changed: true
-      - ulm_card_binary_sensor_alert_name: Motion
-    entity: binary_sensor.lounge_motion_sensor_occupancy
-
-  - view_layout:
-      grid-area: "sensor3"
-    type: 'custom:button-card'
-    template: card_binary_sensor_alert
-    variables:
-      - ulm_card_binary_sensor_alert: true
-      - ulm_show_last_changed: true
-      - ulm_card_binary_sensor_alert_name: Presence
-    entity: binary_sensor.lounge_motion_sensor_occupancy
+      - ulm_card_binary_sensor_alert_name: Occupancy
+    entity: binary_sensor.ep1_02_dac9c4_occupancy
 
   - view_layout:
       grid-area: "graph1"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.lounge_temperature_humidity_temperature
+    entity: sensor.ep1_02_dac9c4_temperature
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Temp
-      ulm_card_graph_entity: sensor.lounge_temperature_humidity_temperature
+      ulm_card_graph_entity: sensor.ep1_02_dac9c4_temperature
 
   - view_layout:
       grid-area: "graph2"
     type: "custom:button-card"
     template: card_graph
-    entity: sensor.lounge_temperature_humidity_humidity
+    entity: sensor.ep1_02_dac9c4_humidity
     variables:
       ulm_card_graph_color: "var(--google-blue)"
       ulm_card_graph_name: Humidity
-      ulm_card_graph_entity: sensor.lounge_temperature_humidity_humidity
+      ulm_card_graph_entity: sensor.ep1_02_dac9c4_humidity
 
-  - view_layout:
-      grid-area: "switch1"
-    type: "custom:button-card"
-    template: card_power_outlet
-    variables:
-      ulm_card_power_outlet_name: Subwoofer
-    entity: switch.localbytes_plug_pm_dc3584_2
-
-  - view_layout:
-      grid-area: "glance"
-    type: vertical-stack
-    cards:
-    - type: picture-glance
-      image: https://frigate.microserver.space/api/lounge/latest.jpg
-      theme: minimalist-mobile
-      aspect_ratio: 72%
-      entities:
-        - entity: binary_sensor.lounge_contact_sensor_contact
-        - entity: light.lounge_light
-        - entity: binary_sensor.lounge_person_occupancy
-        - entity: climate.heating_controller
-        - entity: switch.localbytes_plug_pm_dc3584_2
-      card_mod:
-        style: |
-          ha-card {
-            --ha-card-border-radius: 15px;
-          }
+  # - view_layout:
+  #     grid-area: "glance"
+  #   type: vertical-stack
+  #   cards:
+  #   - type: picture-glance
+  #     image: https://frigate.microserver.space/api/lounge/latest.jpg
+  #     theme: minimalist-mobile
+  #     aspect_ratio: 72%
+  #     entities:
+  #       - entity: binary_sensor.lounge_contact_sensor_contact
+  #       - entity: light.lounge_light
+  #       - entity: binary_sensor.lounge_person_occupancy
+  #       - entity: climate.thermostat_1
+  #       - entity: switch.localbytes_plug_pm_dc3584_2
+  #     card_mod:
+  #       style: |
+  #         ha-card {
+  #           --ha-card-border-radius: 15px;
+  #         }
 
   # - view_layout:
   #     grid-area: "camera1"

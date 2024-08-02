@@ -7,9 +7,9 @@ layout:
   grid-template-areas: >
     "back back back"
     "title1 title1 title1"
-    "sensor1 . ."
-    "light1 . ."
-    "graph1 graph2 ."
+    "sensor1 light1 ."
+    "climate1 climate1 ."
+    "camera1 camera1 ."
 
   mediaquery:
     # Mobile
@@ -19,7 +19,8 @@ layout:
         "back back back"
         "title1 title1"
         "sensor1 light1"
-        "graph1 graph2"
+        "climate1 climate1"
+        "camera1 camera1"
 view_layout:
   grid-area: "bedroom"
 cards:
@@ -35,7 +36,7 @@ cards:
       grid-area: "title1"
     type: "custom:button-card"
     template: "card_title"
-    name: "Bedroom"
+    name: "Entrance"
 
   # Bedroom light
   - view_layout:
@@ -48,28 +49,21 @@ cards:
       ulm_card_light_enable_popup: true
       ulm_input_select_option: light 2
       ulm_input_select: input_select.minimalist_ui_switch
-    entity: light.bedroom_light
+    entity: light.hallway_light
 
-  # Graphs
+  # Thermostat
   - view_layout:
-      grid-area: "graph1"
+      grid-area: "climate1"
     type: "custom:button-card"
-    template: card_graph
-    entity: sensor.bedroom_temperature_humidity_temperature
+    template: card_thermostat
+    entity: climate.thermostat_1
     variables:
-      ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Temperature bedroom
-      ulm_card_graph_entity: sensor.bedroom_temperature_humidity_temperature
-
-  - view_layout:
-      grid-area: "graph2"
-    type: "custom:button-card"
-    template: card_graph
-    entity: sensor.bedroom_temperature_humidity_humidity
-    variables:
-      ulm_card_graph_color: "var(--google-blue)"
-      ulm_card_graph_name: Humidity bedroom
-      ulm_card_graph_entity: sensor.bedroom_temperature_humidity_temperature
+      ulm_card_thermostat_enable_collapse: true
+      ulm_card_thermostat_enable_controls: true
+      ulm_card_thermostat_enable_display_temperature: true
+      ulm_card_thermostat_enable_popup: true
+      ulm_input_select_option: climate 2
+      ulm_input_select: input_select.minimalist_ui_switch
 
   #Sensors
   - view_layout:
@@ -81,3 +75,15 @@ cards:
       - ulm_show_last_changed: true
       - ulm_card_binary_sensor_alert_name: Window
     entity: binary_sensor.bedroom_contact_sensor_contact
+
+  # Doorbell
+  - view_layout:
+      grid-area: "camera1"
+    type: "custom:button-card"
+    entity: camera.reolink_video_doorbell_poe_fluent
+    template: custom_card_camera
+    show_icon: true #True if you set ulm_custom_card_camera_title: true
+    variables:
+      ulm_custom_card_camera_title: true
+      ulm_custom_card_camera_name: "Doorbell"
+      #ulm_custom_card_camera_label: "drive"

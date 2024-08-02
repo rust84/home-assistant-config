@@ -24,24 +24,16 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.office_temperature",
-                  "name": "office1"
+                  "entity": "sensor.thermostat",
+                  "name": "thermostat"
                 },
                 {
-                  "entity": "sensor.bme680_temperature",
-                  "name": "office"
+                  "entity": "sensor.ep1_01_7f753c_temperature",
+                  "name": "office EP"
                 },
                 {
-                  "entity": "sensor.lounge_temperature_humidity_temperature",
-                  "name": "livingroom"
-                },
-                {
-                  "entity": "sensor.upstairs_temperature",
-                  "name": "server room"
-                },
-                {
-                  "entity": "sensor.bedroom_temperature_humidity_temperature",
-                  "name": "bedroom"
+                  "entity": "sensor.ep1_02_dac9c4_temperature",
+                  "name": "livingroom EP"
                 }
               ],
               "hours_to_show": 3,
@@ -54,24 +46,12 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.office_humidity",
-                  "name": "office1"
+                  "entity": "sensor.ep1_01_7f753c_humidity",
+                  "name": "office EP"
                 },
                 {
-                  "entity": "sensor.bme680_humidity",
-                  "name": "office"
-                },
-                {
-                  "entity": "sensor.upstairs_humidity",
-                  "name": "server rooom"
-                },
-                {
-                  "entity": "sensor.bedroom_temperature_humidity_humidity",
-                  "name": "bedroom"
-                },
-                {
-                  "entity": "sensor.lounge_temperature_humidity_humidity",
-                  "name": "livingroom"
+                  "entity": "sensor.ep1_02_dac9c4_humidity",
+                  "name": "livingroom EP"
                 }
               ],
               "hours_to_show": 3,
@@ -86,7 +66,7 @@
               "details": false,
               "entity": "weather.openweathermap",
               "forecast": true,
-              "hourly_forecast": false,
+              "hourly_forecast": true,
               "number_of_forecasts": "5",
               "type": "custom:weather-card"
             },
@@ -94,15 +74,15 @@
               "entities": [
                 {
                   "entity": "light.ailight_2",
-                  "name": "Hallway"
+                  "name": "Server Room"
                 },
                 {
                   "entity": "light.bathroom_light",
                   "name": "Bathroom"
                 },
                 {
-                  "entity": "light.bedroom_light",
-                  "name": "Bedroom"
+                  "entity": "light.hallway_light",
+                  "name": "Hallway"
                 },
                 {
                   "entity": "light.landing_light",
@@ -120,38 +100,102 @@
                 {
                   "entity": "light.office_light",
                   "name": "Office Light"
+                },
+                {
+                  "entity": "light.0xc4988600004be262"
+                },
+                {
+                  "entity": "light.0xc4988600000045a0"
+                },
+                {
+                  "entity": "light.lounge_wall_lights"
+                },
+                {
+                  "entity": "group.office_rgb"
+                },
+                {
+                  "entity": "light.office_floor_lamps"
                 }
               ],
               "title": "Light",
               "type": "entities"
             },
             {
-              "type": "gauge",
-              "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration",
-              "min": 0,
-              "max": 100,
-              "severity": {
-                "green": 0,
-                "yellow": 30,
-                "red": 100
-              }
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "sensor.rack_battery_charge",
+                  "name": "Battery charge"
+                },
+                {
+                  "entity": "sensor.rack_input_voltage",
+                  "name": "Input voltage"
+                },
+                {
+                  "entity": "sensor.rack_load",
+                  "name": "Load"
+                },
+                {
+                  "entity": "sensor.rack_status",
+                  "name": "Status"
+                },
+                {
+                  "entity": "sensor.rack_output_power"
+                },
+                {
+                  "entity": "sensor.rack_battery_runtime"
+                },
+                {
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power"
+                }
+              ],
+              "title": "Rack"
+            },
+            {
+              "type": "custom:mini-media-player",
+              "entity": "media_player.living_room_2"
+            },
+            {
+              "type": "custom:mini-media-player",
+              "entity": "media_player.lg_webos_tv_oled65g36la"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "switch.living_room_night_sound",
+                  "name": "Night sound"
+                },
+                {
+                  "entity": "switch.living_room_speech_enhancement",
+                  "name": "Speech enhancement"
+                },
+                {
+                  "entity": "switch.living_room_subwoofer_enabled",
+                  "name": "Subwoofer enabled"
+                },
+                {
+                  "entity": "switch.living_room_surround_enabled",
+                  "name": "Surround enabled"
+                },
+                {
+                  "entity": "sensor.living_room_audio_input_format",
+                  "name": "Audio input format"
+                },
+                {
+                  "entity": "binary_sensor.living_room_microphone",
+                  "name": "Microphone"
+                }
+              ],
+              "title": "Living Room"
             },
             {
               "type": "custom:frigate-card",
               "cameras": [
                 {
-                  "camera_entity": "camera.driveway",
-                  "live_provider": "webrtc-card",
-                  "webrtc_card": {
-                    "url": "rtsp://frigate:frigate1234@10.30.0.242:554/h264Preview_01_main"
-                  }
-                },
-                {
-                  "camera_entity": "camera.lounge",
-                  "live_provider": "webrtc-card",
-                  "webrtc_card": {
-                    "url": "rtsp://frigate:frigate1234@10.30.0.244:554/h264Preview_01_main"
-                  }
+                  "camera_entity": "camera.doorbell",
+                  "live_provider": "go2rtc",
+                  "webrtc_card": {}
                 }
               ],
               "media_viewer": {
@@ -170,297 +214,6 @@
               },
               "view_layout": {
                 "column": 4
-              }
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.rack_battery_charge_2",
-                  "name": "Battery charge"
-                },
-                {
-                  "entity": "sensor.rack_input_voltage",
-                  "name": "Input voltage"
-                },
-                {
-                  "entity": "sensor.rack_load",
-                  "name": "Load"
-                },
-                {
-                  "entity": "sensor.rack_output_voltage",
-                  "name": "Output voltage"
-                },
-                {
-                  "entity": "sensor.rack_status_2",
-                  "name": "Status"
-                }
-              ],
-              "title": "Rack"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
-                  "name": "Speaker"
-                },
-                {
-                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
-                  "name": "Aircon"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
-                  "name": "Coffee"
-                }
-              ],
-              "hours_to_show": 3,
-              "icon": "mdi:radiator",
-              "name": "Power",
-              "points_per_hour": 12,
-              "hour24": true,
-              "type": "custom:mini-graph-card"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.electric_consumption_today"
-                },
-                {
-                  "entity": "sensor.electric_cost_today"
-                },
-                {
-                  "entity": "sensor.daily_energy_offpeak"
-                },
-                {
-                  "entity": "sensor.daily_energy_peak"
-                }
-              ],
-              "title": "Electricity"
-            },
-            {
-              "type": "horizontal-stack",
-              "cards": [
-                {
-                  "type": "custom:button-card",
-                  "color": "rgb(28, 128, 199)",
-                  "entity": "switch.sonoff_s26_2_relay",
-                  "icon": "mdi:rocket",
-                  "name": "Warpcore",
-                  "state": [
-                    {
-                      "value": "off",
-                      "icon": "mdi:clock-outline",
-                      "styles": {
-                        "card": [
-                          {
-                            "filter": "opacity(50%)"
-                          }
-                        ],
-                        "icon": [
-                          {
-                            "filter": "grayscale(100%)"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "styles": {
-                    "grid": [
-                      {
-                        "position": "relative"
-                      }
-                    ],
-                    "custom_fields": {
-                      "notification": [
-                        {
-                          "background-color": "[[[\n  if (states['switch.sonoff_s26_2_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                        },
-                        {
-                          "border-radius": "50%"
-                        },
-                        {
-                          "position": "absolute"
-                        },
-                        {
-                          "left": "67%"
-                        },
-                        {
-                          "top": "10%"
-                        },
-                        {
-                          "height": "20px"
-                        },
-                        {
-                          "width": "20px"
-                        },
-                        {
-                          "font-size": "8px"
-                        },
-                        {
-                          "line-height": "20px"
-                        }
-                      ]
-                    }
-                  },
-                  "custom_fields": {
-                    "notification": "[[[ return states['switch.sonoff_s26_2_relay'].state ]]]\n"
-                  }
-                },
-                {
-                  "type": "custom:button-card",
-                  "color": "rgb(28, 128, 199)",
-                  "entity": "switch.sonoff_s26_1_relay",
-                  "icon": "mdi:lightbulb",
-                  "name": "Fairylights",
-                  "state": [
-                    {
-                      "value": "off",
-                      "icon": "mdi:lightbulb",
-                      "styles": {
-                        "card": [
-                          {
-                            "filter": "opacity(50%)"
-                          }
-                        ],
-                        "icon": [
-                          {
-                            "filter": "grayscale(100%)"
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "styles": {
-                    "grid": [
-                      {
-                        "position": "relative"
-                      }
-                    ],
-                    "custom_fields": {
-                      "notification": [
-                        {
-                          "background-color": "[[[\n  if (states['switch.sonoff_s26_1_relay'].state == \"on\")\n    return \"green\";\n  return \"red\";\n]]]\n"
-                        },
-                        {
-                          "border-radius": "50%"
-                        },
-                        {
-                          "position": "absolute"
-                        },
-                        {
-                          "left": "60%"
-                        },
-                        {
-                          "top": "10%"
-                        },
-                        {
-                          "height": "20px"
-                        },
-                        {
-                          "width": "20px"
-                        },
-                        {
-                          "font-size": "8px"
-                        },
-                        {
-                          "line-height": "20px"
-                        }
-                      ]
-                    }
-                  },
-                  "custom_fields": {
-                    "notification": "[[[ return states['switch.sonoff_s26_1_relay'].state ]]]\n"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.aircon_plug_106bf5_daily_energy",
-                  "name": "Aircon unit power",
-                  "icon": "mdi:air-filter"
-                },
-                {
-                  "entity": "sensor.aircon_plug_106bf5_power",
-                  "name": "Aircon unit daily total"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
-                  "name": "Coffee maker daily total"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_1_dc6319_power",
-                  "name": "Coffee maker power"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy",
-                  "name": "Speaker daily total",
-                  "icon": "mdi:speaker"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power",
-                  "name": "Sub power"
-                }
-              ],
-              "title": "PM"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration"
-                },
-                {
-                  "entity": "sensor.bme680_breath_voc_equivalent"
-                },
-                {
-                  "entity": "sensor.bme680_co2_equivalent"
-                },
-                {
-                  "entity": "sensor.bme680_gas_resistance"
-                },
-                {
-                  "entity": "sensor.bme680_humidity"
-                },
-                {
-                  "entity": "sensor.bme680_pressure"
-                },
-                {
-                  "entity": "sensor.bme680_iaq"
-                },
-                {
-                  "entity": "sensor.bme680_iaq_accuracy"
-                },
-                {
-                  "entity": "sensor.bme680_temperature"
-                }
-              ],
-              "title": "Environment"
-            },
-            {
-              "type": "picture-glance",
-              "image": "https://frigate.microserver.space/api/lounge/latest.jpg",
-              "theme": "minimalist-mobile",
-              "aspect_ratio": "72%",
-              "entities": [
-                {
-                  "entity": "binary_sensor.lounge_contact_sensor_contact"
-                },
-                {
-                  "entity": "light.lounge_light"
-                },
-                {
-                  "entity": "binary_sensor.lounge_person_occupancy"
-                },
-                {
-                  "entity": "climate.heating_controller"
-                }
-              ],
-              "card_mod": {
-                "style": "ha-card {\n  --ha-card-border-radius: 15px;\n}\n"
               }
             }
           ]
@@ -511,16 +264,20 @@
                   "icon": "mdi:smoke-detector"
                 },
                 {
-                  "entity": "binary_sensor.lounge_motion_sensor_occupancy"
+                  "entity": "binary_sensor.lounge_motion_sensor_occupancy",
+                  "name": "Hallway - Motion sensor Motion"
                 },
                 {
                   "entity": "binary_sensor.landing_motion_sensor_occupancy"
                 },
                 {
-                  "entity": "binary_sensor.driveway_motion"
+                  "entity": "sensor.anyone_home"
                 },
                 {
-                  "entity": "sensor.anyone_home"
+                  "entity": "binary_sensor.ep1_01_7f753c_occupancy"
+                },
+                {
+                  "entity": "binary_sensor.ep1_02_dac9c4_occupancy"
                 }
               ],
               "title": "Sensors",
@@ -555,15 +312,6 @@
                 },
                 {
                   "entity": "input_boolean.camera_office_notify"
-                },
-                {
-                  "entity": "switch.lounge_detect"
-                },
-                {
-                  "entity": "switch.lounge_recordings"
-                },
-                {
-                  "entity": "switch.lounge_snapshots"
                 }
               ],
               "title": "Settings"
@@ -585,20 +333,34 @@
                 "binary_sensor.office_person_motion",
                 "sensor.office_person",
                 "camera.lounge_person",
-                "binary_sensor.driveway_person_motion"
+                "binary_sensor.driveway_person_motion",
+                "binary_sensor.ep1_01_7f753c_office_occupancy",
+                "binary_sensor.ep1_02_dac9c4_lounge_occupancy"
               ]
             },
             {
-              "type": "entities",
+              "camera_view": "auto",
+              "type": "picture-glance",
+              "image": "https://frigate.microserver.space/api/doorbell/latest.jpg",
+              "theme": "minimalist-mobile",
+              "aspect_ratio": "72%",
               "entities": [
-                "sensor.office_humidity",
-                "sensor.office_illuminance",
-                "binary_sensor.office_mmwave",
-                "binary_sensor.office_occupancy",
-                "binary_sensor.office_pir",
-                "sensor.office_temperature"
+                {
+                  "entity": "binary_sensor.lounge_contact_sensor_contact"
+                },
+                {
+                  "entity": "light.lounge_light"
+                },
+                {
+                  "entity": "binary_sensor.lounge_person_occupancy"
+                },
+                {
+                  "entity": "climate.thermostat_1"
+                }
               ],
-              "title": "Presence One"
+              "card_mod": {
+                "style": "ha-card {\n  --ha-card-border-radius: 15px;\n}\n"
+              }
             }
           ]
         },
@@ -609,11 +371,6 @@
           "icon": "mdi:radiator",
           "badges": [],
           "cards": [
-            {
-              "type": "thermostat",
-              "entity": "climate.heating_controller",
-              "name": "Thermostat"
-            },
             {
               "type": "custom:scheduler-card",
               "include": [
@@ -634,158 +391,273 @@
                 },
                 {
                   "entity": "input_boolean.heating_schedule_away"
-                },
-                {
-                  "entity": "input_boolean.enable_heating_schedules"
                 }
               ],
               "title": "Settings"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.thermostat_1",
+              "features": [
+                {
+                  "type": "climate-preset-modes",
+                  "style": "dropdown",
+                  "preset_modes": [
+                    "boost",
+                    "none"
+                  ]
+                }
+              ],
+              "name": "Hive"
+            },
+            {
+              "type": "entity",
+              "entity": "water_heater.thermostat_1",
+              "name": "Hot water"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.midea_ac_42880953513406_2",
+              "features": [
+                {
+                  "type": "climate-hvac-modes",
+                  "hvac_modes": [
+                    "fan_only",
+                    "dry",
+                    "cool",
+                    "auto",
+                    "off"
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "theme": "Backend-selected",
-          "title": "Energy",
-          "path": "energy",
-          "icon": "mdi:lightning-bolt",
-          "type": "custom:masonry-layout",
-          "subview": false,
-          "layout": {
-            "width": 1000,
-            "max_cols": 1
-          },
+          "title": "Printer",
+          "path": "b",
+          "icon": "mdi:printer-3d-nozzle",
           "badges": [],
           "cards": [
             {
-              "type": "energy-date-selection"
+              "type": "custom:mushroom-title-card",
+              "title": "Moonraker – {{ states('sensor.moonraker_current_display_message') }}",
+              "subtitle": "{{ states('sensor.moonraker_filename') }}",
+              "alignment": "center",
+              "title_tap_action": {
+                "action": "url",
+                "url_path": "http://klipper.russhome.xyz/"
+              }
             },
             {
-              "height": 200,
-              "unit_prefix": "k",
-              "round": 1,
-              "min_box_height": 3,
-              "min_box_distance": 5,
-              "show_states": true,
-              "show_units": true,
-              "sections": [
+              "square": false,
+              "type": "grid",
+              "cards": [
                 {
-                  "entities": [
-                    {
-                      "add_entities": [
-                        "sensor.daily_energy_peak"
-                      ],
-                      "children": [
-                        "total"
-                      ],
-                      "color": "purple",
-                      "entity_id": "sensor.daily_energy_peak",
-                      "name": "Peak",
-                      "substract_entities": [
-                        "sensor.daily_energy_offpeak"
-                      ],
-                      "type": "entity"
-                    },
-                    {
-                      "add_entities": [
-                        "sensor.daily_energy_offpeak"
-                      ],
-                      "children": [
-                        "total"
-                      ],
-                      "color": "var(--warning-color)",
-                      "entity_id": "sensor.daily_energy_offpeak",
-                      "name": "Offpeak",
-                      "substract_entities": [
-                        "sensor.daily_energy_peak"
-                      ],
-                      "type": "entity"
-                    }
-                  ]
+                  "type": "tile",
+                  "entity": "sensor.moonraker_current_print_state",
+                  "name": "Status",
+                  "show_entity_picture": false,
+                  "vertical": false,
+                  "color": "primary"
                 },
                 {
-                  "entities": [
-                    {
-                      "entity_id": "total",
-                      "type": "remaining_parent_state",
-                      "name": "Total Consumption",
-                      "children": [
-                        "lounge",
-                        "office",
-                        "unknown"
-                      ]
-                    }
-                  ]
+                  "type": "tile",
+                  "entity": "sensor.moonraker_print_duration",
+                  "name": "Elapsed",
+                  "color": "accent"
                 },
                 {
-                  "entities": [
-                    {
-                      "children": [
-                        "sensor.localbytes_plug_pm_dc3584_daily_energy"
-                      ],
-                      "entity_id": "lounge",
-                      "name": "Lounge",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [
-                        "sensor.aircon_plug_106bf5_daily_energy"
-                      ],
-                      "entity_id": "office",
-                      "name": "Office",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [
-                        "sensor.localbytes_plug_pm_1_dc6319_daily_energy"
-                      ],
-                      "entity_id": "kitchen",
-                      "name": "Kitchen",
-                      "type": "remaining_child_state"
-                    },
-                    {
-                      "children": [],
-                      "color": "grey",
-                      "entity_id": "unknown",
-                      "name": "Other",
-                      "type": "remaining_parent_state"
-                    }
-                  ]
-                },
-                {
-                  "entities": [
-                    {
-                      "children": [],
-                      "color": "green",
-                      "name": "Aircon",
-                      "entity_id": "sensor.aircon_plug_106bf5_daily_energy",
-                      "type": "entity"
-                    },
-                    {
-                      "children": [],
-                      "color": "green",
-                      "name": "Subwoofer",
-                      "entity_id": "sensor.localbytes_plug_pm_dc3584_daily_energy",
-                      "type": "entity"
-                    },
-                    {
-                      "children": [],
-                      "color": "green",
-                      "name": "Coffee",
-                      "entity_id": "sensor.localbytes_plug_pm_1_dc6319_daily_energy",
-                      "type": "entity"
-                    }
-                  ]
+                  "type": "tile",
+                  "entity": "sensor.moonraker_print_eta",
+                  "name": "Completion",
+                  "color": "green",
+                  "show_entity_picture": false,
+                  "vertical": false
                 }
               ],
-              "energy_date_selection": true,
-              "show_names": true,
-              "type": "custom:sankey-chart",
-              "wide": true,
-              "min_state": 0,
-              "show_icons": false
+              "columns": 3
             },
             {
-              "type": "energy-sources-table"
+              "type": "custom:bar-card",
+              "entity": "sensor.moonraker_progress",
+              "name": "Print Progress...",
+              "icon": "mdi:clock-end",
+              "color": "green",
+              "positions": {
+                "indicator": "inside",
+                "name": "inside"
+              }
+            },
+            {
+              "square": false,
+              "type": "grid",
+              "columns": 4,
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "entity": "button.moonraker_pause_print",
+                  "color_type": "icon",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "Pause"
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "button.moonraker_resume_print",
+                  "color_type": "icon",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "Resume"
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "button.moonraker_cancel_print",
+                  "color_type": "icon",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "Cancel",
+                  "lock": {
+                    "enabled": false
+                  },
+                  "confirmation": {
+                    "text": "This will CANCEL the print. Are you sure?"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "button.moonraker_emergency_stop",
+                  "color_type": "icon",
+                  "color": "red",
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "name": "Emergency",
+                  "lock": {
+                    "enabled": false
+                  },
+                  "confirmation": {
+                    "text": "This will REBOOT the printer. Are you sure?"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "graph_span": "1h",
+              "header": {
+                "show": true,
+                "title": "Printer Temperatures",
+                "show_states": true,
+                "colorize_states": true
+              },
+              "apex_config": {
+                "chart": {
+                  "height": "200px"
+                },
+                "legend": {
+                  "show": false
+                },
+                "grid": {
+                  "xaxis": {
+                    "lines": {
+                      "show": true
+                    }
+                  },
+                  "borderColor": "#555"
+                }
+              },
+              "yaxis": [
+                {
+                  "opposite": true,
+                  "decimals": 0,
+                  "apex_config": {
+                    "tickAmount": 2
+                  }
+                }
+              ],
+              "all_series_config": {
+                "stroke_width": 2,
+                "float_precision": 0,
+                "show": {
+                  "name_in_header": true
+                }
+              },
+              "series": [
+                {
+                  "entity": "sensor.moonraker_extruder_temperature",
+                  "name": "Hotend"
+                },
+                {
+                  "entity": "sensor.moonraker_bed_temperature",
+                  "name": "Bed"
+                }
+              ]
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "graph_span": "1h",
+              "header": {
+                "show": true,
+                "title": "Fan Speeds",
+                "show_states": true,
+                "colorize_states": true
+              },
+              "apex_config": {
+                "chart": {
+                  "height": "200px"
+                },
+                "legend": {
+                  "show": false
+                },
+                "grid": {
+                  "xaxis": {
+                    "lines": {
+                      "show": true
+                    }
+                  },
+                  "borderColor": "#555"
+                }
+              },
+              "yaxis": [
+                {
+                  "opposite": true,
+                  "decimals": 0,
+                  "apex_config": {
+                    "tickAmount": 2
+                  }
+                }
+              ],
+              "all_series_config": {
+                "stroke_width": 2,
+                "show": {
+                  "name_in_header": true
+                }
+              },
+              "series": [
+                {
+                  "entity": "sensor.moonraker_fan_speed",
+                  "name": "Parts"
+                },
+                {
+                  "entity": "sensor.moonraker_heatbreak_cooling_fan",
+                  "name": "Hotend"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "beta",
+          "path": "beta",
+          "type": "sections",
+          "sections": [
+            {
+              "type": "grid",
+              "cards": []
             }
           ]
         }

@@ -1,20 +1,20 @@
-- platform: template
-  sensors:
-    russell_home_status:
-      friendly_name: 'Russell Home Status'
-      value_template: "{{is_state('device_tracker.russell_s_pixel_7a','home') or is_state('device_tracker.pixel_7a_2','home')}}"
-- platform: template
-  sensors:
-    anyone_home:
-      friendly_name: 'Home Status'
-      value_template: "{% if is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
-      #value_template: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.rosie_home_status', 'True')-%}home{%else%}not_home{% endif %}"
-- platform: template
-  sensors:
-    thermostat_temperature:
-      friendly_name: Thermostat Temperature
-      unit_of_measurement: '°C'
-      value_template: "{{ state_attr('climate.heating_controller', 'current_temperature') }}"
+- platform: integration
+  source: sensor.rack_output_power
+  name: Rack Output Energy
+  unit_prefix: k
+  round: 2
+  unit_time: h
+# - platform: template
+#   sensors:
+#     russell_home_status:
+#       friendly_name: 'Russell Home Status'
+#       value_template: "{{is_state('device_tracker.russell_s_pixel_7a','home') or is_state('device_tracker.pixel_7a_2','home')}}"
+# - platform: template
+#   sensors:
+#     anyone_home:
+#       friendly_name: 'Home Status'
+#       value_template: "{% if is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
+#       #value_template: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.rosie_home_status', 'True')-%}home{%else%}not_home{% endif %}"
 - platform: waste_collection_schedule
   name: waste_collection_household
   details_format: upcoming
@@ -28,7 +28,7 @@
     in {{value.daysTo}} Days
     {% endif %}
   types:
-    - Household waste
+    - Rubbish
 - platform: waste_collection_schedule
   name: waste_collection_recycling
   details_format: upcoming
@@ -42,10 +42,22 @@
     in {{value.daysTo}} Days
     {% endif %}
   types:
-    - Mixed dry recycling (blue lidded bin) and glass (black box or basket)
+    - Recycling
+- platform: waste_collection_schedule
+  name: waste_collection_garden
+  details_format: upcoming
+  add_days_to: true # this line is important
+  value_template:  >-
+    {% if value.daysTo == 0 %}
+    TODAY
+    {% elif value.daysTo == 1 %}
+    TOMORROW
+    {% else %}
+    in {{value.daysTo}} Days
+    {% endif %}
+  types:
+    - 'Garden Waste'
 - platform: time_date
   display_options:
     - 'time'
     - 'date'
-- platform: rflink
-  automatic_add: false

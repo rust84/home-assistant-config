@@ -4,7 +4,7 @@ view_layout:
   grid-area: "popup"
   show:
     # only show when screen-width is larger than 1100px
-    mediaquery: "(min-width: 1100px)"
+    mediaquery: "(min-width: 900px)"
 # add your input_select
 entity: input_select.minimalist_ui_switch
 default: "default"
@@ -21,11 +21,11 @@ states:
   light 2:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    entity: light.bedroom_light
+    entity: light.hallway_light
   light 3:
     type: "custom:button-card"
     template: "popup_light_brightness"
-    entity: light.hallway
+    entity: light.hallway_light
   light 4:
     type: "custom:button-card"
     template: "popup_light_brightness"
@@ -38,14 +38,29 @@ states:
     type: "custom:button-card"
     template: "popup_light_brightness"
     entity: light.office_light
+  light 7:
+    type: "custom:button-card"
+    template: "popup_light_brightness"
+    entity: light.lounge_wall_lights
+  light 8:
+    type: "custom:button-card"
+    template: "popup_light_brightness"
+    entity: light.office_floor_lamps
 
   ###  Mediaplayers
-  # mediaplayer 1:
-  #   type: "custom:button-card"
-  #   template: "popup_media_player_infos"
-  #   entity: media_player.android_tv_10_20_0_83
-  #   variables:
-  #     ulm_card_media_player_enable_popup: true
+  mediaplayer 1:
+    type: "custom:button-card"
+    template: "popup_media_player_infos"
+    entity: media_player.lg_webos_tv_oled65g36la
+    variables:
+      ulm_card_media_player_enable_popup: true
+
+  mediaplayer 2:
+    type: "custom:button-card"
+    template: "popup_media_player_infos"
+    entity: media_player.living_room
+    variables:
+      ulm_card_media_player_enable_popup: true
  
   ### Thermostats
   # climate 1:
@@ -58,13 +73,13 @@ states:
   climate 2:
     type: "custom:button-card"
     template: "popup_thermostat_temperature"
-    entity: climate.heating_controller
+    entity: climate.thermostat_1
     variables:
       ulm_card_thermostat_preset_mode: false
 
 ## Rooms
-bedroom: !include "../views/bedroom.yaml"
-landing: !include "../views/landing.yaml"
-livingroom: !include "../views/livingroom.yaml"
-office: !include "../views/office.yaml"
-server: !include "../views/server.yaml"
+# bedroom: !include "../views/bedroom.yaml"
+# landing: !include "../views/landing.yaml"
+# livingroom: !include "../views/livingroom.yaml"
+# office: !include "../views/office.yaml"
+# server: !include "../views/server.yaml"

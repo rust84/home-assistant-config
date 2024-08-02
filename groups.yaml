@@ -1,12 +1,23 @@
 office_group:
   name: Office Group
   entities:
-    - switch.sonoff_s26_2_relay
+    #- switch.sonoff_s26_2_relay
     - light.office_light
-    - switch.office_light_switch
+    - light.left_floor_lamp
+    - light.right_floor_lamp
+    - light.glide_hexa
+
+office_rgb:
+  name: Office RGB
+  entities:
+    #- switch.sonoff_s26_2_relay
+    - light.left_floor_lamp
+    - light.right_floor_lamp
+    - light.glide_hexa
 
 lounge_group:
   name: Lounge Group
   entities:
-    - switch.sonoff_s26_1_relay
     - light.lounge_light
+    - light.0xc4988600000045a0
+    - light.0xc4988600004be262
