@@ -15,14 +15,17 @@ homeassistant:
         - 10.20.0.0/24
         - 10.20.1.0/24
 
-  customize:
-    sensor.humidity:
-      icon: mdi:water-percent
+  customize: !include customize.yaml
 
 zone:
   - name: Home
     latitude: !secret latitude
     longitude: !secret longitude
+    radius: 35
+    icon: mdi:account-multiple
+  - name: Ana
+    latitude: !secret ana_lat
+    longitude: !secret ana_long
     radius: 35
     icon: mdi:account-multiple
 
@@ -31,10 +34,6 @@ lovelace:
   resources:
     - url: /hacsfiles/lovelace-state-switch/state-switch.js
       type: module
-  #   - url: /hacsfiles/weather-card/weather-card.js
-  #     type: module
-  #   - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-  #     type: module
 
 default_config:
 
@@ -101,13 +100,11 @@ logger:
   logs:
     custom_components.auth_header: warning
     homeassistant.components.androidtv.media_player: info
-    # homeassistant.components.rflink: debug
 
 frontend:
   themes: !include_dir_merge_named themes
   extra_module_url: 
     - /hacsfiles/lovelace-card-mod/card-mod.js
-    #- /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
 
 browser_mod:
 
@@ -137,6 +134,8 @@ alexa:
         - climate
         - scene
       include_entities:
+        - group.bedroom_group
+        - group.kitchen_group
         - group.office_group
         - group.lounge_group
         - sensor.bedroom_temperature_humidity_temperature
@@ -190,31 +189,6 @@ waste_collection_schedule:
     - name: bathnes_gov_uk
       args:
         uprn: !secret uprn
-
-# rflink:
-#   host: 10.30.0.227
-#   port: 23
-#   tcp_keepalive_idle_timer: 600
-# light:
-#   - platform: rflink
-#     automatic_add: false
-# switch:
-#   platform: rflink
-#   devices:
-#     ev1527_00bae8_08:
-#       name: remote_button_b
-#       fire_event: true
-#     eurodomest_0f4517_07:
-#       name: remote_button_c
-#       fire_event: true
-#     eurodomest_0f4517_06:
-#       name: remote_button_a
-#       fire_event: true
-#     eurodomest_0f4517_05:
-#       name: remote_button_d
-#       fire_event: true
-#     friedland_57399aa6_1:
-#       fire_event: true
 
 input_select:
   minimalist_ui_switch:

@@ -15,3 +15,57 @@
       brightness: 255
       color_mode: "rgbw"
       rgbw_color: [0, 255, 0, 0]
+
+- name: Meeting
+  icon: "mdi:lightbulb"
+  entities:
+    light.glide_hexa:
+      state: "on"
+      brightness: 104
+      color_mode: "rgb"
+      rgb_color: [255, 255, 255]
+    light.office_floor_lamps:
+      state: "on"
+      brightness: 200
+      color_mode: "rgb"
+      rgb_color: [209, 222, 255]
+
+- name: Ambient
+  icon: "mdi:lightbulb"
+  entities:
+    light.glide_hexa:
+      state: "on"
+      brightness: 17
+      color_mode: "rgb"
+      rgb_color: [38, 255, 22]
+    light.office_floor_lamps:
+      state: "on"
+      brightness: 109
+      color_mode: "rgb"
+      rgb_color: [38, 255, 22]
+
+- name: Wall Lights On White
+  icon: "mdi:lightbulb"
+  entities:
+    light.0xc4988600004be262:
+      state: "on"
+      brightness: 166
+      color_temp: 295
+    light.0xc4988600000045a0:
+      state: "on"
+      brightness: 166
+      color_temp: 295
+
+# - name: Ambient
+#   icon: "mdi:lightbulb"
+#   entities:
+#     light.glide_hexa:
+#       state: "on"
+#       brightness: 63
+#       color_mode: "rgb"
+#       rgb_color: [127, 172, 255]
+#     light.office_floor_lamps:
+#       state: "on"
+#       brightness: 200
+#       color_mode: "rgb"
+#       rgb_color: [0, 255, 195]

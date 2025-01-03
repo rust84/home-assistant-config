@@ -1,2 +1,4 @@
 zone.home:
   radius: 50
+sensor.humidity:
+  icon: mdi:water-percent

@@ -37,3 +37,7 @@ auto_enable_aircon_swing_mode:
   name: Enable swing mode when unit is on
 auto_set_aircon_mode:
   name: Set aircon mode to cool when presence is detected
+
+# Lighting
+auto_enable_call_lighting:
+  name: Set background lights to white when on a call

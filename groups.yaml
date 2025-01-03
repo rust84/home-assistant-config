@@ -1,5 +1,6 @@
 office_group:
   name: Office Group
+  icon: mdi:lightbulb-group
   entities:
     #- switch.sonoff_s26_2_relay
     - light.office_light
@@ -9,6 +10,7 @@ office_group:
 
 office_rgb:
   name: Office RGB
+  icon: mdi:led-strip-variant
   entities:
     #- switch.sonoff_s26_2_relay
     - light.left_floor_lamp
@@ -19,5 +21,28 @@ lounge_group:
   name: Lounge Group
   entities:
     - light.lounge_light
-    - light.0xc4988600000045a0
-    - light.0xc4988600004be262
+    - light.lounge_wall_lights
+    - light.dig_quad_v3 # Christmas tree
+
+kitchen_group:
+  name: Kitchen Group
+  icon: mdi:lightbulb-group
+  entities:
+    - light.kitchen_bottom_1
+    - light.kitchen_bottom_2
+    - light.kitchen_top_1
+    - light.kitchen_top_2
+
+cupboard_group:
+  name: Kitchen Cupboard Group
+  icon: mdi:lightbulb-group
+  entities:
+    - light.kitchen_left
+    - light.kitchen_right
+
+bedroom_group:
+  name: Bedroom Group
+  icon: mdi:lightbulb-group
+  entities:
+    - light.bedroom_table_left
+    - light.bedroom_table_right

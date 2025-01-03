@@ -68,3 +68,28 @@
       notify_device: c6f96b9048cf518e4e711b76a8686378
       base_url: https://hass.microserver.space
       video: '{{base_url}}/api/frigate{{client_id}}/notifications/{{id}}/{{camera}}/clip.mp4'
+- id: 67d94a49-c325-42b3-93ab-bd5b375ee85f
+  alias: "Roborock: reload map"
+  description: ""
+  trigger:
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: vacuum
+        service: send_command
+        service_data:
+          entity_id:
+            - vacuum.roborock_qrevo_master
+          command: load_multi_map
+  condition: []
+  action:
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - service: homeassistant.update_entity
+      data: {}
+      target:
+        entity_id: camera.roborock_qrevo_master_map
+  mode: single

@@ -17,7 +17,21 @@
           "icon": "mdi:home",
           "badges": [
             {
-              "entity": "person.russell"
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "person.russell",
+              "show_entity_picture": true
+            },
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "person.ana",
+              "color": "",
+              "show_entity_picture": true
             }
           ],
           "cards": [
@@ -25,15 +39,35 @@
               "entities": [
                 {
                   "entity": "sensor.thermostat",
-                  "name": "thermostat"
+                  "name": "Hive Thermostat"
                 },
                 {
                   "entity": "sensor.ep1_01_7f753c_temperature",
-                  "name": "office EP"
+                  "name": "Office EP1"
                 },
                 {
                   "entity": "sensor.ep1_02_dac9c4_temperature",
-                  "name": "livingroom EP"
+                  "name": "Livingroom EP1"
+                },
+                {
+                  "entity": "sensor.office_trv_temp",
+                  "name": "Office TRV"
+                },
+                {
+                  "entity": "sensor.kitchen_trv_temp",
+                  "name": "Kitchen TRV"
+                },
+                {
+                  "entity": "sensor.lounge_window_trv_temp",
+                  "name": "Lounge Window TRV"
+                },
+                {
+                  "entity": "sensor.lounge_sofa_trv_temp",
+                  "name": "Lounge Sofa TRV"
+                },
+                {
+                  "entity": "sensor.dining_room_trv_temp",
+                  "name": "Dining Room TRV"
                 }
               ],
               "hours_to_show": 3,
@@ -93,28 +127,43 @@
                   "name": "Lounge"
                 },
                 {
-                  "entity": "switch.office_light_switch",
-                  "name": "Office Light Switch",
-                  "icon": "mdi:lightbulb"
-                },
-                {
                   "entity": "light.office_light",
                   "name": "Office Light"
                 },
                 {
-                  "entity": "light.0xc4988600004be262"
-                },
-                {
-                  "entity": "light.0xc4988600000045a0"
-                },
-                {
                   "entity": "light.lounge_wall_lights"
+                },
+                {
+                  "entity": "light.dig_quad_v3"
                 },
                 {
                   "entity": "group.office_rgb"
                 },
                 {
                   "entity": "light.office_floor_lamps"
+                },
+                {
+                  "entity": "light.glide_hexa",
+                  "name": "Hexa"
+                },
+                {
+                  "entity": "scene.ambient"
+                },
+                {
+                  "entity": "scene.meeting"
+                },
+                {
+                  "entity": "input_boolean.auto_enable_call_lighting"
+                },
+                {
+                  "entity": "group.bedroom_group"
+                },
+                {
+                  "entity": "group.kitchen_group"
+                },
+                {
+                  "entity": "light.h7075_1c56",
+                  "name": "Garden Light"
                 }
               ],
               "title": "Light",
@@ -154,6 +203,13 @@
             {
               "type": "custom:mini-media-player",
               "entity": "media_player.living_room_2"
+            },
+            {
+              "type": "entities",
+              "entities": [
+                "vacuum.roborock_qrevo_master"
+              ],
+              "title": "Roborock Qrevo Master"
             },
             {
               "type": "custom:mini-media-player",
@@ -209,8 +265,9 @@
                 "default": "live"
               },
               "live": {
-                "auto_play": "all",
-                "auto_pause": "hidden"
+                "auto_pause": [
+                  "hidden"
+                ]
               },
               "view_layout": {
                 "column": 4
@@ -372,12 +429,6 @@
           "badges": [],
           "cards": [
             {
-              "type": "custom:scheduler-card",
-              "include": [
-                "climate"
-              ]
-            },
-            {
               "type": "entities",
               "entities": [
                 {
@@ -396,6 +447,12 @@
               "title": "Settings"
             },
             {
+              "type": "custom:scheduler-card",
+              "include": [
+                "climate"
+              ]
+            },
+            {
               "type": "thermostat",
               "entity": "climate.thermostat_1",
               "features": [
@@ -408,28 +465,32 @@
                   ]
                 }
               ],
-              "name": "Hive"
-            },
-            {
-              "type": "entity",
-              "entity": "water_heater.thermostat_1",
-              "name": "Hot water"
+              "name": "Hive Thermostat"
             },
             {
               "type": "thermostat",
-              "entity": "climate.midea_ac_42880953513406_2",
-              "features": [
-                {
-                  "type": "climate-hvac-modes",
-                  "hvac_modes": [
-                    "fan_only",
-                    "dry",
-                    "cool",
-                    "auto",
-                    "off"
-                  ]
-                }
-              ]
+              "entity": "climate.office_trv",
+              "name": "Office TRV"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.lounge_trv1",
+              "name": "Lounge Window TRV"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.lounge_trv2",
+              "name": "Lounge Sofa TRV"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.dining_room_trv",
+              "name": "Dining Room TRV"
+            },
+            {
+              "type": "thermostat",
+              "entity": "climate.kitchen_trv",
+              "name": "Kitchen TRV"
             }
           ]
         },
@@ -651,13 +712,1042 @@
           ]
         },
         {
+          "title": "Vacuum",
+          "path": "vacuum",
+          "cards": [
+            {
+              "type": "entities",
+              "entities": [
+                "vacuum.roborock_qrevo_master"
+              ],
+              "title": "Roborock Qrevo Master"
+            },
+            {
+              "type": "custom:xiaomi-vacuum-map-card",
+              "map_source": {
+                "camera": "camera.roborock_qrevo_master_map"
+              },
+              "camera_refresh_interval": 5,
+              "preset_name": "Downstairs",
+              "activate_on_switch": true,
+              "activate": {
+                "service": "vacuum.send_command",
+                "service_data": {
+                  "command": "load_multi_map",
+                  "params": 0
+                },
+                "target": {
+                  "entity_id": "[[entity_id]]"
+                }
+              },
+              "calibration_source": {
+                "calibration_points": [
+                  {
+                    "vacuum": {
+                      "x": 25500,
+                      "y": 25500
+                    },
+                    "map": {
+                      "x": 89,
+                      "y": 129
+                    }
+                  },
+                  {
+                    "vacuum": {
+                      "x": 35500,
+                      "y": 25500
+                    },
+                    "map": {
+                      "x": 289,
+                      "y": 129
+                    }
+                  },
+                  {
+                    "vacuum": {
+                      "x": 25500,
+                      "y": 35500
+                    },
+                    "map": {
+                      "x": 89,
+                      "y": -71
+                    }
+                  }
+                ]
+              },
+              "entity": "vacuum.roborock_qrevo_master",
+              "vacuum_platform": "humbertogontijo/homeassistant-roborock",
+              "map_modes": [
+                {
+                  "template": "vacuum_clean_segment",
+                  "predefined_selections": [
+                    {
+                      "id": "16",
+                      "icon": {
+                        "name": "mdi:countertop",
+                        "x": 30425,
+                        "y": 22225
+                      },
+                      "label": {
+                        "text": "Kitchen",
+                        "x": 30425,
+                        "y": 22225,
+                        "offset_y": 35
+                      },
+                      "outline": [
+                        [
+                          28700,
+                          21100
+                        ],
+                        [
+                          32150,
+                          21100
+                        ],
+                        [
+                          32150,
+                          23350
+                        ],
+                        [
+                          28700,
+                          23350
+                        ]
+                      ]
+                    },
+                    {
+                      "id": "17",
+                      "icon": {
+                        "name": "mdi:sofa",
+                        "x": 26450,
+                        "y": 24150
+                      },
+                      "label": {
+                        "text": "Livingroom",
+                        "x": 26450,
+                        "y": 24150,
+                        "offset_y": 35
+                      },
+                      "outline": [
+                        [
+                          24850,
+                          21300
+                        ],
+                        [
+                          28050,
+                          21300
+                        ],
+                        [
+                          28050,
+                          27000
+                        ],
+                        [
+                          24850,
+                          27000
+                        ]
+                      ]
+                    },
+                    {
+                      "id": "18",
+                      "icon": {
+                        "name": "mdi:stairs-up",
+                        "x": 29125,
+                        "y": 25225
+                      },
+                      "label": {
+                        "text": "Hallway",
+                        "x": 29125,
+                        "y": 25225,
+                        "offset_y": 35
+                      },
+                      "outline": [
+                        [
+                          28100,
+                          23300
+                        ],
+                        [
+                          30150,
+                          23300
+                        ],
+                        [
+                          30150,
+                          27150
+                        ],
+                        [
+                          28100,
+                          27150
+                        ]
+                      ]
+                    },
+                    {
+                      "id": "19",
+                      "icon": {
+                        "name": "mdi:table-furniture",
+                        "x": 31350,
+                        "y": 25550
+                      },
+                      "label": {
+                        "text": "Dining Room",
+                        "x": 31350,
+                        "y": 25550,
+                        "offset_y": 35
+                      },
+                      "outline": [
+                        [
+                          29950,
+                          24100
+                        ],
+                        [
+                          32750,
+                          24100
+                        ],
+                        [
+                          32750,
+                          27000
+                        ],
+                        [
+                          29950,
+                          27000
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "template": "vacuum_clean_zone"
+                },
+                {
+                  "template": "vacuum_goto"
+                }
+              ],
+              "icons": [
+                {
+                  "icon": "mdi:play",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "cleaning"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "error"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "returning"
+                    }
+                  ],
+                  "tooltip": "Start",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.start",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:pause",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "docked"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "idle"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "error"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "paused"
+                    }
+                  ],
+                  "tooltip": "Pause",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.pause",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:stop",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "docked"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "idle"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "error"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "paused"
+                    }
+                  ],
+                  "tooltip": "Stop",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.stop",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:home-map-marker",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "docked"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "returning"
+                    }
+                  ],
+                  "tooltip": "Return to base",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.return_to_base",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:target-variant",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "docked"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "error"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "cleaning"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "value_not": "returning"
+                    }
+                  ],
+                  "tooltip": "Clean spot",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.clean_spot",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:map-marker",
+                  "tooltip": "Locate",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.locate",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "off",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "off"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "off"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "quiet",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "quiet"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "quiet"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "balanced",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "balanced"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "balanced"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "Turbo",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "turbo"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "turbo"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "max",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "max"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "max"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "custom",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "custom"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "custom"
+                    }
+                  }
+                },
+                {
+                  "menu_id": "fan_speed",
+                  "icon": "mdi:fan-alert",
+                  "label": "max_plus",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value": "max_plus"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "max_plus"
+                    }
+                  }
+                },
+                {
+                  "icon": "mdi:fan-alert",
+                  "conditions": [
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "off"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "quiet"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "balanced"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "turbo"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "max"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "custom"
+                    },
+                    {
+                      "entity": "vacuum.roborock_qrevo_master",
+                      "attribute": "fan_speed",
+                      "value_not": "max_plus"
+                    }
+                  ],
+                  "tooltip": "Change fan speed",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "vacuum.set_fan_speed",
+                    "service_data": {
+                      "entity_id": "vacuum.roborock_qrevo_master",
+                      "fan_speed": "off"
+                    }
+                  }
+                },
+                {
+                  "type": "menu",
+                  "menu_id": "water_box_mode",
+                  "icon_id": "water_box_mode",
+                  "available_values_attribute": "options",
+                  "icon": "mdi:water",
+                  "icon_mapping": {
+                    "off": "mdi:water-remove",
+                    "mild": "mdi:water-minus",
+                    "moderate": "mdi:water",
+                    "intense": "mdi:water-plus",
+                    "custom": "mdi:water-sync"
+                  },
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "select.select_option",
+                    "service_data": {
+                      "option": "[[value]]",
+                      "entity_id": "[[entity_id]]"
+                    }
+                  },
+                  "entity": "select.roborock_qrevo_master_mop_intensity"
+                }
+              ],
+              "tiles": [
+                {
+                  "tile_id": "status",
+                  "entity": "vacuum.roborock_qrevo_master",
+                  "label": "Status",
+                  "attribute": "status",
+                  "icon": "mdi:robot-vacuum",
+                  "translations": {
+                    "starting": "Starting",
+                    "charger disconnected": "Charger disconnected",
+                    "idle": "Idle",
+                    "remote control active": "Remote control active",
+                    "cleaning": "Cleaning",
+                    "returning home": "Returning home",
+                    "manual mode": "Manual mode",
+                    "charging": "Charging",
+                    "charging problem": "Charging problem",
+                    "paused": "Paused",
+                    "spot cleaning": "Spot cleaning",
+                    "error": "Error",
+                    "shutting down": "Shutting down",
+                    "updating": "Updating",
+                    "docking": "Docking",
+                    "going to target": "Going to target",
+                    "zoned cleaning": "Zoned cleaning",
+                    "segment cleaning": "Segment cleaning",
+                    "emptying the bin": "Emptying the bin",
+                    "charging complete": "Charging complete",
+                    "device offline": "Device offline"
+                  }
+                },
+                {
+                  "tile_id": "battery_level",
+                  "entity": "vacuum.roborock_qrevo_master",
+                  "label": "Battery",
+                  "attribute": "battery_level",
+                  "icon_source": "vacuum.roborock_qrevo_master.attributes.battery_icon",
+                  "unit": "%"
+                },
+                {
+                  "tile_id": "fan_speed",
+                  "entity": "vacuum.roborock_qrevo_master",
+                  "label": "Fan speed",
+                  "attribute": "fan_speed",
+                  "icon": "mdi:fan",
+                  "translations": {
+                    "silent": "Silent",
+                    "standard": "Standard",
+                    "medium": "Medium",
+                    "turbo": "Turbo",
+                    "auto": "Auto",
+                    "gentle": "Gentle"
+                  }
+                },
+                {
+                  "tile_id": "sensor_dirty_left",
+                  "label": "Sensors left",
+                  "unit": "h",
+                  "multiplier": 0.0002777777777777778,
+                  "hold_action": {
+                    "action": "call-service",
+                    "service": "vacuum.send_command",
+                    "confirmation": {},
+                    "service_data": {
+                      "command": "reset_consumable",
+                      "params": "sensor_dirty_time",
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  },
+                  "entity": "sensor.roborock_qrevo_master_sensor_dirty_left",
+                  "icon": "mdi:eye-outline",
+                  "precision": 0,
+                  "translations": {}
+                },
+                {
+                  "tile_id": "filter_left",
+                  "label": "Filter left",
+                  "unit": "h",
+                  "multiplier": 0.0002777777777777778,
+                  "hold_action": {
+                    "action": "call-service",
+                    "service": "vacuum.send_command",
+                    "confirmation": {},
+                    "service_data": {
+                      "command": "reset_consumable",
+                      "params": "filter_work_time",
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  },
+                  "entity": "sensor.roborock_qrevo_master_filter_left",
+                  "icon": "mdi:air-filter",
+                  "precision": 0,
+                  "translations": {}
+                },
+                {
+                  "tile_id": "main_brush_left",
+                  "label": "Main brush left",
+                  "unit": "h",
+                  "multiplier": 0.0002777777777777778,
+                  "hold_action": {
+                    "action": "call-service",
+                    "service": "vacuum.send_command",
+                    "confirmation": {},
+                    "service_data": {
+                      "command": "reset_consumable",
+                      "params": "main_brush_work_time",
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  },
+                  "entity": "sensor.roborock_qrevo_master_main_brush_left",
+                  "icon": "mdi:brush",
+                  "precision": 0,
+                  "translations": {}
+                },
+                {
+                  "tile_id": "side_brush_left",
+                  "label": "Side brush left",
+                  "unit": "h",
+                  "multiplier": 0.0002777777777777778,
+                  "hold_action": {
+                    "action": "call-service",
+                    "service": "vacuum.send_command",
+                    "confirmation": {},
+                    "service_data": {
+                      "command": "reset_consumable",
+                      "params": "side_brush_work_time",
+                      "entity_id": "vacuum.roborock_qrevo_master"
+                    }
+                  },
+                  "entity": "sensor.roborock_qrevo_master_side_brush_left",
+                  "icon": "mdi:brush",
+                  "precision": 0,
+                  "translations": {}
+                },
+                {
+                  "tile_id": "cleaning_count",
+                  "label": "Cleaning count",
+                  "entity": "sensor.roborock_qrevo_master_total_clean_count",
+                  "icon": "mdi:counter",
+                  "precision": 0,
+                  "translations": {}
+                }
+              ],
+              "additional_presets": [
+                {
+                  "preset_name": "Upstairs",
+                  "entity": "vacuum.roborock_qrevo_master",
+                  "activate_on_switch": true,
+                  "activate": {
+                    "service": "vacuum.send_command",
+                    "service_data": {
+                      "command": "load_multi_map",
+                      "params": 1
+                    },
+                    "target": {
+                      "entity_id": "[[entity_id]]"
+                    }
+                  },
+                  "camera_refresh_interval": 5,
+                  "map_source": {
+                    "camera": "camera.roborock_qrevo_master_map"
+                  },
+                  "calibration_source": {
+                    "calibration_points": [
+                      {
+                        "vacuum": {
+                          "x": 25500,
+                          "y": 25500
+                        },
+                        "map": {
+                          "x": 127,
+                          "y": 173
+                        }
+                      },
+                      {
+                        "vacuum": {
+                          "x": 35500,
+                          "y": 25500
+                        },
+                        "map": {
+                          "x": 327,
+                          "y": 173
+                        }
+                      },
+                      {
+                        "vacuum": {
+                          "x": 25500,
+                          "y": 35500
+                        },
+                        "map": {
+                          "x": 127,
+                          "y": -27
+                        }
+                      }
+                    ]
+                  },
+                  "vacuum_platform": "humbertogontijo/homeassistant-roborock",
+                  "map_modes": [
+                    {
+                      "template": "vacuum_clean_segment",
+                      "predefined_selections": [
+                        {
+                          "id": "16",
+                          "icon": {
+                            "name": "mdi:stairs-down",
+                            "x": 25750,
+                            "y": 26625
+                          },
+                          "label": {
+                            "text": "Landing",
+                            "x": 25750,
+                            "y": 26625,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              24250,
+                              25050
+                            ],
+                            [
+                              27250,
+                              25050
+                            ],
+                            [
+                              27250,
+                              28200
+                            ],
+                            [
+                              24250,
+                              28200
+                            ]
+                          ]
+                        },
+                        {
+                          "id": "17",
+                          "icon": {
+                            "name": "mdi:bathtub",
+                            "x": 28175,
+                            "y": 26075
+                          },
+                          "label": {
+                            "text": "Bathroom",
+                            "x": 28175,
+                            "y": 26075,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              27200,
+                              25250
+                            ],
+                            [
+                              29150,
+                              25250
+                            ],
+                            [
+                              29150,
+                              26900
+                            ],
+                            [
+                              27200,
+                              26900
+                            ]
+                          ]
+                        },
+                        {
+                          "id": "18",
+                          "icon": {
+                            "name": "mdi:bed-double",
+                            "x": 23550,
+                            "y": 28900
+                          },
+                          "label": {
+                            "text": "Bedroom",
+                            "x": 23550,
+                            "y": 28900,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              22000,
+                              27050
+                            ],
+                            [
+                              25100,
+                              27050
+                            ],
+                            [
+                              25100,
+                              30750
+                            ],
+                            [
+                              22000,
+                              30750
+                            ]
+                          ]
+                        },
+                        {
+                          "id": "19",
+                          "icon": {
+                            "name": "mdi:chair-rolling",
+                            "x": 28100,
+                            "y": 28800
+                          },
+                          "label": {
+                            "text": "Office",
+                            "x": 28100,
+                            "y": 28800,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              26350,
+                              26850
+                            ],
+                            [
+                              29850,
+                              26850
+                            ],
+                            [
+                              29850,
+                              30750
+                            ],
+                            [
+                              26350,
+                              30750
+                            ]
+                          ]
+                        },
+                        {
+                          "id": "20",
+                          "icon": {
+                            "name": "mdi:shower-head",
+                            "x": 26050,
+                            "y": 30050
+                          },
+                          "label": {
+                            "text": "Shower",
+                            "x": 26050,
+                            "y": 30050,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              25250,
+                              29400
+                            ],
+                            [
+                              26850,
+                              29400
+                            ],
+                            [
+                              26850,
+                              30700
+                            ],
+                            [
+                              25250,
+                              30700
+                            ]
+                          ]
+                        },
+                        {
+                          "id": "21",
+                          "icon": {
+                            "name": "mdi:server",
+                            "x": 23100,
+                            "y": 26175
+                          },
+                          "label": {
+                            "text": "Cave",
+                            "x": 23100,
+                            "y": 26175,
+                            "offset_y": 35
+                          },
+                          "outline": [
+                            [
+                              21950,
+                              25050
+                            ],
+                            [
+                              24250,
+                              25050
+                            ],
+                            [
+                              24250,
+                              27300
+                            ],
+                            [
+                              21950,
+                              27300
+                            ]
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "template": "vacuum_clean_zone"
+                    },
+                    {
+                      "template": "vacuum_goto"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "icon": "mdi:robot-vacuum"
+        },
+        {
           "title": "beta",
           "path": "beta",
           "type": "sections",
           "sections": [
             {
               "type": "grid",
-              "cards": []
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "Esp04"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_breath_voc_equivalent"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_co2_equivalent"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_gas_resistance"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_humidity"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_iaq"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_iaq_accuracy"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_pressure"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.bme680_temperature"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "cards": [
+                {
+                  "type": "heading",
+                  "heading": "office_pm_sensor"
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration"
+                }
+              ]
             }
           ]
         }
