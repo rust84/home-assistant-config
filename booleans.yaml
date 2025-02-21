@@ -24,14 +24,6 @@ enable_heating_schedules:
 heating_schedule_away:
   name: Disable schedules when away
 
-# Cameras
-camera_driveway_notify:
-  name: Notify driveway camera
-camera_lounge_notify:
-  name: Notify lounge camera
-camera_office_notify:
-  name: Notify office camera
-
 # Aircon
 auto_enable_aircon_swing_mode:
   name: Enable swing mode when unit is on

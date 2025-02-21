@@ -1,20 +1,20 @@
-- name: Hallway on white
-  icon: "mdi:lightbulb"
-  entities:
-    light.ailight_2:
-      state: "on"
-      brightness: 255
-      color_mode: "rgbw"
-      rgbw_color: [209, 95, 0, 255]
+# - name: Hallway on white
+#   icon: "mdi:lightbulb"
+#   entities:
+#     light.ailight_2:
+#       state: "on"
+#       brightness: 255
+#       color_mode: "rgbw"
+#       rgbw_color: [209, 95, 0, 255]
 
-- name: Hallway on green
-  icon: "mdi:lightbulb"
-  entities:
-    light.ailight_2:
-      state: "on"
-      brightness: 255
-      color_mode: "rgbw"
-      rgbw_color: [0, 255, 0, 0]
+# - name: Hallway on green
+#   icon: "mdi:lightbulb"
+#   entities:
+#     light.ailight_2:
+#       state: "on"
+#       brightness: 255
+#       color_mode: "rgbw"
+#       rgbw_color: [0, 255, 0, 0]
 
 - name: Meeting
   icon: "mdi:lightbulb"
@@ -35,14 +35,15 @@
   entities:
     light.glide_hexa:
       state: "on"
-      brightness: 17
-      color_mode: "rgb"
-      rgb_color: [38, 255, 22]
+      brightness: 33
+      #color_mode: "rgb"
+      #rgb_color: [127, 172, 255]
+      effect: Dreamlike
     light.office_floor_lamps:
       state: "on"
-      brightness: 109
+      brightness: 204
       color_mode: "rgb"
-      rgb_color: [38, 255, 22]
+      rgb_color: [127, 172, 255]
 
 - name: Wall Lights On White
   icon: "mdi:lightbulb"
@@ -54,6 +55,18 @@
     light.0xc4988600000045a0:
       state: "on"
       brightness: 166
+      color_temp: 295
+
+- name: Wall Lights On Movie
+  icon: "mdi:lightbulb"
+  entities:
+    light.0xc4988600004be262:
+      state: "on"
+      brightness: 89
+      color_temp: 295
+    light.0xc4988600000045a0:
+      state: "on"
+      brightness: 89
       color_temp: 295
 
 # - name: Ambient

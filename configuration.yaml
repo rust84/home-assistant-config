@@ -1,5 +1,7 @@
 homeassistant:
   name: Home
+  internal_url: !secret internal_url
+  # external_url: !secret external_url
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 100
@@ -39,9 +41,10 @@ default_config:
 
 http:
   cors_allowed_origins:
-    - https://hass.microserver.space
+    - !secret internal_url
+    - !secret external_url
   server_host: 0.0.0.0
-  ip_ban_enabled: true
+  ip_ban_enabled: false
   login_attempts_threshold: 5
   use_x_forwarded_for: true
   trusted_proxies:
@@ -49,9 +52,9 @@ http:
     - 127.0.0.1
     - ::1
 
-auth_header:
-  username_header: X-authentik-username
-  debug: false
+# auth_header:
+#   username_header: X-authentik-username
+#   debug: false
 
 recorder:
   auto_purge: true
@@ -70,43 +73,42 @@ recorder:
       - sensor.moonraker_toolhead_position_*
       - sensor.moonraker_slicer_*
       - sensor.moonraker_print_*
+      - sensor.bermuda_*
 
 logbook:
 
-prometheus:
-  namespace: hass
-  component_config_glob:
-    sensor.*_humidity:
-      override_metric: humidity_percent
-    sensor.*_temperature:
-      override_metric: temperature_c
-    sensor.temperature*:
-      override_metric: temperature_c
-    sensor.*_battery:
-      override_metric: battery_percent
-  filter:
-    include_domains:
-      - sensor
-    exclude_entities:
-      - sensor.date
-      - sensor.time
-    exclude_entity_globs:
-      - sensor.weather_*
+# prometheus:
+#   namespace: hass
+#   component_config_glob:
+#     sensor.*_humidity:
+#       override_metric: humidity_percent
+#     sensor.*_temperature:
+#       override_metric: temperature_c
+#     sensor.temperature*:
+#       override_metric: temperature_c
+#     sensor.*_battery:
+#       override_metric: battery_percent
+#   filter:
+#     include_domains:
+#       - sensor
+#     exclude_entities:
+#       - sensor.date
+#       - sensor.time
+#     exclude_entity_globs:
+#       - sensor.weather_*
 
 system_health:
 
 logger:
   default: error
   logs:
-    custom_components.auth_header: warning
+    # custom_components.auth_header: warning
     homeassistant.components.androidtv.media_player: info
 
 frontend:
   themes: !include_dir_merge_named themes
   extra_module_url: 
     - /hacsfiles/lovelace-card-mod/card-mod.js
-
-browser_mod:
 
 config:
 

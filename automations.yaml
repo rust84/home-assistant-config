@@ -1,25 +1,3 @@
-- id: 0626a860-c901-4b9c-8463-d7a5f03f5429
-  alias: Switch between peak and offpeak
-  trigger:
-  - platform: time
-    at: 08:00:00
-    variables:
-      tariff: peak
-  - platform: time
-    at: 01:00:00
-    variables:
-      tariff: offpeak
-  action:
-  - service: select.select_option
-    target:
-      entity_id: select.daily_energy
-    data:
-      option: '{{ tariff }}'
-  - service: select.select_option
-    target:
-      entity_id: select.monthly_energy
-    data:
-      option: '{{ tariff }}'
 - id: ad3f20d8-f504-47c1-8f11-25992a079f1d
   alias: Sonos Night Mode On (23:00)
   description: Enables Sonos Night Mode between 23:00 and 08:00
@@ -58,38 +36,28 @@
       entity_id: switch.living_room_night_sound
     data: {}
   mode: single
-- id: '1719317465277'
-  alias: Frigate Notifications (0.12.0.4a)
-  description: ''
-  use_blueprint:
-    path: SgtBatten/Stable.yaml
-    input:
-      camera: camera.doorbell
-      notify_device: c6f96b9048cf518e4e711b76a8686378
-      base_url: https://hass.microserver.space
-      video: '{{base_url}}/api/frigate{{client_id}}/notifications/{{id}}/{{camera}}/clip.mp4'
 - id: 67d94a49-c325-42b3-93ab-bd5b375ee85f
-  alias: "Roborock: reload map"
-  description: ""
+  alias: 'Roborock: reload map'
+  description: ''
   trigger:
-    - platform: event
-      event_type: call_service
-      event_data:
-        domain: vacuum
-        service: send_command
-        service_data:
-          entity_id:
-            - vacuum.roborock_qrevo_master
-          command: load_multi_map
+  - platform: event
+    event_type: call_service
+    event_data:
+      domain: vacuum
+      service: send_command
+      service_data:
+        entity_id:
+        - vacuum.roborock_qrevo_master
+        command: load_multi_map
   condition: []
   action:
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-    - service: homeassistant.update_entity
-      data: {}
-      target:
-        entity_id: camera.roborock_qrevo_master_map
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: homeassistant.update_entity
+    data: {}
+    target:
+      entity_id: camera.roborock_qrevo_master_map
   mode: single

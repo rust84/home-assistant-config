@@ -1,10 +1,8 @@
 - sensor:
   - name: "Russell Home Status"
     state: "{{is_state('device_tracker.russell_s_pixel_7a','home') or is_state('device_tracker.pixel_7a_2','home')}}"
-  - name: "Ana Home Status"
-    state: "{{is_state('device_tracker.device_tracker.pixel_7a_3','home')}}"
   - name: "Anyone Home"
-    state: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.ana_home_status', 'True')-%}home{%else%}not_home{% endif %}"
+    state: "{% if is_state('sensor.russell_home_status', 'True') or is_state('sensor.russell_home_status', 'True')-%}home{%else%}not_home{% endif %}"
   - name: "Rack Output Power"
     device_class: power
     unit_of_measurement: W
@@ -15,9 +13,6 @@
       {% else -%}
         0
       {%- endif %}
-  - name: Thermostat
-    unit_of_measurement: '°C'
-    state: "{{ state_attr('climate.thermostat_1', 'current_temperature') }}"
   - name: Office TRV Temp
     unit_of_measurement: '°C'
     state: "{{ state_attr('climate.office_trv', 'current_temperature') }}"

@@ -23,23 +23,18 @@
               "show_icon": true,
               "entity": "person.russell",
               "show_entity_picture": true
-            },
-            {
-              "type": "entity",
-              "show_name": true,
-              "show_state": true,
-              "show_icon": true,
-              "entity": "person.ana",
-              "color": "",
-              "show_entity_picture": true
             }
           ],
           "cards": [
             {
               "entities": [
                 {
-                  "entity": "sensor.thermostat",
+                  "entity": "sensor.thermostat_1_current_temperature",
                   "name": "Hive Thermostat"
+                },
+                {
+                  "entity": "sensor.everything_presence_one_042214_temperature",
+                  "name": "Kitchen EP1"
                 },
                 {
                   "entity": "sensor.ep1_01_7f753c_temperature",
@@ -80,12 +75,16 @@
             {
               "entities": [
                 {
+                  "entity": "sensor.everything_presence_one_042214_humidity",
+                  "name": "Kitchen EP"
+                },
+                {
                   "entity": "sensor.ep1_01_7f753c_humidity",
-                  "name": "office EP"
+                  "name": "Office EP"
                 },
                 {
                   "entity": "sensor.ep1_02_dac9c4_humidity",
-                  "name": "livingroom EP"
+                  "name": "Livingroom EP"
                 }
               ],
               "hours_to_show": 3,
@@ -96,13 +95,42 @@
               "type": "custom:mini-graph-card"
             },
             {
+              "type": "custom:weather-card",
+              "entity": "weather.openweathermap",
               "current": true,
               "details": false,
-              "entity": "weather.openweathermap",
               "forecast": true,
-              "hourly_forecast": true,
-              "number_of_forecasts": "5",
-              "type": "custom:weather-card"
+              "hourly_forecast": false,
+              "number_of_forecasts": 5,
+              "forecast_type": "daily"
+            },
+            {
+              "type": "custom:frigate-card",
+              "cameras": [
+                {
+                  "camera_entity": "camera.doorbell",
+                  "live_provider": "go2rtc",
+                  "webrtc_card": {}
+                }
+              ],
+              "media_viewer": {
+                "controls": {
+                  "thumbnails": {
+                    "mode": "below"
+                  }
+                }
+              },
+              "view": {
+                "default": "live"
+              },
+              "live": {
+                "auto_pause": [
+                  "hidden"
+                ]
+              },
+              "view_layout": {
+                "column": 4
+              }
             },
             {
               "entities": [
@@ -134,9 +162,6 @@
                   "entity": "light.lounge_wall_lights"
                 },
                 {
-                  "entity": "light.dig_quad_v3"
-                },
-                {
                   "entity": "group.office_rgb"
                 },
                 {
@@ -162,7 +187,10 @@
                   "entity": "group.kitchen_group"
                 },
                 {
-                  "entity": "light.h7075_1c56",
+                  "entity": "group.cupboard_group"
+                },
+                {
+                  "entity": "light.garden_light",
                   "name": "Garden Light"
                 }
               ],
@@ -173,36 +201,37 @@
               "type": "entities",
               "entities": [
                 {
-                  "entity": "sensor.rack_battery_charge",
-                  "name": "Battery charge"
-                },
-                {
-                  "entity": "sensor.rack_input_voltage",
-                  "name": "Input voltage"
-                },
-                {
-                  "entity": "sensor.rack_load",
-                  "name": "Load"
-                },
-                {
-                  "entity": "sensor.rack_status",
-                  "name": "Status"
-                },
-                {
                   "entity": "sensor.rack_output_power"
                 },
                 {
-                  "entity": "sensor.rack_battery_runtime"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_power"
                 },
                 {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power"
+                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy"
+                },
+                {
+                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost",
+                  "name": "NAS daily",
+                  "secondary_info": "none"
+                },
+                {
+                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost_month",
+                  "name": "NAS monthly"
+                },
+                {
+                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost_week",
+                  "name": "NAS Weekly"
                 }
               ],
               "title": "Rack"
             },
             {
-              "type": "custom:mini-media-player",
+              "type": "custom:mushroom-media-player-card",
               "entity": "media_player.living_room_2"
+            },
+            {
+              "type": "custom:mushroom-media-player-card",
+              "entity": "media_player.lg_webos_tv_oled65g36la"
             },
             {
               "type": "entities",
@@ -210,10 +239,6 @@
                 "vacuum.roborock_qrevo_master"
               ],
               "title": "Roborock Qrevo Master"
-            },
-            {
-              "type": "custom:mini-media-player",
-              "entity": "media_player.lg_webos_tv_oled65g36la"
             },
             {
               "type": "entities",
@@ -244,34 +269,6 @@
                 }
               ],
               "title": "Living Room"
-            },
-            {
-              "type": "custom:frigate-card",
-              "cameras": [
-                {
-                  "camera_entity": "camera.doorbell",
-                  "live_provider": "go2rtc",
-                  "webrtc_card": {}
-                }
-              ],
-              "media_viewer": {
-                "controls": {
-                  "thumbnails": {
-                    "mode": "below"
-                  }
-                }
-              },
-              "view": {
-                "default": "live"
-              },
-              "live": {
-                "auto_pause": [
-                  "hidden"
-                ]
-              },
-              "view_layout": {
-                "column": 4
-              }
             }
           ]
         },
@@ -293,24 +290,6 @@
             {
               "entities": [
                 {
-                  "entity": "binary_sensor.kitchen_contact_sensor_contact"
-                },
-                {
-                  "entity": "binary_sensor.front_door_contact_sensor_contact"
-                },
-                {
-                  "entity": "binary_sensor.lounge_contact_sensor_contact"
-                },
-                {
-                  "entity": "binary_sensor.office_contact_sensor_contact"
-                },
-                {
-                  "entity": "binary_sensor.bedroom_contact_sensor_contact"
-                },
-                {
-                  "entity": "binary_sensor.server_room_contact_sensor_contact"
-                },
-                {
                   "entity": "binary_sensor.smoke_detector_office_smoke",
                   "name": "Office - Smoke",
                   "icon": "mdi:smoke-detector"
@@ -321,7 +300,7 @@
                   "icon": "mdi:smoke-detector"
                 },
                 {
-                  "entity": "binary_sensor.lounge_motion_sensor_occupancy",
+                  "entity": "binary_sensor.hallway_motion_sensor_occupancy",
                   "name": "Hallway - Motion sensor Motion"
                 },
                 {
@@ -335,6 +314,14 @@
                 },
                 {
                   "entity": "binary_sensor.ep1_02_dac9c4_occupancy"
+                },
+                {
+                  "entity": "binary_sensor.everything_presence_one_042214_occupancy"
+                },
+                {
+                  "entity": "sensor.164cadddbf7946bdb48f1a5aaa596e60_100_40004_area",
+                  "name": "Bluetooth Beacon",
+                  "icon": "mdi:bluetooth"
                 }
               ],
               "title": "Sensors",
@@ -344,10 +331,34 @@
               "type": "entities",
               "entities": [
                 {
+                  "entity": "binary_sensor.kitchen_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.dining_room_contact_l_contact"
+                },
+                {
+                  "entity": "binary_sensor.dining_room_contact_r_contact"
+                },
+                {
+                  "entity": "binary_sensor.front_door_contact_sensor_contact"
+                },
+                {
+                  "entity": "binary_sensor.lounge_window_contact_l_contact"
+                },
+                {
+                  "entity": "binary_sensor.lounge_door_contact_sensor_contact"
+                }
+              ]
+            },
+            {
+              "type": "entities",
+              "entities": [
+                {
                   "entity": "input_boolean.auto_arm_alarm_when_gone"
                 },
                 {
-                  "entity": "input_boolean.auto_arm_disarm_alarm_night"
+                  "entity": "input_boolean.auto_arm_disarm_alarm_night",
+                  "name": "Arm alarm at night and disarm in the AM"
                 },
                 {
                   "entity": "input_boolean.auto_disarm_alarm_when_home"
@@ -360,40 +371,23 @@
                 },
                 {
                   "entity": "input_boolean.notify_alarm_triggered"
-                },
-                {
-                  "entity": "input_boolean.camera_driveway_notify"
-                },
-                {
-                  "entity": "input_boolean.camera_lounge_notify"
-                },
-                {
-                  "entity": "input_boolean.camera_office_notify"
                 }
               ],
               "title": "Settings"
             },
             {
               "type": "logbook",
-              "entities": [
-                "binary_sensor.lounge_motion_sensor_occupancy",
-                "binary_sensor.landing_motion",
-                "binary_sensor.bedroom_contact_sensor_contact",
-                "binary_sensor.front_door_contact_sensor_contact",
-                "binary_sensor.lounge_contact_sensor_contact",
-                "binary_sensor.office_contact_sensor_contact",
-                "binary_sensor.kitchen_contact_sensor_contact",
-                "binary_sensor.server_room_contact_sensor_contact",
-                "binary_sensor.office_motion_sensor_occupancy",
-                "camera.office_person",
-                "sensor.lounge_person",
-                "binary_sensor.office_person_motion",
-                "sensor.office_person",
-                "camera.lounge_person",
-                "binary_sensor.driveway_person_motion",
-                "binary_sensor.ep1_01_7f753c_office_occupancy",
-                "binary_sensor.ep1_02_dac9c4_lounge_occupancy"
-              ]
+              "target": {
+                "entity_id": [
+                  "binary_sensor.ep1_02_dac9c4_occupancy",
+                  "binary_sensor.everything_presence_one_042214_occupancy",
+                  "binary_sensor.ep1_01_7f753c_occupancy",
+                  "binary_sensor.hallway_motion_sensor_occupancy",
+                  "binary_sensor.landing_motion_sensor_occupancy",
+                  "binary_sensor.front_door_contact_sensor_contact",
+                  "binary_sensor.kitchen_contact_sensor_contact"
+                ]
+              }
             },
             {
               "camera_view": "auto",
@@ -409,7 +403,7 @@
                   "entity": "light.lounge_light"
                 },
                 {
-                  "entity": "binary_sensor.lounge_person_occupancy"
+                  "entity": "binary_sensor.doorbell_person_occupancy"
                 },
                 {
                   "entity": "climate.thermostat_1"
@@ -1691,7 +1685,7 @@
           "icon": "mdi:robot-vacuum"
         },
         {
-          "title": "beta",
+          "title": "New",
           "path": "beta",
           "type": "sections",
           "sections": [
@@ -1700,52 +1694,70 @@
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "Esp04"
+                  "heading": "Office",
+                  "heading_style": "title"
                 },
                 {
-                  "type": "tile",
-                  "entity": "sensor.bme680_breath_voc_equivalent"
+                  "type": "custom:mushroom-light-card",
+                  "entity": "light.office_light",
+                  "show_brightness_control": true,
+                  "show_color_control": false,
+                  "show_color_temp_control": true,
+                  "collapsible_controls": true,
+                  "use_light_color": false
                 },
                 {
-                  "type": "tile",
-                  "entity": "sensor.bme680_co2_equivalent"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_gas_resistance"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_humidity"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_iaq"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_iaq_accuracy"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_pressure"
-                },
-                {
-                  "type": "tile",
-                  "entity": "sensor.bme680_temperature"
+                  "type": "custom:mushroom-light-card",
+                  "entity": "light.glide_hexa",
+                  "show_color_control": true,
+                  "show_brightness_control": true,
+                  "use_light_color": true,
+                  "collapsible_controls": true
                 }
               ]
-            },
+            }
+          ],
+          "max_columns": 4,
+          "cards": []
+        },
+        {
+          "type": "sections",
+          "max_columns": 4,
+          "title": "Plants",
+          "path": "plants",
+          "sections": [
             {
               "type": "grid",
               "cards": [
                 {
                   "type": "heading",
-                  "heading": "office_pm_sensor"
+                  "heading": "New section"
                 },
                 {
-                  "type": "tile",
-                  "entity": "sensor.office_pm_sensor_particulate_matter_2_5um_concentration"
+                  "type": "custom:flower-card",
+                  "entity": "plant.fred",
+                  "battery_sensor": "sensor.plant_sensor_6115_battery",
+                  "show_bars": [
+                    "moisture",
+                    "conductivity",
+                    "temperature",
+                    "illuminance",
+                    "humidity",
+                    "dli"
+                  ]
+                },
+                {
+                  "type": "custom:flower-card",
+                  "entity": "plant.gustavo",
+                  "battery_sensor": "sensor.plant_sensor_6166_battery",
+                  "show_bars": [
+                    "moisture",
+                    "conductivity",
+                    "temperature",
+                    "illuminance",
+                    "humidity",
+                    "dli"
+                  ]
                 }
               ]
             }
