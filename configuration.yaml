@@ -148,7 +148,7 @@ alexa:
         - switch.office_light_switch
       exclude_entity_globs:
         - light.ep1_*
-        - light.floor_lamp
+        - light.*_segment_*
     entity_config:
       group.office_lights:
         display_categories: LIGHT

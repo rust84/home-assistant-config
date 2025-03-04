@@ -23,15 +23,19 @@
               "show_icon": true,
               "entity": "person.russell",
               "show_entity_picture": true
+            },
+            {
+              "type": "entity",
+              "show_name": true,
+              "show_state": true,
+              "show_icon": true,
+              "entity": "person.ana",
+              "color": "purple"
             }
           ],
           "cards": [
             {
               "entities": [
-                {
-                  "entity": "sensor.thermostat_1_current_temperature",
-                  "name": "Hive Thermostat"
-                },
                 {
                   "entity": "sensor.everything_presence_one_042214_temperature",
                   "name": "Kitchen EP1"
@@ -448,7 +452,7 @@
             },
             {
               "type": "thermostat",
-              "entity": "climate.thermostat_1",
+              "entity": "climate.hive_receiver_heat",
               "features": [
                 {
                   "type": "climate-preset-modes",
