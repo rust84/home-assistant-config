@@ -48,7 +48,7 @@ http:
   login_attempts_threshold: 5
   use_x_forwarded_for: true
   trusted_proxies:
-    - 10.244.0.0/16
+    - 10.42.0.0/16
     - 127.0.0.1
     - ::1
 
@@ -145,7 +145,6 @@ alexa:
         - sensor.ep1_02_dac9c4_temperature
         - switch.sonoff_s26_1_relay
         - switch.sonoff_s26_2_relay
-        - switch.office_light_switch
       exclude_entity_globs:
         - light.ep1_*
         - light.*_segment_*
@@ -215,7 +214,7 @@ input_select:
 
 sonos:
  media_player:
-   advertise_addr: 10.30.0.13
+   advertise_addr: 10.30.0.55
 #    hosts:
 #      - 10.30.0.51 # Arc
 #      # - 10.30.0.62 # LS
