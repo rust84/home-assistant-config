@@ -77,26 +77,6 @@ recorder:
 
 logbook:
 
-# prometheus:
-#   namespace: hass
-#   component_config_glob:
-#     sensor.*_humidity:
-#       override_metric: humidity_percent
-#     sensor.*_temperature:
-#       override_metric: temperature_c
-#     sensor.temperature*:
-#       override_metric: temperature_c
-#     sensor.*_battery:
-#       override_metric: battery_percent
-#   filter:
-#     include_domains:
-#       - sensor
-#     exclude_entities:
-#       - sensor.date
-#       - sensor.time
-#     exclude_entity_globs:
-#       - sensor.weather_*
-
 system_health:
 
 logger:
