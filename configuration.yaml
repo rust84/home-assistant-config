@@ -193,10 +193,5 @@ input_select:
       # - server
 
 sonos:
- media_player:
-   advertise_addr: 10.30.0.55
-#    hosts:
-#      - 10.30.0.51 # Arc
-#      # - 10.30.0.62 # LS
-#      # - 10.30.0.63 # RS
-#      # - 10.30.0.60 # Sub
+  media_player:
+    advertise_addr: 10.30.0.55

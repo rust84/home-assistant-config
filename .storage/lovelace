@@ -30,7 +30,8 @@
               "show_state": true,
               "show_icon": true,
               "entity": "person.ana",
-              "color": "purple"
+              "color": "purple",
+              "show_entity_picture": true
             }
           ],
           "cards": [
