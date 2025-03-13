@@ -189,6 +189,9 @@
                   "entity": "group.bedroom_group"
                 },
                 {
+                  "entity": "group.diningroom_group"
+                },
+                {
                   "entity": "group.kitchen_group"
                 },
                 {
@@ -397,21 +400,18 @@
             {
               "camera_view": "auto",
               "type": "picture-glance",
-              "image": "https://frigate.microserver.space/api/doorbell/latest.jpg",
+              "image": "https://frigate.roswellian.dev/api/doorbell/latest.jpg",
               "theme": "minimalist-mobile",
               "aspect_ratio": "72%",
               "entities": [
                 {
-                  "entity": "binary_sensor.lounge_contact_sensor_contact"
+                  "entity": "binary_sensor.front_door_contact_sensor_contact"
                 },
                 {
                   "entity": "light.lounge_light"
                 },
                 {
                   "entity": "binary_sensor.doorbell_person_occupancy"
-                },
-                {
-                  "entity": "climate.thermostat_1"
                 }
               ],
               "card_mod": {

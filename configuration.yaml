@@ -33,9 +33,6 @@ zone:
 
 lovelace:
   mode: storage
-  resources:
-    - url: /hacsfiles/lovelace-state-switch/state-switch.js
-      type: module
 
 default_config:
 
@@ -51,10 +48,6 @@ http:
     - 10.42.0.0/16
     - 127.0.0.1
     - ::1
-
-# auth_header:
-#   username_header: X-authentik-username
-#   debug: false
 
 recorder:
   auto_purge: true
@@ -82,13 +75,10 @@ system_health:
 logger:
   default: error
   logs:
-    # custom_components.auth_header: warning
     homeassistant.components.androidtv.media_player: info
 
 frontend:
   themes: !include_dir_merge_named themes
-  extra_module_url: 
-    - /hacsfiles/lovelace-card-mod/card-mod.js
 
 config:
 
@@ -101,8 +91,6 @@ automation: !include automations.yaml
 sensor: !include sensors.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
-
-mqtt:
 
 alexa:
   smart_home:
@@ -117,6 +105,7 @@ alexa:
         - scene
       include_entities:
         - group.bedroom_group
+        - group.diningroom_group
         - group.kitchen_group
         - group.office_group
         - group.lounge_group
@@ -133,22 +122,6 @@ alexa:
         display_categories: LIGHT
 
 energy:
-
-# utility_meter:
-#   daily_energy:
-#     source: sensor.electric_consumption_today
-#     name: Daily Energy
-#     cycle: daily
-#     tariffs:
-#       - peak
-#       - offpeak
-#   monthly_energy:
-#     source: sensor.electric_consumption_today
-#     name: Monthly Energy
-#     cycle: monthly
-#     tariffs:
-#       - peak
-#       - offpeak
 
 alarm_control_panel:
   - platform: manual
@@ -170,27 +143,6 @@ waste_collection_schedule:
     - name: bathnes_gov_uk
       args:
         uprn: !secret uprn
-
-input_select:
-  minimalist_ui_switch:
-    name: Select popup/view
-    options:
-      - light 1
-      - light 2
-      - light 3
-      - light 4
-      - light 5
-      - light 6
-      - light 7
-      - light 8
-      - climate 2
-      - mediaplayer 1
-      - mediaplayer 2
-      # - bedroom
-      # - landing
-      # - livingroom
-      # - office
-      # - server
 
 sonos:
   media_player:

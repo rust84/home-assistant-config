@@ -46,3 +46,11 @@ bedroom_group:
   entities:
     - light.bedroom_table_left
     - light.bedroom_table_right
+
+diningroom_group:
+  name: Diningroom
+  icon: mdi:lightbulb-group
+  entities:
+    - light.shellyvintage_08f9e070461c
+    - light.shellyvintage_4091515830e1
+    - light.shellyvintage_409151583b74
