@@ -54,13 +54,20 @@ recorder:
   auto_repack: true
   purge_keep_days: 30
   db_url: !env_var HASS_POSTGRES_URL
+  include:
+    entities:
+      - binary_sensor.reolink_video_doorbell_poe_visitor # bell press
   exclude:
     domains:
+      - event
       - weather
     entities:
       - sensor.date
       - sensor.time
     entity_globs:
+      - binary_sensor.reolink_* # motion events
+      - binary_sensor.*_mmwave
+      - binary_sensor.*_pir
       - switch.remote_button_*
       - sensor.openweathermap_*
       - sensor.moonraker_toolhead_position_*
@@ -88,9 +95,17 @@ sun:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+input_boolean: !include booleans.yaml
+input_number: !include numbers.yaml
+mqtt: !include mqtt.yaml # heating controller
 sensor: !include sensors.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
+
+timer:
+  heating_boost_duration:
+    name: Boost remaining
+    duration: 254
 
 alexa:
   smart_home:
@@ -135,8 +150,6 @@ alarm_control_panel:
     armed_home:
       arming_time: 0
       delay_time: 0
-
-input_boolean: !include booleans.yaml
 
 waste_collection_schedule:
   sources:

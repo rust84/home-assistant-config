@@ -2,7 +2,7 @@
   alias: Sonos Night Mode On (23:00)
   description: Enables Sonos Night Mode between 23:00 and 08:00
   trigger:
-  - platform: state
+  - trigger: state
     entity_id:
     - media_player.living_room_2
     from: idle
@@ -12,7 +12,7 @@
     after: '23:00:00'
     before: 08:00:00
   action:
-  - service: switch.turn_on
+  - action: switch.turn_on
     target:
       entity_id: switch.living_room_night_sound
     data: {}
@@ -21,7 +21,7 @@
   alias: Sonos Night Mode Off (08:00)
   description: Disables Sonos Night Mode between 08:00 and 23:00
   trigger:
-  - platform: state
+  - trigger: state
     entity_id:
     - media_player.living_room_2
     from: idle
@@ -31,7 +31,7 @@
     after: 08:00:00
     before: '23:00:00'
   action:
-  - service: switch.turn_off
+  - action: switch.turn_off
     target:
       entity_id: switch.living_room_night_sound
     data: {}
@@ -40,7 +40,7 @@
   alias: 'Roborock: reload map'
   description: ''
   trigger:
-  - platform: event
+  - trigger: event
     event_type: call_service
     event_data:
       domain: vacuum
@@ -56,8 +56,190 @@
       minutes: 0
       seconds: 2
       milliseconds: 0
-  - service: homeassistant.update_entity
+  - action: homeassistant.update_entity
     data: {}
     target:
       entity_id: camera.roborock_qrevo_master_map
+  mode: single
+
+##
+# Hive Thermostat Zigbee2MQTT by greeeny101
+# Source: https://github.com/greeeny101/Hive-Thermostat-Zigbee2MQTT/blob/main/SLR2/config_automation/hive.yaml
+##
+- id: '1666548062412'
+  alias: 'Heating - Set Temperature'
+  description: 'Sends the requested temperature from the climate control to the correct topic'
+  trigger:
+  - trigger: mqtt
+    topic: zigbee2mqtt/heating_proxy/occupied_heating_setpoint_heat
+  condition:
+  - condition: template
+    value_template: '{{trigger.payload != 1}}'
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{ states('sensor.heating_system_mode_heating_2') == 'heat'}}"
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "temperature_setpoint_hold_heat":"1",
+              "system_mode_heat":"heat",
+              "occupied_heating_setpoint_heat":{{trigger.payload}}
+          }' 
+    - conditions:
+      - condition: template
+        value_template: "{{ states('sensor.heating_system_mode_heating_2') == 'off'}}"
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{"temperature_setpoint_hold_heat":true, "system_mode":"heat" }'
+      - delay: 0.5
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "temperature_setpoint_hold_heat":"1",
+              "system_mode_heat":"heat",
+              "occupied_heating_setpoint_heat":{{trigger.payload}}
+          }'
+  mode: single 
+    
+- id: '1666513667863'
+  alias: 'Heating - System Mode'
+  description: 'Sends the requested system mode from the climate control to the correct topic'
+  trigger:
+  - trigger: mqtt
+    topic: zigbee2mqtt/heating_proxy/system_mode_heat
+    id: system mode
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "off" }} '
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "system_mode_heat":"off",
+              "temperature_setpoint_hold_heat":"0"
+          }'
+      - delay: 0.5
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "occupied_heating_setpoint_heat":{{states("input_number.heating_frost_prevention")}},
+              "temperature_setpoint_hold_heat":"1",
+              "temperature_setpoint_hold_duration_heat":"65535"
+          }'
+
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "heat" and states("sensor.heating_occupied_heating_setpoint_heating") != 1}}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "occupied_heating_setpoint_heat":{{states("input_number.heating_manual_default")}},
+              "temperature_setpoint_hold_heat":"1",
+              "system_mode_heat":"heat",
+              "temperature_setpoint_hold_duration_heat":"65535"
+          }'
+
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "cool" and states("sensor.heating_occupied_heating_setpoint_heating") != 1}}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "temperature_setpoint_hold_heat":"1",
+              "system_mode_heat":"emergency_heating",
+              "occupied_heating_setpoint_heat":{{states("input_number.heating_boost_temperature")}},
+              "temperature_setpoint_hold_duration_heat":{{states("input_number.heating_boost_duration")}} 
+          }'
+      - delay: 0.5
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "temperature_setpoint_hold_heat":"1",
+              "system_mode_heat":"emergency_heating",
+              "occupied_heating_setpoint_heat":{{states("input_number.heating_boost_temperature")}},
+              "temperature_setpoint_hold_duration_heat":{{states("input_number.heating_boost_duration")}} 
+          }'
+      - action: timer.start
+        entity_id: timer.heating_boost_duration
+        data_template:
+          duration: "{{ '00:0%i:00' % (states('input_number.heating_boost_duration') | int ) }}"  
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "auto" }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "system_mode_heat":"heat",
+              "temperature_setpoint_hold_heat":"0",
+              "occupied_heating_setpoint": {{states("input_number.heating_frost_prevention")}},
+              "temperature_setpoint_hold_duration_heat": 0 
+          }'
+  mode: single
+
+# Water
+- id: '1666513607863'
+  alias: 'Heating - System Mode Water'
+  description: 'Sends the requested system mode from the climate control to the correct topic'
+  trigger:
+  - trigger: mqtt
+    topic: zigbee2mqtt/heating_proxy/system_mode_water
+    id: system mode water
+  condition: []
+  action:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "off" }} '
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "system_mode_water":"off",
+              "temperature_setpoint_hold_water":"0"
+          }'
+
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "heat" and states("sensor.heating_occupied_heating_setpoint_water") != 1}}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "temperature_setpoint_hold_water":"1",
+              "system_mode_water":"heat",
+              "temperature_setpoint_hold_duration_water":65535
+          }'
+
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.payload == "auto" }}'
+      sequence:
+      - action: mqtt.publish
+        data:
+          topic: zigbee2mqtt/Hive Receiver/set
+          payload: '{
+              "system_mode_water":"heat",
+              "temperature_setpoint_hold_water":"0"
+          }'
   mode: single

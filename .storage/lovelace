@@ -242,6 +242,14 @@
               "entity": "media_player.lg_webos_tv_oled65g36la"
             },
             {
+              "type": "custom:mushroom-media-player-card",
+              "entity": "media_player.shield"
+            },
+            {
+              "type": "custom:mushroom-media-player-card",
+              "entity": "media_player.bedroom_shield"
+            },
+            {
               "type": "entities",
               "entities": [
                 "vacuum.roborock_qrevo_master"
@@ -452,44 +460,118 @@
               ]
             },
             {
-              "type": "thermostat",
-              "entity": "climate.hive_receiver_heat",
-              "features": [
+              "type": "custom:simple-thermostat",
+              "entity": "climate.heating_proxy",
+              "hide": {
+                "temperature": true,
+                "state": true
+              },
+              "sensors": [
                 {
-                  "type": "climate-preset-modes",
-                  "style": "dropdown",
-                  "preset_modes": [
-                    "boost",
-                    "none"
-                  ]
+                  "entity": "sensor.heating_local_temperature_heating",
+                  "icon": "mdi:home-thermometer-outline",
+                  "unit": " °C"
+                },
+                {
+                  "entity": "sensor.heating_running_state_heating_2",
+                  "icon": "mdi:fire"
+                },
+                {
+                  "entity": "sensor.heating_running_state_water",
+                  "icon": "mdi:water-thermometer"
                 }
               ],
-              "name": "Hive Thermostat"
+              "layout": {
+                "step": "row",
+                "mode": {
+                  "headings": false,
+                  "icons": true,
+                  "names": true
+                }
+              },
+              "control": {
+                "hvac": {
+                  "auto": {
+                    "name": "Schedule"
+                  },
+                  "cool": {
+                    "name": "Boost",
+                    "icon": "mdi:heat-wave"
+                  },
+                  "dry": null
+                },
+                "swing": {
+                  "auto": {
+                    "name": "Schedule"
+                  },
+                  "heat": {
+                    "name": "Water",
+                    "icon": "mdi:thermometer-water"
+                  }
+                },
+                "name": "Heating"
+              },
+              "header": false
             },
             {
-              "type": "thermostat",
+              "type": "custom:simple-thermostat",
               "entity": "climate.office_trv",
-              "name": "Office TRV"
+              "layout": {
+                "mode": {
+                  "headings": false,
+                  "names": true,
+                  "icons": true
+                }
+              },
+              "header": {}
             },
             {
-              "type": "thermostat",
+              "type": "custom:simple-thermostat",
               "entity": "climate.lounge_trv1",
-              "name": "Lounge Window TRV"
+              "layout": {
+                "mode": {
+                  "headings": false,
+                  "names": true,
+                  "icons": true
+                }
+              },
+              "header": {}
             },
             {
-              "type": "thermostat",
+              "type": "custom:simple-thermostat",
               "entity": "climate.lounge_trv2",
-              "name": "Lounge Sofa TRV"
+              "layout": {
+                "mode": {
+                  "headings": false,
+                  "names": true,
+                  "icons": true
+                }
+              },
+              "header": {}
             },
             {
-              "type": "thermostat",
+              "type": "custom:simple-thermostat",
               "entity": "climate.dining_room_trv",
-              "name": "Dining Room TRV"
+              "layout": {
+                "mode": {
+                  "headings": false,
+                  "names": true,
+                  "icons": true
+                }
+              },
+              "header": {}
             },
             {
-              "type": "thermostat",
+              "type": "custom:simple-thermostat",
               "entity": "climate.kitchen_trv",
-              "name": "Kitchen TRV"
+              "layout": {
+                "mode": {
+                  "headings": false,
+                  "names": true,
+                  "icons": true
+                }
+              },
+              "header": {}
             }
           ]
         },
