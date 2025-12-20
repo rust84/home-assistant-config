@@ -1,0 +1,48 @@
+- platform: group
+  name: Office Group
+  entities:
+    - light.office_light
+    - light.left_floor_lamp
+    - light.right_floor_lamps
+    - light.glide_hexa
+
+- platform: group
+  name: Office RGB
+  entities:
+    - light.left_floor_lamp
+    - light.right_floor_lamp
+    - light.glide_hexa
+
+- platform: group
+  name: Lounge Group
+  entities:
+    - light.lounge_light
+    - light.lounge_wall_lights
+    - light.dig_quad_v3
+
+- platform: group
+  name: Kitchen Group
+  entities:
+    - light.kitchen_bottom_1
+    - light.kitchen_bottom_2
+    - light.kitchen_top_1
+    - light.kitchen_top_2
+
+- platform: group
+  name: Kitchen Cupboard Group
+  entities:
+    - light.kitchen_left
+    - light.kitchen_right
+
+- platform: group
+  name: Bedroom Group
+  entities:
+    - light.bedroom_table_left
+    - light.bedroom_table_right
+
+- platform: group
+  name: Diningroom
+  entities:
+    - light.shellyvintage_08f9e070461c
+    - light.shellyvintage_4091515830e1
+    - light.shellyvintage_409151583b74

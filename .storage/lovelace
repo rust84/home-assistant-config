@@ -38,12 +38,34 @@
             {
               "entities": [
                 {
-                  "entity": "sensor.everything_presence_one_042214_temperature",
-                  "name": "Kitchen EP1"
+                  "entity": "sensor.ep1_01_7f753c_humidity",
+                  "name": "Office EP"
                 },
+                {
+                  "entity": "sensor.everything_presence_one_042214_humidity",
+                  "name": "Kitchen EP"
+                },
+                {
+                  "entity": "sensor.ep1_02_dac9c4_humidity",
+                  "name": "Livingroom EP"
+                }
+              ],
+              "hours_to_show": 3,
+              "icon": "mdi:server",
+              "name": "HUMIDITY",
+              "points_per_hour": 12,
+              "hour24": true,
+              "type": "custom:mini-graph-card"
+                },
+            {
+              "entities": [
                 {
                   "entity": "sensor.ep1_01_7f753c_temperature",
                   "name": "Office EP1"
+                },
+                {
+                  "entity": "sensor.everything_presence_one_042214_temperature",
+                  "name": "Kitchen EP1"
                 },
                 {
                   "entity": "sensor.ep1_02_dac9c4_temperature",
@@ -73,28 +95,6 @@
               "hours_to_show": 3,
               "icon": "mdi:server",
               "name": "TEMP",
-              "points_per_hour": 12,
-              "hour24": true,
-              "type": "custom:mini-graph-card"
-            },
-            {
-              "entities": [
-                {
-                  "entity": "sensor.everything_presence_one_042214_humidity",
-                  "name": "Kitchen EP"
-                },
-                {
-                  "entity": "sensor.ep1_01_7f753c_humidity",
-                  "name": "Office EP"
-                },
-                {
-                  "entity": "sensor.ep1_02_dac9c4_humidity",
-                  "name": "Livingroom EP"
-                }
-              ],
-              "hours_to_show": 3,
-              "icon": "mdi:server",
-              "name": "HUMIDITY",
               "points_per_hour": 12,
               "hour24": true,
               "type": "custom:mini-graph-card"
@@ -167,7 +167,7 @@
                   "entity": "light.lounge_wall_lights"
                 },
                 {
-                  "entity": "group.office_rgb"
+                  "entity": "light.office_rgb"
                 },
                 {
                   "entity": "light.office_floor_lamps"
@@ -186,16 +186,16 @@
                   "entity": "input_boolean.auto_enable_call_lighting"
                 },
                 {
-                  "entity": "group.bedroom_group"
+                  "entity": "light.bedroom_group"
                 },
                 {
-                  "entity": "group.diningroom_group"
+                  "entity": "light.diningroom"
                 },
                 {
-                  "entity": "group.kitchen_group"
+                  "entity": "light.kitchen_group"
                 },
                 {
-                  "entity": "group.cupboard_group"
+                  "entity": "light.kitchen_cupboard_group"
                 },
                 {
                   "entity": "light.garden_light",
@@ -204,34 +204,6 @@
               ],
               "title": "Light",
               "type": "entities"
-            },
-            {
-              "type": "entities",
-              "entities": [
-                {
-                  "entity": "sensor.rack_output_power"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_power"
-                },
-                {
-                  "entity": "sensor.localbytes_plug_pm_dc3584_daily_energy"
-                },
-                {
-                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost",
-                  "name": "NAS daily",
-                  "secondary_info": "none"
-                },
-                {
-                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost_month",
-                  "name": "NAS monthly"
-                },
-                {
-                  "entity": "sensor.octopus_energy_cost_tracker_nas_electric_cost_week",
-                  "name": "NAS Weekly"
-                }
-              ],
-              "title": "Rack"
             },
             {
               "type": "custom:mushroom-media-player-card",
@@ -449,35 +421,44 @@
                 },
                 {
                   "entity": "input_boolean.heating_schedule_away"
+                },
+                {
+                  "entity": "climate.dining_room_trv"
+                },
+                {
+                  "entity": "climate.kitchen_trv"
+                },
+                {
+                  "entity": "climate.office_trv"
+                },
+                {
+                  "entity": "climate.lounge_trv1"
+                },
+                {
+                  "entity": "climate.lounge_trv2"
                 }
               ],
               "title": "Settings"
             },
             {
-              "type": "custom:scheduler-card",
-              "include": [
-                "climate"
-              ]
-            },
-            {
               "type": "custom:simple-thermostat",
-              "entity": "climate.heating_proxy",
+              "entity": "climate.hive_climate_climate",
               "hide": {
                 "temperature": true,
                 "state": true
               },
               "sensors": [
                 {
-                  "entity": "sensor.heating_local_temperature_heating",
+                  "entity": "sensor.hive_climate_current_temperature",
                   "icon": "mdi:home-thermometer-outline",
                   "unit": " °C"
                 },
                 {
-                  "entity": "sensor.heating_running_state_heating_2",
+                  "entity": "sensor.hive_climate_running_state_heat",
                   "icon": "mdi:fire"
                 },
                 {
-                  "entity": "sensor.heating_running_state_water",
+                  "entity": "sensor.hive_climate_running_state_water",
                   "icon": "mdi:water-thermometer"
                 }
               ],
@@ -511,67 +492,60 @@
                 },
                 "name": "Heating"
               },
-              "header": false
-            },
-            {
-              "type": "custom:simple-thermostat",
-              "entity": "climate.office_trv",
-              "layout": {
-                "mode": {
-                  "headings": false,
-                  "names": true,
-                  "icons": true
-                }
-              },
               "header": {}
             },
             {
-              "type": "custom:simple-thermostat",
-              "entity": "climate.lounge_trv1",
-              "layout": {
-                "mode": {
-                  "headings": false,
-                  "names": true,
-                  "icons": true
-                }
-              },
-              "header": {}
+              "type": "entities",
+              "entities": [
+                {
+                  "entity": "number.hive_climate_heating_boost_duration",
+                  "name": "Heating boost duration"
+                },
+                {
+                  "entity": "number.hive_climate_heating_boost_temperature",
+                  "name": "Heating boost temperature"
+                },
+                {
+                  "entity": "number.hive_climate_heating_frost_prevention",
+                  "name": "Heating frost prevention"
             },
             {
-              "type": "custom:simple-thermostat",
-              "entity": "climate.lounge_trv2",
-              "layout": {
-                "mode": {
-                  "headings": false,
-                  "names": true,
-                  "icons": true
+                  "entity": "number.hive_climate_water_boost_duration",
+                  "name": "Water boost duration"
                 }
-              },
-              "header": {}
+              ],
+              "title": "Hive"
             },
             {
-              "type": "custom:simple-thermostat",
-              "entity": "climate.dining_room_trv",
-              "layout": {
-                "mode": {
-                  "headings": false,
-                  "names": true,
-                  "icons": true
-                }
-              },
-              "header": {}
+              "type": "grid",
+              "square": false,
+              "columns": 1,
+              "cards": [
+            {
+                  "type": "entities",
+                  "entities": [
+                    {
+                      "entity": "button.hive_climate_heating_boost",
+                      "name": "Heating boost"
             },
             {
-              "type": "custom:simple-thermostat",
-              "entity": "climate.kitchen_trv",
-              "layout": {
-                "mode": {
-                  "headings": false,
-                  "names": true,
-                  "icons": true
+                      "entity": "button.hive_climate_water_boost",
+                      "name": "Water boost"
+                    },
+                    {
+                      "entity": "select.hive_climate_water_mode",
+                      "name": "Water mode"
+                    }
+                  ],
+                  "title": "Hive"
                 }
-              },
-              "header": {}
+              ]
+            },
+            {
+              "type": "custom:scheduler-card",
+              "include": [
+                "climate"
+              ]
             }
           ]
         },

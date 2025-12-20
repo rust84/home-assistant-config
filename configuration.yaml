@@ -74,6 +74,7 @@ recorder:
       - sensor.moonraker_slicer_*
       - sensor.moonraker_print_*
       - sensor.bermuda_*
+      - sensor.heating_local_*
 
 logbook:
 
@@ -93,11 +94,12 @@ history:
 
 sun:
 
-group: !include groups.yaml
+#group: !include groups.yaml # Moved to light-groups.yaml
 automation: !include automations.yaml
 input_boolean: !include booleans.yaml
 input_number: !include numbers.yaml
-mqtt: !include mqtt.yaml # heating controller
+light: !include light-groups.yaml
+mqtt: !include mqtt.yaml
 sensor: !include sensors.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
@@ -116,9 +118,10 @@ alexa:
     filter:
       include_domains:
         - light
-        - climate
         - scene
       include_entities:
+        - climate.heating_proxy
+        - climate.midea_ac_42880953513406
         - group.bedroom_group
         - group.diningroom_group
         - group.kitchen_group
@@ -129,6 +132,8 @@ alexa:
         - sensor.ep1_02_dac9c4_temperature
         - switch.sonoff_s26_1_relay
         - switch.sonoff_s26_2_relay
+      exclude_domains:
+        - climate
       exclude_entity_globs:
         - light.ep1_*
         - light.*_segment_*
@@ -159,4 +164,6 @@ waste_collection_schedule:
 
 sonos:
   media_player:
-    advertise_addr: 10.30.0.55
+    advertise_addr: 10.20.0.126
+    hosts:
+      - 10.20.0.175
