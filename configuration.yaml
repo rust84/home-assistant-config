@@ -40,7 +40,7 @@ http:
   cors_allowed_origins:
     - !secret internal_url
     - !secret external_url
-  server_host: 0.0.0.0
+  # server_host: 0.0.0.0 # DEPRECATED
   ip_ban_enabled: false
   login_attempts_threshold: 5
   use_x_forwarded_for: true
@@ -55,8 +55,8 @@ recorder:
   purge_keep_days: 30
   db_url: !env_var HASS_POSTGRES_URL
   include:
-    entities:
-      - binary_sensor.reolink_video_doorbell_poe_visitor # bell press
+    entities: # Doorbell pressed
+      - binary_sensor.reolink_video_doorbell_poe_visitor
   exclude:
     domains:
       - event
@@ -87,6 +87,8 @@ logger:
 
 frontend:
   themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js?hacstag=190927524410
 
 config:
 
@@ -94,12 +96,11 @@ history:
 
 sun:
 
-#group: !include groups.yaml # Moved to light-groups.yaml
+# group: !include groups.yaml
 automation: !include automations.yaml
 input_boolean: !include booleans.yaml
 input_number: !include numbers.yaml
 light: !include light-groups.yaml
-mqtt: !include mqtt.yaml
 sensor: !include sensors.yaml
 scene: !include scenes.yaml
 template: !include templates.yaml
@@ -120,14 +121,7 @@ alexa:
         - light
         - scene
       include_entities:
-        - climate.heating_proxy
-        - climate.midea_ac_42880953513406
-        - group.bedroom_group
-        - group.diningroom_group
-        - group.kitchen_group
-        - group.office_group
-        - group.lounge_group
-        - sensor.bedroom_temperature_humidity_temperature
+        - climate.hive_climate_climate
         - sensor.ep1_01_7f753c_temperature
         - sensor.ep1_02_dac9c4_temperature
         - switch.sonoff_s26_1_relay
@@ -164,6 +158,6 @@ waste_collection_schedule:
 
 sonos:
   media_player:
-    advertise_addr: 10.20.0.126
+    advertise_addr: 10.30.0.55
     hosts:
       - 10.20.0.175

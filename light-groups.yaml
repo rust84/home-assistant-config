@@ -3,7 +3,7 @@
   entities:
     - light.office_light
     - light.left_floor_lamp
-    - light.right_floor_lamps
+    - light.right_floor_lamp
     - light.glide_hexa
 
 - platform: group
